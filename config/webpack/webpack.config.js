@@ -8,6 +8,7 @@ module.exports = {
     alias: {
       vue$: 'vue/dist/vue.esm-bundler.js',
     },
+    extensions: ['.js', '.ts']
   },
   entry: {
     application: "./app/javascript/application.js",
@@ -29,7 +30,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.[jt]s$/,
         loader: 'esbuild-loader',
         options: {
           target: 'es2015'  // Syntax to compile to (see options below for possible values)

@@ -21,7 +21,6 @@ module Api
       def create
         comment = Comment.new(comment_params)
         comment.user_id = current_user.id
-        # comment.save if logged_in? && comment.valid?
 
         if comment.save
           # logger.debug CommentSerializer.new(comment).serialized_json

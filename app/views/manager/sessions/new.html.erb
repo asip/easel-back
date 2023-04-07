@@ -4,30 +4,29 @@
     <div class="card">
       <div class="card-header">
         <div class="float-start">
-          <%= link_to root_path, "data-turbo-frame": "_top" do %><i class="bi bi-arrow-left-circle"></i>
-          <% end %>
-          ログイン
+          <%= link_to root_path, "data-turbo-frame": "_top" do %><i class="bi bi-arrow-left-circle"></i><% end %>
+          &nbsp;<%= t('action.administration.title') %>
         </div>
       </div>
       <div class="card-block">
         <br>
         <%= render ErrorMessages::Component.new(model: @user) %>
         <div class="row d-flex justify-content-sm-center border border-white">
-          <label for="email" class="col-form-label-sm col-sm-2 label-bg-style">Eメール</label>
+          <label for="email" class="col-form-label-sm col-sm-2 label-bg-style"><%= t('activerecord.attributes.user.email') %></label>
           <div class="form-group col-sm-4">
-            <%= form.text_field :email, placeholder: 'Eメール', class: 'form-control' %>
+            <%= form.text_field :email, placeholder: t('activerecord.attributes.user.email'), class: 'form-control' %>
           </div>
         </div>
         <div class="row d-flex justify-content-sm-center border border-white">
-          <label for="password" class="col-form-label-sm col-sm-2 label-bg-style">パスワード</label>
+          <label for="password" class="col-form-label-sm col-sm-2 label-bg-style"><%= t('activerecord.attributes.user.password') %></label>
           <div class="form-group col-sm-4">
-            <%= form.password_field :password, placeholder: 'パスワード', class: 'form-control' %>
+            <%= form.password_field :password, placeholder: t('activerecord.attributes.user.password'), class: 'form-control' %>
           </div>
         </div>
         <br>
         <div class="row d-flex justify-content-sm-center">
           <div class="form-group col-sm-6">
-            <%= form.submit 'ログイン', class: 'btn btn-primary' %>
+            <%= form.submit t('action.administration.login'), class: 'btn btn-primary' %>
           </div>
         </div>
         <br>

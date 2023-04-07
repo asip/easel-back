@@ -1,0 +1,7 @@
+ja:
+  action:
+    administration:
+      title: '管理画面ログイン'
+      login: 'ログイン'
+    login:
+      invalid: 'が間違っています'

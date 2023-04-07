@@ -3,10 +3,15 @@ ja:
     models:
       user: 'ユーザー'
       frame: 'イメージ'
+      admin: '管理者'
     attributes:
       user:
         name: 'ユーザー名'
         image: 'アイコン'
+        email: 'Eメール'
+        password: 'パスワード'
+        password_confirmation: 'パスワード(確認)'
+      admin:
         email: 'Eメール'
         password: 'パスワード'
         password_confirmation: 'パスワード(確認)'

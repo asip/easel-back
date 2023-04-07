@@ -1,0 +1,7 @@
+en:
+  action:
+    administration:
+      title: 'Log in to Administration'
+      login: 'Log in'
+    login:
+      invalid: 'is wrong'

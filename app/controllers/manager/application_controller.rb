@@ -4,6 +4,9 @@
 module Manager
   # Admin Controller
   class ApplicationController < ActionController::Base
+    include Locale::AutoDetect
+
+    before_action :switch_locale
     before_action :require_login
 
     def current_user
