@@ -3,12 +3,14 @@
 ![alt text](https://github.com/asip/easel-back/blob/main/public/palette.svg)
 
 This is backend of Easel.
-This includes legacy frontend implemented by Ruby on Rails.
 
 Rails7.0 + Sorcery(authentication) + Kaminari(paging) +  
 Shrine(upload) + ActsAsTaggableOn(tag) +  
 RailsAdmin (management console) +  
-Hotwire (Turbo + Stimulus3) + Vue.js 3 + Bootstrap5
+Hotwire (Turbo + Stimulus3) + Bootstrap5
+
+The frontend implemented by Ruby on Rails moved to [lagacy branch](https://github.com/asip/easel-back/tree/legacy).  
+(+ Vue.js 3)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
