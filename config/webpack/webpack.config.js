@@ -11,8 +11,7 @@ module.exports = {
     extensions: ['.js', '.ts']
   },
   entry: {
-    application: "./app/javascript/application.js",
-    web_components: "./app/javascript/web_components.js"
+    application: "./app/javascript/application.js"
   },
   output: {
     filename: "[name].js",
@@ -35,12 +34,6 @@ module.exports = {
         options: {
           target: 'es2015'  // Syntax to compile to (see options below for possible values)
         }
-      },
-      {
-        test: /\.vue(\.erb)?$/,
-        use: [{
-          loader: 'vue-loader'
-        }]
       }
     ]
   }

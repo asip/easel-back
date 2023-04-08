@@ -58,7 +58,6 @@ gem 'googleauth'
 gem 'config'
 
 # paging
-gem 'bootstrap5-kaminari-views'
 gem 'kaminari', '~> 1.2.2'
 
 # tags

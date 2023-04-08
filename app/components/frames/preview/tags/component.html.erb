@@ -1,9 +1,0 @@
-<% if @tag_paths.size > 0 %>
-  <div class="d-flex justify-content-sm-center">
-    <div class="col-sm-6">
-      <% @tag_paths.each do |tag, tag_path| %>
-        <%= link_to tag_path, "data-turbo": false do %><div class="badge rounded-pill bg-light text-info"><%= tag %></div><% end %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
