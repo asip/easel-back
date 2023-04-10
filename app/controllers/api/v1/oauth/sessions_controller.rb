@@ -7,6 +7,7 @@ module Api
     module Oauth
       # Oauth Sessions Controller
       class SessionsController < Api::V1::ApiController
+        include ActionController::Cookies
         include Sorcery::Credential
 
         skip_before_action :authenticate
