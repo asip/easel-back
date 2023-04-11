@@ -5,7 +5,6 @@ module Api
   # V1
   module V1
     # Api Controller
-    # rubocop:disable Rails/ApplicationController
     class ApiController < ActionController::API
       include AbstractController::Helpers
       include Api::ExceptionHandler
@@ -35,5 +34,4 @@ module Api
       # end
     end
   end
-  # rubocop:enable Rails/ApplicationController
 end
