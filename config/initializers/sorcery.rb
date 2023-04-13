@@ -37,6 +37,7 @@ Rails.application.config.sorcery.configure do |config|
   # Default: `3600`
   #
   # config.session_timeout =
+  config.session_timeout = 60 * 60
 
   # Use the last action as the beginning of session timeout.
   # Default: `false`
@@ -451,7 +452,8 @@ Rails.application.config.sorcery.configure do |config|
     # ...
     user.jwt_secret = Rails.application.secrets.secret_key_base
     user.jwt_algorithm = 'HS256' # HS256 is used by default.
-    user.session_expiry = 60 * 60 * 2 # 2 weeks is used by default.
+    # user.session_expiry = 60 * 60 * 24 * 7 * 2 # 2 weeks is used by default.
+    user.session_expiry = 60 * 60
   end
 
   # This line must come after the 'user config' block.
