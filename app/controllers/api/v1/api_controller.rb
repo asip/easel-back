@@ -5,16 +5,16 @@ module Api
   # V1
   module V1
     # Api Controller
-    # rubocop:disable Rails/ApplicationController
-    class ApiController < ActionController::Base
+    class ApiController < ActionController::API
+      include AbstractController::Helpers
       include Api::ExceptionHandler
       include Locale::AutoDetect
 
-      protect_from_forgery with: :exception
+      # protect_from_forgery with: :exception
 
       before_action :switch_locale
       before_action :authenticate
-      skip_before_action :verify_authenticity_token
+      # skip_before_action :verify_authenticity_token
 
       protected
 
@@ -34,5 +34,4 @@ module Api
       # end
     end
   end
-  # rubocop:enable Rails/ApplicationController
 end

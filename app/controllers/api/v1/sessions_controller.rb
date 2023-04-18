@@ -6,6 +6,8 @@ module Api
   module V1
     # Sessions Controller
     class SessionsController < Api::V1::ApiController
+      include ActionController::Cookies
+
       skip_before_action :authenticate, only: %i[create]
       # before_action :set_csrf_token, only: [:show]
 
