@@ -8,8 +8,10 @@
     "@popperjs/core": "^2.11.7",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.4",
+    "copyfiles": "^2.4.1",
     "esbuild": "^0.17.15",
     "esbuild-loader": "^3.0.1",
+    "rails_admin": "3.1.2",
     "sass": "^1.60.0",
     "stimulus": "^3.2.1",
     "tsc-watch": "^6.0.0",
@@ -21,6 +23,7 @@
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build:webpack": "webpack --config ./config/webpack/webpack.config.js",
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules",
+    "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && cp -r node_modules/@fortawesome/fontawesome-free/webfonts ./app/assets/builds",
     "watch:ts": "tsc-watch --noClear -p tsconfig.json"
   }
 }

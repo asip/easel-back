@@ -236,6 +236,11 @@ GEM
     parallel (1.22.1)
     parser (3.2.2.0)
       ast (~> 2.4.1)
+    propshaft (0.7.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -338,14 +343,6 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     selenium-webdriver (4.8.6)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -368,17 +365,9 @@ GEM
     sorcery-jwt (0.1.13)
       jwt (>= 1.0, < 3.0)
       sorcery (>= 0.13, < 0.17)
-    sprockets (4.2.0)
-      concurrent-ruby (~> 1.0)
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     thor (1.2.1)
-    tilt (2.1.0)
     timeout (0.3.2)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
@@ -427,6 +416,7 @@ DEPENDENCIES
   jsonapi-serializer
   kaminari (~> 1.2.2)
   mysql2 (~> 0.5.3)
+  propshaft (~> 0.7.0)
   puma (~> 5.6.2)
   rack-cors
   rails (~> 7.0.0)
@@ -437,12 +427,10 @@ DEPENDENCIES
   rspec-rails
   rubocop-performance
   rubocop-rails
-  sassc-rails
   selenium-webdriver
   shrine (~> 3.0)
   sorcery
   sorcery-jwt
-  sprockets-rails
   stimulus-rails
   turbo-rails
   tzinfo-data
