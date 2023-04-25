@@ -7,7 +7,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '~> 7.0.0'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem 'propshaft', '~> 0.7.0'
+# gem 'propshaft', '~> 0.7.0'
+gem 'sprockets-rails'
 
 # gem 'dartsass-rails'
 
