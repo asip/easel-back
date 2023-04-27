@@ -9,7 +9,7 @@ Shrine(upload) + ActsAsTaggableOn(tag) +
 RailsAdmin (management console) +  
 Hotwire (Turbo + Stimulus3) + Bootstrap5
 
-The frontend implemented by Ruby on Rails moved to [lagacy branch](https://github.com/asip/easel-back/tree/legacy).  
+The frontend implemented by Ruby on Rails moved to [hotwire branch](https://github.com/asip/easel-back/tree/hotwire).  
 (+ Vue.js 3)
 
 This README would normally document whatever steps are necessary to get the
