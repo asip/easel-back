@@ -12,15 +12,27 @@
         <br>
         <%= render ErrorMessages::Component.new(model: @user) %>
         <div class="row d-flex justify-content-sm-center border border-white">
-          <label for="email" class="col-form-label-sm col-sm-2 label-bg-style"><%= t('activerecord.attributes.user.email') %></label>
-          <div class="form-group col-sm-4">
-            <%= form.text_field :email, placeholder: t('activerecord.attributes.user.email'), class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row d-flex justify-content-sm-center border border-white">
-          <label for="password" class="col-form-label-sm col-sm-2 label-bg-style"><%= t('activerecord.attributes.user.password') %></label>
-          <div class="form-group col-sm-4">
-            <%= form.password_field :password, placeholder: t('activerecord.attributes.user.password'), class: 'form-control' %>
+          <div class="col-sm-6">
+            <table class="table table-bordered table_rounded">
+              <tbody>
+                <tr>
+                  <td style="width: 30%;">
+                    <label for="email" class="col-form-label-sm"><%= t('activerecord.attributes.user.email') %></label>
+                  </td>
+                  <td style="width: 70%;">
+                    <%= form.text_field :email, placeholder: t('activerecord.attributes.user.email'), class: 'form-control' %>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 30%;">
+                    <label for="password" class="col-form-label-sm"><%= t('activerecord.attributes.user.password') %></label>
+                  </td>
+                  <td style="width: 70%;">
+                    <%= form.password_field :password, placeholder: t('activerecord.attributes.user.password'), class: 'form-control' %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <br>
