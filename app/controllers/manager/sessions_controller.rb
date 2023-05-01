@@ -40,10 +40,10 @@ module Manager
       @user = Admin.find_by(email: params_user[:email])
       if @user
         @user.password = params_user[:password]
-        @user.errors.add(:password, 'が間違っています') if @user.valid?(:login)
+        @user.errors.add(:password, t('action.login.invalid')) if @user.valid?(:login)
       else
         @user = Admin.new(params_user)
-        @user.errors.add(:email, 'が間違っています') if @user.valid?(:login)
+        @user.errors.add(:email, t('action.login.invalid')) if @user.valid?(:login)
       end
     end
   end
