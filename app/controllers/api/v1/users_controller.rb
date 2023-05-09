@@ -32,7 +32,7 @@ module Api
           # puts @user.saved_change_to_email?
           if @user.saved_change_to_email?
             @user.assign_token(user_class.issue_token(id: @user.id, email: @user.email))
-            cookies.permanent[:access_token] = token
+            cookies.permanent[:access_token] = @user.token
           end
           render json: AccountSerializer.new(@user).serializable_hash
         else
