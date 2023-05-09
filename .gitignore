@@ -45,5 +45,5 @@ config/credentials.yml.enc
 
 erd.pdf
 
-.vscode/settings.json
+.vscode
 .envrc

@@ -29,7 +29,7 @@ module Api
         @user.image_derivatives! if @user.image.present?
         # puts 'testtest'
         if @user.save(context: :with_validation)
-          puts @user.saved_change_to_email?
+          # puts @user.saved_change_to_email?
           if @user.saved_change_to_email?
             @user.assign_token(user_class.issue_token(id: @user.id, email: @user.email))
             cookies.permanent[:access_token] = token
