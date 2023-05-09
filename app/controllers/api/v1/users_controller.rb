@@ -6,6 +6,8 @@ module Api
   module V1
     # Users Controller
     class UsersController < Api::V1::ApiController
+      include ActionController::Cookies
+
       skip_before_action :authenticate, only: %i[create show]
       before_action :set_user, only: %i[show create update]
 
@@ -27,6 +29,11 @@ module Api
         @user.image_derivatives! if @user.image.present?
         # puts 'testtest'
         if @user.save(context: :with_validation)
+          puts @user.saved_change_to_email?
+          if @user.saved_change_to_email?
+            @user.assign_token(user_class.issue_token(id: @user.id, email: @user.email))
+            cookies.permanent[:access_token] = token
+          end
           render json: AccountSerializer.new(@user).serializable_hash
         else
           render json: { errors: @user.errors.messages }.to_json

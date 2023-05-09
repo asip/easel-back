@@ -89,7 +89,7 @@ class User < ApplicationRecord
   end
 
   def assign_token(token_)
-    update!(token: token_)
+    update_attribute(:token, token_)
   end
 
   def reset_token
