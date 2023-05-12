@@ -39,12 +39,22 @@ module Manager
     def validate_login(params_user)
       @user = Admin.find_by(email: params_user[:email])
       if @user
-        @user.password = params_user[:password]
-        @user.errors.add(:password, t('action.login.invalid')) unless @user.valid?(:login)
+        validate_password(params_user)
       else
-        @user = Admin.new(params_user)
-        @user.errors.add(:email, t('action.login.invalid')) unless @user.valid?(:login)
+        validate_email(params_user)
       end
+    end
+
+    def validate_password(params_user)
+      @user.password = params_user[:password]
+      return unless !@user.valid?(:login) && params_user[:password].present?
+
+      @user.errors.add(:password, t('action.login.invalid'))
+    end
+
+    def validate_email(params_user)
+      @user = Admin.new(params_user)
+      @user.errors.add(:email, t('action.login.invalid')) if !@user.valid?(:login) && @user.email.present?
     end
   end
 end
