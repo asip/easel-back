@@ -54,9 +54,9 @@ module Api
       def validate_login(params_user)
         @user = User.find_by(email: params_user[:email])
         message_ = if @user
-                     'パスワードが間違っています'
+                     "#{I18n.t('activerecord.attributes.user.password')}#{I18n.t('action.login.invalid')}"
                    else
-                     'メールアドレスが間違っています'
+                     "#{I18n.t('activerecord.attributes.user.email')}#{I18n.t('action.login.invalid')}"
                    end
 
         render json: {
