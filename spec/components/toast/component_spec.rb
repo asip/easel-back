@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ErrorMessages::Component, type: :component do
+RSpec.describe Toast::Component, type: :component do
   pending "add some examples to (or delete) #{__FILE__}"
 
   # it "renders something useful" do

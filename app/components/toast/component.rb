@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Error Messages
-module ErrorMessages
+module Toast
   # Component
   class Component < ViewComponent::Base
     def initialize(model:)
