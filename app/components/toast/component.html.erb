@@ -1,3 +1,3 @@
-<% if @model.errors.present? %>
-  <div data-controller="toast" data-toast-messages-value="<%= @model.errors_to_json %>" ></div>
+<% if @messages.present? %>
+  <div data-controller="toast" data-toast-messages-value="<%= @messages_json %>" ></div>
 <% end %>

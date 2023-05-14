@@ -25,7 +25,6 @@
 #  index_admins_on_unlock_token                         (unlock_token)
 #
 class Admin < ApplicationRecord
-  include Json::Util
 
   authenticates_with_sorcery!
 
