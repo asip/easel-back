@@ -52,7 +52,8 @@ module Manager
 
     def validate_email(params_user)
       @user = Admin.new(params_user)
-      @user.errors.add(:email, t('action.login.invalid')) if !@user.valid?(:login) && @user.email.present?
+      @user.valid?(:login)
+      @user.errors.add(:email, t('action.login.invalid')) if params_user[:email].present?
     end
   end
 end
