@@ -53,15 +53,27 @@ module Api
 
       def validate_login(params_user)
         @user = User.find_by(email: params_user[:email])
-        message_ = if @user
-                     "#{I18n.t('activerecord.attributes.user.password')}#{I18n.t('action.login.invalid')}"
-                   else
-                     "#{I18n.t('activerecord.attributes.user.email')}#{I18n.t('action.login.invalid')}"
-                   end
-
+        if @user
+          validate_password(params_user)
+        else
+          validate_email(params_user)
+        end
         render json: {
-          message: message_
+          messages: @user.errors.full_messages
         }
+      end
+
+      def validate_password(params_user)
+        @user.password = params_user[:password]
+        return unless !@user.valid?(:login) && params_user[:password].present?
+
+        @user.errors.add(:password, I18n.t('action.login.invalid'))
+      end
+
+      def validate_email(params_user)
+        @user = User.new(params_user)
+        @user.valid?(:login)
+        @user.errors.add(:email, I18n.t('action.login.invalid')) if params_user[:email].present?
       end
     end
   end
