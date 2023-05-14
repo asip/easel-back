@@ -8,7 +8,7 @@ module Toast
       super
       @messages = messages
       @messages_json = {
-        messages: messages
+        messages:
       }.to_json
     end
   end

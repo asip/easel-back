@@ -25,7 +25,6 @@
 #  index_admins_on_unlock_token                         (unlock_token)
 #
 class Admin < ApplicationRecord
-
   authenticates_with_sorcery!
 
   VALID_EMAIL_REGEX = /\A\z|\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
