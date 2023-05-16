@@ -19,10 +19,12 @@ Things you may want to cover:
 
 * Ruby version : 3.2.2
 * Rails version : 7.0.4
-* System dependencies : yarn (v1.22.19) & mysql
+* System dependencies : yarn (v1.22.19) & mysql & direnv
 * Deployment instructions
   - Run `bundle install --path vendor/bundle` to install the required Rubygems
   - Run `yarn install` to install the required NPM packages
+  - RUN `cp .env.sample .env` to edit environment variables
+  - RUN `direnv allow` to set environment variables
   - Run `bundle exec rails db:create` to create a development database
   - Run `bundle exec rails db:migrate` to create database schema
   - Run `bundle exec rails db:seed` to sample records
