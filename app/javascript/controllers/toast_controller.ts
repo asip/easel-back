@@ -12,7 +12,7 @@ export default class ToastController extends ApplicationController {
     messages.forEach(message => {
       Toastify({
         text: message,
-        duration: 3000
+        duration: 2000
         }).showToast();
     });
   }
