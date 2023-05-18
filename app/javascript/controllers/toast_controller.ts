@@ -7,7 +7,7 @@ export default class ToastController extends ApplicationController {
   messagesValue: String
 
   connect() {
-    const messages = JSON.parse(this.messagesValue.valueOf())["messages"]
+    const messages = JSON.parse(this.messagesValue.valueOf())["messages"].reverse()
     //console.log(messages)
     messages.forEach(message => {
       Toastify({
