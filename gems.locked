@@ -83,6 +83,9 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    bullet (7.0.7)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     capybara (3.39.0)
       addressable
       matrix
@@ -376,6 +379,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
+    uniform_notifier (1.16.0)
     version_gem (1.1.2)
     view_component (3.0.0)
       activesupport (>= 5.2.0, < 8.0)
@@ -406,6 +410,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 9.0.1)
   annotate
   bootsnap
+  bullet
   capybara
   config
   cssbundling-rails
