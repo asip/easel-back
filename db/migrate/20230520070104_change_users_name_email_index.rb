@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# ChangeUsersNameEmailIndex
 class ChangeUsersNameEmailIndex < ActiveRecord::Migration[7.0]
   def change
     change_table :users, bulk: true do |t|
