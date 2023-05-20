@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_05_122215) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_20_070104) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -106,7 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_05_122215) do
     t.string "last_login_from_ip_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
-    t.index ["name", "email"], name: "index_users_on_name_and_email", unique: true
+    t.index ["name", "email"], name: "index_users_on_name_and_email"
     t.index ["token"], name: "index_users_on_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
