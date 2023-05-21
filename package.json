@@ -11,6 +11,7 @@
     "copyfiles": "^2.4.1",
     "esbuild": "^0.17.19",
     "esbuild-loader": "^3.0.1",
+    "eslint-plugin-vue": "^9.13.0",
     "rails_admin": "3.1.2",
     "sass": "^1.62.1",
     "stimulus": "^3.2.1",
@@ -25,6 +26,15 @@
     "build:webpack": "webpack --config ./config/webpack/webpack.config.js",
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules",
     "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && cp -r node_modules/@fortawesome/fontawesome-free/webfonts ./app/assets/builds",
-    "watch:ts": "tsc-watch --noClear -p tsconfig.json"
+    "watch:ts": "tsc-watch --noClear -p tsconfig.json",
+    "lint": "eslint --fix './app/javascript/**/*.{js,ts,vue}'"
+  },
+  "devDependencies": {
+    "@types/toastify-js": "^1.11.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.8"
   }
 }
