@@ -8,7 +8,7 @@
     <%= favicon_link_tag '/palette.svg', { type: 'image/svg+xml' } %>
     <%= favicon_link_tag '/palette.svg', { type: 'image/svg+xml', rel: 'mask-icon', color: '#000000' } %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag 'application', "data-turbo-track": 'reload', defer: true %>
   </head>
   <body>
     <%= render 'layouts/manager/header' %>
