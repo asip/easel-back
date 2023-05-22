@@ -4,25 +4,42 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:vue/vue3-recommended",
     "prettier"
   ],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "sourceType": "module",
-    "project": "./tsconfig.json"
+    "ecmaVersion": 2022,
+    "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
   "rules": {
-    "@typescript-eslint/no-explicit-any": 1,
-    "@typescript-eslint/no-non-null-assertion": 1
+    // 共通のルールを設定
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
+    "indent": ["error", 2]
   },
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": 1,
+        "@typescript-eslint/no-non-null-assertion": 1
+      }
+    }
+  ],
   "ignorePatterns": [
-    "./app/assets/builds/**/*", // Ignore built files.
-    "**/*.js"
+    "./app/assets/builds/**/*" // Ignore built files.
   ],
   "root": true
 }
