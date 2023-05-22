@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "module": "es2022",
+    "target": "es2022",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "strictFunctionTypes": false,
     "outDir": "./app/assets/builds"
