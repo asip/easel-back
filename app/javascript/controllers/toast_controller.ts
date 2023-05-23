@@ -6,8 +6,7 @@ export default class ToastController extends ApplicationController {
     messages: String
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  //message.messageValue!: String
+  declare readonly messagesValue: string
 
   connect() {
     const messages = JSON.parse(this.messagesValue.valueOf())['messages'].reverse()

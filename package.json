@@ -27,7 +27,7 @@
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules",
     "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && cp -r node_modules/@fortawesome/fontawesome-free/webfonts ./app/assets/builds",
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",
-    "lint": "eslint --fix './app/javascript/**/*.{js,ts,vue}'"
+    "lint": "eslint --fix './app/javascript/**/*.{js,ts}'"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.59.6",
