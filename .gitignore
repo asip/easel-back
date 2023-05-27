@@ -43,5 +43,6 @@ erd.pdf
 .idea
 easel.iml
 .vscode
+.hintrc
 
 .env
