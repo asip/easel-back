@@ -1,7 +1,11 @@
-const path    = require("path")
-const webpack = require("webpack")
+// eslint-disable-next-line no-undef
+const path    = require('path')
+// eslint-disable-next-line no-undef
+const webpack = require('webpack')
+// eslint-disable-next-line no-undef
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 
+// eslint-disable-next-line no-undef
 module.exports = {
   mode,
   resolve: {
@@ -11,11 +15,12 @@ module.exports = {
     extensions: ['.js', '.ts']
   },
   entry: {
-    application: "./app/javascript/application.js"
+    application: './app/javascript/application.js'
   },
   output: {
-    filename: "[name].js",
-    sourceMapFilename: "[name].js.map",
+    filename: '[name].js',
+    sourceMapFilename: '[name].js.map',
+    // eslint-disable-next-line no-undef
     path: path.resolve(__dirname, '..', '..', 'app/assets/builds'),
   },
   plugins: [
