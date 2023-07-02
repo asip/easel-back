@@ -7,7 +7,7 @@
     "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.8",
     "@types/toastify-js": "^1.11.1",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.17.19",
