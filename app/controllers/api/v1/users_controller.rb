@@ -7,12 +7,22 @@ module Api
     # Users Controller
     class UsersController < Api::V1::ApiController
       include ActionController::Cookies
+      include Pagination
 
-      skip_before_action :authenticate, only: %i[create show]
+      skip_before_action :authenticate, only: %i[create show frames]
       before_action :set_user, only: %i[show create update]
+      before_action :set_query, only: %i[frames]
 
       def show
         render json: UserSerializer.new(@user).serializable_hash
+      end
+
+      def frames
+        frames = Frame.where(user_id: params[:user_id])
+        frames = frames.page(@page)
+        pagination = resources_with_pagination(frames)
+
+        render json: FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end
 
       def create
@@ -38,6 +48,20 @@ module Api
       end
 
       private
+
+      def index_options
+        {}
+      end
+
+      def set_query
+        @page = query_params[:page]
+      end
+
+      def query_params
+        params.permit(
+          :page
+        )
+      end
 
       def update_token
         return unless @user.saved_change_to_email?

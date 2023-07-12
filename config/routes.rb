@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       end
       resources :users, only: %i[show create] do
         resource :follow_relationships, only: %i[create destroy]
+        get '/frames' => '/api/v1/users#frames'
       end
       get '/profile' => '/api/v1/sessions#profile'
       put '/profile' => '/api/v1/users#update'
