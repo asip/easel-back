@@ -14,16 +14,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'manager/sessions#destroy', as: 'logout'
 
   namespace :api do
-    namespace :front do
-      namespace :v1 do
-        resources :frames, only: [:index] do
-          resources :comments, only: %i[index create]
-        end
-        resources :comments, only: [:destroy]
-
-        get '/account' => '/api/front/v1/account#show'
-      end
-    end
     namespace :v1 do
       namespace :oauth do
         resource :sessions, only: [:create]
