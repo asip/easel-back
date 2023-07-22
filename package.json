@@ -7,19 +7,19 @@
     "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.8",
     "@types/toastify-js": "^1.11.1",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
     "copyfiles": "^2.4.1",
-    "esbuild": "^0.17.19",
+    "esbuild": "^0.18.11",
     "esbuild-loader": "^3.0.1",
     "rails_admin": "3.1.2",
-    "sass": "^1.62.1",
+    "sass": "^1.63.6",
     "stimulus": "^3.2.1",
     "toastify-js": "^1.12.0",
     "tsc-watch": "^6.0.4",
-    "typescript": "^5.0.4",
-    "webpack": "^5.84.1",
-    "webpack-cli": "^5.1.1"
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
@@ -30,9 +30,9 @@
     "lint": "eslint --fix './app/javascript/**/*.{js,ts}'"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.59.7",
-    "eslint": "^8.41.0",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "prettier": "^2.8.8"
   }

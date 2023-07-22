@@ -14,16 +14,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'manager/sessions#destroy', as: 'logout'
 
   namespace :api do
-    namespace :front do
-      namespace :v1 do
-        resources :frames, only: [:index] do
-          resources :comments, only: %i[index create]
-        end
-        resources :comments, only: [:destroy]
-
-        get '/account' => '/api/front/v1/account#show'
-      end
-    end
     namespace :v1 do
       namespace :oauth do
         resource :sessions, only: [:create]
@@ -33,6 +23,7 @@ Rails.application.routes.draw do
       end
       resources :users, only: %i[show create] do
         resource :follow_relationships, only: %i[create destroy]
+        get '/frames' => '/api/v1/users#frames'
       end
       get '/profile' => '/api/v1/sessions#profile'
       put '/profile' => '/api/v1/users#update'

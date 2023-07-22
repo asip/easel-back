@@ -82,12 +82,13 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   # Ruby style guide, linter, and formatter
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
 
 group :development do
-  gem 'bullet'
   gem 'brakeman'
+  gem 'bullet'
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
