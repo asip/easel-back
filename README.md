@@ -21,16 +21,16 @@ Things you may want to cover:
 * Rails version : 7.0.4
 * System dependencies : yarn (v1.22.19) & postgresql & direnv
 * Deployment instructions
-  - Run `bundle install --path vendor/bundle` to install the required Rubygems
-  - Run `yarn install` to install the required NPM packages
-  - RUN `cp .env.sample .env` to edit environment variables
-  - RUN `direnv allow` to set environment variables
-  - Run `bundle exec rails db:create` to create a development database
-  - Run `bundle exec rails db:migrate` to create database schema
-  - Run `bundle exec rails db:seed` to sample records
-  - Run `bin/rails assets:precompile` to bundle the included javascript modules 
-  - Run `bin/dev` to spin up the Rails dev server
-  - Hit [localhost:3000](http://localhost:3000/) and you should be ready to go!
+  * Run `bundle install --path vendor/bundle` to install the required Rubygems
+  * Run `yarn install` to install the required NPM packages
+  * RUN `cp .env.sample .env` to edit environment variables
+  * RUN `direnv allow` to set environment variables
+  * Run `bundle exec rails db:create` to create a development database
+  * Run `bundle exec rails db:migrate` to create database schema
+  * Run `bundle exec rails db:seed` to sample records
+  * Run `bin/rails assets:precompile` to bundle the included javascript modules 
+  * Run `bin/dev` to spin up the Rails dev server
+  * Hit [localhost:3000](http://localhost:3000/) and you should be ready to go!
 
 * ...
 
