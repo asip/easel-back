@@ -5,9 +5,9 @@
 # Table name: frames
 #
 #  id         :bigint           not null, primary key
-#  comment    :text(65535)
-#  file_data  :text(65535)
-#  name       :string(255)      not null
+#  comment    :text
+#  file_data  :text
+#  name       :string           not null
 #  shooted_at :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
