@@ -21,11 +21,9 @@ class CreateAdmins < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    # rubocop:disable Rails/BulkChangeTable
     add_index :admins, :email, unique: true
     add_index :admins, :unlock_token
     add_index :admins, %i[last_logout_at last_activity_at]
-    # rubocop:enable Rails/BulkChangeTable
   end
   # rubocop:enable Metrics/MethodLength
 end

@@ -2,7 +2,6 @@
 
 # This migration comes from acts_as_taggable_on_engine (originally 6)
 class AddMissingIndexes < ActiveRecord::Migration[4.2]
-  # rubocop:disable Rails/BulkChangeTable
   def change
     add_index :taggings, :tag_id
     add_index :taggings, :taggable_id
@@ -13,5 +12,4 @@ class AddMissingIndexes < ActiveRecord::Migration[4.2]
     add_index :taggings, %i[tagger_id tagger_type]
     add_index :taggings, %i[taggable_id taggable_type tagger_id context], name: 'taggings_idy'
   end
-  # rubocop:enable Rails/BulkChangeTable
 end

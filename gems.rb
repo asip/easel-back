@@ -12,7 +12,10 @@ gem 'propshaft', '~> 0.7.0'
 # gem 'dartsass-rails'
 
 # Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.5.3'
+# gem 'mysql2', '~> 0.5.3'
+# Use postgresql as the database for Active Record
+gem 'pg', '~> 1.5.3'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.6.2'
 

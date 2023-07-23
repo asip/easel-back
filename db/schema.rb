@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_05_20_070104) do
-  create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
@@ -29,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_070104) do
     t.index ["unlock_token"], name: "index_admins_on_unlock_token"
   end
 
-  create_table "authentications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "authentications", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
@@ -38,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_070104) do
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
-  create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "frame_id", null: false
     t.text "body"
@@ -46,24 +49,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_070104) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
-  create_table "follow_relationships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "follow_relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "frames", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "frames", force: :cascade do |t|
     t.string "name", null: false
     t.text "comment"
-    t.text "file_data"
-    t.datetime "shooted_at"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "user_id"
+    t.text "file_data"
+    t.datetime "shooted_at"
   end
 
-  create_table "taggings", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -71,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_070104) do
     t.integer "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
@@ -82,19 +86,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_070104) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", collation: "utf8mb3_bin"
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "token"
-    t.string "name", null: false
+  create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
-    t.text "image_data"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "failed_logins_count", default: 0
@@ -104,6 +107,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_20_070104) do
     t.datetime "last_logout_at", precision: nil
     t.datetime "last_activity_at", precision: nil
     t.string "last_login_from_ip_address"
+    t.string "name", null: false
+    t.string "token"
+    t.text "image_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
     t.index ["name", "email"], name: "index_users_on_name_and_email"
