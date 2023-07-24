@@ -3,3 +3,4 @@
 ---
 options:
   compose: true
+  yjit: true

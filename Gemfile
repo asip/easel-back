@@ -107,7 +107,7 @@ group :development do
   # Shopify/erb-lint
   gem 'erb_lint', require: false
 
-  gem "dockerfile-rails", ">= 1.4"
+  gem "dockerfile-rails", "~>1.5.1"
 end
 
 group :test do
