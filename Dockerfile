@@ -87,6 +87,9 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
+ARG rails_master_key
+ENV RAILS_MASTER_KEY=${rails_master_key}
+
 RUN bundle exec rails db:seed
 
 # Start the server by default, this can be overwritten at runtime
