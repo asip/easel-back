@@ -90,7 +90,7 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 ARG rails_master_key
 ENV RAILS_MASTER_KEY=${rails_master_key}
 
-RUN bundle exec rails db:seed
+RUN ./bin/rails db:seed
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
