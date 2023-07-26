@@ -49,6 +49,9 @@ COPY --link . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
+ARG rails_master_key
+ENV RAILS_MASTER_KEY=rails_master_key
+
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN ./bin/rails assets:precompile
 
@@ -78,8 +81,6 @@ ENV RAILS_LOG_TO_STDOUT="1" \
     RAILS_SERVE_STATIC_FILES="true" \
     RUBY_YJIT_ENABLE="1"
 
-ARG RAILS_MASTER_KEY
-ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
