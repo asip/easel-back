@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch('EASEL_DATABASE_USER_NAME') { 'root' } %>
-  password: <%= ENV.fetch('EASEL_DATABASE_PASSWORD') { '' } %>
+  username: <%= ENV.fetch('DATABASE_USER_NAME') { 'root' } %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') { '' } %>
   socket: /tmp/mysql.sock
 
 development:
@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: easel_production
-  username: <%= ENV.fetch('EASEL_DATABASE_USER_NAME') { 'easel' } %>
-  password: <%= ENV.fetch('EASEL_DATABASE_PASSWORD') { '' } %>
+  username: <%= ENV.fetch('DATABASE_USER_NAME') { 'easel' } %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') { '' } %>
