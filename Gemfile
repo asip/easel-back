@@ -106,8 +106,9 @@ group :development do
   gem 'rubocop-rails', require: false
   # Shopify/erb-lint
   gem 'erb_lint', require: false
+  gem 'ruby-lsp', require: false
 
-  gem "dockerfile-rails", "~>1.5.2"
+  gem 'dockerfile-rails', '~>1.5.2'
 end
 
 group :test do

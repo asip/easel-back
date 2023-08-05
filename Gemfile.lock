@@ -263,6 +263,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.3)
+    prettier_print (1.2.1)
     propshaft (0.7.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -368,6 +369,10 @@ GEM
       rubocop (>= 1.33.0, < 2.0)
     ruby-graphviz (1.2.5)
       rexml
+    ruby-lsp (0.7.6)
+      language_server-protocol (~> 3.17.0)
+      sorbet-runtime
+      syntax_tree (>= 6.1.1, < 7)
     ruby-progressbar (1.13.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
@@ -389,6 +394,7 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
+    sorbet-runtime (0.5.10950)
     sorcery (0.16.5)
       bcrypt (~> 3.1)
       oauth (>= 0.6)
@@ -398,6 +404,8 @@ GEM
       sorcery (>= 0.13, < 0.17)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    syntax_tree (6.1.1)
+      prettier_print (>= 1.2.0)
     thor (1.2.2)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -464,6 +472,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-performance
   rubocop-rails
+  ruby-lsp
   selenium-webdriver
   shrine (~> 3.0)
   sorcery
