@@ -451,7 +451,7 @@ Rails.application.config.sorcery.configure do |config|
 
     # ...
     # user.jwt_secret = Rails.application.secrets.secret_key_base
-    user.jwt_secret = ENV.fetch('SECRET_KEY_BASE') { '' }
+    user.jwt_secret = ENV.fetch('SECRET_KEY_BASE', '')
     user.jwt_algorithm = 'HS256' # HS256 is used by default.
     # user.session_expiry = 60 * 60 * 24 * 7 * 2 # 2 weeks is used by default.
     user.session_expiry = 60 * 60
