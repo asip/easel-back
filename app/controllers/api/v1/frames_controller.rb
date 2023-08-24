@@ -13,7 +13,7 @@ module Api
       before_action :set_frame, only: %i[show create update destroy]
 
       def index
-        frames = Frame.eager_load(:comments).search_by(word: @word)
+        frames = Frame.eager_load(:comments).search_by(word: @word).order(created_at: 'desc')
         frames = frames.page(@page)
         pagination = resources_with_pagination(frames)
 
