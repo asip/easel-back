@@ -40,7 +40,7 @@ class Frame < ApplicationRecord
                 scope.where('cast(frames.shooted_at as date)=?', Time.zone.parse(word).to_date)
                      .or(Frame.where('cast(frames.updated_at as date)=?', Time.zone.parse(word).to_date))
               else
-                scope.joins(:tags, :user)
+                scope.left_joins(:tags, :user)
                      .merge(ActsAsTaggableOn::Tag.where('tags.name like ?', "%#{word}%"))
                      .or(Frame.where('frames.name like ?', "%#{word}%"))
                      .or(User.where(name: word))
