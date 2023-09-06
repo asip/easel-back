@@ -45,7 +45,7 @@ gem 'view_component'
 
 # Shrine
 gem 'image_processing', '~> 1.8'
-gem "marcel", "~> 1.0"
+gem 'marcel', '~> 1.0'
 gem 'shrine', '~> 3.0'
 
 # i18n
