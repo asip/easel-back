@@ -8,7 +8,7 @@ s3_options = {
   secret_access_key: ENV.fetch('MINIO_SECRET_KEY', 'minioadmin'), # "SecretKey" value
   endpoint: ENV.fetch('MINIO_ENDPOINT', ''), # "Endpoint"  value
   bucket: ENV.fetch('MINIO_BUCKET', ''), # name of the bucket you created
-  region: ENV.fetch('MINIO_REGION', ''),
+  region: ENV.fetch('AWS_REGION', ''),
   force_path_style: ENV.fetch('MINIO_FORCE_PATH_STYLE', true)
 }
 
