@@ -52,7 +52,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 ARG rails_master_key
 ARG minio_access_key
 ARG minio_secret_key
-ARG minio_endpiont
+ARG minio_endpoint
 ARG minio_bucket
 ARG aws_region
 ENV RAILS_MASTER_KEY=${rails_master_key}
