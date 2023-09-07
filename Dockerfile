@@ -58,7 +58,7 @@ ARG aws_region
 ENV RAILS_MASTER_KEY=${rails_master_key}
 ENV MINIO_ACCESS_KEY=${minio_access_key}
 ENV MINIO_SECRET_KEY=${minio_secret_key}
-ENV MINIO_ENDPOINT=${minio_endpiont}
+ENV MINIO_ENDPOINT=${minio_endpoint}
 ENV MINIO_BUCKET=${minio_bucket}
 ENV AWS_REGION=${aws_region}
 
