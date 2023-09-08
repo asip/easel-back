@@ -73,7 +73,7 @@ class User < ApplicationRecord
 
   def image_url_for_view(key)
     if image.blank?
-      '/no-profile-image.png'
+      "#{Settings.origin}/no-profile-image.png"
     else
       image_url(key)
     end
