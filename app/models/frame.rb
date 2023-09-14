@@ -44,8 +44,9 @@ class Frame < ApplicationRecord
                               .where('frames.updated_at <= ?', date_word.end_of_day))
               else
                 scope.left_joins(:tags, :user)
-                     .merge(ActsAsTaggableOn::Tag.where('tags.name like ?', "%#{word}%"))
-                     .or(Frame.where('frames.name like ?', "%#{word}%"))
+                     .merge(ActsAsTaggableOn::Tag.where('tags.name like ?',
+                                                        "%#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
+                     .or(Frame.where('frames.name like ?', "%#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
                      .or(User.where(name: word))
               end
     end
