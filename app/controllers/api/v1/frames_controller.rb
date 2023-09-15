@@ -13,9 +13,10 @@ module Api
       before_action :set_frame, only: %i[show create update destroy]
 
       def index
-        frames = Frame.eager_load(:comments).search_by(word: @word).order(created_at: 'desc')
-        frames = frames.page(@page)
+        frames = Frame.search_by(word: @word).page(@page).order(created_at: 'desc')
+        frame_ids = frames.pluck(:id)
         pagination = resources_with_pagination(frames)
+        frames = Frame.eager_load(:comments).where(id: frame_ids).order(created_at: 'desc')
 
         render json: FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end
