@@ -18,8 +18,7 @@ module Api
       end
 
       def frames
-        frames = Frame.where(user_id: params[:user_id])
-        frames = frames.page(@page)
+        frames = Frame.where(user_id: params[:user_id]).page(@page).order(created_at: 'desc')
         pagination = resources_with_pagination(frames)
 
         render json: FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
