@@ -8,7 +8,7 @@
     "@popperjs/core": "^2.11.8",
     "@types/toastify-js": "^1.12.1",
     "bootstrap": "^5.3.2",
-    "bootstrap-icons": "^1.10.5",
+    "bootstrap-icons": "^1.11.1",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.19.2",
     "esbuild-loader": "^4.0.2",
