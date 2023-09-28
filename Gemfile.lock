@@ -276,6 +276,7 @@ GEM
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
     os (1.1.4)
+    pagy (6.1.0)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
@@ -479,8 +480,8 @@ DEPENDENCIES
   image_processing (~> 1.8)
   jsbundling-rails
   jsonapi-serializer
-  kaminari (~> 1.2.2)
   marcel (~> 1.0)
+  pagy (~> 6.1.0)
   pg (~> 1.5.3)
   propshaft (~> 0.7.0)
   puma (~> 5.6.2)

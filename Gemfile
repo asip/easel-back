@@ -65,7 +65,7 @@ gem 'googleauth'
 gem 'config'
 
 # paging
-gem 'kaminari', '~> 1.2.2'
+gem 'pagy', '~> 6.1.0'
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"

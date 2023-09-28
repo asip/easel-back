@@ -26,8 +26,6 @@ class Frame < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
 
-  paginates_per 8
-
   validates :name, length: { in: 1..20 }
   validates :file, presence: true
   validate :check_tag

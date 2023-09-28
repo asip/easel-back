@@ -7,6 +7,7 @@ module Api
     # Users Controller
     class UsersController < Api::V1::ApiController
       include ActionController::Cookies
+      include Pagy::Backend
       include Pagination
 
       skip_before_action :authenticate, only: %i[create show frames]
@@ -18,8 +19,9 @@ module Api
       end
 
       def frames
-        frames = Frame.where(user_id: params[:user_id]).page(@page).order(created_at: 'desc')
-        pagination = resources_with_pagination(frames)
+        frames = Frame.where(user_id: params[:user_id]).order(created_at: 'desc')
+        pagy, frames = pagy(frames, { page: @page })
+        pagination = resources_with_pagination(pagy)
 
         render json: FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end

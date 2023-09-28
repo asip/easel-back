@@ -6,6 +6,7 @@ module Api
   module V1
     # Frames Controller
     class FramesController < Api::V1::ApiController
+      include Pagy::Backend
       include Pagination
 
       skip_before_action :authenticate, only: %i[index show]
@@ -13,9 +14,10 @@ module Api
       before_action :set_frame, only: %i[show create update destroy]
 
       def index
-        frames = Frame.search_by(word: @word).page(@page).order(created_at: 'desc')
+        frames = Frame.search_by(word: @word).order(created_at: 'desc')
+        pagy, frames = pagy(frames, { page: @page })
         frame_ids = frames.pluck(:id)
-        pagination = resources_with_pagination(frames)
+        pagination = resources_with_pagination(pagy)
         frames = Frame.eager_load(:comments).where(id: frame_ids).order(created_at: 'desc')
 
         render json: FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
