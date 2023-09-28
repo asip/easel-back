@@ -4,7 +4,7 @@
 
 This is backend of Easel.
 
-Rails7.0 + Sorcery(authentication) + Kaminari(paging) +  
+Rails7.0 + Sorcery(authentication) + Pagy(paging) +  
 Shrine(upload) + ActsAsTaggableOn(tag) +  
 RailsAdmin (management console) +  
 Hotwire (Turbo + Stimulus3) + Bootstrap5
@@ -18,7 +18,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version : 3.2.2
-* Rails version : 7.0.4
+* Rails version : 7.0.8
 * System dependencies : yarn (v1.22.19) & postgresql & minio & direnv
 * Deployment instructions
   * Run `bundle install --path vendor/bundle` to install the required Rubygems
