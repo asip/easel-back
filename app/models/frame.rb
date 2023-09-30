@@ -41,8 +41,8 @@ class Frame < ApplicationRecord
               else
                 scope.left_joins(:tags, :user)
                      .merge(ActsAsTaggableOn::Tag.where('tags.name like ?',
-                                                        "%#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
-                     .or(Frame.where('frames.name like ?', "%#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
+                                                        "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
+                     .or(Frame.where('frames.name like ?', "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
                      .or(User.where(name: word))
               end
     end
