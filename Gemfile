@@ -78,7 +78,7 @@ gem 'jsonapi-serializer'
 gem 'rack-cors'
 
 # soft delete
-# gem 'discard', '~> 1.2'
+gem 'discard', '~> 1.2'
 
 # management console
 gem 'rails_admin', '~> 3.0'

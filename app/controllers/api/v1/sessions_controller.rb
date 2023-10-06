@@ -41,7 +41,7 @@ module Api
         cookies.delete(:access_token)
         user_id = current_user.id
         logout
-        user = User.find_by(id: user_id)
+        user = User.unscoped.find_by(id: user_id)
         render json: AccountSerializer.new(user).serializable_hash
       end
 

@@ -6,6 +6,7 @@
 #
 #  id                         :bigint           not null, primary key
 #  crypted_password           :string
+#  deleted_at                 :datetime
 #  email                      :string           not null
 #  failed_logins_count        :integer          default(0)
 #  image_data                 :text
@@ -23,6 +24,7 @@
 #
 # Indexes
 #
+#  index_users_on_deleted_at                           (deleted_at)
 #  index_users_on_email                                (email) UNIQUE
 #  index_users_on_last_logout_at_and_last_activity_at  (last_logout_at,last_activity_at)
 #  index_users_on_name_and_email                       (name,email)
@@ -33,9 +35,12 @@
 # User
 class User < ApplicationRecord
   include Page::Confirmable
+  include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
 
   authenticates_with_sorcery!
+
+  self.discard_column = :deleted_at
 
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
@@ -70,6 +75,8 @@ class User < ApplicationRecord
     validates :email, presence: true
     validates :password, presence: true
   end
+
+  default_scope -> { kept }
 
   def image_url_for_view(key)
     if image.blank?

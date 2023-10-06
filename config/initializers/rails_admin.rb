@@ -1,5 +1,23 @@
 # frozen_string_literal: true
 
+#
+# Monkey patch to remove default scope
+#
+require 'rails_admin/adapters/active_record'
+
+# RaisAdmin
+module RailsAdmin
+  # Adapters
+  module Adapters
+    # ActiveRecord
+    module ActiveRecord
+      def scoped
+        model.unscoped
+      end
+    end
+  end
+end
+
 RailsAdmin.config do |config|
   config.asset_source = :webpack
 
@@ -33,6 +51,11 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
   config.parent_controller = 'Manager::ApplicationController'
 
+  config.default_hidden_fields = {
+    show: %i[id created_at updated_at],
+    edit: %i[id created_at updated_at]
+  }
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -48,4 +71,10 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  # config.model 'User' do
+  #   list do
+  #     scopes [:unscoped]
+  #   end
+  # end
 end
