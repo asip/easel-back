@@ -6,7 +6,7 @@ This is backend of Easel.
 
 Rails7.0 + Sorcery(authentication) + Pagy(paging) +  
 Shrine(upload) + ActsAsTaggableOn(tag) +  
-RailsAdmin (management console) +  
+RailsAdmin (management console) + Discard(soft delete) +  
 Hotwire (Turbo + Stimulus3) + Bootstrap5
 
 The frontend implemented by Ruby on Rails moved to [hotwire branch](https://github.com/asip/easel-back/tree/hotwire).  
@@ -28,7 +28,7 @@ Things you may want to cover:
   * Run `bundle exec rails db:create` to create a development database
   * Run `bundle exec rails db:migrate` to create database schema
   * Run `bundle exec rails db:seed` to sample records
-  * Run `bin/rails assets:precompile` to bundle the included javascript modules 
+  * Run `bin/rails assets:precompile` to bundle the included javascript modules
   * Run `bin/dev` to spin up the Rails dev server
   * Hit [localhost:3000](http://localhost:3000/) and you should be ready to go!
 
