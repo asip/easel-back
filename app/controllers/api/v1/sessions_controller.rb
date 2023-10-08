@@ -21,6 +21,9 @@ module Api
         render json: AccountSerializer.new(@user).serializable_hash
       end
 
+      #
+      # sign in
+      #
       def create
         params_user = user_params
         token = login_and_issue_token(params_user[:email], params_user[:password])
@@ -36,12 +39,28 @@ module Api
         end
       end
 
+      #
+      # sign out
+      #
       def destroy
         current_user&.reset_token
         cookies.delete(:access_token)
         user_id = current_user.id
         logout
         user = User.unscoped.find_by(id: user_id)
+        render json: AccountSerializer.new(user).serializable_hash
+      end
+
+      #
+      # delete login account
+      #
+      def delete
+        current_user&.reset_token
+        cookies.delete(:access_token)
+        user_id = current_user.id
+        logout
+        user = User.unscoped.find_by(id: user_id)
+        user.discard
         render json: AccountSerializer.new(user).serializable_hash
       end
 

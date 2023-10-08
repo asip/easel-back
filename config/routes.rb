@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       end
       get '/profile' => '/api/v1/sessions#profile'
       put '/profile' => '/api/v1/users#update'
+      delete '/profile' => '/api/v1/sessions#delete'
       get '/profile/following/:user_id' => '/api/v1/follow_relationships#following'
       resources :frames, only: %i[index show create update destroy] do
         resources :comments, only: %i[index create]
