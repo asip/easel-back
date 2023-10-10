@@ -23,7 +23,7 @@ module Api
         pagy, frames = pagy(frames, { page: @page })
         pagination = resources_with_pagination(pagy)
 
-        render json: FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
+        render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end
 
       def create

@@ -20,20 +20,20 @@ module Api
         pagination = resources_with_pagination(pagy)
         frames = Frame.eager_load(:comments).where(id: frame_ids).order(created_at: 'desc')
 
-        render json: FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
+        render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end
 
       def show
         frame = Frame.eager_load(:comments).find_by(id: params[:id])
 
-        render json: FrameSerializer.new(frame, index_options).serializable_hash
+        render json: Detail::FrameSerializer.new(frame, index_options).serializable_hash
       end
 
       def create
         @frame.user_id = current_user.id
         @frame.file_derivatives! if @frame.file.present?
         if @frame.save
-          render json: FrameSerializer.new(@frame, index_options).serializable_hash
+          render json: Detail::FrameSerializer.new(@frame, index_options).serializable_hash
         else
           render json: { errors: @frame.errors.messages }.to_json
         end
@@ -45,7 +45,7 @@ module Api
         @frame.attributes = frame_params
         @frame.file_derivatives! if @frame.file.present?
         if @frame.save
-          render json: FrameSerializer.new(@frame, index_options).serializable_hash
+          render json: Detail::FrameSerializer.new(@frame, index_options).serializable_hash
         else
           render json: { errors: @frame.errors.messages }.to_json
         end
@@ -55,7 +55,7 @@ module Api
 
       def destroy
         @frame.destroy
-        render json: FrameSerializer.new(@frame, index_options).serializable_hash
+        render json: Detail::FrameSerializer.new(@frame, index_options).serializable_hash
       end
 
       private
