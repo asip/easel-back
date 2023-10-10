@@ -18,9 +18,7 @@
 module Detail
   # Frame Serializer
   class FrameSerializer < ListItem::FrameSerializer
-    attribute :updated_at do |object|
-      I18n.l(object.updated_at)
-    end
+    has_many :comments, serializer: CommentSerializer
 
     attribute :tag_list do |object|
       object.tags_preview.join(',')

@@ -26,14 +26,14 @@ module Api
       def show
         frame = Frame.eager_load(:comments).find_by(id: params[:id])
 
-        render json: Detail::FrameSerializer.new(frame, index_options).serializable_hash
+        render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end
 
       def create
         @frame.user_id = current_user.id
         @frame.file_derivatives! if @frame.file.present?
         if @frame.save
-          render json: Detail::FrameSerializer.new(@frame, index_options).serializable_hash
+          render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
         else
           render json: { errors: @frame.errors.messages }.to_json
         end
@@ -45,7 +45,7 @@ module Api
         @frame.attributes = frame_params
         @frame.file_derivatives! if @frame.file.present?
         if @frame.save
-          render json: Detail::FrameSerializer.new(@frame, index_options).serializable_hash
+          render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
         else
           render json: { errors: @frame.errors.messages }.to_json
         end
@@ -55,12 +55,16 @@ module Api
 
       def destroy
         @frame.destroy
-        render json: Detail::FrameSerializer.new(@frame, index_options).serializable_hash
+        render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
       end
 
       private
 
       def index_options
+        {}
+      end
+
+      def detail_options
         { include: [:comments] }
       end
 
