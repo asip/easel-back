@@ -18,7 +18,7 @@ module Api
         pagy, frames = pagy(frames, { page: @page })
         frame_ids = frames.pluck(:id)
         pagination = resources_with_pagination(pagy)
-        frames = Frame.eager_load(:comments).where(id: frame_ids).order(created_at: 'desc')
+        frames = Frame.where(id: frame_ids).order(created_at: 'desc')
 
         render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end
