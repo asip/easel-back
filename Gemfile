@@ -69,7 +69,7 @@ gem 'pagy', '~> 6.1.0'
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
-gem 'acts-as-taggable-on', '~> 9.0.1'
+gem 'acts-as-taggable-on', '~> 10.0.0'
 
 # json
 gem 'jsonapi-serializer'
