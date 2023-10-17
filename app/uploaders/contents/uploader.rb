@@ -5,11 +5,11 @@ module Contents
   # Uploader
   class Uploader < Shrine
     Attacher.derivatives do |original|
-      magick = ImageProcessing::MiniMagick.source(original)
+      pipeline = ImageProcessing::Vips.source(original)
 
       {
-        two: magick.resize_to_limit!(200, 200),
-        three: magick.resize_to_limit!(300, 300)
+        two: pipeline.resize_to_limit!(200, 200),
+        three: pipeline.resize_to_limit!(300, 300)
       }
     end
 
