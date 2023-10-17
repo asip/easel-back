@@ -19,7 +19,7 @@ Things you may want to cover:
 
 * Ruby version : 3.2.2
 * Rails version : 7.1.1
-* System dependencies : yarn (v1.22.19) & postgresql & minio & direnv
+* System dependencies : yarn (v1.22.19) & postgresql & minio & libvips & direnv
 * Deployment instructions
   * Run `bundle install --path vendor/bundle` to install the required Rubygems
   * Run `yarn install` to install the required NPM packages
