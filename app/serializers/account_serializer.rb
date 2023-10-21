@@ -2,6 +2,8 @@
 
 # Account Serializer
 class AccountSerializer < UserSerializer
+  set_type :user
+
   attributes :token
 
   attribute :social_login, &:social_login?
