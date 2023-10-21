@@ -86,8 +86,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'debug', platforms: %i[mri windows]
   # Ruby style guide, linter, and formatter
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
 end
 
 group :development do
@@ -117,4 +115,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+
+  gem 'factory_bot_rails'
+  gem 'jsonapi-rspec'
+  gem 'rspec-rails'
 end
