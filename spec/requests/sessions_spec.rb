@@ -44,17 +44,17 @@ describe 'Sessions', type: :request do
 
   describe 'GET /api/v1/profile' do
     let(:endpoint) { '/api/v1/profile' }
+    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
 
     before do
-      @user = create(:user, password: 'testtest', password_confirmation: 'testtest')
-      @user.assign_token(User.issue_token(id: @user.id, email: @user.email))
+      user.assign_token(User.issue_token(id: user.id, email: user.email))
     end
 
     context 'authenticate token (トークン認証)' do
       it 'success (成功)' do
         get endpoint, headers: {
           'HTTP_ACCEPT_LANGUAGE' => 'jp',
-          'Authorization': "Bearer #{@user.token}"
+          'Authorization': "Bearer #{user.token}"
         }
         expect(response.status).to eq(200)
         json_data = json[:data]
@@ -70,6 +70,29 @@ describe 'Sessions', type: :request do
         'Authorization': 'Bearer '
       }
       expect(response.status).to eq(401)
+    end
+  end
+
+  describe 'DELETE /api/v1/sessions/logout' do
+    let(:endpoint) { '/api/v1/sessions/logout' }
+    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+
+    before do
+      user.assign_token(User.issue_token(id: user.id, email: user.email))
+    end
+
+    context 'logout (ログアウト)' do
+      it 'success (成功)' do
+        delete endpoint, headers: {
+          'HTTP_ACCEPT_LANGUAGE' => 'jp',
+          'Authorization': "Bearer #{user.token}"
+        }
+        expect(response.status).to eq(200)
+        json_data = json[:data]
+        expect(json_data).to have_type('user')
+        expect(json_data).to have_attribute('name')
+        expect(json_data).to have_attribute('email')
+      end
     end
   end
 end
