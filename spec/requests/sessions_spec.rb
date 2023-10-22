@@ -5,8 +5,8 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 describe 'Sessions', type: :request do
   describe 'POST /api/v1/sessions' do
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
     let(:endpoint) { '/api/v1/sessions' }
+    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
 
     context 'login (ログイン)' do
       it 'success (成功)' do
