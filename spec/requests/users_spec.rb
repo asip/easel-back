@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Users', type: :request do
   describe 'GET /api/v1/users/:id' do
     let(:endpoint) { "/api/v1/users/#{user.id}" }
@@ -26,4 +27,31 @@ describe 'Users', type: :request do
       end
     end
   end
+
+  describe 'POST /api/v1/users' do
+    let(:endpoint) { '/api/v1/users' }
+
+    context 'regist user (ユーザー情報登録)' do
+      context 'success (成功)' do
+        it 'without image' do
+          post endpoint,
+               params: {
+                 user: {
+                   name: 'test_user01',
+                   email: 'test@test.jp',
+                   password: 'testtest',
+                   password_confirmation: 'testtest'
+                 }
+               },
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq(200)
+          json_data = json[:data]
+          expect(json_data).to have_type('user')
+          expect(json_data).to have_attribute('name')
+          expect(json_data).to have_attribute('email')
+        end
+      end
+    end
+  end
 end
+# rubocop:enable Metrics/BlockLength
