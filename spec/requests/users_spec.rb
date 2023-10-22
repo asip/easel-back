@@ -51,6 +51,25 @@ describe 'Users', type: :request do
           expect(json_data).to have_attribute('email')
         end
       end
+
+      it 'with image' do
+        post endpoint,
+             params: {
+               user: {
+                 name: 'test_user01',
+                 email: 'test@test.jp',
+                 password: 'testtest',
+                 password_confirmation: 'testtest',
+                 image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+               }
+             },
+             headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+        expect(response.status).to eq(200)
+        json_data = json[:data]
+        expect(json_data).to have_type('user')
+        expect(json_data).to have_attribute('name')
+        expect(json_data).to have_attribute('email')
+      end
     end
   end
 end
