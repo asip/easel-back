@@ -9,7 +9,7 @@ describe 'Users', type: :request do
     let(:endpoint_failure) { '/api/v1/users/404' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
 
-    context 'ユーザー情報取得' do
+    context 'get user (ユーザー情報取得)' do
       it 'success (成功)' do
         get endpoint,
             headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
