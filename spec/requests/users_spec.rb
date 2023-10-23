@@ -72,6 +72,22 @@ describe 'Users', type: :request do
       end
 
       context 'failure (失敗)' do
+        it 'empty name (名前が空の場合)' do
+          post endpoint,
+               params: {
+                 user: {
+                   name: '',
+                   email: 'test@test.jp',
+                   password: 'testtest',
+                   password_confirmation: 'testtest'
+                 }
+               },
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq(200)
+          json_data = json
+          expect(json_data[:errors][:name]).to be_present
+        end
+
         it 'name exceeds 40 characters (名前が40文字を超える場合)' do
           post endpoint,
                params: {
@@ -86,6 +102,22 @@ describe 'Users', type: :request do
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
+        end
+
+        it 'empty email (emailが空の場合)' do
+          post endpoint,
+               params: {
+                 user: {
+                   name: 'test',
+                   email: '',
+                   password: 'testtest',
+                   password_confirmation: 'testtest'
+                 }
+               },
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq(200)
+          json_data = json
+          expect(json_data[:errors][:email]).to be_present
         end
 
         it 'invalid email' do
