@@ -68,7 +68,7 @@ class User < ApplicationRecord
                                            if: -> { new_record? || changes[:crypted_password] }
 
     save.validates :name, presence: true, length: { in: 3..40 } # , format: { with: VALID_NAME_REGEX }
-    save.validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+    save.validates :email, presence: true, uniqueness: true, length: { max: 319 }, format: { with: VALID_EMAIL_REGEX }
   end
 
   with_options on: :login do
