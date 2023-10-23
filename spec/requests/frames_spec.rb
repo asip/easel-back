@@ -305,7 +305,7 @@ describe 'Frames', type: :request do
       user.assign_token(User.issue_token(id: user.id, email: user.email))
     end
 
-    context 'get frame (フレーム情報削除)' do
+    context 'delete frame (フレーム情報削除)' do
       it 'success (成功)' do
         delete endpoint,
                headers: {
