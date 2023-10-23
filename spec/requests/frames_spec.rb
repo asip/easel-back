@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe 'Frames', type: :request do
   describe 'GET /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
@@ -24,4 +25,33 @@ describe 'Frames', type: :request do
       end
     end
   end
+
+  describe 'POST /api/v1/frames' do
+    let(:endpoint) { '/api/v1/frames' }
+    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+
+    before do
+      user.assign_token(User.issue_token(id: user.id, email: user.email))
+    end
+
+    describe 'regist frame (フレーム情報登録)' do
+      it 'success (成功)' do
+        post endpoint,
+             params: {
+               frame: {
+                 name: 'test_frame',
+                 tag_list: 'test',
+                 comment: 'testtest',
+                 shooted_at: Time.zone.now,
+                 file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+               }
+             },
+             headers: {
+               'HTTP_ACCEPT_LANGUAGE': 'jp',
+               'Authorization': "Bearer #{user.token}"
+             }
+      end
+    end
+  end
 end
+# rubocop:enable Metrics/BlockLength
