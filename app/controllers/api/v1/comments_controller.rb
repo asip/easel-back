@@ -26,7 +26,7 @@ module Api
           # logger.debug CommentSerializer.new(comment).serialized_json
           render json: CommentSerializer.new(comment).serializable_hash
         else
-          render json: { errors: commet.errors.messages }.to_json
+          render json: { errors: comment.errors.messages }.to_json
         end
       end
 
