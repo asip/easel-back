@@ -156,6 +156,27 @@ describe 'Frames', type: :request do
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
+
+        it 'file mime type is different (fileのmime typeが異なる場合)' do
+          post endpoint,
+               params: {
+                 frame: {
+                   name: 'test_frame',
+                   tag_list: 'test',
+                   comment: 'testtest',
+                   shooted_at: Time.zone.now,
+                   file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
+                                                      'text/plain')
+                 }
+               },
+               headers: {
+                 'HTTP_ACCEPT_LANGUAGE': 'jp',
+                 'Authorization': "Bearer #{user.token}"
+               }
+          expect(response.status).to eq 200
+          json_data = json
+          expect(json_data[:errors][:file]).to be_present
+        end
       end
     end
   end
@@ -281,6 +302,27 @@ describe 'Frames', type: :request do
                   shooted_at: Time.zone.now,
                   file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'),
                                                      'image/jpeg')
+                }
+              },
+              headers: {
+                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'Authorization': "Bearer #{user.token}"
+              }
+          expect(response.status).to eq 200
+          json_data = json
+          expect(json_data[:errors][:file]).to be_present
+        end
+
+        it 'file mime type is different (fileのmime typeが異なる場合)' do
+          put endpoint,
+              params: {
+                frame: {
+                  name: 'test_frame',
+                  tag_list: 'test',
+                  comment: 'testtest',
+                  shooted_at: Time.zone.now,
+                  file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
+                                                     'text/plain')
                 }
               },
               headers: {
