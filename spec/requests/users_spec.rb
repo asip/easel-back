@@ -220,23 +220,23 @@ describe 'Users', type: :request do
           expect(json_data[:errors][:image]).to be_present
         end
 
-        # it 'image mime type is different (imageのmime typeが異なる場合)' do
-        #  post endpoint,
-        #       params: {
-        #         user: {
-        #           name: 'test',
-        #           email: 'test@test.jp',
-        #           password: 'testtest',
-        #           password_confirmation: 'testtest',
-        #           image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
-        #                                               'text/plain')
-        #         }
-        #       },
-        #       headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
-        #  expect(response.status).to eq(200)
-        #  json_data = json
-        #  expect(json_data[:errors][:image]).to be_present
-        # end
+        it 'image mime type is different (imageのmime typeが異なる場合)' do
+          post endpoint,
+               params: {
+                 user: {
+                   name: 'test',
+                   email: 'test@test.jp',
+                   password: 'testtest',
+                   password_confirmation: 'testtest',
+                   image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
+                                                       'text/plain')
+                 }
+               },
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq(200)
+          json_data = json
+          expect(json_data[:errors][:image]).to be_present
+        end
       end
     end
   end
@@ -472,26 +472,26 @@ describe 'Users', type: :request do
           expect(json_data[:errors][:image]).to be_present
         end
 
-        # it 'image mime type is different (imageのmime typeが異なる場合)' do
-        #  put endpoint,
-        #      params: {
-        #        user: {
-        #          name: 'test',
-        #          email: 'test@test.jp',
-        #          password: 'testtest',
-        #          password_confirmation: 'testtest',
-        #          image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
-        #                                              'text/plain')
-        #        }
-        #      },
-        #      headers: {
-        #        'HTTP_ACCEPT_LANGUAGE': 'jp',
-        #        'Authorization': "Bearer #{user.token}"
-        #      }
-        #  expect(response.status).to eq(200)
-        #  json_data = json
-        #  expect(json_data[:errors][:image]).to be_present
-        # end
+        it 'image mime type is different (imageのmime typeが異なる場合)' do
+          put endpoint,
+              params: {
+                user: {
+                  name: 'test',
+                  email: 'test@test.jp',
+                  password: 'testtest',
+                  password_confirmation: 'testtest',
+                  image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
+                                                      'text/plain')
+                }
+              },
+              headers: {
+                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'Authorization': "Bearer #{user.token}"
+              }
+          expect(response.status).to eq(200)
+          json_data = json
+          expect(json_data[:errors][:image]).to be_present
+        end
       end
     end
   end
