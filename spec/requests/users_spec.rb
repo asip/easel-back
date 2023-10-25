@@ -28,6 +28,44 @@ describe 'Users', type: :request do
     end
   end
 
+  describe 'GET /api/v1/users/:user_id/frames' do
+    let(:endpoint) { "/api/v1/users/#{user.id}/frames" }
+    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+
+    before do
+      create(:frame, :skip_validate, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01', user_id: user.id)
+      create(:frame, :skip_validate, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01', user_id: user.id)
+    end
+
+    context 'get user frame list (ユーザーのフレームリスト取得)' do
+      context 'page=1 (1ページめ)' do
+        it 'success (成功)' do
+          get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'page=2 (2ページめ)' do
+        it 'success (成功)' do
+          get endpoint, params: { page: 2 }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 2
+        end
+      end
+    end
+  end
+
   describe 'POST /api/v1/users' do
     let(:endpoint) { '/api/v1/users' }
 
