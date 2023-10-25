@@ -9,7 +9,8 @@ module Api
       include Pagy::Backend
       include Pagination
 
-      skip_before_action :authenticate, only: %i[index show]
+      skip_before_action :switch_locale, only: [:comments]
+      skip_before_action :authenticate, only: %i[index show comments]
       before_action :set_query, only: [:index]
       before_action :set_frame, only: %i[show create update destroy]
 
@@ -27,6 +28,15 @@ module Api
         frame = Frame.eager_load(:comments).find_by(id: params[:id])
 
         render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
+      end
+
+      def comments
+        comments = Comment.where(frame_id: params[:frame_id])
+
+        # options = {}
+        # options[:include] = [:user]
+
+        render json: CommentSerializer.new(comments).serializable_hash
       end
 
       def create

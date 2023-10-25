@@ -30,7 +30,8 @@ Rails.application.routes.draw do
       delete '/profile' => '/api/v1/sessions#delete'
       get '/profile/following/:user_id' => '/api/v1/follow_relationships#following'
       resources :frames, only: %i[index show create update destroy] do
-        resources :comments, only: %i[index create]
+        get '/comments' => '/api/v1/frames#comments'
+        resources :comments, only: %i[create]
       end
       resources :comments, only: [:destroy]
     end

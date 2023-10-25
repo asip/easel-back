@@ -6,18 +6,6 @@ module Api
   module V1
     # Comments Controller
     class CommentsController < Api::V1::ApiController
-      skip_before_action :switch_locale, only: [:index]
-      skip_before_action :authenticate, only: [:index]
-
-      def index
-        comments = Comment.where(frame_id: params[:frame_id])
-
-        # options = {}
-        # options[:include] = [:user]
-
-        render json: CommentSerializer.new(comments).serializable_hash
-      end
-
       def create
         comment = Comment.new(comment_params)
         comment.user_id = current_user.id
