@@ -99,6 +99,36 @@ describe 'Frames', type: :request do
     end
   end
 
+  describe 'GET /api/v1/frames/:frame_id/comments' do
+    let(:endpoint) { "/api/v1/frames/#{frame.id}/comments" }
+    let(:endpoint_failure) { '/api/v1/frames/404/comments' }
+    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
+
+    before do
+      create(:comment, body: 'comment01', frame_id: frame.id, user_id: user.id)
+      create(:comment, body: 'comment02', frame_id: frame.id, user_id: user.id)
+    end
+
+    context 'get frame comment list (フレームのコメントリスト取得)' do
+      it 'success (成功)' do
+        get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+        expect(response.status).to eq 200
+        json_data = json[:data]
+        expect(json_data.size).to be 2
+      end
+
+      context 'success (成功)' do
+        it 'frame_id doesn\'t exist' do
+          get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 0
+        end
+      end
+    end
+  end
+
   describe 'POST /api/v1/frames' do
     let(:endpoint) { '/api/v1/frames' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
