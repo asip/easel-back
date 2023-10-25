@@ -4,6 +4,79 @@ require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
 describe 'Frames', type: :request do
+  describe 'GET /api/v1/frames' do
+    let(:endpoint) { '/api/v1/frames' }
+
+    before do
+      create(:frame, :skip_validate, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
+      create(:frame, :skip_validate, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
+      create(:frame, :skip_validate, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01')
+      create(:frame, :skip_validate, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01')
+      create(:frame, :skip_validate, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01')
+      create(:frame, :skip_validate, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01')
+      create(:frame, :skip_validate, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
+    end
+
+    context 'get frame list (フレームリスト取得)' do
+      context 'page=1 (1ページめ)' do
+        it 'success (成功)' do
+          get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'page=2 (2ページめ)' do
+        it 'success (成功)' do
+          get endpoint, params: { page: 2 }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q=test1(name)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: 'test1' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q=testA(tag name)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: 'testA' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q=2022/01/01(shooted_at)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: '2022/01/01' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q=Time.zone.today(created_at)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: Time.zone.today.strftime('%Y/%m/%d') }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          expect(response.status).to eq 200
+          json_data = json[:data]
+          expect(json_data.size).to be 8
+        end
+      end
+    end
+  end
+
   describe 'GET /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
     let(:endpoint_failure) { '/api/v1/frames/404' }
