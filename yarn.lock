@@ -445,10 +445,10 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.0.tgz#591c1ce3a702c45ee15f47a42ade72c2fd78978a"
   integrity sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==
 
-"@types/toastify-js@^1.12.1":
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/@types/toastify-js/-/toastify-js-1.12.1.tgz#64f89dc8d34b3d8d0998267530dbd4c86c3f3cf4"
-  integrity sha512-9CTM+LKFmS0+Ii+RH55XPKcmNxCjLticj8kxeCxa7PnSVCZPQurb9XtKQtoMl/fv7WaqUpRezDcFuY8n92CtUg==
+"@types/toastify-js@^1.12.2":
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/@types/toastify-js/-/toastify-js-1.12.2.tgz#09d0604937a83b476b642eadcef57f58512e80d9"
+  integrity sha512-wA0+1kG5Td0O7B/+ahHJgz5ZRFTYGNp8DmZ2z9LPm56+OrSikcfdqggtIlmbWKAssGgSR5sdyQaDyMoprvfNdA==
 
 "@typescript-eslint/eslint-plugin@^6.7.5":
   version "6.7.5"
