@@ -101,6 +101,13 @@ class User < ApplicationRecord
   end
   # rubocop:enable Rails/SkipsModelValidations
 
+  def assign_derivatives
+    return if image.blank?
+
+    image_derivatives!
+    save!(validate: false)
+  end
+
   def reset_token
     update!(token: nil)
   end

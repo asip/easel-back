@@ -28,8 +28,7 @@ module Api
 
       def create
         if @user.save(context: :with_validation)
-          @user.image_derivatives! if @user.image.present?
-          @user.save!(validate: false)
+          @user.assign_derivatives
           render json: UserSerializer.new(@user).serializable_hash
         else
           render json: { errors: @user.errors.messages }.to_json
@@ -41,8 +40,7 @@ module Api
         # puts 'testtest'
         if @user.save(context: :with_validation)
           # puts @user.saved_change_to_email?
-          @user.image_derivatives! if @user.image.present?
-          @user.save!(validate: false)
+          @user.assign_derivatives
           update_token
           render json: AccountSerializer.new(@user).serializable_hash
         else
