@@ -42,28 +42,23 @@ module Api
       def create
         @frame.user_id = current_user.id
         if @frame.save
-          @frame.file_derivatives! if @frame.file.present?
-          @frame.save!(validate: false)
+          @frame.assign_derivatives
           render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
         else
           render json: { errors: @frame.errors.messages }.to_json
         end
       end
 
-      # rubocop:disable Metrics/AbcSize
       def update
         @frame.user_id = current_user.id
         @frame.attributes = frame_params
         if @frame.save
-          @frame.file_derivatives! if @frame.file.present?
-          @frame.save!(validate: false)
+          @frame.assign_derivatives
           render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
         else
           render json: { errors: @frame.errors.messages }.to_json
         end
       end
-
-      # rubocop:enable Metrics/AbcSize
 
       def destroy
         @frame.destroy

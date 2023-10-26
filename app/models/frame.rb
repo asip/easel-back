@@ -56,6 +56,13 @@ class Frame < ApplicationRecord
     tag_list.to_s.split(/\s*,\s*/)
   end
 
+  def assign_derivatives
+    return if file.blank?
+
+    file_derivatives!
+    save!(validate: false)
+  end
+
   private
 
   def check_tag
