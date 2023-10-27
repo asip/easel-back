@@ -30,6 +30,7 @@ describe 'Users', type: :request do
 
   describe 'GET /api/v1/users/:user_id/frames' do
     let(:endpoint) { "/api/v1/users/#{user.id}/frames" }
+    let(:endpoint_failure) { '/api/v1/users/404/frames' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
 
     before do
@@ -62,6 +63,11 @@ describe 'Users', type: :request do
           json_data = json[:data]
           expect(json_data.size).to be 2
         end
+      end
+
+      it 'failure (失敗)' do
+        get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+        expect(response.status).to eq 404
       end
     end
   end

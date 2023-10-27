@@ -19,7 +19,7 @@ module Api
       end
 
       def frames
-        frames = Frame.where(user_id: params[:user_id]).order(created_at: 'desc')
+        frames = User.find_by!(id: params[:user_id]).frames.order('frames.created_at': 'desc')
         pagy, frames = pagy(frames, { page: @page })
         pagination = resources_with_pagination(pagy)
 
