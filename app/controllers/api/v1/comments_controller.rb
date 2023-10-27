@@ -19,8 +19,8 @@ module Api
       end
 
       def destroy
-        comment = Comment.find(params[:id])
-        comment.destroy if logged_in? && comment && current_user.id == comment.user_id
+        comment = Comment.find_by!(id: params[:id], user_id: current_user.id)
+        comment.destroy
         head :no_content
       end
 
