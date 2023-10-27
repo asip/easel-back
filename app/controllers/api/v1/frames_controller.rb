@@ -25,7 +25,7 @@ module Api
       end
 
       def show
-        frame = Frame.eager_load(:comments).find_by(id: params[:id])
+        frame = Frame.eager_load(:user, comments: :user).find_by!(id: params[:id])
 
         render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end
