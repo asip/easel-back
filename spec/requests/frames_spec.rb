@@ -118,12 +118,10 @@ describe 'Frames', type: :request do
         expect(json_data.size).to be 2
       end
 
-      context 'success (成功)' do
+      context 'failure (失敗)' do
         it 'frame_id doesn\'t exist' do
           get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
-          expect(response.status).to eq 200
-          json_data = json[:data]
-          expect(json_data.size).to be 0
+          expect(response.status).to eq 404
         end
       end
     end
