@@ -14,12 +14,13 @@ module Api
         render json: { following: following_ }
       end
 
+      # follow
       def create
         current_user.follow(params[:user_id])
         head :no_content
       end
 
-      # フォロー外すとき
+      # unfollow (フォロー外すとき)
       def destroy
         current_user.unfollow(params[:user_id])
         head :no_content
