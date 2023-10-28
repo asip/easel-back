@@ -25,10 +25,6 @@ module Api
         raise(Api::ExceptionHandler::UnauthorizedError) if @current_user.nil?
       end
 
-      def logged_in?
-        current_user.present?
-      end
-
       # def set_csrf_token
       #   response.set_header('X-CSRF-Token', form_authenticity_token)
       # end
