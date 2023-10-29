@@ -31,7 +31,7 @@ module Api
 
     def render500(exception = nil, messages = nil)
       logger.error exception.full_message
-      logger.error exception.backtrace
+      # logger.error exception.backtrace
       render_error(500, 'Internal Server Error', exception&.message, *messages)
     end
 
