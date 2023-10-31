@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Api
+# api
 module Api
-  # V1
+  # v1
   module V1
     module Oauth
       # Oauth Sessions Controller
