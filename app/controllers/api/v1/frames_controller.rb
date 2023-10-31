@@ -31,7 +31,8 @@ module Api
       end
 
       def comments
-        comments = Frame.eager_load(comments: :user).find_by!(id: permitted_params[:frame_id]).comments.order('comments.created_at': 'asc')
+        comments = Frame.eager_load(comments: :user).find_by!(id: query_params[:frame_id]).comments
+                        .order('comments.created_at': 'asc')
 
         # options = {}
         # options[:include] = [:user]
@@ -76,11 +77,11 @@ module Api
       end
 
       def set_query
-        @word = permitted_params[:q]
-        @page = permitted_params[:page]
+        @word = query_params[:q]
+        @page = query_params[:page]
       end
 
-      def permitted_params
+      def query_params
         params.permit(
           :q,
           :page,
