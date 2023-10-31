@@ -31,7 +31,7 @@ module Api
       end
 
       def comments
-        comments = Frame.find_by!(id: params[:frame_id]).comments.order('comments.created_at': 'asc')
+        comments = Frame.eager_load(comments: :user).find_by!(id: params[:frame_id]).comments.order('comments.created_at': 'asc')
 
         # options = {}
         # options[:include] = [:user]
