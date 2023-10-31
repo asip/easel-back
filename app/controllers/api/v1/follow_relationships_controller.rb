@@ -9,21 +9,25 @@ module Api
       before_action :authenticate
 
       def following
-        user = User.find(params[:user_id])
+        user = User.find(query_params[:user_id])
         following_ = @current_user.following?(user)
         render json: { following: following_ }
       end
 
       # follow
       def create
-        current_user.follow(params[:user_id])
+        current_user.follow(query_params[:user_id])
         head :no_content
       end
 
       # unfollow (フォロー外すとき)
       def destroy
-        current_user.unfollow(params[:user_id])
+        current_user.unfollow(query_params[:user_id])
         head :no_content
+      end
+
+      def query_params
+        params.permit(:user_id)
       end
     end
   end
