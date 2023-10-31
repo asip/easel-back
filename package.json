@@ -6,7 +6,6 @@
     "@hotwired/turbo": "^7.3.0",
     "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.8",
-    "@types/toastify-js": "^1.12.2",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "copyfiles": "^2.4.1",
@@ -16,8 +15,6 @@
     "sass": "^1.69.5",
     "stimulus": "^3.2.2",
     "toastify-js": "^1.12.0",
-    "tsc-watch": "^6.0.4",
-    "typescript": "^5.2.2",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },
@@ -30,10 +27,13 @@
     "lint": "eslint --fix './app/javascript/**/*.{js,ts}'"
   },
   "devDependencies": {
+    "@types/toastify-js": "^1.12.2",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.2.2"
   }
 }
