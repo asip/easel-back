@@ -26,6 +26,8 @@ module Api
         head :no_content
       end
 
+      private
+
       def query_params
         params.permit(:user_id)
       end
