@@ -26,9 +26,13 @@ class Frame < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
 
+  delegate :name, to: :user, prefix: true
+
   validates :name, length: { in: 1..20 }
   validates :file, presence: true
   validate :check_tag
+
+  after_validation :assign_derivatives
 
   scope :search_by, lambda { |word:|
     scope = current_scope || relation
@@ -50,17 +54,15 @@ class Frame < ApplicationRecord
     scope
   }
 
-  delegate :name, to: :user, prefix: true
-
   def tags_preview
     tag_list.to_s.split(/\s*,\s*/)
   end
 
   def assign_derivatives
     return if file.blank?
+    return unless errors[:file].empty?
 
     file_derivatives!
-    save!(validate: false)
   end
 
   private

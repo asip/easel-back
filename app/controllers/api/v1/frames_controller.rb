@@ -43,7 +43,6 @@ module Api
       def create
         @frame.user_id = current_user.id
         if @frame.save
-          @frame.assign_derivatives
           render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
         else
           render json: { errors: @frame.errors.messages }.to_json
@@ -54,7 +53,6 @@ module Api
         @frame.user_id = current_user.id
         @frame.attributes = frame_params
         if @frame.save
-          @frame.assign_derivatives
           render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
         else
           render json: { errors: @frame.errors.messages }.to_json

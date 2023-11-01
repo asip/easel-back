@@ -76,6 +76,8 @@ class User < ApplicationRecord
     validates :password, presence: true
   end
 
+  after_validation :assign_derivatives
+
   default_scope -> { kept }
 
   def image_url_for_view(key)
@@ -103,9 +105,9 @@ class User < ApplicationRecord
 
   def assign_derivatives
     return if image.blank?
+    return unless errors[:image].empty?
 
     image_derivatives!
-    save!(validate: false)
   end
 
   def reset_token
