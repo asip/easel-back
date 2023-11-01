@@ -61,19 +61,19 @@ class User < ApplicationRecord
   # VALID_NAME_REGEX = /\A\z|\A[a-zA-Z\d\s]{3,40}\z/
   VALID_EMAIL_REGEX = /\A\z|\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  with_options on: :with_validation do |save|
-    save.validates :password, length: { minimum: 3 }, confirmation: true,
-                              if: -> { new_record? || changes[:crypted_password] }
-    save.validates :password_confirmation, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, length: { minimum: 3 }, confirmation: true,
+                       if: -> { new_record? || changes[:crypted_password] },
+                       on: :with_validation
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] },
+                                    on: :with_validation
+  validates :name, length: { minimum: 1, maximum: 40 },
+                   on: :with_validation # , format: { with: VALID_NAME_REGEX }
+  validates :email, length: { minimum: 3, maximum: 319 }, format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: true,
+                    on: :with_validation
 
-    save.validates :name, length: { minimun: 3, maximum: 40 } # , format: { with: VALID_NAME_REGEX }
-    save.validates :email, length: { minimum: 3, maximum: 319 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
-  end
-
-  with_options on: :login do
-    validates :email, presence: true
-    validates :password, presence: true
-  end
+  validates :email, presence: true, on: :login
+  validates :password, presence: true, on: :login
 
   after_validation :assign_derivatives
 
