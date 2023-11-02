@@ -11,6 +11,9 @@ Rails.application.configure do
     Bullet.console       = false
     Bullet.rails_logger  = true
     Bullet.add_footer    = false
+    Prosopite.enabled = true
+    Prosopite.prosopite_logger = true
+    Prosopite.rails_logger = true
   end
 
   # Settings specified here will take precedence over those in config/application.rb.

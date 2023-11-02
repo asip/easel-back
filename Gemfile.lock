@@ -208,6 +208,8 @@ GEM
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (3.25.0)
+    google-protobuf (3.25.0-arm64-darwin)
     googleauth (1.8.1)
       faraday (>= 0.17.3, < 3.a)
       jwt (>= 1.4, < 3.0)
@@ -302,11 +304,14 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
+    pg_query (4.2.3)
+      google-protobuf (>= 3.22.3)
     propshaft (0.7.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
+    prosopite (1.4.1)
     psych (5.1.1)
       stringio
     public_suffix (5.0.3)
@@ -516,7 +521,9 @@ DEPENDENCIES
   marcel (~> 1.0)
   pagy (~> 6.1.0)
   pg (~> 1.5.3)
+  pg_query
   propshaft (~> 0.7.0)
+  prosopite
   puma (~> 6.4.0)
   rack-cors
   rails (~> 7.1.1)
