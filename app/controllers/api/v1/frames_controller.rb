@@ -31,8 +31,9 @@ module Api
       end
 
       def comments
-        comments = Frame.eager_load(comments: :user).find_by!(id: query_params[:frame_id]).comments
-                        .order('comments.created_at': 'asc')
+        frame = Frame.find_by!(id: query_params[:frame_id])
+        comments = Comment.eager_load(:user).where(frame_id: frame.id)
+                          .order(created_at: 'asc')
 
         # options = {}
         # options[:include] = [:user]
