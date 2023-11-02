@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Pagination
+# Pagination module
 module Pagination
   extend ActiveSupport::Concern
 

@@ -2,7 +2,7 @@
 
 # api
 module Api
-  # ExceptionHandler
+  # Exception Handler
   module ExceptionHandler
     extend ActiveSupport::Concern
 

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Date and Time Module
+# date and time
 module DateAndTime
-  # Utility Module
+  # Utility module
   module Util
     extend ActiveSupport::Concern
 

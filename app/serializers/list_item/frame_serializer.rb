@@ -14,7 +14,7 @@
 #  user_id    :integer
 #
 
-# ListItem
+# list item
 module ListItem
   # Frame Serializer
   class FrameSerializer

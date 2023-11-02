@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Admin
+# manager
 module Manager
-  # Admin Controller
+  # Sessions Controller
   class SessionsController < Manager::ApplicationController
     skip_before_action :require_login, except: [:destroy]
 

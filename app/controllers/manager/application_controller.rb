@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Manager
+# manager
 module Manager
-  # Admin Controller
+  # Application Controller
   class ApplicationController < ActionController::Base
     include Locale::AutoDetect
 

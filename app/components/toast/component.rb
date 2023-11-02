@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Error Messages
+# toast
 module Toast
   # Component
   class Component < ViewComponent::Base

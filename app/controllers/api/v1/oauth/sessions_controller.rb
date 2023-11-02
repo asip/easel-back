@@ -4,8 +4,9 @@
 module Api
   # v1
   module V1
+    # oauth
     module Oauth
-      # Oauth Sessions Controller
+      # Sessions Controller
       class SessionsController < Api::V1::ApiController
         include ActionController::Cookies
         include Sorcery::Credential

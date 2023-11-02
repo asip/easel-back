@@ -14,7 +14,7 @@
 #  user_id    :integer
 #
 
-# Detail
+# detail
 module Detail
   # Frame Serializer
   class FrameSerializer < ListItem::FrameSerializer

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Search Module
+# locale
 module Locale
-  # Query module
+  # AutoDetect module
   module AutoDetect
     extend ActiveSupport::Concern
     def switch_locale

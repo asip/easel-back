@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Query module
+# query
 module Query
-  # NPlusOne module
+  # n plus one
   module NPlusOne
     # Detection module
     module Detection

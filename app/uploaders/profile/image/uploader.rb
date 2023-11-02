@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Profile Module
+# profile
 module Profile
-  # Image Module
+  # image
   module Image
     # Uploader
     class Uploader < Shrine

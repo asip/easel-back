@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Contents Module
+# contents
 module Contents
   # Uploader
   class Uploader < Shrine

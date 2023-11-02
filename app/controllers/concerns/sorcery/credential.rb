@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Sorcery Module
+# sorcery
 module Sorcery
   # Credential module
   module Credential

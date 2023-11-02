@@ -15,6 +15,8 @@
 #
 #  index_authentications_on_provider_and_uid  (provider,uid)
 #
+
+# Authentication
 class Authentication < ApplicationRecord
   belongs_to :user
 end

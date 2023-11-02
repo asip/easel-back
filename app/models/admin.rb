@@ -24,6 +24,8 @@
 #  index_admins_on_last_logout_at_and_last_activity_at  (last_logout_at,last_activity_at)
 #  index_admins_on_unlock_token                         (unlock_token)
 #
+
+# Admin
 class Admin < ApplicationRecord
   authenticates_with_sorcery!
 

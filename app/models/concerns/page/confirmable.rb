@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Page Module
+# page
 module Page
-  # Confirmable Module
+  # Confirmable module
   module Confirmable
     extend ActiveSupport::Concern
 
