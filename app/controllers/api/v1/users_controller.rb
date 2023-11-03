@@ -35,7 +35,7 @@ module Api
       def update
         result, user = @case.update_user(user: current_user, user_params:)
         if result
-          cookies.permanent[:access_token] = user.token
+          cookies.permanent[:access_token] = user.token if user.saved_change_to_email
           render json: AccountSerializer.new(user).serializable_hash
         else
           render json: { errors: user.errors.messages }.to_json
