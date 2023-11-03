@@ -6,34 +6,26 @@ module Api
   module V1
     # Frames Controller
     class FramesController < Api::V1::ApiController
-      include Pagy::Backend
-      include Pagination
+      include Query::Pagination::FrameQuery
 
       skip_before_action :switch_locale, only: [:comments]
       skip_before_action :authenticate, only: %i[index show comments]
-      before_action :set_query, only: [:index]
-      before_action :set_frame, only: %i[show create update destroy]
+      before_action :set_case
 
       def index
-        frames = Frame.search_by(word: @word).order(created_at: 'desc')
-        pagy, frames = pagy(frames, { page: @page })
-        frame_ids = frames.pluck(:id)
-        pagination = resources_with_pagination(pagy)
-        frames = Frame.where(id: frame_ids).order(created_at: 'desc')
+        pagination, frames = list_query(word: query_params[:q], page: query_params[:page])
 
         render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end
 
       def show
-        frame = Frame.eager_load(:user, comments: :user).find_by!(id: params[:id])
+        frame = @case.detail_query(frame_id: params[:id])
 
         render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end
 
       def comments
-        frame = Frame.find_by!(id: query_params[:frame_id])
-        comments = Comment.eager_load(:user).where(frame_id: frame.id)
-                          .order(created_at: 'asc')
+        comments = @case.comments_query(frame_id: query_params[:frame_id])
 
         # options = {}
         # options[:include] = [:user]
@@ -42,30 +34,35 @@ module Api
       end
 
       def create
-        @frame.user_id = current_user.id
-        if @frame.save
-          render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
+        result, frame = @case.create_frame(user: current_user, frame_params:)
+
+        if result
+          render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
         else
-          render json: { errors: @frame.errors.messages }.to_json
+          render json: { errors: frame.errors.messages }.to_json
         end
       end
 
       def update
-        @frame.user_id = current_user.id
-        @frame.attributes = frame_params
-        if @frame.save
-          render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
+        result, frame = @case.update_frame(user: current_user, frame_id: params[:id], frame_params:)
+
+        if result
+          render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
         else
-          render json: { errors: @frame.errors.messages }.to_json
+          render json: { errors: frame.errors.messages }.to_json
         end
       end
 
       def destroy
-        @frame.destroy
-        render json: Detail::FrameSerializer.new(@frame, detail_options).serializable_hash
+        frame = @case.delete_frame(user: current_user, frame_id: params[:id])
+        render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end
 
       private
+
+      def set_case
+        @case = FrameCase.new
+      end
 
       def index_options
         {}
@@ -75,30 +72,12 @@ module Api
         { include: [:comments] }
       end
 
-      def set_query
-        @word = query_params[:q]
-        @page = query_params[:page]
-      end
-
       def query_params
         params.permit(
           :q,
           :page,
           :frame_id
         )
-      end
-
-      def set_frame
-        @frame = case action_name
-                 when 'show'
-                   Frame.find(params[:id])
-                 when 'new'
-                   Frame.new
-                 when 'create'
-                   Frame.new(frame_params)
-                 else
-                   Frame.find_by!(id: params[:id], user_id: current_user.id)
-                 end
       end
 
       def frame_params

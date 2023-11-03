@@ -7,53 +7,49 @@ module Api
     # Users Controller
     class UsersController < Api::V1::ApiController
       include ActionController::Cookies
-      include Pagy::Backend
-      include Pagination
+      include Query::Pagination::UserQuery
 
       skip_before_action :authenticate, only: %i[create show frames]
-      before_action :set_user, only: %i[show create update]
-      before_action :set_query, only: %i[frames]
+      before_action :set_case
 
       def show
-        render json: UserSerializer.new(@user).serializable_hash
+        user = @case.detail_query(user_id: params[:id])
+        render json: UserSerializer.new(user).serializable_hash
       end
 
       def frames
-        frames = User.find_by!(id: query_params[:user_id]).frames.order('frames.created_at': 'desc')
-        pagy, frames = pagy(frames, { page: @page })
-        pagination = resources_with_pagination(pagy)
+        pagination, frames = frames_query(user_id: query_params[:user_id], page: query_params[:page])
 
         render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end
 
       def create
-        if @user.save(context: :with_validation)
-          render json: UserSerializer.new(@user).serializable_hash
+        result, user = @case.create_user(user_params:)
+        if result
+          render json: UserSerializer.new(user).serializable_hash
         else
-          render json: { errors: @user.errors.messages }.to_json
+          render json: { errors: user.errors.messages }.to_json
         end
       end
 
       def update
-        @user.attributes = user_params
-        # puts 'testtest'
-        if @user.save(context: :with_validation)
-          # puts @user.saved_change_to_email?
-          update_token
-          render json: AccountSerializer.new(@user).serializable_hash
+        result, user = @case.update_user(user: current_user, user_params:)
+        if result
+          cookies.permanent[:access_token] = user.token
+          render json: AccountSerializer.new(user).serializable_hash
         else
-          render json: { errors: @user.errors.messages }.to_json
+          render json: { errors: user.errors.messages }.to_json
         end
       end
 
       private
 
-      def index_options
-        {}
+      def set_case
+        @case = UserCase.new
       end
 
-      def set_query
-        @page = query_params[:page]
+      def index_options
+        {}
       end
 
       def query_params
@@ -61,26 +57,6 @@ module Api
           :page,
           :user_id
         )
-      end
-
-      def update_token
-        return unless @user.saved_change_to_email?
-
-        @user.assign_token(user_class.issue_token(id: @user.id, email: @user.email))
-        cookies.permanent[:access_token] = @user.token
-      end
-
-      def set_user
-        @user = case action_name
-                when 'show'
-                  User.find_by!(id: params[:id])
-                when 'new'
-                  User.new
-                when 'create'
-                  User.new(user_params)
-                else
-                  current_user
-                end
       end
 
       def user_params

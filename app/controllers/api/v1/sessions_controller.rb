@@ -16,9 +16,9 @@ module Api
       # end
 
       def profile
-        @user = current_user
+        user = current_user
 
-        render json: AccountSerializer.new(@user).serializable_hash
+        render json: AccountSerializer.new(user).serializable_hash
       end
 
       #
@@ -27,13 +27,13 @@ module Api
       def create
         params_user = user_params
         token = login_and_issue_token(params_user[:email], params_user[:password])
-        @user = current_user
+        user = current_user
 
-        if @user
-          @user.assign_token(token) if @user.token.blank? || @user.token_expire?
+        if user
+          user.assign_token(token) if user.token.blank? || user.token_expire?
           cookies.permanent[:access_token] = token
 
-          render json: AccountSerializer.new(@user).serializable_hash
+          render json: AccountSerializer.new(user).serializable_hash
         else
           validate_login(params_user)
         end

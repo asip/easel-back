@@ -102,6 +102,12 @@ class User < ApplicationRecord
   end
   # rubocop:enable Rails/SkipsModelValidations
 
+  def update_token
+    return unless saved_change_to_email?
+
+    assign_token(User.issue_token(id:, email:))
+  end
+
   def assign_derivatives
     return if image.blank?
     return unless errors[:image].empty?
