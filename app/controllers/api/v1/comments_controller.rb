@@ -9,8 +9,8 @@ module Api
       before_action :set_case
 
       def create
-        result, comment = @case.create_comment(user: current_user, comment_params:)
-        if result
+        success, comment = @case.create_comment(user: current_user, comment_params:)
+        if success
           # logger.debug CommentSerializer.new(comment).serialized_json
           render json: CommentSerializer.new(comment).serializable_hash
         else
@@ -26,7 +26,7 @@ module Api
       private
 
       def set_case
-        @case = CommentCase.new
+        @case = CommentsCase.new
       end
 
       def comment_params

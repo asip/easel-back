@@ -24,8 +24,8 @@ module Api
       end
 
       def create
-        result, user = @case.create_user(user_params:)
-        if result
+        success, user = @case.create_user(user_params:)
+        if success
           render json: UserSerializer.new(user).serializable_hash
         else
           render json: { errors: user.errors.messages }.to_json
@@ -33,8 +33,8 @@ module Api
       end
 
       def update
-        result, user = @case.update_user(user: current_user, user_params:)
-        if result
+        success, user = @case.update_user(user: current_user, user_params:)
+        if success
           cookies.permanent[:access_token] = user.token if user.saved_change_to_email
           render json: AccountSerializer.new(user).serializable_hash
         else
@@ -45,7 +45,7 @@ module Api
       private
 
       def set_case
-        @case = UserCase.new
+        @case = UsersCase.new
       end
 
       def index_options

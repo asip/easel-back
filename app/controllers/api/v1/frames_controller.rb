@@ -34,9 +34,9 @@ module Api
       end
 
       def create
-        result, frame = @case.create_frame(user: current_user, frame_params:)
+        success, frame = @case.create_frame(user: current_user, frame_params:)
 
-        if result
+        if success
           render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
         else
           render json: { errors: frame.errors.messages }.to_json
@@ -44,9 +44,9 @@ module Api
       end
 
       def update
-        result, frame = @case.update_frame(user: current_user, frame_id: params[:id], frame_params:)
+        success, frame = @case.update_frame(user: current_user, frame_id: params[:id], frame_params:)
 
-        if result
+        if success
           render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
         else
           render json: { errors: frame.errors.messages }.to_json
@@ -61,7 +61,7 @@ module Api
       private
 
       def set_case
-        @case = FrameCase.new
+        @case = FramesCase.new
       end
 
       def index_options

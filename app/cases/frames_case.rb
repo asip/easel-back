@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-# Frame Case
-class FrameCase
+# Frames Case
+class FramesCase
   def create_frame(user:, frame_params:)
     frame = Frame.new(frame_params)
     frame.user_id = user.id
-    result = frame.save
-    [result, frame]
+    success = frame.save
+    [success, frame]
   end
 
   def update_frame(user:, frame_id:, frame_params:)
     frame = Frame.find_by!(id: frame_id, user_id: user.id)
     frame.user_id = user.id
     frame.attributes = frame_params
-    result = frame.save
-    [result, frame]
+    success = frame.save
+    [success, frame]
   end
 
   def delete_frame(user:, frame_id:)

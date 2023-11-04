@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-# Comment Case
-class CommentCase
+# Comments Case
+class CommentsCase
   def create_comment(user:, comment_params:)
     comment = Comment.new(comment_params)
     comment.user_id = user.id
-    result = comment.save
-    [result, comment]
+    success = comment.save
+    [success, comment]
   end
 
   def delete_comment(user:, comment_id:)
