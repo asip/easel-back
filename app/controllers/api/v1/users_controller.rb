@@ -7,7 +7,7 @@ module Api
     # Users Controller
     class UsersController < Api::V1::ApiController
       include ActionController::Cookies
-      include Query::Pagination::UserQuery
+      include Users::Query::PaginationQuery
 
       skip_before_action :authenticate, only: %i[create show frames]
       before_action :set_case

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-# query
-module Query
-  # pagination
-  module Pagination
-    # FrameQuery module
-    module FrameQuery
+# frames
+module Frames
+  # query
+  module Query
+    # PaginationQuery module
+    module PaginationQuery
       extend ActiveSupport::Concern
 
       include Pagy::Backend

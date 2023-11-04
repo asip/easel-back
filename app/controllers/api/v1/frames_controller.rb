@@ -6,7 +6,7 @@ module Api
   module V1
     # Frames Controller
     class FramesController < Api::V1::ApiController
-      include Query::Pagination::FrameQuery
+      include Frames::Query::PaginationQuery
 
       skip_before_action :switch_locale, only: [:comments]
       skip_before_action :authenticate, only: %i[index show comments]
