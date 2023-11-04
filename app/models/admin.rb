@@ -31,16 +31,13 @@ class Admin < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A\z|\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  with_options on: %i[create update] do |save|
-    save.validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }, on: %i[create update]
+  validates :password, length: { minimum: 3 }, confirmation: true,
+                       if: -> { new_record? || changes[:crypted_password] },
+                       on: %i[create update]
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] },
+                                    on: %i[create update]
 
-    save.validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
-    save.validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
-    save.validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
-  end
-
-  with_options on: :login do
-    validates :email, presence: true
-    validates :password, presence: true
-  end
+  validates :email, presence: true, on: :login
+  validates :password, presence: true, on: :login
 end
