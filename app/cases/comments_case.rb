@@ -2,9 +2,10 @@
 
 # Comments Case
 class CommentsCase
-  def create_comment(user:, comment_params:)
+  def create_comment(user:, frame_id:, comment_params:)
     comment = Comment.new(comment_params)
     comment.user_id = user.id
+    comment.frame_id = frame_id
     success = comment.save
     [success, comment]
   end

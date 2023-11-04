@@ -18,8 +18,7 @@ describe 'Comments', type: :request do
         post endpoint,
              params: {
                comment: {
-                 body: 'testtest',
-                 frame_id: frame.id
+                 body: 'testtest'
                }
              },
              headers: {
@@ -37,8 +36,7 @@ describe 'Comments', type: :request do
           post endpoint,
                params: {
                  comment: {
-                   body: '',
-                   frame_id: frame.id
+                   body: ''
                  }
                },
                headers: {
@@ -54,8 +52,7 @@ describe 'Comments', type: :request do
           post endpoint,
                params: {
                  comment: {
-                   body: Faker::Alphanumeric.alpha(number: 256),
-                   frame_id: frame.id
+                   body: Faker::Alphanumeric.alpha(number: 256)
                  }
                },
                headers: {

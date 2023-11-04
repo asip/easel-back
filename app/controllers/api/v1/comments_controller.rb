@@ -9,7 +9,7 @@ module Api
       before_action :set_case
 
       def create
-        success, comment = @case.create_comment(user: current_user, comment_params:)
+        success, comment = @case.create_comment(user: current_user, frame_id: params[:frame_id], comment_params:)
         if success
           # logger.debug CommentSerializer.new(comment).serialized_json
           render json: CommentSerializer.new(comment).serializable_hash
@@ -30,7 +30,7 @@ module Api
       end
 
       def comment_params
-        params.require(:comment).permit(:body, :frame_id)
+        params.require(:comment).permit(:body)
       end
     end
   end
