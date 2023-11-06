@@ -9,7 +9,7 @@ module Users
       extend ActiveSupport::Concern
 
       include Pagy::Backend
-      include ::Pagination
+      include Api::Pagination
 
       def frames_query(user_id:, page:)
         frames = @case.frames_query(user_id:)

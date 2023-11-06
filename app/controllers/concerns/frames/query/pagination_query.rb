@@ -9,7 +9,7 @@ module Frames
       extend ActiveSupport::Concern
 
       include Pagy::Backend
-      include ::Pagination
+      include Api::Pagination
 
       def list_query(word:, page:)
         frames = @case.list_query(word:)
