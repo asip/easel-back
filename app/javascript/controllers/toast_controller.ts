@@ -3,19 +3,23 @@ import Toastify from 'toastify-js'
 
 export default class ToastController extends ApplicationController {
   static values = {
-    messages: String
+    flashes: String
   }
 
-  declare readonly messagesValue: string
+  declare readonly flashesValue: string
 
   connect() {
-    const messages = JSON.parse(this.messagesValue.valueOf())['messages'].reverse()
-    //console.log(messages)
-    messages.forEach((message: string) => {
-      Toastify({
-        text: message,
-        duration: 2000
-      }).showToast()
-    })
+    const flashes = JSON.parse(this.flashesValue.valueOf())
+
+    Object.keys(flashes).forEach(
+      (flashType: string) => {
+        flashes[flashType].reverse().forEach((message: string) => {
+          Toastify({
+            text: message,
+            duration: 2000
+          }).showToast()
+        })
+      }
+    )
   }
 }

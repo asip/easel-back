@@ -17,6 +17,7 @@ module Manager
         redirect_to rails_admin_path
       else
         validate_login(params_user)
+        flashes[:alert] = @user.errors.full_messages
         render :new
       end
     end

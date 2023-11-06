@@ -5,6 +5,7 @@ module Manager
   # Application Controller
   class ApplicationController < ActionController::Base
     include Locale::AutoDetect
+    include Flashes
 
     before_action :switch_locale
     before_action :require_login
