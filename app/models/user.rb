@@ -34,6 +34,7 @@
 
 # User
 class User < ApplicationRecord
+  include Errors::Sortable
   include Page::Confirmable
   include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
@@ -94,6 +95,10 @@ class User < ApplicationRecord
     false
   rescue StandardError # => e
     true
+  end
+
+  def full_error_messages_on_login
+    full_error_messages_for(%i[email password])
   end
 
   def assign_token(token_)

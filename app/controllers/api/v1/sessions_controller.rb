@@ -79,7 +79,7 @@ module Api
         return if success
 
         render json: {
-          messages: user.errors.full_messages
+          messages: user.full_error_messages_on_login
         }
       end
 
