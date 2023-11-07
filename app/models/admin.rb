@@ -40,4 +40,15 @@ class Admin < ApplicationRecord
 
   validates :email, presence: true, on: :login
   validates :password, presence: true, on: :login
+
+  def validate_password_on_login(user_params)
+    self.password = user_params[:password]
+    valid?(:login)
+    errors.add(:password, I18n.t('action.login.invalid')) if user_params[:password].present?
+  end
+
+  def validate_email_on_login(user_params)
+    valid?(:login)
+    errors.add(:email, I18n.t('action.login.invalid')) if user_params[:email].present?
+  end
 end

@@ -14,11 +14,9 @@ module Manager
       params_user = user_params
       @user = login(params_user[:email], params_user[:password])
       if @user
-        redirect_to rails_admin_path
+        create_successful
       else
-        validate_login(params_user)
-        flashes[:alert] = @user.errors.full_messages
-        render :new
+        create_failed(user_params: params_user)
       end
     end
 
@@ -33,28 +31,32 @@ module Manager
 
     private
 
+    def create_successful
+      redirect_to rails_admin_path
+    end
+
+    def create_failed(user_params:)
+      success, @user = validate_login(user_params:)
+      return if success
+
+      flashes[:alert] = @user.errors.full_messages
+      render :new
+    end
+
+    def validate_login(user_params:)
+      user = Admin.find_by(email: user_params[:email])
+      if user
+        user.validate_password_on_login(user_params)
+      else
+        user = Admin.new(user_params)
+        user.validate_email_on_login(user_params)
+      end
+      success = user.errors.empty?
+      [success, user]
+    end
+
     def user_params
       params.require(:admin).permit(:email, :password)
-    end
-
-    def validate_login(params_user)
-      @user = Admin.find_by(email: params_user[:email])
-      if @user
-        validate_password(params_user)
-      else
-        validate_email(params_user)
-      end
-    end
-
-    def validate_password(params_user)
-      @user.password = params_user[:password]
-      @user.errors.add(:password, t('action.login.invalid')) if !@user.valid?(:login) && params_user[:password].present?
-    end
-
-    def validate_email(params_user)
-      @user = Admin.new(params_user)
-      @user.valid?(:login)
-      @user.errors.add(:email, t('action.login.invalid')) if params_user[:email].present?
     end
   end
 end
