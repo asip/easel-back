@@ -26,8 +26,8 @@ module Api
       #
       def create
         params_user = user_params
-        success, user = login(user_params: params_user)
-        if success
+        user = login(params_user[:email], params_user[:password])
+        if user
           create_successful(user:)
         else
           create_failed(user_params: params_user)
@@ -61,16 +61,11 @@ module Api
 
       private
 
-      def login(user_params:)
-        token = login_and_issue_token(user_params[:email], user_params[:password])
+      def login(email, password)
+        token = login_and_issue_token(email, password)
         user = current_user
-        if user
-          user.assign_token(token) if user.token.blank? || user.token_expire?
-          success = true
-        else
-          success = false
-        end
-        [success, user]
+        user.assign_token(token) if user && (user.token.blank? || user.token_expire?)
+        user
       end
 
       def create_successful(user:)
