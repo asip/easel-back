@@ -28,8 +28,8 @@ module Api
             @user.assign_token(user_class.issue_token(id: @user.id, email: @user.email))
           else
             @user = create_from(provider)
-            reset_session
             @user.assign_token(user_class.issue_token(id: @user.id, email: @user.email))
+            reset_session
             auto_login(@user)
           end
         end
