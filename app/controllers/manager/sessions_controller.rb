@@ -39,7 +39,7 @@ module Manager
       success, @user = validate_login(user_params:)
       return if success
 
-      flashes[:alert] = @user.errors.full_messages
+      flashes[:alert] = @user.full_error_messages_on_login
       render :new
     end
 
