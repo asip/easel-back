@@ -26,16 +26,11 @@ module Api
       #
       def create
         params_user = user_params
-        token = login_and_issue_token(params_user[:email], params_user[:password])
-        user = current_user
-
-        if user
-          user.assign_token(token) if user.token.blank? || user.token_expire?
-          cookies.permanent[:access_token] = token
-
-          render json: AccountSerializer.new(user).serializable_hash
+        success, user = login(user_params: params_user)
+        if success
+          create_successful(user:)
         else
-          validate_login(params_user)
+          create_failed(user_params: params_user)
         end
       end
 
@@ -44,10 +39,10 @@ module Api
       #
       def destroy
         current_user&.reset_token
-        cookies.delete(:access_token)
         user_id = current_user.id
         logout
         user = User.unscoped.find_by(id: user_id)
+        cookies.delete(:access_token)
         render json: AccountSerializer.new(user).serializable_hash
       end
 
@@ -56,42 +51,57 @@ module Api
       #
       def delete
         current_user&.reset_token
-        cookies.delete(:access_token)
         user_id = current_user.id
         logout
         user = User.unscoped.find_by(id: user_id)
         user.discard
+        cookies.delete(:access_token)
         render json: AccountSerializer.new(user).serializable_hash
-      end
-
-      def user_params
-        params.require(:user).permit(:email, :password)
       end
 
       private
 
-      def validate_login(params_user)
-        @user = User.find_by(email: params_user[:email])
-        if @user
-          validate_password(params_user)
+      def login(user_params:)
+        token = login_and_issue_token(user_params[:email], user_params[:password])
+        user = current_user
+        if user
+          user.assign_token(token) if user.token.blank? || user.token_expire?
+          success = true
         else
-          validate_email(params_user)
+          success = false
         end
+        [success, user]
+      end
+
+      def create_successful(user:)
+        cookies.permanent[:access_token] = user.token
+
+        render json: AccountSerializer.new(user).serializable_hash
+      end
+
+      def create_failed(user_params:)
+        success, user = validate_login(user_params:)
+        return if success
+
         render json: {
-          messages: @user.errors.full_messages
+          messages: user.errors.full_messages
         }
       end
 
-      def validate_password(params_user)
-        @user.password = params_user[:password]
-        @user.valid?(:login)
-        @user.errors.add(:password, I18n.t('action.login.invalid')) if params_user[:password].present?
+      def validate_login(user_params:)
+        user = User.find_by(email: user_params[:email])
+        if user
+          user.validate_password_on_login(user_params)
+        else
+          user = User.new(user_params)
+          user.validate_email_on_login(user_params)
+        end
+        success = user.errors.empty?
+        [success, user]
       end
 
-      def validate_email(params_user)
-        @user = User.new(params_user)
-        @user.valid?(:login)
-        @user.errors.add(:email, I18n.t('action.login.invalid')) if params_user[:email].present?
+      def user_params
+        params.require(:user).permit(:email, :password)
       end
     end
   end
