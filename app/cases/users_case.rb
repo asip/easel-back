@@ -2,14 +2,6 @@
 
 # Users Case
 class UsersCase
-  def detail_query(user_id:)
-    User.find_by!(id: user_id)
-  end
-
-  def frames_query(user_id:)
-    User.find_by!(id: user_id).frames.order('frames.created_at': 'desc')
-  end
-
   def create_user(user_params:)
     user = User.new(user_params)
     success = user.save(context: :with_validation)
@@ -25,5 +17,13 @@ class UsersCase
       user.update_token
     end
     [success, user]
+  end
+
+  def detail_query(user_id:)
+    User.find_by!(id: user_id)
+  end
+
+  def frames_query(user_id:)
+    User.find_by!(id: user_id).frames.order('frames.created_at': 'desc')
   end
 end
