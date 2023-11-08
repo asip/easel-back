@@ -12,10 +12,8 @@ class UsersCase
     user.attributes = user_params
     # puts 'testtest'
     success = user.save(context: :with_validation)
-    if success
-      # puts user.saved_change_to_email?
-      user.update_token
-    end
+    # puts user.saved_change_to_email?
+    user.update_token if success
     [success, user]
   end
 
