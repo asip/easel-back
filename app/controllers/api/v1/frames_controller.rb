@@ -19,7 +19,7 @@ module Api
       end
 
       def show
-        frame = @case.detail_query(frame_id: params[:id])
+        frame = @case.find_query(frame_id: params[:id])
 
         render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end

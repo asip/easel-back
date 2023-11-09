@@ -13,7 +13,7 @@ module Api
       before_action :set_case
 
       def show
-        user = @case.detail_query(user_id: params[:id])
+        user = @case.find_query(user_id: params[:id])
         render json: UserSerializer.new(user).serializable_hash
       end
 

@@ -27,7 +27,7 @@ class FramesCase
     Frame.search_by(word:).order(created_at: 'desc')
   end
 
-  def detail_query(frame_id:)
+  def find_query(frame_id:)
     Frame.eager_load(:user, comments: :user).find_by!(id: frame_id)
   end
 

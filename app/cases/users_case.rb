@@ -17,7 +17,7 @@ class UsersCase
     [success, user]
   end
 
-  def detail_query(user_id:)
+  def find_query(user_id:)
     User.find_by!(id: user_id)
   end
 
