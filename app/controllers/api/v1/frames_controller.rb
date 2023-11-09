@@ -34,7 +34,7 @@ module Api
       end
 
       def create
-        success, frame = @case.create_frame(user: current_user, frame_params:)
+        success, frame = @case.create_frame(user: current_user, form_params:)
 
         if success
           render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
@@ -44,7 +44,7 @@ module Api
       end
 
       def update
-        success, frame = @case.update_frame(user: current_user, frame_id: params[:id], frame_params:)
+        success, frame = @case.update_frame(user: current_user, frame_id: params[:id], form_params:)
 
         if success
           render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
@@ -74,19 +74,13 @@ module Api
 
       def query_params
         params.permit(
-          :q,
-          :page,
-          :frame_id
+          :q, :page, :frame_id
         )
       end
 
-      def frame_params
+      def form_params
         params.require(:frame).permit(
-          :name,
-          :tag_list,
-          :comment,
-          :file,
-          :shooted_at
+          :name, :tag_list, :comment, :file, :shooted_at
         )
       end
     end

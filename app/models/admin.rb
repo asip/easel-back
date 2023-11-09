@@ -47,14 +47,14 @@ class Admin < ApplicationRecord
     full_error_messages_for(%i[email password])
   end
 
-  def validate_password_on_login(user_params)
-    self.password = user_params[:password]
+  def validate_password_on_login(form_params)
+    self.password = form_params[:password]
     valid?(:login)
-    errors.add(:password, I18n.t('action.login.invalid')) if user_params[:password].present?
+    errors.add(:password, I18n.t('action.login.invalid')) if form_params[:password].present?
   end
 
-  def validate_email_on_login(user_params)
+  def validate_email_on_login(form_params)
     valid?(:login)
-    errors.add(:email, I18n.t('action.login.invalid')) if user_params[:email].present?
+    errors.add(:email, I18n.t('action.login.invalid')) if form_params[:email].present?
   end
 end

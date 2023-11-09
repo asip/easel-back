@@ -11,12 +11,12 @@ module Manager
     end
 
     def create
-      params_user = user_params
-      @user = login(params_user[:email], params_user[:password])
+      params_form = form_params
+      @user = login(params_form[:email], params_form[:password])
       if @user
         create_successful
       else
-        create_failed(user_params: params_user)
+        create_failed(form_params: params_form)
       end
     end
 
@@ -35,27 +35,27 @@ module Manager
       redirect_to rails_admin_path
     end
 
-    def create_failed(user_params:)
-      success, @user = validate_login(user_params:)
+    def create_failed(form_params:)
+      success, @user = validate_login(form_params:)
       return if success
 
       flashes[:alert] = @user.full_error_messages_on_login
       render :new
     end
 
-    def validate_login(user_params:)
-      user = Admin.find_by(email: user_params[:email])
+    def validate_login(form_params:)
+      user = Admin.find_by(email: form_params[:email])
       if user
-        user.validate_password_on_login(user_params)
+        user.validate_password_on_login(form_params)
       else
-        user = Admin.new(user_params)
-        user.validate_email_on_login(user_params)
+        user = Admin.new(form_params)
+        user.validate_email_on_login(form_params)
       end
       success = user.errors.empty?
       [success, user]
     end
 
-    def user_params
+    def form_params
       params.require(:admin).permit(:email, :password)
     end
   end

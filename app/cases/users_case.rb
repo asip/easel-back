@@ -2,14 +2,14 @@
 
 # Users Case
 class UsersCase
-  def create_user(user_params:)
-    user = User.new(user_params)
+  def create_user(form_params:)
+    user = User.new(form_params)
     success = user.save(context: :with_validation)
     [success, user]
   end
 
-  def update_user(user:, user_params:)
-    user.attributes = user_params
+  def update_user(user:, form_params:)
+    user.attributes = form_params
     # puts 'testtest'
     success = user.save(context: :with_validation)
     # puts user.saved_change_to_email?
