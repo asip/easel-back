@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_06_082542) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_10_053656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_082542) do
   end
 
   create_table "authentications", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
     t.datetime "created_at", precision: nil, null: false
@@ -42,16 +42,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_082542) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "frame_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "frame_id", null: false
     t.text "body"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "follow_relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followee_id"
+    t.bigint "follower_id"
+    t.bigint "followee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,17 +61,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_082542) do
     t.text "comment"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.text "file_data"
     t.datetime "shooted_at"
   end
 
-  create_table "taggings", id: :serial, force: :cascade do |t|
-    t.integer "tag_id"
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id"
     t.string "taggable_type"
-    t.integer "taggable_id"
+    t.bigint "taggable_id"
     t.string "tagger_type"
-    t.integer "tagger_id"
+    t.bigint "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
@@ -86,7 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_082542) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :serial, force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil

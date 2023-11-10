@@ -11,7 +11,7 @@
 #  shooted_at :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
+#  user_id    :bigint
 #
 FactoryBot.define do
   factory :frame do
