@@ -60,7 +60,6 @@ class User < ApplicationRecord
   has_many :followers, through: :followee_relationships, source: :follower
 
   # VALID_NAME_REGEX = /\A\z|\A[a-zA-Z\d\s]{3,40}\z/
-  VALID_EMAIL_REGEX = /\A\z|\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :password, length: { minimum: 3 }, confirmation: true,
                        if: -> { new_record? || changes[:crypted_password] },
@@ -69,7 +68,7 @@ class User < ApplicationRecord
                                     on: :with_validation
   validates :name, length: { minimum: 1, maximum: 40 },
                    on: :with_validation # , format: { with: VALID_NAME_REGEX }
-  validates :email, length: { minimum: 3, maximum: 319 }, format: { with: VALID_EMAIL_REGEX },
+  validates :email, length: { minimum: 3, maximum: 319 }, format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: true,
                     on: :with_validation
 

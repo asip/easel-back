@@ -31,9 +31,7 @@ class Admin < ApplicationRecord
 
   authenticates_with_sorcery!
 
-  VALID_EMAIL_REGEX = /\A\z|\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }, on: %i[create update]
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: %i[create update]
   validates :password, length: { minimum: 3 }, confirmation: true,
                        if: -> { new_record? || changes[:crypted_password] },
                        on: %i[create update]
