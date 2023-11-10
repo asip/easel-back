@@ -4,17 +4,13 @@
 class FramesCase
   def create_frame(user:, form_params:)
     frame = Frame.new(form_params)
-    frame.user_id = user.id
-    success = frame.save
-    [success, frame]
+    save_frame(user:, frame:)
   end
 
   def update_frame(user:, frame_id:, form_params:)
     frame = Frame.find_by!(id: frame_id, user_id: user.id)
-    frame.user_id = user.id
     frame.attributes = form_params
-    success = frame.save
-    [success, frame]
+    save_frame(user:, frame:)
   end
 
   def delete_frame(user:, frame_id:)
@@ -35,5 +31,13 @@ class FramesCase
     frame = Frame.find_by!(id: frame_id)
     Comment.eager_load(:user).where(frame_id: frame.id)
            .order(created_at: 'asc')
+  end
+
+  private
+
+  def save_frame(user:, frame:)
+    frame.user_id = user.id
+    success = frame.save
+    [success, frame]
   end
 end
