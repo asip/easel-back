@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
-      frame: 'イメージ'
+      frame: 'フレーム'
       admin: '管理者'
     attributes:
       user:
