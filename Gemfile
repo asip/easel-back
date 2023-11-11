@@ -105,6 +105,7 @@ group :development do
   # Ruby style guide, linter, and formatter
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
+  # gem 'rubocop-sensei', require: false
   # Shopify/erb-lint
   gem 'erb_lint', require: false
   gem 'ruby-lsp', require: false

@@ -3,3 +3,7 @@ inherit_from: .rubocop_todo.yml
 require:
   - rubocop-rails
   - rubocop-performance
+#  - rubocop-sensei
+
+# Lecture:
+#  Enabled: true
