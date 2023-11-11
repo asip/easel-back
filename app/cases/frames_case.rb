@@ -29,8 +29,10 @@ class FramesCase
 
   def comments_query(frame_id:)
     frame = Frame.find_by!(id: frame_id)
-    Comment.eager_load(:user).where(frame_id: frame.id)
-           .order(created_at: 'asc')
+    User.unscoped do
+      Comment.eager_load(:user).where(frame_id: frame.id)
+             .order(created_at: 'asc')
+    end
   end
 
   private
