@@ -35,7 +35,6 @@
 # User
 class User < ApplicationRecord
   include Errors::Sortable
-  include Page::Confirmable
   include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
 
