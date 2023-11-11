@@ -40,7 +40,7 @@ class UserSerializer
   attributes :id, :email, :name
 
   attribute :image_thumb_url do |object|
-    object.image_url_for_view(:thumbnail)
+    object.image_url_for_view(:thumb)
   end
 
   attribute :image_one_url do |object|

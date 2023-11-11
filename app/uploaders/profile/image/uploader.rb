@@ -17,7 +17,7 @@ module Profile
         pipeline = ImageProcessing::Vips.source(original)
 
         {
-          thumbnail: pipeline.resize_to_limit!(50, 50),
+          thumb: pipeline.resize_to_limit!(50, 50),
           one: pipeline.resize_to_limit!(100, 100),
           three: pipeline.resize_to_limit!(300, 300)
         }
