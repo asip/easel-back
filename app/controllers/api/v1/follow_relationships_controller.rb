@@ -10,7 +10,7 @@ module Api
 
       def following
         user = User.find(query_params[:user_id])
-        following_ = @current_user.following?(user)
+        following_ = current_user.following?(user)
         render json: { following: following_ }
       end
 
