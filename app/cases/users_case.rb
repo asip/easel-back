@@ -11,9 +11,12 @@ class UsersCase
   def update_user(user:, form_params:)
     user.attributes = form_params
     # puts 'testtest'
-    success = user.save(context: :with_validation)
-    # puts user.saved_change_to_email?
-    user.update_token if success
+    success = user.valid?(:with_validation)
+    if success
+      # puts user.saved_change_to_email?
+      user.save!(context: :with_validation)
+      user.update_token
+    end
     [success, user]
   end
 
