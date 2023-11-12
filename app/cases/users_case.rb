@@ -13,8 +13,8 @@ class UsersCase
     # puts 'testtest'
     success = user.valid?(:with_validation)
     if success
-      # puts user.saved_change_to_email?
       user.save!(context: :with_validation)
+      # puts user.saved_change_to_email?
       user.update_token
     end
     [success, user]
