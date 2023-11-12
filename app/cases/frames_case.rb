@@ -23,11 +23,11 @@ class FramesCase
     Frame.search_by(word:).order(created_at: 'desc')
   end
 
-  def find_query(frame_id:)
+  def find_query_with_relations(frame_id:)
     Frame.eager_load(:user, comments: :user).find_by!(id: frame_id)
   end
 
-  def comments_query(frame_id:)
+  def comments_query_with_user(frame_id:)
     frame = Frame.find_by!(id: frame_id)
     User.unscoped do
       Comment.eager_load(:user).where(frame_id: frame.id)

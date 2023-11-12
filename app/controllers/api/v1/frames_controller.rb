@@ -19,13 +19,13 @@ module Api
       end
 
       def show
-        frame = @case.find_query(frame_id: params[:id])
+        frame = @case.find_query_with_relations(frame_id: params[:id])
 
         render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end
 
       def comments
-        comments = @case.comments_query(frame_id: query_params[:frame_id])
+        comments = @case.comments_query_with_user(frame_id: query_params[:frame_id])
 
         # options = {}
         # options[:include] = [:user]
