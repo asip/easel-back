@@ -1,3 +1,6 @@
 <% if @flashes.present? %>
   <div data-controller="toast" data-toast-flashes-value="<%= @flashes_json %>"></div>
 <% end %>
+<% if @flash.present? %>
+  <div data-controller="toast" data-toast-flashes-value="<%= @flash_json %>"></div>
+<% end %>
