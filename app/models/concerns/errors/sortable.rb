@@ -11,6 +11,8 @@ module Errors
     def full_error_messages_for(columns)
       full_error_messages = []
       columns.each do |column|
+        next unless errors.attribute_names.include?(column)
+
         errors.full_messages_for(column).each do |message|
           full_error_messages << message
         end
