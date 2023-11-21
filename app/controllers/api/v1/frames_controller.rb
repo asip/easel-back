@@ -39,7 +39,7 @@ module Api
         if success
           render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
         else
-          render json: { errors: frame.errors.messages }.to_json
+          render json: { errors: frame.errors.to_hash(true) }.to_json
         end
       end
 
@@ -49,7 +49,7 @@ module Api
         if success
           render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
         else
-          render json: { errors: frame.errors.messages }.to_json
+          render json: { errors: frame.errors.to_hash(true) }.to_json
         end
       end
 
