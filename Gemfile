@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 7.1.2'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem 'propshaft', '~> 0.7.0'
+gem 'propshaft', '~> 0.8.0'
 
 # gem 'dartsass-rails'
 
