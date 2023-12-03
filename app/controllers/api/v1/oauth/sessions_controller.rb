@@ -27,10 +27,19 @@ module Api
           if (user = login_from(provider))
             user.assign_token(user_class.issue_token(id: user.id, email: user.email))
           else
-            user = create_from(provider)
+            user = create_or_find_from(provider)
             user.assign_token(user_class.issue_token(id: user.id, email: user.email))
             reset_session
             auto_login(user)
+          end
+          user
+        end
+
+        def create_or_find_from(provider)
+          if (user = user_class.find_by(email: @user_hash[:user_info]['email']))
+            user.add_provider_to_user(provider, @user_hash[:uid].to_s)
+          else
+            user = create_from(provider)
           end
           user
         end
