@@ -79,6 +79,9 @@ gem 'rack-cors'
 # soft delete
 gem 'discard', '~> 1.2'
 
+# redis
+gem 'redis-actionpack', '~> 5.3'
+
 # management console
 gem 'rails_admin', '~> 3.0'
 

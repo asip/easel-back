@@ -61,6 +61,7 @@ ENV MINIO_SECRET_KEY=${minio_secret_key}
 ENV MINIO_ENDPOINT=${minio_endpoint}
 ENV MINIO_BUCKET=${minio_bucket}
 ENV AWS_REGION=${aws_region}
+ENV REDIS_SESSION_URL=${redis_session_url}
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN ./bin/rails assets:precompile
