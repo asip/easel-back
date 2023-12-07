@@ -4,7 +4,7 @@
 module Queries
   # frames
   module Frames
-    # ListFrames module
+    # ListFrames
     class ListFrames
       include Query
 
