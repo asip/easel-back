@@ -3,43 +3,31 @@
 # Frames Case
 class FramesCase
   def create_frame(user:, form_params:)
-    frame = Frame.new(form_params)
-    save_frame(user:, frame:)
+    mutation = Mutations::Frames::CreateFrame.run(user:, form_params:)
+
+    [mutation.success?, mutation.frame]
   end
 
   def update_frame(user:, frame_id:, form_params:)
-    frame = Frame.find_by!(id: frame_id, user_id: user.id)
-    frame.attributes = form_params
-    save_frame(user:, frame:)
+    mutation = Mutations::Frames::UpdateFrame.run(user:, frame_id:, form_params:)
+
+    [mutation.success?, mutation.frame]
   end
 
   def delete_frame(user:, frame_id:)
-    frame = Frame.find_by!(id: frame_id, user_id: user.id)
-    frame.destroy
-    frame
+    mutation = Mutations::Frames::DeleteFrame.run(user:, frame_id:)
+    mutation.frame
   end
 
   def list_query(word:)
-    Frame.search_by(word:).order(created_at: 'desc')
+    Queries::Frames::ListFrames.run(word:)
   end
 
   def find_query_with_relations(frame_id:)
-    Frame.eager_load(:user, comments: :user).find_by!(id: frame_id)
+    Queries::Frames::FindFrameWithRelations.run(frame_id:)
   end
 
   def comments_query_with_user(frame_id:)
-    frame = Frame.find_by!(id: frame_id)
-    User.unscoped do
-      Comment.eager_load(:user).where(frame_id: frame.id)
-             .order(created_at: 'asc')
-    end
-  end
-
-  private
-
-  def save_frame(user:, frame:)
-    frame.user_id = user.id
-    success = frame.save
-    [success, frame]
+    Queries::Frames::ListCommentsWithUser.run(frame_id:)
   end
 end
