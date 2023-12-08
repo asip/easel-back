@@ -7,7 +7,7 @@ module Api
     # Users Controller
     class UsersController < Api::V1::ApiController
       include ActionController::Cookies
-      include Users::Query::PaginationQuery
+      include Users::Query::Pagination
 
       skip_before_action :authenticate, only: %i[create show frames]
 

@@ -4,8 +4,8 @@
 module Frames
   # query
   module Query
-    # PaginationQuery module
-    module PaginationQuery
+    # Pagination module
+    module Pagination
       extend ActiveSupport::Concern
 
       include Pagy::Backend
