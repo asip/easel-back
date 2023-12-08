@@ -10,10 +10,9 @@ module Api
       include Users::Query::PaginationQuery
 
       skip_before_action :authenticate, only: %i[create show frames]
-      before_action :set_case
 
       def show
-        user = @case.find_query(user_id: params[:id])
+        user = Queries::Users::FindUser.run(user_id: params[:id])
         render json: UserSerializer.new(user).serializable_hash
       end
 
@@ -24,8 +23,9 @@ module Api
       end
 
       def create
-        success, user = @case.create_user(form_params:)
-        if success
+        mutation = Mutations::Users::CreateUser.run(form_params:)
+        user = mutation.user
+        if mutation.success?
           render json: UserSerializer.new(user).serializable_hash
         else
           render json: { errors: user.errors.to_hash(true) }.to_json
@@ -33,9 +33,10 @@ module Api
       end
 
       def update
-        success, user = @case.update_user(user: current_user, form_params:)
-        if success
-          cookies.permanent[:access_token] = user.token if user.saved_change_to_email
+        mutation = Mutations::Users::UpdateUser.run(user: current_user, form_params:)
+        user = mutation.user
+        if mutation.success?
+          set_token_to_cookie(user:)
           render json: AccountSerializer.new(user).serializable_hash
         else
           render json: { errors: user.errors.to_hash(true) }.to_json
@@ -44,8 +45,8 @@ module Api
 
       private
 
-      def set_case
-        @case = UsersCase.new
+      def set_token_to_cookie(user:)
+        cookies.permanent[:access_token] = user.token if user.saved_change_to_email
       end
 
       def index_options

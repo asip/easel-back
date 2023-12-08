@@ -10,7 +10,6 @@ module Api
 
       skip_before_action :switch_locale, only: [:comments]
       skip_before_action :authenticate, only: %i[index show comments]
-      before_action :set_case
 
       def index
         pagination, frames = list_query(word: query_params[:q], page: query_params[:page])
@@ -19,13 +18,13 @@ module Api
       end
 
       def show
-        frame = @case.find_query_with_relations(frame_id: params[:id])
+        frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id])
 
         render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end
 
       def comments
-        comments = @case.comments_query_with_user(frame_id: query_params[:frame_id])
+        comments = Queries::Frames::ListCommentsWithUser.run(frame_id: query_params[:frame_id])
 
         # options = {}
         # options[:include] = [:user]
@@ -34,9 +33,10 @@ module Api
       end
 
       def create
-        success, frame = @case.create_frame(user: current_user, form_params:)
+        mutation = Mutations::Frames::CreateFrame.run(user: current_user, form_params:)
+        frame = mutation.frame
 
-        if success
+        if mutation.success?
           render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
         else
           render json: { errors: frame.errors.to_hash(true) }.to_json
@@ -44,9 +44,10 @@ module Api
       end
 
       def update
-        success, frame = @case.update_frame(user: current_user, frame_id: params[:id], form_params:)
+        mutation = Mutations::Frames::UpdateFrame.run(user: current_user, frame_id: params[:id], form_params:)
+        frame = mutation.frame
 
-        if success
+        if mutation.success?
           render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
         else
           render json: { errors: frame.errors.to_hash(true) }.to_json
@@ -54,15 +55,12 @@ module Api
       end
 
       def destroy
-        frame = @case.delete_frame(user: current_user, frame_id: params[:id])
+        mutation = Mutations::Frames::DeleteFrame.run(user: current_user, frame_id: params[:id])
+        frame = mutation.frame
         render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end
 
       private
-
-      def set_case
-        @case = FramesCase.new
-      end
 
       def index_options
         {}

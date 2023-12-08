@@ -12,7 +12,7 @@ module Users
       include Api::Pagination
 
       def frames_query(user_id:, page:)
-        frames = @case.frames_query(user_id:)
+        frames = Queries::Users::ListFrames.run(user_id:)
         pagy, frames = pagy(frames, { page: })
         pagination = resources_with_pagination(pagy)
         [pagination, frames]

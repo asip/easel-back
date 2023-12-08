@@ -12,7 +12,7 @@ module Frames
       include Api::Pagination
 
       def list_query(word:, page:)
-        frames = @case.list_query(word:)
+        frames = Queries::Frames::ListFrames.run(word:)
         pagy, frames = pagy(frames, { page: })
         frame_ids = frames.pluck(:id)
         frames = Frame.where(id: frame_ids).order(created_at: 'desc')
