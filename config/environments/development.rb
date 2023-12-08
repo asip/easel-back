@@ -88,5 +88,8 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # log ratation
+  config.logger = Logger.new('log/development.log', 10, 5 * 1024 * 1024)
 end
 # rubocop:enable Metrics/BlockLength
