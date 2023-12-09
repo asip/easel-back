@@ -1,10 +1,7 @@
-import { FlatCompat } from '@eslint/eslintrc';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import js from '@eslint/js';
 import typescriptESLintParser from '@typescript-eslint/parser'
 import typescriptESLint from '@typescript-eslint/eslint-plugin'
-
-const compat = new FlatCompat()
 
 export default [
   {
