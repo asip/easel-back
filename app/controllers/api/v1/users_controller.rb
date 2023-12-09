@@ -36,7 +36,7 @@ module Api
         mutation = Mutations::Users::UpdateUser.run(user: current_user, form_params:)
         user = mutation.user
         if mutation.success?
-          set_token_to_cookie(user:)
+          # set_token_to_cookie(user:)
           render json: AccountSerializer.new(user).serializable_hash
         else
           render json: { errors: user.errors.to_hash(true) }.to_json
@@ -45,9 +45,9 @@ module Api
 
       private
 
-      def set_token_to_cookie(user:)
-        cookies.permanent[:access_token] = user.token if user.saved_change_to_email
-      end
+      # def set_token_to_cookie(user:)
+      #  cookies.permanent[:access_token] = user.token if user.saved_change_to_email
+      # end
 
       def index_options
         {}

@@ -17,7 +17,7 @@ module Api
           provider = auth_params[:provider]
 
           user = login_from_oauth(provider)
-          cookies.permanent[:access_token] = user.token
+          # cookies.permanent[:access_token] = user.token
           render json: AccountSerializer.new(user).serializable_hash
         end
 
