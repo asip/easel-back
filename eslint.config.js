@@ -24,7 +24,6 @@ export default [
       indent: ['error', 2]
     }
   },
-  // ,
   {
     files: ['**/*.js'],
     languageOptions: {
@@ -47,9 +46,10 @@ export default [
     },
     rules: {
       ...typescriptESLint.configs.recommended.rules,
-      ...typescriptESLint.configs["recommended-type-checked"].rules,
+      ...typescriptESLint.configs['eslint-recommended'].rules,
+      ...typescriptESLint.configs['recommended-type-checked'].rules,
       ...typescriptESLint.configs.strict.rules,
-      ...typescriptESLint.configs["strict-type-checked"].rules,
+      ...typescriptESLint.configs['strict-type-checked'].rules,
       ...typescriptESLint.configs.stylistic.rules,
       '@typescript-eslint/no-explicit-any': 1,
       '@typescript-eslint/no-non-null-assertion': 1
