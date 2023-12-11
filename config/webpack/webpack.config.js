@@ -1,17 +1,19 @@
-// eslint-disable-next-line no-undef
-const path = require('path')
-// eslint-disable-next-line no-undef
-const webpack = require('webpack')
-// eslint-disable-next-line no-undef
+import { fileURLToPath } from "node:url";
+import path from "node:path"
+import webpack from "webpack"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 
 // eslint-disable-next-line no-undef
-module.exports = {
+export default {
   mode,
   resolve: {
-    alias: {
-      vue$: 'vue/dist/vue.esm-bundler.js',
-    },
+    // alias: {
+    //  vue$: 'vue/dist/vue.esm-bundler.js',
+    // },
     extensions: ['.js', '.ts']
   },
   entry: {
