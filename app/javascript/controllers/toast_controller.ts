@@ -1,6 +1,8 @@
 import ApplicationController from './application_controller'
 import Toastify from 'toastify-js'
 
+type Flashes = Record<string, string[]>
+
 export default class ToastController extends ApplicationController {
   static values = {
     flashes: String
@@ -9,7 +11,7 @@ export default class ToastController extends ApplicationController {
   declare readonly flashesValue: string
 
   connect() {
-    const flashes = JSON.parse(this.flashesValue.valueOf())
+    const flashes: Flashes = JSON.parse(this.flashesValue.valueOf()) as Flashes
 
     Object.keys(flashes).forEach(
       (flashType: string) => {
