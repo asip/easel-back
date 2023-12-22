@@ -19,7 +19,7 @@ module ListItem
   # Frame Serializer
   class FrameSerializer
     include JSONAPI::Serializer
-    attributes :user_id, :name, :comment
+    attributes :id, :user_id, :name, :comment
 
     attribute :shooted_at do |object|
       object.shooted_at.present? ? I18n.l(object.shooted_at, format: '%Y/%m/%d %H:%M') : ''

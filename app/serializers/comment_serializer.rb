@@ -17,7 +17,7 @@ class CommentSerializer
   include JSONAPI::Serializer
   set_type :comment
   set_id :id
-  attributes :user_id, :frame_id, :body
+  attributes :id, :user_id, :frame_id, :body
 
   attribute :user_name do |object|
     object.user.name
