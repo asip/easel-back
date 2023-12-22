@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   root 'manager/sessions#new'
 
   namespace :manager do
-    get '/' => 'sessions#new'
+    get '/' => 'sessions#new', as: 'login'
     resources :sessions, only: %i[new create destroy]
-    get '/sessions' => 'sessions#new', as: 'login'
+    get '/sessions' => 'sessions#new'
   end
   delete '/logout' => 'manager/sessions#destroy', as: 'logout'
 
