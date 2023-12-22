@@ -7,7 +7,6 @@ module Manager
     include Locale::AutoDetect
     include Flashes
 
-    before_action :switch_locale
     before_action :require_login
 
     private
