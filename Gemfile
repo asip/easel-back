@@ -73,6 +73,9 @@ gem 'acts-as-taggable-on', '~> 10.0.0'
 # json
 gem 'jsonapi-serializer'
 
+# Rack::Locale
+gem 'rack-contrib', '2.4.0'
+
 # cors
 gem 'rack-cors'
 
