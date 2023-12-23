@@ -15,7 +15,7 @@ module Locale
     def switch_locale
       # logger.debug I18n.locale
       locale = I18n.locale.to_s&.split(/-/)&.first
-      locale = I18n.config.available_locales.include?(locale.to_sym) ? locale : 'en'
+      locale = I18n.available_locales.include?(locale.to_sym) ? locale : 'en'
       # logger.debug "* Locale set to '#{locale}'"
       I18n.locale = locale.to_sym
     end
