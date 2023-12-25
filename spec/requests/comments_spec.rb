@@ -22,7 +22,7 @@ describe 'Comments', type: :request do
                }
              },
              headers: {
-               'HTTP_ACCEPT_LANGUAGE': 'jp',
+               'HTTP_ACCEPT_LANGUAGE': 'ja',
                'Authorization': "Bearer #{user.token}"
              }
         expect(response.status).to eq 200
@@ -40,7 +40,7 @@ describe 'Comments', type: :request do
                  }
                },
                headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'jp',
+                 'HTTP_ACCEPT_LANGUAGE': 'ja',
                  'Authorization': "Bearer #{user.token}"
                }
           expect(response.status).to eq 200
@@ -56,7 +56,7 @@ describe 'Comments', type: :request do
                  }
                },
                headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'jp',
+                 'HTTP_ACCEPT_LANGUAGE': 'ja',
                  'Authorization': "Bearer #{user.token}"
                }
           expect(response.status).to eq 200
@@ -82,7 +82,7 @@ describe 'Comments', type: :request do
       it 'success (成功)' do
         delete endpoint,
                headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'jp',
+                 'HTTP_ACCEPT_LANGUAGE': 'ja',
                  'Authorization': "Bearer #{user.token}"
                }
         expect(response.status).to eq 204
@@ -91,7 +91,7 @@ describe 'Comments', type: :request do
       it 'failure (失敗)' do
         delete endpoint_failure,
                headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'jp',
+                 'HTTP_ACCEPT_LANGUAGE': 'ja',
                  'Authorization': "Bearer #{user.token}"
                }
         expect(response.status).to eq 404

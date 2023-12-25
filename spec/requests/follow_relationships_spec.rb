@@ -21,7 +21,7 @@ describe 'FollowRelationships', type: :request do
         it 'success(成功)' do
           get endpoint,
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to be 200
@@ -38,7 +38,7 @@ describe 'FollowRelationships', type: :request do
         it 'success(成功)' do
           get endpoint,
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to be 200
@@ -66,7 +66,7 @@ describe 'FollowRelationships', type: :request do
       it 'success (成功)' do
         post endpoint,
              headers: {
-               'HTTP_ACCEPT_LANGUAGE': 'jp',
+               'HTTP_ACCEPT_LANGUAGE': 'ja',
                'Authorization': "Bearer #{user.token}"
              }
         expect(response.status).to be 204
@@ -75,7 +75,7 @@ describe 'FollowRelationships', type: :request do
       # it 'failure (失敗)' do
       #  post endpoint_failure,
       #       headers: {
-      #         'HTTP_ACCEPT_LANGUAGE': 'jp',
+      #         'HTTP_ACCEPT_LANGUAGE': 'ja',
       #         'Authorization': "Bearer #{user.token}"
       #       }
       #  expect(response.status).to be 204
@@ -101,7 +101,7 @@ describe 'FollowRelationships', type: :request do
       it 'success (成功)' do
         delete endpoint,
                headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'jp',
+                 'HTTP_ACCEPT_LANGUAGE': 'ja',
                  'Authorization': "Bearer #{user.token}"
                }
         expect(response.status).to be 204
@@ -110,7 +110,7 @@ describe 'FollowRelationships', type: :request do
       it 'falure (失敗)' do
         delete endpoint_failure,
                headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'jp',
+                 'HTTP_ACCEPT_LANGUAGE': 'ja',
                  'Authorization': "Bearer #{user.token}"
                }
         expect(response.status).to be 204

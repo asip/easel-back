@@ -12,7 +12,7 @@ describe 'Users', type: :request do
     context 'get user (ユーザー情報取得)' do
       it 'success (成功)' do
         get endpoint,
-            headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+            headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         json_data = json[:data]
         expect(response.status).to eq(200)
         expect(json_data).to have_type('user')
@@ -22,7 +22,7 @@ describe 'Users', type: :request do
 
       it 'failure (失敗)' do
         get endpoint_failure,
-            headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+            headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         expect(response.status).to eq(404)
       end
     end
@@ -49,7 +49,7 @@ describe 'Users', type: :request do
     context 'get user frame list (ユーザーのフレームリスト取得)' do
       context 'page=1 (1ページめ)' do
         it 'success (成功)' do
-          get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
           json_data = json[:data]
           expect(json_data.size).to be 8
@@ -58,7 +58,7 @@ describe 'Users', type: :request do
 
       context 'page=2 (2ページめ)' do
         it 'success (成功)' do
-          get endpoint, params: { page: 2 }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+          get endpoint, params: { page: 2 }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
           json_data = json[:data]
           expect(json_data.size).to be 2
@@ -66,7 +66,7 @@ describe 'Users', type: :request do
       end
 
       it 'failure (失敗)' do
-        get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+        get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         expect(response.status).to eq 404
       end
     end
@@ -87,7 +87,7 @@ describe 'Users', type: :request do
                    password_confirmation: 'testtest'
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json[:data]
           expect(json_data).to have_type('user')
@@ -107,7 +107,7 @@ describe 'Users', type: :request do
                  image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
                }
              },
-             headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+             headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         expect(response.status).to eq(200)
         json_data = json[:data]
         expect(json_data).to have_type('user')
@@ -126,7 +126,7 @@ describe 'Users', type: :request do
                    password_confirmation: 'testtest'
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
@@ -142,7 +142,7 @@ describe 'Users', type: :request do
                    password_confirmation: 'testtest'
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
@@ -158,7 +158,7 @@ describe 'Users', type: :request do
                    password_confirmation: 'testtest'
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
@@ -174,7 +174,7 @@ describe 'Users', type: :request do
                    password_confirmation: 'testtest'
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
@@ -190,7 +190,7 @@ describe 'Users', type: :request do
                    password_confirmation: 'testtest'
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
@@ -206,7 +206,7 @@ describe 'Users', type: :request do
                    password_confirmation: 'te'
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
@@ -222,7 +222,7 @@ describe 'Users', type: :request do
                    password_confirmation: 'testtesttest'
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_nil
@@ -239,7 +239,7 @@ describe 'Users', type: :request do
                    password_confirmation: ''
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
@@ -258,7 +258,7 @@ describe 'Users', type: :request do
                                                        'image/jpeg')
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
@@ -276,7 +276,7 @@ describe 'Users', type: :request do
                                                        'text/plain')
                  }
                },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'jp' }
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
@@ -306,7 +306,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -327,7 +327,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -350,7 +350,7 @@ describe 'Users', type: :request do
               }
             },
             headers: {
-              'HTTP_ACCEPT_LANGUAGE': 'jp',
+              'HTTP_ACCEPT_LANGUAGE': 'ja',
               'Authorization': "Bearer #{user.token}"
             }
         expect(response.status).to eq(200)
@@ -372,7 +372,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -391,7 +391,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -410,7 +410,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -429,7 +429,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -448,7 +448,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -467,7 +467,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -486,7 +486,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -508,7 +508,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
@@ -529,7 +529,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'jp',
+                'HTTP_ACCEPT_LANGUAGE': 'ja',
                 'Authorization': "Bearer #{user.token}"
               }
           expect(response.status).to eq(200)
