@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# frames
-module Frames
-  # query
-  module Query
+# queries
+module Queries
+  # Users
+  module Users
     # Pagination module
     module Pagination
       extend ActiveSupport::Concern
@@ -11,11 +11,9 @@ module Frames
       include Pagy::Backend
       include Api::Pagination
 
-      def list_query(word:, page:)
-        frames = Queries::Frames::ListFrames.run(word:)
+      def list_frames_query(user_id:, page:)
+        frames = Queries::Users::ListFrames.run(user_id:)
         pagy, frames = pagy(frames, { page: })
-        frame_ids = frames.pluck(:id)
-        frames = Frame.where(id: frame_ids).order(created_at: 'desc')
         pagination = resources_with_pagination(pagy)
         [pagination, frames]
       end

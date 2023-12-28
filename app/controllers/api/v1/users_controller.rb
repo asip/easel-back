@@ -7,7 +7,7 @@ module Api
     # Users Controller
     class UsersController < Api::V1::ApiController
       include ActionController::Cookies
-      include Users::Query::Pagination
+      include Queries::Users::Pagination
 
       skip_before_action :authenticate, only: %i[create show frames]
 
@@ -17,7 +17,7 @@ module Api
       end
 
       def frames
-        pagination, frames = frames_query(user_id: query_params[:user_id], page: query_params[:page])
+        pagination, frames = list_frames_query(user_id: query_params[:user_id], page: query_params[:page])
 
         render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end

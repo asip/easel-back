@@ -6,13 +6,13 @@ module Api
   module V1
     # Frames Controller
     class FramesController < Api::V1::ApiController
-      include Frames::Query::Pagination
+      include Queries::Frames::Pagination
 
       skip_before_action :switch_locale, only: [:comments]
       skip_before_action :authenticate, only: %i[index show comments]
 
       def index
-        pagination, frames = list_query(word: query_params[:q], page: query_params[:page])
+        pagination, frames = list_frames_query(word: query_params[:q], page: query_params[:page])
 
         render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
       end
