@@ -128,5 +128,5 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'jsonapi-rspec'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 6.1'
 end

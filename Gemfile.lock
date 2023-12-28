@@ -550,7 +550,7 @@ DEPENDENCIES
   rails_admin (~> 3.0)
   rambulance
   redis-actionpack (~> 5.3)
-  rspec-rails
+  rspec-rails (~> 6.1)
   rubocop-performance
   rubocop-rails
   ruby-lsp
