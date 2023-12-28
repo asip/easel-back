@@ -9,7 +9,7 @@ module Api
       include AbstractController::Helpers
       include Api::ExceptionHandler
       include Locale::AutoDetect
-      include Query::NPlusOne::Detection unless Rails.env.production?
+      include NPlusOne::Query::Detection unless Rails.env.production?
 
       # protect_from_forgery with: :exception
 

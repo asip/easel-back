@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# query
-module Query
-  # n plus one
-  module NPlusOne
+# n plus one
+module NPlusOne
+  # query
+  module Query
     # Detection module
     module Detection
       extend ActiveSupport::Concern
