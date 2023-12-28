@@ -8,11 +8,18 @@ module Toast
       super
       @flash = flash
       @flashes = flashes
-      @flash_json = flash_to_json
-      @flashes_json = flashes.to_json
+      @flashes_json = flashes_json
     end
 
     private
+
+    def flashes_json
+      if @flash.present?
+        flash_to_json
+      elsif @flashes.present?
+        @flashes.to_json
+      end
+    end
 
     def flash_to_json
       flash_ = {}
