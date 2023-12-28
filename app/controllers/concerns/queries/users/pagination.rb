@@ -2,7 +2,7 @@
 
 # queries
 module Queries
-  # Users
+  # users
   module Users
     # Pagination module
     module Pagination
