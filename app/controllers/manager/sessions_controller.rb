@@ -5,6 +5,7 @@ module Manager
   # Sessions Controller
   class SessionsController < Manager::ApplicationController
     skip_before_action :require_login, except: [:destroy]
+    before_action :authenticated, only: [:new]
 
     def new
       @user = Admin.new
@@ -30,6 +31,10 @@ module Manager
     end
 
     private
+
+    def authenticated
+      redirect_to rails_admin_path if logged_in?
+    end
 
     def create_successful
       redirect_to rails_admin_path
