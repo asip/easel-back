@@ -1,7 +1,7 @@
 <%= form_with model: @user, url: manager_sessions_path, method: :post, local: true,
               html: { 'data-turbo': false } do |form| %>
   <br>
-  <div class="card">
+  <div class="card col-sm-10 mx-auto">
     <div class="card-header">
       <div class="float-start">
         &nbsp;<%= t('action.administration.title') %>
@@ -10,7 +10,7 @@
     <div class="card-block">
       <br>
       <div class="row d-flex justify-content-sm-center border border-white">
-        <div class="col-sm-6">
+        <div class="col-sm-10">
           <table class="table table-bordered table_rounded">
             <tbody>
               <tr>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="row d-flex justify-content-sm-center">
-        <div class="form-group col-sm-6">
+        <div class="form-group col-sm-10">
           <%= form.submit t('action.administration.login'), class: 'btn btn-primary' %>
         </div>
       </div>
