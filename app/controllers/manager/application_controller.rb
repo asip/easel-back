@@ -15,6 +15,15 @@ module Manager
       redirect_to main_app.manager_login_path # main_appのプレフィックスをつける
     end
 
+    # Overwrite Sorcery's handle unverified request
+    def handle_unverified_request
+      cookies[:remember_me_token] = nil
+      @current_user = nil
+      return reset_session if current_user.blank?
+
+      raise ActionController::InvalidAuthenticityToken, warning_message
+    end
+
     def user_class
       @user_class ||= Admin.to_s.constantize
     end
