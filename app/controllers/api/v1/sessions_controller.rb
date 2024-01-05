@@ -67,7 +67,6 @@ module Api
       end
 
       def create_successful(user:)
-
         render json: AccountSerializer.new(user).serializable_hash
       end
 
