@@ -88,7 +88,7 @@ module Api
           user.validate_email_on_login(form_params)
         end
         success = user.errors.empty?
-        [success, user]
+        [ success, user ]
       end
 
       def form_params

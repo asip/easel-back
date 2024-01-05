@@ -22,11 +22,11 @@ module ListItem
     attributes :id, :user_id, :name, :comment
 
     attribute :shooted_at do |object|
-      object.shooted_at.present? ? I18n.l(object.shooted_at, format: '%Y/%m/%d %H:%M') : ''
+      object.shooted_at.present? ? I18n.l(object.shooted_at, format: "%Y/%m/%d %H:%M") : ""
     end
 
     attribute :shooted_at_html do |object|
-      object.shooted_at.present? ? I18n.l(object.shooted_at) : ''
+      object.shooted_at.present? ? I18n.l(object.shooted_at) : ""
     end
 
     attribute :created_at do |object|

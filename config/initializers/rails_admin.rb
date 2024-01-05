@@ -3,7 +3,7 @@
 #
 # Monkey patch to remove default scope
 #
-require 'rails_admin/adapters/active_record'
+require "rails_admin/adapters/active_record"
 
 # RaisAdmin
 module RailsAdmin
@@ -49,7 +49,7 @@ RailsAdmin.config do |config|
   end
 
   config.current_user_method(&:current_user)
-  config.parent_controller = 'Manager::ApplicationController'
+  config.parent_controller = "Manager::ApplicationController"
 
   config.default_hidden_fields = {
     show: %i[id created_at updated_at],

@@ -15,7 +15,7 @@ module Queries
         frames = Queries::Users::ListFrames.run(user_id:)
         pagy, frames = pagy(frames, { page: })
         pagination = resources_with_pagination(pagy)
-        [pagination, frames]
+        [ pagination, frames ]
       end
     end
   end

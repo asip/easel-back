@@ -18,7 +18,7 @@ module Page
 
     def check_confirming
       errors.delete(:confirming)
-      self.confirming = errors.empty? ? 'true' : ''
+      self.confirming = errors.empty? ? "true" : ""
     end
   end
 end

@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
-require 'shrine'
-require 'shrine/storage/s3'
-require 'shrine/storage/file_system'
+require "shrine"
+require "shrine/storage/s3"
+require "shrine/storage/file_system"
 
 if Rails.env.production? || Rails.env.development?
   s3_options = {
-    access_key_id: ENV.fetch('MINIO_ACCESS_KEY', 'minioadmin'), # "AccessKey" value
-    secret_access_key: ENV.fetch('MINIO_SECRET_KEY', 'minioadmin'), # "SecretKey" value
-    endpoint: ENV.fetch('MINIO_ENDPOINT', ''), # "Endpoint"  value
-    bucket: ENV.fetch('MINIO_BUCKET', ''), # name of the bucket you created
-    region: ENV.fetch('AWS_REGION', ''),
-    force_path_style: ENV.fetch('MINIO_FORCE_PATH_STYLE', true)
+    access_key_id: ENV.fetch("MINIO_ACCESS_KEY", "minioadmin"), # "AccessKey" value
+    secret_access_key: ENV.fetch("MINIO_SECRET_KEY", "minioadmin"), # "SecretKey" value
+    endpoint: ENV.fetch("MINIO_ENDPOINT", ""), # "Endpoint"  value
+    bucket: ENV.fetch("MINIO_BUCKET", ""), # name of the bucket you created
+    region: ENV.fetch("AWS_REGION", ""),
+    force_path_style: ENV.fetch("MINIO_FORCE_PATH_STYLE", true)
   }
 
   Shrine.storages = {
-    cache: Shrine::Storage::S3.new(prefix: 'cache', **s3_options), # temporary
-    store: Shrine::Storage::S3.new(prefix: 'store', **s3_options) # permanent
+    cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options), # temporary
+    store: Shrine::Storage::S3.new(prefix: "store", **s3_options) # permanent
   }
 elsif Rails.env.test?
   Shrine.storages = {
-    cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'),
-    store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/store')
+    cache: Shrine::Storage::FileSystem.new("public", prefix: "uploads/cache"),
+    store: Shrine::Storage::FileSystem.new("public", prefix: "uploads/store")
   }
 end
 

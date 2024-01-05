@@ -20,29 +20,29 @@ module Api
     protected
 
     def render400(exception = nil, messages = nil)
-      render_error(400, 'Bad Request', exception&.message, *messages)
+      render_error(400, "Bad Request", exception&.message, *messages)
     end
 
     def render401(exception = nil, messages = nil)
-      render_error(401, 'Unauthorized', exception&.message, *messages)
+      render_error(401, "Unauthorized", exception&.message, *messages)
     end
 
     def render404(exception = nil, messages = nil)
-      render_error(404, 'Not Found', exception&.message, *messages)
+      render_error(404, "Not Found", exception&.message, *messages)
     end
 
     def render409(exception = nil, messages = nil)
-      render_error(409, 'Conflict', exception&.message, *messages)
+      render_error(409, "Conflict", exception&.message, *messages)
     end
 
     def render422(exception = nil, messages = nil)
-      render_error(422, 'Unprocessable Entity', exception&.message, *messages)
+      render_error(422, "Unprocessable Entity", exception&.message, *messages)
     end
 
     def render500(exception = nil, messages = nil)
       logger.error exception.full_message
       # logger.error exception.backtrace
-      render_error(500, 'Internal Server Error', exception&.message, *messages)
+      render_error(500, "Internal Server Error", exception&.message, *messages)
     end
 
     def render_error(code, message, *error_messages)

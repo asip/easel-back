@@ -135,7 +135,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.google.key = Settings.google.client_id
   config.google.secret = Settings.google.client_secret
-  config.google.user_info_mapping = { email: 'email', name: 'name' }
+  config.google.user_info_mapping = { email: "email", name: "name" }
   # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
@@ -451,12 +451,12 @@ Rails.application.config.sorcery.configure do |config|
 
     # ...
     user.jwt_secret = Rails.application.credentials.secret_key_base
-    user.jwt_algorithm = 'HS256' # HS256 is used by default.
+    user.jwt_algorithm = "HS256" # HS256 is used by default.
     # user.session_expiry = 60 * 60 * 24 * 7 * 2 # 2 weeks is used by default.
     user.session_expiry = 60 * 60
   end
 
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
-  config.user_class = 'User'
+  config.user_class = "User"
 end

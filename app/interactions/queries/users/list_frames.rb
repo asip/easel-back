@@ -13,7 +13,7 @@ module Queries
       end
 
       def execute
-        User.find_by!(id: @user_id).frames.order('frames.created_at': 'desc')
+        User.find_by!(id: @user_id).frames.order('frames.created_at': "desc")
       end
     end
   end

@@ -41,13 +41,13 @@ class Frame < ApplicationRecord
                 date_word = Time.zone.parse(word)
                 scope.where(shooted_at: date_word.beginning_of_day..date_word.end_of_day)
                      .or(Frame.where(updated_at: date_word.beginning_of_day..date_word.end_of_day))
-              else
+      else
                 scope.left_joins(:tags, :user)
-                     .merge(ActsAsTaggableOn::Tag.where('tags.name like ?',
+                     .merge(ActsAsTaggableOn::Tag.where("tags.name like ?",
                                                         "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
-                     .or(Frame.where('frames.name like ?', "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
+                     .or(Frame.where("frames.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
                      .or(User.where(name: word))
-              end
+      end
     end
 
     scope
@@ -67,10 +67,10 @@ class Frame < ApplicationRecord
   private
 
   def check_tag
-    errors.add(:tag_list, I18n.t('validations.message.frame.tags.array_length')) if tags_preview.size > 5
+    errors.add(:tag_list, I18n.t("validations.message.frame.tags.array_length")) if tags_preview.size > 5
     tags_preview.each do |tag|
       if tag.to_s.size > 10
-        errors.add(:tag_list, I18n.t('validations.message.frame.tags.length'))
+        errors.add(:tag_list, I18n.t("validations.message.frame.tags.length"))
         break
       end
     end

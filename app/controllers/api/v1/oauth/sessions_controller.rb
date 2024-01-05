@@ -34,7 +34,7 @@ module Api
         end
 
         def create_or_find_from(provider)
-          if (user = user_class.find_by(email: @user_hash[:user_info]['email']))
+          if (user = user_class.find_by(email: @user_hash[:user_info]["email"]))
             user.add_provider_to_user(provider, @user_hash[:uid].to_s)
           else
             user = create_from(provider)

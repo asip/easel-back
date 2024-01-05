@@ -21,7 +21,7 @@ module Detail
     attributes :user_name
 
     attribute :tag_list do |object|
-      object.tags_preview.join(',')
+      object.tags_preview.join(",")
     end
 
     attribute :tags, &:tags_preview

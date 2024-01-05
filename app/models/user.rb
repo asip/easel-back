@@ -49,9 +49,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   # (フォローをした、されたの関係)
-  has_many :follower_relationships, class_name: 'FollowRelationship', foreign_key: 'follower_id',
+  has_many :follower_relationships, class_name: "FollowRelationship", foreign_key: "follower_id",
                                     inverse_of: :follower, dependent: :destroy
-  has_many :followee_relationships, class_name: 'FollowRelationship', foreign_key: 'followee_id',
+  has_many :followee_relationships, class_name: "FollowRelationship", foreign_key: "followee_id",
                                     inverse_of: :followee, dependent: :destroy
 
   # (一覧画面で使う)
@@ -142,11 +142,11 @@ class User < ApplicationRecord
   def validate_password_on_login(form_params)
     self.password = form_params[:password]
     valid?(:login)
-    errors.add(:password, I18n.t('action.login.invalid')) if form_params[:password].present?
+    errors.add(:password, I18n.t("action.login.invalid")) if form_params[:password].present?
   end
 
   def validate_email_on_login(form_params)
     valid?(:login)
-    errors.add(:email, I18n.t('action.login.invalid')) if form_params[:email].present?
+    errors.add(:email, I18n.t("action.login.invalid")) if form_params[:email].present?
   end
 end
