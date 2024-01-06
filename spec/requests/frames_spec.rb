@@ -130,6 +130,15 @@ describe 'Frames', type: :request do
   describe 'POST /api/v1/frames' do
     let(:endpoint) { '/api/v1/frames' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let(:file_1024) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+    }
+    let(:file_over_capacity) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'), 'image/jpeg')
+    }
+    let(:file_different_mime_type) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
+    }
 
     before do
       user.assign_token(User.issue_token(id: user.id, email: user.email))
@@ -144,7 +153,7 @@ describe 'Frames', type: :request do
                  tag_list: 'test',
                  comment: 'testtest',
                  shooted_at: Time.zone.now,
-                 file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                 file: file_1024
                }
              },
              headers: {
@@ -166,7 +175,7 @@ describe 'Frames', type: :request do
                    tag_list: 'test',
                    comment: 'testtest',
                    shooted_at: Time.zone.now,
-                   file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                   file: file_1024
                  }
                },
                headers: {
@@ -186,7 +195,7 @@ describe 'Frames', type: :request do
                    tag_list: 'test',
                    comment: 'testtest',
                    shooted_at: Time.zone.now,
-                   file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                   file: file_1024
                  }
                },
                headers: {
@@ -206,7 +215,7 @@ describe 'Frames', type: :request do
                    tag_list: Faker::Alphanumeric.alpha(number: 11),
                    comment: 'testtest',
                    shooted_at: Time.zone.now,
-                   file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                   file: file_1024
                  }
                },
                headers: {
@@ -245,8 +254,7 @@ describe 'Frames', type: :request do
                    tag_list: 'test',
                    comment: 'testtest',
                    shooted_at: Time.zone.now,
-                   file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'),
-                                                      'image/jpeg')
+                   file: file_over_capacity
                  }
                },
                headers: {
@@ -266,8 +274,7 @@ describe 'Frames', type: :request do
                    tag_list: 'test',
                    comment: 'testtest',
                    shooted_at: Time.zone.now,
-                   file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
-                                                      'text/plain')
+                   file: file_different_mime_type
                  }
                },
                headers: {
@@ -286,6 +293,15 @@ describe 'Frames', type: :request do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
+    let(:file_1024) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+    }
+    let(:file_over_capacity) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'), 'image/jpeg')
+    }
+    let(:file_different_mime_type) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
+    }
 
     before do
       user.assign_token(User.issue_token(id: user.id, email: user.email))
@@ -300,7 +316,7 @@ describe 'Frames', type: :request do
                 tag_list: 'test',
                 comment: 'testtest',
                 shooted_at: Time.zone.now,
-                file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                file: file_1024
               }
             },
             headers: {
@@ -322,7 +338,7 @@ describe 'Frames', type: :request do
                   tag_list: 'test',
                   comment: 'testtest',
                   shooted_at: Time.zone.now,
-                  file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                  file: file_1024
                 }
               },
               headers: {
@@ -342,7 +358,7 @@ describe 'Frames', type: :request do
                   tag_list: 'test',
                   comment: 'testtest',
                   shooted_at: Time.zone.now,
-                  file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                  file: file_1024
                 }
               },
               headers: {
@@ -362,7 +378,7 @@ describe 'Frames', type: :request do
                   tag_list: Faker::Alphanumeric.alpha(number: 11),
                   comment: 'testtest',
                   shooted_at: Time.zone.now,
-                  file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                  file: file_1024
                 }
               },
               headers: {
@@ -401,8 +417,7 @@ describe 'Frames', type: :request do
                   tag_list: 'test',
                   comment: 'testtest',
                   shooted_at: Time.zone.now,
-                  file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'),
-                                                     'image/jpeg')
+                  file: file_over_capacity
                 }
               },
               headers: {
@@ -422,8 +437,7 @@ describe 'Frames', type: :request do
                   tag_list: 'test',
                   comment: 'testtest',
                   shooted_at: Time.zone.now,
-                  file: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
-                                                     'text/plain')
+                  file: file_different_mime_type
                 }
               },
               headers: {
