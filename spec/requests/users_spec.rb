@@ -74,6 +74,15 @@ describe 'Users', type: :request do
 
   describe 'POST /api/v1/users' do
     let(:endpoint) { '/api/v1/users' }
+    let(:file_1024) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+    }
+    let(:file_over_capacity) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'), 'image/jpeg')
+    }
+    let(:file_different_mime_type) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
+    }
 
     context 'regist user (ユーザー情報登録)' do
       context 'success (成功)' do
@@ -104,7 +113,7 @@ describe 'Users', type: :request do
                  email: 'test@test.jp',
                  password: 'testtest',
                  password_confirmation: 'testtest',
-                 image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                 image: file_1024
                }
              },
              headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -254,8 +263,7 @@ describe 'Users', type: :request do
                    email: 'test@test.jp',
                    password: 'testtest',
                    password_confirmation: 'testtest',
-                   image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'),
-                                                       'image/jpeg')
+                   image: file_over_capacity
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -272,8 +280,7 @@ describe 'Users', type: :request do
                    email: 'test@test.jp',
                    password: 'testtest',
                    password_confirmation: 'testtest',
-                   image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
-                                                       'text/plain')
+                   image: file_different_mime_type
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -288,6 +295,15 @@ describe 'Users', type: :request do
   describe 'PUT /api/v1/profile' do
     let(:endpoint) { '/api/v1/profile' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let(:file_1024) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+    }
+    let(:file_over_capacity) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'), 'image/jpeg')
+    }
+    let(:file_different_mime_type) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
+    }
 
     before do
       user.assign_token(User.issue_token(id: user.id, email: user.email))
@@ -346,7 +362,7 @@ describe 'Users', type: :request do
                 email: 'test@test.jp',
                 password: 'testtest',
                 password_confirmation: 'testtest',
-                image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+                image: file_1024
               }
             },
             headers: {
@@ -503,8 +519,7 @@ describe 'Users', type: :request do
                   email: 'test@test.jp',
                   password: 'testtest',
                   password_confirmation: 'testtest',
-                  image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'),
-                                                      'image/jpeg')
+                  image: file_over_capacity
                 }
               },
               headers: {
@@ -524,8 +539,7 @@ describe 'Users', type: :request do
                   email: 'test@test.jp',
                   password: 'testtest',
                   password_confirmation: 'testtest',
-                  image: Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'),
-                                                      'text/plain')
+                  image: file_different_mime_type
                 }
               },
               headers: {
