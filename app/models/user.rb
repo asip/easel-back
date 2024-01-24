@@ -99,6 +99,12 @@ class User < ApplicationRecord
     full_error_messages_for(%i[email password])
   end
 
+  def assign_user_info(user_info)
+    self.name = user_info["name"]
+    self.email = user_info["email"]
+    self.save!
+  end
+
   def assign_token(token_)
     update_attribute!(:token, token_)
   end

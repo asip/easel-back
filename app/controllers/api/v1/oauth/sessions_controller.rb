@@ -23,6 +23,7 @@ module Api
 
         def login_from_oauth(provider)
           if (user = login_from(provider))
+            user.assign_user_info(@user_hash[:user_info])
             user.assign_token(user_class.issue_token(id: user.id, email: user.email))
           else
             user = create_or_find_from(provider)
@@ -36,6 +37,7 @@ module Api
         def create_or_find_from(provider)
           if (user = user_class.find_by(email: @user_hash[:user_info]["email"]))
             user.add_provider_to_user(provider, @user_hash[:uid].to_s)
+            user.assign_user_info(@user_hash[:user_info])
           else
             user = create_from(provider)
           end
