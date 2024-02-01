@@ -23,7 +23,7 @@ Things you may want to cover:
 * Deployment instructions
   * Run `bundle install --path vendor/bundle` to install the required Rubygems
   * Run `yarn install` to install the required NPM packages
-  * Run `cp .env.sample .env` to edit environment variables
+  * Run `cp .env.local.example .env` to edit environment variables
   * Run `EDITOR="vi" bin/rails credentials:edit` to create credentials
   * Run `direnv allow` to set environment variables
   * Run `bundle exec rails db:create` to create a development database
