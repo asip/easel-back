@@ -55,6 +55,7 @@ ARG minio_secret_key
 ARG minio_endpoint
 ARG minio_bucket
 ARG aws_region
+ARG redis_session_url
 ENV RAILS_MASTER_KEY=${rails_master_key}
 ENV MINIO_ACCESS_KEY=${minio_access_key}
 ENV MINIO_SECRET_KEY=${minio_secret_key}
