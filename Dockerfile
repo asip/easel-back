@@ -49,14 +49,12 @@ COPY --link . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-ARG rails_master_key
 ARG minio_access_key
 ARG minio_secret_key
 ARG minio_endpoint
 ARG minio_bucket
 ARG aws_region
 ARG redis_session_url
-ENV RAILS_MASTER_KEY=${rails_master_key}
 ENV MINIO_ACCESS_KEY=${minio_access_key}
 ENV MINIO_SECRET_KEY=${minio_secret_key}
 ENV MINIO_ENDPOINT=${minio_endpoint}
