@@ -520,52 +520,52 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 10.0.0)
-  annotate
+  annotate (~> 3.2.0)
   aws-sdk-s3 (~> 1.14)
-  bootsnap
-  brakeman
-  bullet
-  capybara
-  config
-  cssbundling-rails
-  debug
+  bootsnap (~> 1.17.0)
+  brakeman (~> 6.1.1)
+  bullet (~> 7.1.4)
+  capybara (~> 3.39.2)
+  config (~> 5.1.0)
+  cssbundling-rails (~> 1.3.3)
+  debug (~> 1.9.1)
   discard (~> 1.2)
   dockerfile-rails (~> 1.5.10)
-  erb_lint
-  factory_bot_rails
-  faker
-  googleauth
+  erb_lint (~> 0.5.0)
+  factory_bot_rails (~> 6.4.2)
+  faker (~> 3.2.2)
+  googleauth (~> 1.9.1)
   image_processing (~> 1.8)
-  jsbundling-rails
-  jsonapi-rspec
-  jsonapi-serializer
+  jsbundling-rails (~> 1.2.1)
+  jsonapi-rspec (~> 0.0.11)
+  jsonapi-serializer (~> 2.2.0)
   marcel (~> 1.0)
   pagy (~> 6.1.0)
   pg (~> 1.5.3)
-  pg_query
+  pg_query (~> 5.0.0)
   propshaft (~> 0.8.0)
-  prosopite
+  prosopite (~> 1.4.2)
   puma (~> 6.4.0)
   rack-contrib (= 2.4.0)
-  rack-cors
+  rack-cors (~> 2.0.1)
   rails (~> 7.1.3)
-  rails-erd
+  rails-erd (~> 1.7.2)
   rails-i18n (~> 7.0.0)
   rails_admin (~> 3.0)
-  rambulance
+  rambulance (~> 3.0.0)
   redis-actionpack (~> 5.3)
   rspec-rails (~> 6.1)
-  rubocop-rails-omakase
-  ruby-lsp
-  selenium-webdriver
+  rubocop-rails-omakase (~> 1.0.0)
+  ruby-lsp (~> 0.13.2)
+  selenium-webdriver (~> 4.10.0)
   shrine (~> 3.0)
-  sorcery
-  sorcery-jwt
-  stimulus-rails
-  turbo-rails
+  sorcery (~> 0.16.5)
+  sorcery-jwt (~> 0.1.13)
+  stimulus-rails (~> 1.3.0)
+  turbo-rails (~> 1.5.0)
   tzinfo-data
-  view_component
-  web-console
+  view_component (~> 3.8.0)
+  web-console (~> 4.2.1)
 
 BUNDLED WITH
    2.4.21
