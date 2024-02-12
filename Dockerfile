@@ -26,11 +26,11 @@ RUN apt-get update -qq && \
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=21.6.1
-ARG YARN_VERSION=1.22.21
+ARG PNPM_VERSION=8.15.1
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-    npm install -g yarn@$YARN_VERSION && \
+    npm install -g pnpm@$PNPM_VERSION && \
     rm -rf /tmp/node-build-master
 
 # Install application gems
@@ -40,8 +40,8 @@ RUN bundle install && \
     rm -rf ~/.bundle/ $BUNDLE_PATH/ruby/*/cache $BUNDLE_PATH/ruby/*/bundler/gems/*/.git
 
 # Install node modules
-COPY --link package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+COPY --link package.json pnpm-lock.yaml ./
+RUN pnpm install --strict
 
 # Copy application code
 COPY --link . .
@@ -67,7 +67,7 @@ ENV REDIS_SESSION_URL=${redis_session_url}
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN ./bin/rails assets:precompile
 
-RUN yarn build:font && yarn build:css
+RUN pnpm build:font && pnpm build:css
 
 
 # Final stage for app image
