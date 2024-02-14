@@ -19,7 +19,7 @@ gem "pg", "~> 1.5.3"
 gem "puma", "~> 6.4.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", "~> 1.5.0"
+gem "turbo-rails", "~> 2.0.2"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", "~> 1.3.0"
@@ -86,7 +86,7 @@ gem "discard", "~> 1.2"
 gem "redis-actionpack", "~> 5.3"
 
 # management console
-gem "rails_admin", "~> 3.0"
+gem "rails_admin", github: "railsadminteam/rails_admin"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
