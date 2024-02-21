@@ -22,10 +22,10 @@ FROM base as build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp pkg-config python-is-python3 git
 
 # Install JavaScript dependencies
-ARG NODE_VERSION=21.6.1
+ARG NODE_VERSION=21.6.2
 ARG PNPM_VERSION=8.15.1
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
