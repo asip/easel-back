@@ -50,17 +50,17 @@ COPY --link . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 ARG rails_master_key
-ARG minio_access_key
-ARG minio_secret_key
-ARG minio_endpoint
-ARG minio_bucket
+ARG s3_access_key
+ARG s3_secret_key
+ARG s3_endpoint
+ARG s3_bucket
 ARG aws_region
 ARG redis_session_url
 ENV RAILS_MASTER_KEY=${rails_master_key}
-ENV MINIO_ACCESS_KEY=${minio_access_key}
-ENV MINIO_SECRET_KEY=${minio_secret_key}
-ENV MINIO_ENDPOINT=${minio_endpoint}
-ENV MINIO_BUCKET=${minio_bucket}
+ENV S3_ACCESS_KEY=${s3_access_key}
+ENV S3_SECRET_KEY=${s3_secret_key}
+ENV S3_ENDPOINT=${s3_endpoint}
+ENV S3_BUCKET=${s3_bucket}
 ENV AWS_REGION=${aws_region}
 ENV REDIS_SESSION_URL=${redis_session_url}
 
