@@ -22,7 +22,8 @@ FROM base as build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp pkg-config python-is-python3 git
+    apt-get install --no-install-recommends -y build-essential curl libpq-dev libvips node-gyp pkg-config python-is-python3 && \
+    apt-get install --no-install-recommends -y git libjemalloc2
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=21.6.2
@@ -94,6 +95,8 @@ USER rails:rails
 ENV RAILS_LOG_TO_STDOUT="1" \
     RAILS_SERVE_STATIC_FILES="true" \
     RUBY_YJIT_ENABLE="1"
+
+ENV LD_PRELOAD="libjemalloc.so.2"
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
