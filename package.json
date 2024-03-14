@@ -5,8 +5,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo": "^8.0.3",
-    "@hotwired/turbo-rails": "^8.0.3",
+    "@hotwired/turbo": "^8.0.4",
+    "@hotwired/turbo-rails": "^8.0.4",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
