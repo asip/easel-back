@@ -11,7 +11,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "copyfiles": "^2.4.1",
-    "esbuild": "^0.20.1",
+    "esbuild": "^0.20.2",
     "esbuild-loader": "^4.1.0",
     "flatpickr": "^4.6.13",
     "rails_admin": "3.1.2",
