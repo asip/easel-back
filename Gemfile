@@ -80,7 +80,7 @@ gem "rack-contrib", "2.4.0"
 gem "rack-cors", "~> 2.0.2"
 
 # soft delete
-gem "discard", "~> 1.2"
+gem "discard", "~> 1.3.0"
 
 # redis
 gem "redis-actionpack", "~> 5.3"
