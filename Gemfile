@@ -121,7 +121,7 @@ group :test do
   gem "observer", "~> 0.1.2"
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara", "~> 3.39.2"
+  gem "capybara", "~> 3.40.0"
   gem "selenium-webdriver", "~> 4.10.0"
 
   gem "factory_bot_rails", "~> 6.4.2"
