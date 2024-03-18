@@ -34,7 +34,7 @@ gem "stimulus-rails", "~> 1.3.3"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.17.0", require: false
+gem "bootsnap", "~> 1.18.3", require: false
 
 gem "cssbundling-rails", "~> 1.4.0"
 gem "jsbundling-rails", "~> 1.3.0"
