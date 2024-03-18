@@ -16,7 +16,7 @@ gem "propshaft", "~> 0.8.0"
 gem "pg", "~> 1.5.6"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 6.4.0"
+gem "puma", "~> 6.4.2"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.2"
