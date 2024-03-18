@@ -386,7 +386,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.1.0)
-    rambulance (3.0.0)
+    rambulance (3.1.0)
       actionpack
       activesupport
       railties
@@ -561,7 +561,7 @@ DEPENDENCIES
   rails-erd (~> 1.7.2)
   rails-i18n (~> 7.0.9)
   rails_admin!
-  rambulance (~> 3.0.0)
+  rambulance (~> 3.1.0)
   redis-actionpack (~> 5.3)
   rspec-rails (~> 6.1)
   rubocop-rails-omakase (~> 1.0.0)
