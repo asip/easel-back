@@ -114,7 +114,7 @@ group :development do
   gem "erb_lint", "~> 0.5.0", require: false
   gem "ruby-lsp", "~> 0.14.6", require: false
 
-  gem "dockerfile-rails", "~>1.5.10"
+  gem "dockerfile-rails", "~>1.6.7"
 end
 
 group :test do
