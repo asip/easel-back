@@ -77,7 +77,7 @@ gem "jsonapi-serializer", "~> 2.2.0"
 gem "rack-contrib", "2.4.0"
 
 # cors
-gem "rack-cors", "~> 2.0.1"
+gem "rack-cors", "~> 2.0.2"
 
 # soft delete
 gem "discard", "~> 1.2"
