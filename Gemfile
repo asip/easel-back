@@ -83,7 +83,7 @@ gem "rack-cors", "~> 2.0.2"
 gem "discard", "~> 1.3.0"
 
 # redis
-gem "redis-actionpack", "~> 5.3"
+gem "redis-actionpack", "~> 5.4.0"
 
 # management console
 gem "rails_admin", github: "railsadminteam/rails_admin"

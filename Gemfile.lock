@@ -529,7 +529,7 @@ DEPENDENCIES
   rails-i18n (~> 7.0.9)
   rails_admin!
   rambulance (~> 3.1.0)
-  redis-actionpack (~> 5.3)
+  redis-actionpack (~> 5.4.0)
   rspec-rails (~> 6.1)
   rubocop-rails-omakase (~> 1.0.0)
   ruby-lsp (~> 0.13.2)
