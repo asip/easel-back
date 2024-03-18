@@ -96,7 +96,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "brakeman", "~> 6.1.1"
+  gem "brakeman", "~> 6.1.2"
   gem "bullet", "~> 7.1.4"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
