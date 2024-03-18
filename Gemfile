@@ -91,7 +91,7 @@ gem "rails_admin", github: "railsadminteam/rails_admin"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.9.1", platforms: %i[mri windows]
-  gem "pg_query", "~> 5.0.0"
+  gem "pg_query", "~> 5.1.0"
   gem "prosopite", "~> 1.4.2"
 end
 
