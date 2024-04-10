@@ -7,6 +7,7 @@ module Api
     # Sessions Controller
     class SessionsController < Api::V1::ApiController
       include ActionController::Cookies
+      include Queries::Sessions::Pagination
 
       skip_before_action :authenticate, only: %i[create]
       # before_action :set_csrf_token, only: [:show]
@@ -19,6 +20,18 @@ module Api
         user = current_user
 
         render json: AccountSerializer.new(user).serializable_hash
+      end
+
+      def frame
+        frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], user: current_user)
+
+        render json: Detail::FrameSerializer.new(frame, frame_options).serializable_hash
+      end
+
+      def frames
+        pagination, frames = list_frames_query(user: current_user, page: query_params[:page])
+
+        render json: ListItem::FrameSerializer.new(frames, frames_options).serializable_hash.merge(pagination)
       end
 
       #
@@ -93,6 +106,20 @@ module Api
 
       def form_params
         params.require(:user).permit(:email, :password)
+      end
+
+      def query_params
+        params.permit(
+          :page
+        )
+      end
+
+      def frame_options
+        { include: [ :comments ] }
+      end
+
+      def frames_options
+        {}
       end
     end
   end

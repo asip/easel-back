@@ -18,7 +18,7 @@ module Api
       end
 
       def show
-        frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id])
+        frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], private: false)
 
         render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
       end

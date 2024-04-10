@@ -8,6 +8,7 @@
 #  comment    :text
 #  file_data  :text
 #  name       :string           not null
+#  private    :boolean          default(FALSE)
 #  shooted_at :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

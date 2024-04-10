@@ -2,8 +2,8 @@
 
 # queries
 module Queries
-  # users
-  module Users
+  # sessions
+  module Sessions
     # Pagination module
     module Pagination
       extend ActiveSupport::Concern
@@ -11,8 +11,8 @@ module Queries
       include Pagy::Backend
       include Api::Pagination
 
-      def list_frames_query(user_id:, page:)
-        frames = Queries::Users::PublicListFrames.run(user_id:)
+      def list_frames_query(user:, page:)
+        frames = Queries::Users::ListFrames.run(user:)
         pagy, frames = pagy(frames, { page: })
         pagination = resources_with_pagination(pagy)
         [ pagination, frames ]

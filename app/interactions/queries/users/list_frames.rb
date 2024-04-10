@@ -8,12 +8,12 @@ module Queries
     class ListFrames
       include Query
 
-      def initialize(user_id:)
-        @user_id = user_id
+      def initialize(user:)
+        @user = user
       end
 
       def execute
-        User.find_by!(id: @user_id).frames.order('frames.created_at': "desc")
+        @user.frames.order('frames.created_at': "desc")
       end
     end
   end

@@ -8,6 +8,7 @@
 #  comment    :text
 #  file_data  :text
 #  name       :string           not null
+#  private    :boolean          default(FALSE)
 #  shooted_at :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -35,18 +36,24 @@ class Frame < ApplicationRecord
 
   scope :search_by, lambda { |word:|
     scope = current_scope || relation
+    scope = scope.where(private: false)
 
     if word.present?
       scope = if date_valid?(word)
                 date_word = Time.zone.parse(word)
-                scope.where(shooted_at: date_word.beginning_of_day..date_word.end_of_day)
-                     .or(Frame.where(updated_at: date_word.beginning_of_day..date_word.end_of_day))
+                scope.merge(
+                  Frame.where(shooted_at: date_word.beginning_of_day..date_word.end_of_day)
+                       .or(Frame.where(updated_at: date_word.beginning_of_day..date_word.end_of_day))
+                )
+
       else
-                scope.left_joins(:tags, :user)
-                     .merge(ActsAsTaggableOn::Tag.where("tags.name like ?",
+                scope.merge(
+                  Frame.left_joins(:tags, :user)
+                       .merge(ActsAsTaggableOn::Tag.where("tags.name like ?",
                                                         "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
-                     .or(Frame.where("frames.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
-                     .or(User.where(name: word))
+                       .or(Frame.where("frames.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
+                       .or(User.where(name: word))
+                )
       end
     end
 
