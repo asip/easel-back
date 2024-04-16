@@ -292,8 +292,8 @@ describe 'Users', type: :request do
     end
   end
 
-  describe 'PUT /api/v1/profile' do
-    let(:endpoint) { '/api/v1/profile' }
+  describe 'PUT /api/v1/account/profile' do
+    let(:endpoint) { '/api/v1/account/profile' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')

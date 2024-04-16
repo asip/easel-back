@@ -42,8 +42,8 @@ describe 'Sessions', type: :request do
     end
   end
 
-  describe 'GET /api/v1/profile' do
-    let(:endpoint) { '/api/v1/profile' }
+  describe 'GET /api/v1/account/profile' do
+    let(:endpoint) { '/api/v1/account/profile' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
 
     before do
@@ -96,8 +96,8 @@ describe 'Sessions', type: :request do
     end
   end
 
-  describe 'DELETE /api/v1/profile' do
-    let(:endpoint) { '/api/v1/profile' }
+  describe 'DELETE /api/v1/account' do
+    let(:endpoint) { '/api/v1/account' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
 
     before do

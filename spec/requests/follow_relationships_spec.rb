@@ -4,9 +4,9 @@ require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
 describe 'FollowRelationships', type: :request do
-  describe 'GET /api/v1/profile/following/:user_id' do
+  describe 'GET /api/v1/account/following/:user_id' do
     context 'get following (boolean value) (フォローしているかを取得する)' do
-      let(:endpoint) { "/api/v1/profile/following/#{followee_user.id}" }
+      let(:endpoint) { "/api/v1/account/following/#{followee_user.id}" }
       let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
       let!(:followee_user) do
         create(:user, name: 'test_user2', email: 'test2@test.jp',
