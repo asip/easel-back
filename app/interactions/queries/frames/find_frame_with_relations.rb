@@ -15,11 +15,11 @@ module Queries
       end
 
       def execute
-        if @private.nil? || @user.nil?
+        if @private.nil? && @user.nil?
           Frame.eager_load(:user, comments: :user).find_by!(id: @frame_id)
-        elsif @user.nil?
+        elsif @user.nil? && !@private.nil?
           Frame.eager_load(:user, comments: :user).find_by!(id: @frame_id, private: @private)
-        elseif @private.nil?
+        elsif !@user.nil? && @private.nil?
           Frame.eager_load(:user, comments: :user).find_by!(id: @frame_id, user_id: @user.id)
         end
       end
