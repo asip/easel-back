@@ -26,8 +26,8 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y git libjemalloc2
 
 # Install JavaScript dependencies
-ARG NODE_VERSION=21.6.2
-ARG PNPM_VERSION=8.15.3
+ARG NODE_VERSION=21.7.3
+ARG PNPM_VERSION=9.0.0
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
