@@ -1,13 +1,13 @@
-import { fileURLToPath } from "node:url";
-import path from "node:path"
-import webpack from "webpack"
+import { fileURLToPath } from 'node:url'
+import path from 'node:path'
+import webpack from 'webpack'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
-
 // eslint-disable-next-line no-undef
+const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
+
 export default {
   mode,
   resolve: {
