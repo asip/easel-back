@@ -127,5 +127,5 @@ group :test do
   gem "factory_bot_rails", "~> 6.4.3"
   gem "faker", "~> 3.3.1"
   gem "jsonapi-rspec", "~> 0.0.11"
-  gem "rspec-rails", "~> 6.1.1"
+  gem "rspec-rails", "~> 6.1.2"
 end
