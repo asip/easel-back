@@ -112,7 +112,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.5.0", require: false
-  gem "ruby-lsp", "~> 0.14.6", require: false
+  gem "ruby-lsp", "~> 0.16.4", require: false
 
   gem "dockerfile-rails", "~>1.6.7"
 end
