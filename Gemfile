@@ -125,7 +125,7 @@ group :test do
   gem "selenium-webdriver", "~> 4.19.0"
 
   gem "factory_bot_rails", "~> 6.4.3"
-  gem "faker", "~> 3.2.3"
+  gem "faker", "~> 3.3.1"
   gem "jsonapi-rspec", "~> 0.0.11"
   gem "rspec-rails", "~> 6.1.1"
 end
