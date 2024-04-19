@@ -91,5 +91,7 @@ Rails.application.configure do
 
   # log ratation
   config.logger = Logger.new("log/development.log", 10, 5 * 1024 * 1024)
+
+  config.hosts.clear
 end
 # rubocop:enable Metrics/BlockLength
