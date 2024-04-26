@@ -13,7 +13,7 @@ module Queries
       end
 
       def execute
-        Frame.search_by(word: @word).order(created_at: "desc")
+        Frame.eager_load(:user).search_by(word: @word).order(created_at: "desc")
       end
     end
   end

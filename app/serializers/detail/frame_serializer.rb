@@ -18,8 +18,6 @@
 module Detail
   # Frame Serializer
   class FrameSerializer < ListItem::FrameSerializer
-    attributes :user_name
-
     attribute :tag_list do |object|
       object.tags_preview.join(",")
     end
