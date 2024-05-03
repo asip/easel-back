@@ -6,18 +6,19 @@ require 'rails_helper'
 describe 'Frames', type: :request do
   describe 'GET /api/v1/frames' do
     let(:endpoint) { '/api/v1/frames' }
+    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
 
     before do
-      create(:frame, :skip_validate, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
-      create(:frame, :skip_validate, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
-      create(:frame, :skip_validate, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01')
-      create(:frame, :skip_validate, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01')
-      create(:frame, :skip_validate, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01')
-      create(:frame, :skip_validate, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01')
-      create(:frame, :skip_validate, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
+      create(:frame, :skip_validate, user: user, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
+      create(:frame, :skip_validate, user: user, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01')
+      create(:frame, :skip_validate, user: user, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01')
+      create(:frame, :skip_validate, user: user, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01')
+      create(:frame, :skip_validate, user: user, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01')
+      create(:frame, :skip_validate, user: user, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
     end
 
     context 'get frame list (フレームリスト取得)' do
