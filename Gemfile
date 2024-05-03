@@ -46,7 +46,7 @@ gem "view_component", "~> 3.12.1"
 gem "aws-sdk-s3", "~> 1.147.0"
 gem "image_processing", "~> 1.12.2"
 gem "marcel", "~> 1.0.4"
-gem "shrine", "~> 3.5.0"
+gem "shrine", "~> 3.6.0"
 
 # i18n
 gem "rails-i18n", "~> 7.0.9"
