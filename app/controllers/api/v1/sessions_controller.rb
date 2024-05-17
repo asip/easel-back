@@ -51,10 +51,10 @@ module Api
       # sign out
       #
       def destroy
+        user_id = current_user&.id
         current_user&.reset_token
-        user_id = current_user.id
         logout
-        user = User.unscoped.find_by(id: user_id)
+        user = User.unscoped.find_by!(id: user_id)
         render json: AccountSerializer.new(user).serializable_hash
       end
 
@@ -62,10 +62,10 @@ module Api
       # delete login account
       #
       def delete
+        user_id = current_user&.id
         current_user&.reset_token
-        user_id = current_user.id
         logout
-        user = User.unscoped.find_by(id: user_id)
+        user = User.unscoped.find_by!(id: user_id)
         user.discard
         render json: AccountSerializer.new(user).serializable_hash
       end
