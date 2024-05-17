@@ -20,9 +20,11 @@ module Mutations
         # puts 'testtest'
         success = @user.valid?(:with_validation)
         if success
-          @user.save!(context: :with_validation)
-          # puts @user.saved_change_to_email?
-          @user.update_token
+          ApplicationRecord.transaction do
+            @user.save!(context: :with_validation)
+            # puts @user.saved_change_to_email?
+            @user.update_token
+          end
         else
           errors.merge!(@user.errors)
         end
