@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.0"
 gem "view_component", "~> 3.12.1"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.149.0"
+gem "aws-sdk-s3", "~> 1.149.1"
 gem "image_processing", "~> 1.12.2"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -64,7 +64,7 @@ gem "googleauth", "~> 1.11.0"
 gem "config", "~> 5.4.0"
 
 # paging
-gem "pagy", "~> 8.3.0"
+gem "pagy", "~> 8.4.0"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
@@ -112,9 +112,9 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.5.0", require: false
-  gem "ruby-lsp", "~> 0.16.4", require: false
+  gem "ruby-lsp", "~> 0.16.6", require: false
 
-  gem "dockerfile-rails", "~>1.6.10"
+  gem "dockerfile-rails", "~>1.6.13"
 end
 
 group :test do
@@ -122,7 +122,7 @@ group :test do
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
-  gem "selenium-webdriver", "~> 4.20.1"
+  gem "selenium-webdriver", "~> 4.21.1"
 
   gem "factory_bot_rails", "~> 6.4.3"
   gem "faker", "~> 3.3.1"
