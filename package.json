@@ -15,7 +15,7 @@
     "esbuild-loader": "^4.1.0",
     "flatpickr": "^4.6.13",
     "rails_admin": "3.1.2",
-    "sass": "^1.77.2",
+    "sass": "^1.77.4",
     "stimulus": "^3.2.2",
     "toastify-js": "^1.12.0",
     "webpack": "^5.91.0",
@@ -35,11 +35,11 @@
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
     "@types/toastify-js": "^1.12.3",
-    "@typescript-eslint/eslint-plugin": "^7.9.0",
-    "@typescript-eslint/parser": "^7.9.0",
-    "eslint": "^9.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.12.0",
+    "@typescript-eslint/parser": "^7.12.0",
+    "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.0",
     "tsc-watch": "^6.2.0",
     "typescript": "^5.4.5"
   }
