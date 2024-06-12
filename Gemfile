@@ -61,10 +61,10 @@ gem "sorcery-jwt", "~> 0.1.13"
 gem "googleauth", "~> 1.11.0"
 
 # settings
-gem "config", "~> 5.4.0"
+gem "config", "~> 5.5.1"
 
 # paging
-gem "pagy", "~> 8.4.0"
+gem "pagy", "~> 8.4.4"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
@@ -74,7 +74,7 @@ gem "acts-as-taggable-on", "~> 10.0.0"
 gem "jsonapi-serializer", "~> 2.2.0"
 
 # Rack::Locale
-gem "rack-contrib", "2.4.0"
+gem "rack-contrib", "2.5.0"
 
 # cors
 gem "rack-cors", "~> 2.0.2"
@@ -112,9 +112,9 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.5.0", require: false
-  gem "ruby-lsp", "~> 0.16.6", require: false
+  gem "ruby-lsp", "~> 0.17.3", require: false
 
-  gem "dockerfile-rails", "~>1.6.13"
+  gem "dockerfile-rails", "~>1.6.16"
 end
 
 group :test do
@@ -125,7 +125,7 @@ group :test do
   gem "selenium-webdriver", "~> 4.21.1"
 
   gem "factory_bot_rails", "~> 6.4.3"
-  gem "faker", "~> 3.3.1"
+  gem "faker", "~> 3.4.1"
   gem "jsonapi-rspec", "~> 0.0.11"
   gem "rspec-rails", "~> 6.1.2"
 end
