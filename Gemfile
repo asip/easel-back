@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.0"
 gem "view_component", "~> 3.12.1"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.149.1"
+gem "aws-sdk-s3", "~> 1.152.3"
 gem "image_processing", "~> 1.12.2"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -64,7 +64,7 @@ gem "googleauth", "~> 1.11.0"
 gem "config", "~> 5.5.1"
 
 # paging
-gem "pagy", "~> 8.4.4"
+gem "pagy", "~> 8.4.5"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
@@ -127,5 +127,5 @@ group :test do
   gem "factory_bot_rails", "~> 6.4.3"
   gem "faker", "~> 3.4.1"
   gem "jsonapi-rspec", "~> 0.0.11"
-  gem "rspec-rails", "~> 6.1.2"
+  gem "rspec-rails", "~> 6.1.3"
 end
