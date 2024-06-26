@@ -64,7 +64,7 @@ gem "googleauth", "~> 1.11.0"
 gem "config", "~> 5.5.1"
 
 # paging
-gem "pagy", "~> 8.4.5"
+gem "pagy", "~> 8.5.0"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
@@ -112,9 +112,9 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.5.0", require: false
-  gem "ruby-lsp", "~> 0.17.3", require: false
+  gem "ruby-lsp", "~> 0.17.4", require: false
 
-  gem "dockerfile-rails", "~>1.6.16"
+  gem "dockerfile-rails", "~>1.6.17"
 end
 
 group :test do
@@ -122,7 +122,7 @@ group :test do
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
-  gem "selenium-webdriver", "~> 4.21.1"
+  gem "selenium-webdriver", "~> 4.22.0"
 
   gem "factory_bot_rails", "~> 6.4.3"
   gem "faker", "~> 3.4.1"
