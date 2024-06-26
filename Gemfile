@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.0"
 gem "view_component", "~> 3.12.1"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.152.3"
+gem "aws-sdk-s3", "~> 1.154.0"
 gem "image_processing", "~> 1.12.2"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
