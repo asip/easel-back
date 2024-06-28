@@ -9,7 +9,7 @@ Shrine(upload) + ActsAsTaggableOn(tag) +
 RailsAdmin (management console) + Discard(soft delete) +  
 Hotwire (Turbo + Stimulus3) + Bootstrap5
 
-The frontend implemented by Ruby on Rails moved to [easel-back-legacy](https://github.com/asip/easel-back-legacy).  
+The legacy frontend implemented by Ruby on Rails moved to [easel-legacy](https://github.com/asip/easel-legacy).  
 (+ Vue.js 3)
 
 This README would normally document whatever steps are necessary to get the
