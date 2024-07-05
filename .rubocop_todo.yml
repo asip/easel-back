@@ -12,4 +12,4 @@
 # Include: **/Gemfile, **/gems.rb, **/Gemfile.lock, **/gems.locked
 Bundler/GemFilename:
   Exclude:
-    - 'gems.rb'
+#    - 'gems.rb'
