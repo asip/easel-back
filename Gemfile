@@ -40,7 +40,7 @@ gem "cssbundling-rails", "~> 1.4.0"
 gem "jsbundling-rails", "~> 1.3.0"
 
 # view component
-gem "view_component", "~> 3.12.1"
+gem "view_component", "~> 3.13.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.156.0"
@@ -125,7 +125,7 @@ group :test do
   gem "selenium-webdriver", "~> 4.22.0"
 
   gem "factory_bot_rails", "~> 6.4.3"
-  gem "faker", "~> 3.4.1"
+  gem "faker", "~> 3.4.2"
   gem "jsonapi-rspec", "~> 0.0.11"
   gem "rspec-rails", "~> 6.1.3"
 end
