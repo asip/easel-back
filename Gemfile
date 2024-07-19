@@ -19,7 +19,7 @@ gem "pg", "~> 1.5.6"
 gem "puma", "~> 6.4.2"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", "~> 2.0.5"
+gem "turbo-rails", "~> 2.0.6"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", "~> 1.3.3"
@@ -112,7 +112,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.5.0", require: false
-  gem "ruby-lsp", "~> 0.17.7", require: false
+  gem "ruby-lsp", "~> 0.17.8", require: false
 
   gem "dockerfile-rails", "~>1.6.17"
 end
@@ -122,7 +122,7 @@ group :test do
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
-  gem "selenium-webdriver", "~> 4.22.0"
+  gem "selenium-webdriver", "~> 4.23.0"
 
   gem "factory_bot_rails", "~> 6.4.3"
   gem "faker", "~> 3.4.2"
