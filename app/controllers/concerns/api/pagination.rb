@@ -13,7 +13,7 @@ module Api
             count: pagy.count,
             pages: pagy.pages,
             page: pagy.page,
-            per: pagy.items
+            per: pagy.limit
           }
         }
       }

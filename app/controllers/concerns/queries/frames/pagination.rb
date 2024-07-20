@@ -13,7 +13,7 @@ module Queries
 
       def list_frames_query(word:, page:)
         frames = Queries::Frames::ListFrames.run(word:)
-        pagy, frames = pagy(frames, { page: })
+        pagy, frames = pagy(frames, page:)
         frame_ids = frames.pluck(:id)
         frames = Frame.eager_load(:user).where(id: frame_ids).order(created_at: "desc")
         pagination = resources_with_pagination(pagy)
