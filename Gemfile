@@ -28,7 +28,7 @@ gem "stimulus-rails", "~> 1.3.3"
 # gem "jbuilder"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.12.2"
+# gem "image_processing", "~> 1.13.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[windows jruby]
@@ -44,7 +44,7 @@ gem "view_component", "~> 3.13.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.156.0"
-gem "image_processing", "~> 1.12.2"
+gem "image_processing", "~> 1.13.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
 
@@ -112,7 +112,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.5.0", require: false
-  gem "ruby-lsp", "~> 0.17.8", require: false
+  gem "ruby-lsp", "~> 0.17.9", require: false
 
   gem "dockerfile-rails", "~>1.6.17"
 end
