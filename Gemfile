@@ -13,7 +13,7 @@ gem "propshaft", "~> 0.9.0"
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.5.6'
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.5.6"
+gem "pg", "~> 1.5.7"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.4.2"
@@ -34,16 +34,16 @@ gem "stimulus-rails", "~> 1.3.3"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.18.3", require: false
+gem "bootsnap", "~> 1.18.4", require: false
 
-gem "cssbundling-rails", "~> 1.4.0"
-gem "jsbundling-rails", "~> 1.3.0"
+gem "cssbundling-rails", "~> 1.4.1"
+gem "jsbundling-rails", "~> 1.3.1"
 
 # view component
 gem "view_component", "~> 3.13.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.156.0"
+gem "aws-sdk-s3", "~> 1.157.0"
 gem "image_processing", "~> 1.13.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -52,7 +52,7 @@ gem "shrine", "~> 3.6.0"
 gem "rails-i18n", "~> 7.0.9"
 
 # error page handling
-gem "rambulance", "~> 3.1.0"
+gem "rambulance", "~> 3.2.0"
 
 # authentication
 gem "sorcery", "~> 0.16.5"
@@ -64,7 +64,7 @@ gem "googleauth", "~> 1.11.0"
 gem "config", "~> 5.5.1"
 
 # paging
-gem "pagy", "~> 9.0.2"
+gem "pagy", "~> 9.0.5"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
@@ -111,8 +111,8 @@ group :development do
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
-  gem "erb_lint", "~> 0.5.0", require: false
-  gem "ruby-lsp", "~> 0.17.9", require: false
+  gem "erb_lint", "~> 0.6.0", require: false
+  gem "ruby-lsp", "~> 0.17.11", require: false
 
   gem "dockerfile-rails", "~>1.6.17"
 end
