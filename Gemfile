@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gem "rails", "~> 7.1.3.4"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem "propshaft", "~> 0.9.0"
+gem "propshaft", "~> 0.9.1"
 
 # gem 'dartsass-rails'
 
@@ -112,7 +112,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.6.0", require: false
-  gem "ruby-lsp", "~> 0.17.11", require: false
+  gem "ruby-lsp", "~> 0.17.13", require: false
 
   gem "dockerfile-rails", "~>1.6.17"
 end
