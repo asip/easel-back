@@ -22,7 +22,7 @@ gem "puma", "~> 6.4.2"
 gem "turbo-rails", "~> 2.0.6"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails", "~> 1.3.3"
+gem "stimulus-rails", "~> 1.3.4"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.1"
 gem "view_component", "~> 3.13.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.157.0"
+gem "aws-sdk-s3", "~> 1.159.0"
 gem "image_processing", "~> 1.13.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -52,7 +52,7 @@ gem "shrine", "~> 3.6.0"
 gem "rails-i18n", "~> 7.0.9"
 
 # error page handling
-gem "rambulance", "~> 3.2.0"
+gem "rambulance", "~> 3.3.0"
 
 # authentication
 gem "sorcery", "~> 0.16.5"
@@ -112,7 +112,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.6.0", require: false
-  gem "ruby-lsp", "~> 0.17.13", require: false
+  gem "ruby-lsp", "~> 0.17.15", require: false
 
   gem "dockerfile-rails", "~>1.6.17"
 end
@@ -127,5 +127,5 @@ group :test do
   gem "factory_bot_rails", "~> 6.4.3"
   gem "faker", "~> 3.4.2"
   gem "jsonapi-rspec", "~> 0.0.11"
-  gem "rspec-rails", "~> 6.1.3"
+  gem "rspec-rails", "~> 6.1.4"
 end
