@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3.4"
+gem "rails", "~> 7.2.1"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 0.9.1"
@@ -68,7 +68,7 @@ gem "pagy", "~> 9.0.5"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
-gem "acts-as-taggable-on", "~> 10.0.0"
+gem "acts-as-taggable-on", "~> 11.0.0"
 
 # json
 gem "jsonapi-serializer", "~> 2.2.0"
@@ -119,6 +119,7 @@ end
 
 group :test do
   gem "observer", "~> 0.1.2"
+  gem "mutex_m", "~> 0.2.0"
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
