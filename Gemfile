@@ -90,13 +90,13 @@ gem "rails_admin", github: "railsadminteam/rails_admin"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "debug", "~> 1.9.2", platforms: %i[mri windows]
+  gem "debug", "~> 1.9.2", platforms: %i[mri windows], require: "debug/prelude"
   gem "pg_query", "~> 5.1.0"
   gem "prosopite", "~> 1.4.2"
 end
 
 group :development do
-  gem "brakeman", "~> 6.2.1"
+  gem "brakeman", "~> 6.2.1", require: false
   gem "bullet", "~> 7.2.0"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
