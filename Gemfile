@@ -86,7 +86,7 @@ gem "discard", "~> 1.3.0"
 gem "redis-actionpack", "~> 5.4.0"
 
 # management console
-gem "rails_admin", "3.2.0"
+gem "rails_admin", "3.2.1"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -112,7 +112,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.6.0", require: false
-  gem "ruby-lsp", "~> 0.19.1", require: false
+  gem "ruby-lsp", "~> 0.20.0", require: false
 
   gem "dockerfile-rails", "~>1.6.22"
 end
