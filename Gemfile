@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.1"
+gem "rails", "~> 7.2.1.1"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.1.0"
@@ -19,7 +19,7 @@ gem "pg", "~> 1.5.8"
 gem "puma", "~> 6.4.3"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", "~> 2.0.10"
+gem "turbo-rails", "~> 2.0.11"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", "~> 1.3.4"
@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.1"
 gem "view_component", "~> 3.17.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.167.0"
+gem "aws-sdk-s3", "~> 1.168.0"
 gem "image_processing", "~> 1.13.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -111,8 +111,8 @@ group :development do
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
-  gem "erb_lint", "~> 0.6.0", require: false
-  gem "ruby-lsp", "~> 0.20.0", require: false
+  gem "erb_lint", "~> 0.7.0", require: false
+  gem "ruby-lsp", "~> 0.20.1", require: false
 
   gem "dockerfile-rails", "~>1.6.22"
 end
