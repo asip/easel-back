@@ -40,10 +40,10 @@ gem "cssbundling-rails", "~> 1.4.1"
 gem "jsbundling-rails", "~> 1.3.1"
 
 # view component
-gem "view_component", "~> 3.17.0"
+gem "view_component", "~> 3.19.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.168.0"
+gem "aws-sdk-s3", "~> 1.169.0"
 gem "image_processing", "~> 1.13.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -96,7 +96,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "brakeman", "~> 6.2.1", require: false
+  gem "brakeman", "~> 6.2.2", require: false
   gem "bullet", "~> 7.2.0"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
