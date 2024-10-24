@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.1.1"
+gem "rails", "~> 7.2.1.2"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.1.0"
@@ -58,7 +58,7 @@ gem "rambulance", "~> 3.3.0"
 gem "sorcery", "~> 0.16.5"
 gem "sorcery-jwt", "~> 0.1.13"
 
-gem "googleauth", "~> 1.11.1"
+gem "googleauth", "~> 1.11.2"
 
 # settings
 gem "config", "~> 5.5.2"
@@ -126,7 +126,7 @@ group :test do
   gem "selenium-webdriver", "~> 4.25.0"
 
   gem "factory_bot_rails", "~> 6.4.3"
-  gem "faker", "~> 3.4.2"
+  gem "faker", "~> 3.5.1"
   gem "jsonapi-rspec", "~> 0.0.11"
   gem "rspec-rails", "~> 7.0.1"
 end
