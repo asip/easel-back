@@ -21,6 +21,12 @@ module ListItem
     include JSONAPI::Serializer
     attributes :id, :user_id, :user_name, :name, :comment, :private
 
+    attribute :tag_list do |object|
+      object.tags_preview.join(",")
+    end
+
+    attribute :tags, &:tags_preview
+
     attribute :shooted_at do |object|
       object.shooted_at.present? ? I18n.l(object.shooted_at, format: "%Y/%m/%d %H:%M") : ""
     end

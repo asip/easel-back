@@ -18,12 +18,6 @@
 module Detail
   # Frame Serializer
   class FrameSerializer < ListItem::FrameSerializer
-    attribute :tag_list do |object|
-      object.tags_preview.join(",")
-    end
-
-    attribute :tags, &:tags_preview
-
     has_many :comments, serializer: CommentSerializer
   end
 end
