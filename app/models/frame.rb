@@ -28,7 +28,7 @@ class Frame < ApplicationRecord
 
   delegate :name, to: :user, prefix: true
 
-  validates :name, length: { in: 1..20 }
+  validates :name, length: { in: 1..30 }
   validates :file, presence: true
   validate :check_tag
 
