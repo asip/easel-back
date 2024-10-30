@@ -22,10 +22,10 @@ module ListItem
     attributes :id, :user_id, :user_name, :name, :comment, :private
 
     attribute :tag_list do |object|
-      object.tags_preview.join(",")
+      object.tags_display.join(",")
     end
 
-    attribute :tags, &:tags_preview
+    attribute :tags, &:tags_display
 
     attribute :shooted_at do |object|
       object.shooted_at.present? ? I18n.l(object.shooted_at, format: "%Y/%m/%d %H:%M") : ""

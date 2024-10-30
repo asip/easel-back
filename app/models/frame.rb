@@ -4,15 +4,16 @@
 #
 # Table name: frames
 #
-#  id         :bigint           not null, primary key
-#  comment    :text
-#  file_data  :text
-#  name       :string           not null
-#  private    :boolean          default(FALSE)
-#  shooted_at :datetime
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint
+#  id          :bigint           not null, primary key
+#  comment     :text
+#  file_data   :text
+#  joined_tags :string
+#  name        :string           not null
+#  private     :boolean          default(FALSE)
+#  shooted_at  :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint
 #
 
 # Frame
@@ -64,6 +65,10 @@ class Frame < ApplicationRecord
 
   def tags_preview
     tag_list.to_s.split(/\s*,\s*/)
+  end
+
+  def tags_display
+    joined_tags&.split(/\s*,\s*/)
   end
 
   def assign_derivatives

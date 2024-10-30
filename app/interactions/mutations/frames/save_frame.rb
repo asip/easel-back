@@ -17,6 +17,7 @@ module Mutations
 
       def execute
         @frame.user_id = @user.id
+        @frame.joined_tags = @frame.tag_list
         return if @frame.save
 
         errors.merge!(@frame.errors)
