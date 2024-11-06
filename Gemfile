@@ -64,7 +64,7 @@ gem "googleauth", "~> 1.11.2"
 gem "config", "~> 5.5.2"
 
 # paging
-gem "pagy", "~> 9.1.1"
+gem "pagy", "~> 9.2.0"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
@@ -80,7 +80,7 @@ gem "rack-contrib", "2.5.0"
 gem "rack-cors", "~> 2.0.2"
 
 # soft delete
-gem "discard", "~> 1.3.0"
+gem "discard", "~> 1.4.0"
 
 # redis
 gem "redis-actionpack", "~> 5.4.0"
@@ -112,9 +112,9 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.7.0", require: false
-  gem "ruby-lsp", "~> 0.21.1", require: false
+  gem "ruby-lsp", "~> 0.21.3", require: false
 
-  gem "dockerfile-rails", "~>1.6.22"
+  gem "dockerfile-rails", "~>1.6.24"
 end
 
 group :test do
