@@ -19,6 +19,10 @@ describe 'Frames', type: :request do
       create(:frame, :skip_validate, user: user, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
       create(:frame, :skip_validate, user: user, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
       create(:frame, :skip_validate, user: user, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test50', tag_list: 'testE0', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test51', tag_list: 'testE1', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test62', tag_list: 'testF2', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test63', tag_list: 'testF3', shooted_at: '2022/04/01')
     end
 
     context 'get frame list (フレームリスト取得)' do
@@ -27,7 +31,7 @@ describe 'Frames', type: :request do
           get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
           json_data = json[:data]
-          expect(json_data.size).to be 8
+          expect(json_data.size).to be 12
         end
       end
 
@@ -72,7 +76,7 @@ describe 'Frames', type: :request do
           get endpoint, params: { q: Time.zone.today.strftime('%Y/%m/%d') }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
           json_data = json[:data]
-          expect(json_data.size).to be 8
+          expect(json_data.size).to be 12
         end
       end
     end
@@ -188,11 +192,11 @@ describe 'Frames', type: :request do
           expect(json_data[:errors][:name]).to be_present
         end
 
-        it 'name exceeds 20 characters (名前が20文字を超える場合)' do
+        it 'name exceeds 30 characters (名前が30文字を超える場合)' do
           post endpoint,
                params: {
                  frame: {
-                   name: Faker::Alphanumeric.alpha(number: 21),
+                   name: Faker::Alphanumeric.alpha(number: 31),
                    tag_list: 'test',
                    comment: 'testtest',
                    shooted_at: Time.zone.now,
@@ -351,11 +355,11 @@ describe 'Frames', type: :request do
           expect(json_data[:errors][:name]).to be_present
         end
 
-        it 'name exceeds 20 characters (名前が20文字を超える場合)' do
+        it 'name exceeds 30 characters (名前が30文字を超える場合)' do
           put endpoint,
               params: {
                 frame: {
-                  name: Faker::Alphanumeric.alpha(number: 21),
+                  name: Faker::Alphanumeric.alpha(number: 31),
                   tag_list: 'test',
                   comment: 'testtest',
                   shooted_at: Time.zone.now,
