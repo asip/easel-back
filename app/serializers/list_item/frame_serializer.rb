@@ -22,7 +22,7 @@ module ListItem
     attributes :id, :user_id, :user_name, :name, :comment, :private
 
     attribute :tag_list do |object|
-      object.tags_display.join(",")
+      object.tags_display&.join(",")
     end
 
     attribute :tags, &:tags_display
