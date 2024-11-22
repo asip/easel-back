@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.1"
 gem "view_component", "~> 3.20.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.169.0"
+gem "aws-sdk-s3", "~> 1.173.0"
 gem "image_processing", "~> 1.13.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -64,11 +64,11 @@ gem "googleauth", "~> 1.11.2"
 gem "config", "~> 5.5.2"
 
 # paging
-gem "pagy", "~> 9.2.0"
+gem "pagy", "~> 9.3.1"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
-gem "acts-as-taggable-on", "~> 11.0.0"
+gem "acts-as-taggable-on", "~> 12.0.0"
 
 # json
 gem "jsonapi-serializer", "~> 2.2.0"
@@ -83,7 +83,7 @@ gem "rack-cors", "~> 2.0.2"
 gem "discard", "~> 1.4.0"
 
 # redis
-gem "redis-actionpack", "~> 5.4.0"
+gem "redis-actionpack", "~> 5.5.0"
 
 # management console
 gem "rails_admin", "3.2.1"
@@ -97,7 +97,7 @@ end
 
 group :development do
   gem "brakeman", "~> 6.2.2", require: false
-  gem "bullet", "~> 7.2.0"
+  gem "bullet", "~> 8.0.0"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.2.1"
@@ -112,14 +112,14 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.7.0", require: false
-  gem "ruby-lsp", "~> 0.21.3", require: false
+  gem "ruby-lsp", "~> 0.22.0", require: false
 
   gem "dockerfile-rails", "~>1.6.24"
 end
 
 group :test do
   gem "observer", "~> 0.1.2"
-  gem "mutex_m", "~> 0.2.0"
+  gem "mutex_m", "~> 0.3.0"
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
@@ -128,5 +128,5 @@ group :test do
   gem "factory_bot_rails", "~> 6.4.4"
   gem "faker", "~> 3.5.1"
   gem "jsonapi-rspec", "~> 0.0.11"
-  gem "rspec-rails", "~> 7.0.1"
+  gem "rspec-rails", "~> 7.1.0"
 end

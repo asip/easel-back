@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.6.0",
+    "@fortawesome/fontawesome-free": "^6.7.1",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo": "^8.0.12",
     "@hotwired/turbo-rails": "^8.0.12",
@@ -28,19 +28,19 @@
     "build:webpack-watch": "webpack --watch --config ./config/webpack/webpack.config.js",
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules",
     "build:css-watch": "sass --watch ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules",
-    "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && cp -r node_modules/@fortawesome/fontawesome-free/webfonts ./public/assets/",
+    "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && copyfiles -f node_modules/@fortawesome/fontawesome-free/webfonts/* ./public/assets/~@fortawesome/fontawesome-free/webfonts",
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",
     "lint": "eslint --fix './app/javascript/**/*.{js,ts}'"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
     "@types/toastify-js": "^1.12.3",
-    "@typescript-eslint/eslint-plugin": "^8.13.0",
-    "@typescript-eslint/parser": "^8.13.0",
-    "eslint": "^9.14.0",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.3.3",
-    "tsc-watch": "^6.2.0",
+    "tsc-watch": "^6.2.1",
     "typescript": "5.5.4"
   }
 }
