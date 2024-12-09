@@ -16,7 +16,7 @@ gem "propshaft", "~> 1.1.0"
 gem "pg", "~> 1.5.9"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 6.4.3"
+gem "puma", "~> 6.5.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.11"
@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.1"
 gem "view_component", "~> 3.20.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.173.0"
+gem "aws-sdk-s3", "~> 1.176.0"
 gem "image_processing", "~> 1.13.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -58,13 +58,13 @@ gem "rambulance", "~> 3.3.0"
 gem "sorcery", "~> 0.16.5"
 gem "sorcery-jwt", "~> 0.1.13"
 
-gem "googleauth", "~> 1.11.2"
+gem "googleauth", "~> 1.12.0"
 
 # settings
 gem "config", "~> 5.5.2"
 
 # paging
-gem "pagy", "~> 9.3.1"
+gem "pagy", "~> 9.3.3"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
@@ -91,7 +91,7 @@ gem "rails_admin", "3.2.1"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.9.2", platforms: %i[mri windows], require: "debug/prelude"
-  gem "pg_query", "~> 5.1.0"
+  gem "pg_query", "~> 6.0.0"
   gem "prosopite", "~> 1.4.2"
 end
 
@@ -112,7 +112,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.0.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.7.0", require: false
-  gem "ruby-lsp", "~> 0.22.0", require: false
+  gem "ruby-lsp", "~> 0.22.1", require: false
 
   gem "dockerfile-rails", "~>1.6.24"
 end
@@ -123,7 +123,7 @@ group :test do
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
-  gem "selenium-webdriver", "~> 4.26.0"
+  gem "selenium-webdriver", "~> 4.27.0"
 
   gem "factory_bot_rails", "~> 6.4.4"
   gem "faker", "~> 3.5.1"
