@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.1",
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo": "^8.0.12",
     "@hotwired/turbo-rails": "^8.0.12",
@@ -11,15 +11,15 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "copyfiles": "^2.4.1",
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.24.2",
     "esbuild-loader": "^4.2.2",
     "flatpickr": "^4.6.13",
     "rails_admin": "3.3.0",
-    "sass": "^1.82.0",
+    "sass": "^1.83.0",
     "stimulus": "^3.2.2",
     "toastify-js": "^1.12.0",
     "webpack": "^5.97.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^6.0.1"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
@@ -35,9 +35,9 @@
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
     "@types/toastify-js": "^1.12.3",
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@typescript-eslint/parser": "^8.17.0",
-    "eslint": "^9.16.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
+    "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.4.2",
     "tsc-watch": "^6.2.1",
