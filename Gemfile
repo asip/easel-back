@@ -88,6 +88,8 @@ gem "redis-actionpack", "~> 5.5.0"
 # management console
 gem "rails_admin", "3.3.0"
 
+gem "mutex_m", "~> 0.3.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.10.0", platforms: %i[mri windows], require: "debug/prelude"
@@ -119,7 +121,6 @@ end
 
 group :test do
   gem "observer", "~> 0.1.2"
-  gem "mutex_m", "~> 0.3.0"
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
