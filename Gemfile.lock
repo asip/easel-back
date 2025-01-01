@@ -115,7 +115,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (6.2.2)
+    brakeman (7.0.0)
       racc
     builder (3.2.4)
     bullet (8.0.0)
@@ -507,7 +507,7 @@ DEPENDENCIES
   annotate (~> 3.2.0)
   aws-sdk-s3 (~> 1.176.1)
   bootsnap (~> 1.18.4)
-  brakeman (~> 6.2.2)
+  brakeman (~> 7.0.0)
   bullet (~> 8.0.0)
   capybara (~> 3.40.0)
   config (~> 5.5.2)
