@@ -18,7 +18,7 @@
     "sass": "^1.86.3",
     "stimulus": "^3.2.2",
     "toastify-js": "^1.12.0",
-    "webpack": "^5.98.0",
+    "webpack": "^5.99.5",
     "webpack-cli": "^6.0.1"
   },
   "scripts": {
@@ -35,10 +35,10 @@
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
     "@types/toastify-js": "^1.12.3",
-    "@typescript-eslint/eslint-plugin": "^8.29.0",
-    "@typescript-eslint/parser": "^8.29.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
     "eslint": "^9.24.0",
-    "eslint-config-prettier": "^10.1.1",
+    "eslint-config-prettier": "^10.1.2",
     "prettier": "^3.5.3",
     "tsc-watch": "^6.2.1",
     "typescript": "5.8.3"
