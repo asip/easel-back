@@ -13,20 +13,20 @@ module Api
 
       def show
         user = Queries::Users::FindUser.run(user_id: params[:id])
-        render json: UserSerializer.new(user).serializable_hash
+        render json: UserResource.new(user).serializable_hash
       end
 
       def frames
         pagination, frames = list_frames_query(user_id: query_params[:user_id], page: query_params[:page])
 
-        render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
+        render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
       end
 
       def create
         mutation = Mutations::Users::CreateUser.run(form_params:)
         user = mutation.user
         if mutation.success?
-          render json: UserSerializer.new(user).serializable_hash
+          render json: UserResource.new(user).serializable_hash
         else
           render json: { errors: user.errors.to_hash(true) }.to_json
         end
@@ -36,17 +36,13 @@ module Api
         mutation = Mutations::Users::UpdateUser.run(user: current_user, form_params:)
         user = mutation.user
         if mutation.success?
-          render json: AccountSerializer.new(user).serializable_hash
+          render json: AccountResource.new(user).serializable_hash
         else
           render json: { errors: user.errors.to_hash(true) }.to_json
         end
       end
 
       private
-
-      def index_options
-        {}
-      end
 
       def query_params
         params.permit(

@@ -31,22 +31,20 @@
 #  index_users_on_unlock_token                         (unlock_token)
 #
 
-# User Serializer
-class UserSerializer
-  include JSONAPI::Serializer
-  set_type :user
-  set_id :id
+# User Resource
+class UserResource < BaseResource
+  root_key :user, :users
   attributes :id, :email, :name
 
-  attribute :image_thumb_url do |object|
-    object.image_url_for_view(:thumb)
+  attribute :image_thumb_url do |user|
+    user.image_url_for_view(:thumb)
   end
 
-  attribute :image_one_url do |object|
-    object.image_url_for_view(:one)
+  attribute :image_one_url do |user|
+    user.image_url_for_view(:one)
   end
 
-  attribute :image_three_url do |object|
-    object.image_url_for_view(:three)
+  attribute :image_three_url do |user|
+    user.image_url_for_view(:three)
   end
 end

@@ -19,19 +19,19 @@ module Api
       def profile
         user = current_user
 
-        render json: AccountSerializer.new(user).serializable_hash
+        render json: AccountResource.new(user).serializable_hash
       end
 
       def frame
         frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], user: current_user)
 
-        render json: Detail::FrameSerializer.new(frame, frame_options).serializable_hash
+        render json: Detail::FrameResource.new(frame).serializable_hash
       end
 
       def frames
         pagination, frames = list_frames_query(user: current_user, page: query_params[:page])
 
-        render json: ListItem::FrameSerializer.new(frames, frames_options).serializable_hash.merge(pagination)
+        render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
       end
 
       #
@@ -55,7 +55,7 @@ module Api
         current_user&.reset_token
         logout
         user = User.unscoped.find_by!(id: user_id)
-        render json: AccountSerializer.new(user).serializable_hash
+        render json: AccountResource.new(user).serializable_hash
       end
 
       #
@@ -67,7 +67,7 @@ module Api
         logout
         user = User.unscoped.find_by!(id: user_id)
         user.discard
-        render json: AccountSerializer.new(user).serializable_hash
+        render json: AccountResource.new(user).serializable_hash
       end
 
       private
@@ -80,7 +80,7 @@ module Api
       end
 
       def create_successful(user:)
-        render json: AccountSerializer.new(user).serializable_hash
+        render json: AccountResource.new(user).serializable_hash
       end
 
       def create_failed(form_params:)
@@ -112,14 +112,6 @@ module Api
         params.permit(
           :page
         )
-      end
-
-      def frame_options
-        { include: [ :comments ] }
-      end
-
-      def frames_options
-        {}
       end
     end
   end

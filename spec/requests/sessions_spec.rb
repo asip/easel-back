@@ -14,10 +14,9 @@ describe 'Sessions', type: :request do
              params: { user: { email: user.email, password: 'testtest' } },
              headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         expect(response.status).to eq(200)
-        json_data = json[:data]
-        expect(json_data).to have_type('user')
-        expect(json_data).to have_attribute('name')
-        expect(json_data).to have_attribute('email')
+        json_data = json
+        expect(json_data).to include(:name)
+        expect(json_data).to include(:email)
       end
 
       context 'failure (失敗)' do
@@ -57,10 +56,9 @@ describe 'Sessions', type: :request do
           'Authorization': "Bearer #{user.token}"
         }
         expect(response.status).to eq(200)
-        json_data = json[:data]
-        expect(json_data).to have_type('user')
-        expect(json_data).to have_attribute('name')
-        expect(json_data).to have_attribute('email')
+        json_data = json
+        expect(json_data).to include(:name)
+        expect(json_data).to include(:email)
       end
     end
 
@@ -88,10 +86,9 @@ describe 'Sessions', type: :request do
           'Authorization': "Bearer #{user.token}"
         }
         expect(response.status).to eq(200)
-        json_data = json[:data]
-        expect(json_data).to have_type('user')
-        expect(json_data).to have_attribute('name')
-        expect(json_data).to have_attribute('email')
+        json_data = json
+        expect(json_data).to include(:name)
+        expect(json_data).to include(:email)
       end
     end
   end
@@ -111,10 +108,9 @@ describe 'Sessions', type: :request do
           'Authorization': "Bearer #{user.token}"
         }
         expect(response.status).to eq(200)
-        json_data = json[:data]
-        expect(json_data).to have_type('user')
-        expect(json_data).to have_attribute('name')
-        expect(json_data).to have_attribute('email')
+        json_data = json
+        expect(json_data).to include(:name)
+        expect(json_data).to include(:email)
       end
     end
   end
@@ -138,9 +134,8 @@ describe 'Sessions', type: :request do
             'Authorization': "Bearer #{user.token}"
           }
           expect(response.status).to eq 200
-          json_data = json[:data]
-          expect(json_data).to have_type('frame')
-          expect(json_data).to have_attribute('name')
+          json_data = json
+          expect(json_data).to include(:name)
         end
 
         it 'failure (失敗)' do
@@ -161,9 +156,8 @@ describe 'Sessions', type: :request do
             'Authorization': "Bearer #{user.token}"
           }
           expect(response.status).to eq 200
-          json_data = json[:data]
-          expect(json_data).to have_type('frame')
-          expect(json_data).to have_attribute('name')
+          json_data = json
+          expect(json_data).to include(:name)
         end
 
         it 'failure (失敗)' do
@@ -210,7 +204,7 @@ describe 'Sessions', type: :request do
             'Authorization': "Bearer #{user.token}"
           }
           expect(response.status).to eq 200
-          json_data = json[:data]
+          json_data = json[:frames]
           expect(json_data.size).to be 12
         end
       end
@@ -222,7 +216,7 @@ describe 'Sessions', type: :request do
             'Authorization': "Bearer #{user.token}"
           }
           expect(response.status).to eq 200
-          json_data = json[:data]
+          json_data = json[:frames]
           expect(json_data.size).to be 2
         end
       end

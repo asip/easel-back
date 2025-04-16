@@ -14,13 +14,13 @@ module Api
       def index
         pagination, frames = list_frames_query(word: query_params[:q], page: query_params[:page])
 
-        render json: ListItem::FrameSerializer.new(frames, index_options).serializable_hash.merge(pagination)
+        render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
       end
 
       def show
         frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], private: false)
 
-        render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
+        render json: Detail::FrameResource.new(frame).serializable_hash
       end
 
       def comments
@@ -29,7 +29,7 @@ module Api
         # options = {}
         # options[:include] = [:user]
 
-        render json: CommentSerializer.new(comments).serializable_hash
+        render json: CommentResource.new(comments).serialize
       end
 
       def create
@@ -37,7 +37,7 @@ module Api
         frame = mutation.frame
 
         if mutation.success?
-          render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
+          render json: Detail::FrameResource.new(frame).serializable_hash
         else
           render json: { errors: frame.errors.to_hash(true) }.to_json
         end
@@ -48,7 +48,7 @@ module Api
         frame = mutation.frame
 
         if mutation.success?
-          render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
+          render json: Detail::FrameResource.new(frame).serializable_hash
         else
           render json: { errors: frame.errors.to_hash(true) }.to_json
         end
@@ -57,18 +57,10 @@ module Api
       def destroy
         mutation = Mutations::Frames::DeleteFrame.run(user: current_user, frame_id: params[:id])
         frame = mutation.frame
-        render json: Detail::FrameSerializer.new(frame, detail_options).serializable_hash
+        render json: Detail::FrameResource.new(frame).serializable_hash
       end
 
       private
-
-      def index_options
-        {}
-      end
-
-      def detail_options
-        { include: [ :comments ] }
-      end
 
       def query_params
         params.permit(

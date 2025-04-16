@@ -16,7 +16,7 @@ module Api
           provider = auth_params[:provider]
 
           user = login_from_oauth(provider)
-          render json: AccountSerializer.new(user).serializable_hash
+          render json: AccountResource.new(user).serializable_hash
         end
 
         private

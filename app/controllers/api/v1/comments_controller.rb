@@ -10,8 +10,8 @@ module Api
         mutation = Mutations::Comments::CreateComment.run(user: current_user, frame_id: params[:frame_id], form_params:)
         comment = mutation.comment
         if mutation.success?
-          # logger.debug CommentSerializer.new(comment).serialized_json
-          render json: CommentSerializer.new(comment).serializable_hash
+          # logger.debug CommentResource.new(comment).serialize
+          render json: CommentResource.new(comment).serializable_hash
         else
           render json: { errors: comment.errors.to_hash(true) }.to_json
         end

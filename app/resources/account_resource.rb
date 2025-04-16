@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Account Serializer
-class AccountSerializer < UserSerializer
-  set_type :user
+# Account Resource
+class AccountResource < UserResource
+  root_key :user, :users
 
   attributes :token
 

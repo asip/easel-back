@@ -16,8 +16,8 @@
 
 # detail
 module Detail
-  # Frame Serializer
-  class FrameSerializer < ListItem::FrameSerializer
-    has_many :comments, serializer: CommentSerializer
+  # Frame Resource
+  class FrameResource < ListItem::FrameResource
+    many :comments, resource: CommentResource
   end
 end

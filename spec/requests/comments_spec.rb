@@ -26,9 +26,8 @@ describe 'Comments', type: :request do
                'Authorization': "Bearer #{user.token}"
              }
         expect(response.status).to eq 200
-        json_data = json[:data]
-        expect(json_data).to have_type('comment')
-        expect(json_data).to have_attribute('body')
+        json_data = json
+        expect(json_data).to include(:body)
       end
 
       context 'failure (失敗)' do

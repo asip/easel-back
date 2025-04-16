@@ -30,7 +30,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
-          json_data = json[:data]
+          json_data = json[:frames]
           expect(json_data.size).to be 12
         end
       end
@@ -39,7 +39,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { page: 2 }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
-          json_data = json[:data]
+          json_data = json[:frames]
           expect(json_data.size).to be 2
         end
       end
@@ -48,7 +48,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: 'test1' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
-          json_data = json[:data]
+          json_data = json[:frames]
           expect(json_data.size).to be 2
         end
       end
@@ -57,7 +57,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: 'testA' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
-          json_data = json[:data]
+          json_data = json[:frames]
           expect(json_data.size).to be 2
         end
       end
@@ -66,7 +66,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: '2022/01/01' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
-          json_data = json[:data]
+          json_data = json[:frames]
           expect(json_data.size).to be 2
         end
       end
@@ -75,7 +75,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Time.zone.today.strftime('%Y/%m/%d') }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq 200
-          json_data = json[:data]
+          json_data = json[:frames]
           expect(json_data.size).to be 12
         end
       end
@@ -92,9 +92,8 @@ describe 'Frames', type: :request do
       it 'success (成功)' do
         get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         expect(response.status).to eq 200
-        json_data = json[:data]
-        expect(json_data).to have_type('frame')
-        expect(json_data).to have_attribute('name')
+        json_data = json
+        expect(json_data).to include(:name)
       end
 
       it 'failure (失敗)' do
@@ -119,7 +118,7 @@ describe 'Frames', type: :request do
       it 'success (成功)' do
         get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         expect(response.status).to eq 200
-        json_data = json[:data]
+        json_data = json[:comments]
         expect(json_data.size).to be 2
       end
 
@@ -166,9 +165,8 @@ describe 'Frames', type: :request do
                'Authorization': "Bearer #{user.token}"
              }
         expect(response.status).to eq 200
-        json_data = json[:data]
-        expect(json_data).to have_type('frame')
-        expect(json_data).to have_attribute('name')
+        json_data = json
+        expect(json_data).to include(:name)
       end
 
       context 'failure (失敗)' do
@@ -329,9 +327,8 @@ describe 'Frames', type: :request do
               'Authorization': "Bearer #{user.token}"
             }
         expect(response.status).to eq 200
-        json_data = json[:data]
-        expect(json_data).to have_type('frame')
-        expect(json_data).to have_attribute('name')
+        json_data = json
+        expect(json_data).to include(:name)
       end
 
       context 'failure (失敗)' do
@@ -475,9 +472,8 @@ describe 'Frames', type: :request do
                  'Authorization': "Bearer #{user.token}"
                }
         expect(response.status).to eq 200
-        json_data = json[:data]
-        expect(json_data).to have_type('frame')
-        expect(json_data).to have_attribute('name')
+        json_data = json
+        expect(json_data).to include(:name)
       end
 
       it 'failure (失敗)' do
