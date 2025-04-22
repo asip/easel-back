@@ -121,7 +121,7 @@ GEM
     brakeman (7.0.2)
       racc
     builder (3.2.4)
-    bullet (8.0.4)
+    bullet (8.0.5)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     capybara (3.40.0)
@@ -519,7 +519,7 @@ DEPENDENCIES
   aws-sdk-s3 (~> 1.183.0)
   bootsnap (~> 1.18.4)
   brakeman (~> 7.0.2)
-  bullet (~> 8.0.4)
+  bullet (~> 8.0.5)
   capybara (~> 3.40.0)
   config (~> 5.5.2)
   cssbundling-rails (~> 1.4.3)

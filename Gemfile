@@ -99,7 +99,7 @@ end
 
 group :development do
   gem "brakeman", "~> 7.0.2", require: false
-  gem "bullet", "~> 8.0.4"
+  gem "bullet", "~> 8.0.5"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.2.1"
