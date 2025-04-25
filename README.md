@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/asip/easel-back/blob/main/public/palette.svg)
 
-This is backend of Easel.
+This is backend of [Easel](https://github.com/asip/easel).
 
 Rails7.2 + Sorcery(authentication) + Pagy(paging) +  
 Shrine(upload) + ActsAsTaggableOn(tag) +  
