@@ -19,7 +19,7 @@ Things you may want to cover:
 
 * Ruby version : 3.4
 * Rails version : 7.2.2
-* System dependencies : pnpm & postgresql & minio & redis & libvips & direnv
+* System dependencies : pnpm & postgresql & minio & valkey & libvips & direnv
 * Deployment instructions
   * Run `bundle install --path vendor/bundle` to install the required Rubygems
   * Run `pnpm install` to install the required NPM packages
