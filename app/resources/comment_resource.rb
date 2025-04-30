@@ -28,8 +28,4 @@ class CommentResource < BaseResource
   attribute :updated_at do |comment|
     I18n.l(comment.updated_at)
   end
-
-  attribute :error_messages do |comment|
-    comment.errors.full_messages
-  end
 end
