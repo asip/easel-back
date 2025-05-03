@@ -33,7 +33,7 @@ module Easel
 
     # timezone
     config.active_record.default_timezone = :local
-    config.time_zone = "Tokyo"
+    config.time_zone = ENV.fetch("TIME_ZONE") { "Asia/Tokyo" }
 
     # config.action_controller.forgery_protection_origin_check = false
 

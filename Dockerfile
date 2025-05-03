@@ -50,12 +50,14 @@ COPY --link . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
+ARG time_zone
 ARG s3_access_key
 ARG s3_secret_key
 ARG s3_endpoint
 ARG s3_bucket
 ARG aws_region
 ARG redis_session_url
+ENV TIME_ZONE=${time_zone}
 ENV S3_ACCESS_KEY=${s3_access_key}
 ENV S3_SECRET_KEY=${s3_secret_key}
 ENV S3_ENDPOINT=${s3_endpoint}
