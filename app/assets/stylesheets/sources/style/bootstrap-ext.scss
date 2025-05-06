@@ -7,7 +7,13 @@
   -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
   border-radius: 5px;   /* Firefox用 */
 }
+
 .kadomaru {
+  -moz-border-radius: 20px;        /* CSS3草案 */
+  -webkit-border-radius: 20px;    /* Safari,Google Chrome用 */
+  border-radius: 20px;   /* Firefox用 */
+}
+.kadomaru-5 {
   -moz-border-radius: 5px;        /* CSS3草案 */
   -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
   border-radius: 5px;   /* Firefox用 */
