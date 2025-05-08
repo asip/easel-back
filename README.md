@@ -4,12 +4,12 @@
 
 This is backend of [Easel](https://github.com/asip/easel).
 
-Rails7.2 + Sorcery(authentication) + Pagy(paging) +  
-Shrine(upload) + ActsAsTaggableOn(tag) +  
-RailsAdmin (management console) + Discard(soft delete) +  
+Rails8.0 + Sorcery(authentication) + Pagy(paging) +
+Shrine(upload) + ActsAsTaggableOn(tag) +
+RailsAdmin (management console) + Discard(soft delete) +
 Hotwire (Turbo + Stimulus3) + Bootstrap5
 
-The legacy frontend + backend implemented by Ruby on Rails moved to [easel-legacy](https://github.com/asip/easel-legacy).  
+The legacy frontend + backend implemented by Ruby on Rails moved to [easel-legacy](https://github.com/asip/easel-legacy).
 (+ Vue.js 3)
 
 This README would normally document whatever steps are necessary to get the
@@ -18,7 +18,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version : 3.4
-* Rails version : 7.2.2
+* Rails version : 8.0.2
 * System dependencies : pnpm & postgresql & minio & valkey & libvips & direnv
 * Deployment instructions
   * Run `bundle install --path vendor/bundle` to install the required Rubygems

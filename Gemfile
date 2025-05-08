@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.2"
+gem "rails", "~> 8.0.2"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.1.0"
@@ -49,7 +49,7 @@ gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
 
 # i18n
-gem "rails-i18n", "~> 7.0.10"
+gem "rails-i18n", "~> 8.0.1"
 
 # error page handling
 gem "rambulance", "~> 3.3.0"
