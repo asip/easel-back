@@ -107,7 +107,7 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
-  gem "annotate", "~> 3.2.0"
+  gem "annotaterb", "~> 4.14.0"
   gem "rails-erd", "~> 1.7.2"
 
   # Ruby style guide, linter, and formatter
