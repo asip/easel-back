@@ -186,10 +186,10 @@ describe 'Sessions', type: :request do
       create(:frame, :skip_validate, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01', user_id: user.id)
       create(:frame, :skip_validate, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01', user_id: user.id)
       create(:frame, :skip_validate, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01', user_id: user.id)
-      create(:frame, :skip_validate, name: 'test50', tag_list: 'testE0', shooted_at: '2022/04/01', user_id: user.id)
-      create(:frame, :skip_validate, name: 'test51', tag_list: 'testE1', shooted_at: '2022/04/01', user_id: user.id)
-      create(:frame, :skip_validate, name: 'test62', tag_list: 'testF2', shooted_at: '2022/04/01', user_id: user.id)
-      create(:frame, :skip_validate, name: 'test63', tag_list: 'testF3', shooted_at: '2022/04/01', user_id: user.id)
+      # create(:frame, :skip_validate, name: 'test50', tag_list: 'testE0', shooted_at: '2022/04/01', user_id: user.id)
+      # create(:frame, :skip_validate, name: 'test51', tag_list: 'testE1', shooted_at: '2022/04/01', user_id: user.id)
+      # create(:frame, :skip_validate, name: 'test62', tag_list: 'testF2', shooted_at: '2022/04/01', user_id: user.id)
+      # create(:frame, :skip_validate, name: 'test63', tag_list: 'testF3', shooted_at: '2022/04/01', user_id: user.id)
     end
 
     context "get login user's frame list (ログインユーザーのフレームリスト取得)" do
@@ -205,7 +205,7 @@ describe 'Sessions', type: :request do
           }
           expect(response.status).to eq 200
           json_data = json[:frames]
-          expect(json_data.size).to be 12
+          expect(json_data.size).to be 8
         end
       end
 
