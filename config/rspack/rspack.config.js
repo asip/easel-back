@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
+import { defineConfig } from '@rspack/cli'
 import rspack from '@rspack/core'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -7,8 +8,7 @@ const __dirname = path.dirname(__filename)
 
 // eslint-disable-next-line no-undef
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
-
-export default {
+export default defineConfig({
   mode,
   resolve: {
     // alias: {
@@ -50,4 +50,4 @@ export default {
       }
     ]
   }
-}
+})
