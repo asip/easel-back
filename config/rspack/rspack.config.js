@@ -11,9 +11,6 @@ const mode = process.env.NODE_ENV === 'development' ? 'development' : 'productio
 export default defineConfig({
   mode,
   resolve: {
-    // alias: {
-    //  vue$: 'vue/dist/vue.esm-bundler.js',
-    // },
     extensions: ['.js', '.ts']
   },
   entry: {
@@ -23,7 +20,6 @@ export default defineConfig({
   output: {
     filename: '[name].js',
     sourceMapFilename: '[name].js.map',
-    // eslint-disable-next-line no-undef
     path: path.resolve(__dirname, '..', '..', 'app/assets/builds'),
   },
   plugins: [
