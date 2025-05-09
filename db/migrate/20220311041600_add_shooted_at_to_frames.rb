@@ -3,6 +3,6 @@
 # add shooted_at to frames
 class AddShootedAtToFrames < ActiveRecord::Migration[7.0]
   def change
-    add_column :frames, :shooted_at, :datetime, after: :image_data
+    add_column :frames, :shooted_at, :datetime
   end
 end
