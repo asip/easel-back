@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_30_074653) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_09_033126) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "admins", force: :cascade do |t|
     t.string "email", null: false
@@ -110,13 +110,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_074653) do
     t.datetime "last_activity_at", precision: nil
     t.string "last_login_from_ip_address"
     t.string "name", null: false
-    t.string "token"
     t.text "image_data"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
-    t.index ["token"], name: "index_users_on_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
 end

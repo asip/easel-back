@@ -17,7 +17,6 @@
 #  lock_expires_at            :datetime
 #  name                       :string           not null
 #  salt                       :string
-#  token                      :string
 #  unlock_token               :string
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
@@ -27,7 +26,6 @@
 #  index_users_on_deleted_at                           (deleted_at)
 #  index_users_on_email                                (email) UNIQUE
 #  index_users_on_last_logout_at_and_last_activity_at  (last_logout_at,last_activity_at)
-#  index_users_on_token                                (token) UNIQUE
 #  index_users_on_unlock_token                         (unlock_token)
 #
 FactoryBot.define do

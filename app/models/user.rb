@@ -17,7 +17,6 @@
 #  lock_expires_at            :datetime
 #  name                       :string           not null
 #  salt                       :string
-#  token                      :string
 #  unlock_token               :string
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
@@ -27,7 +26,6 @@
 #  index_users_on_deleted_at                           (deleted_at)
 #  index_users_on_email                                (email) UNIQUE
 #  index_users_on_last_logout_at_and_last_activity_at  (last_logout_at,last_activity_at)
-#  index_users_on_token                                (token) UNIQUE
 #  index_users_on_unlock_token                         (unlock_token)
 #
 
@@ -40,6 +38,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   self.discard_column = :deleted_at
+
+  attr_accessor :token
 
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
@@ -105,7 +105,7 @@ class User < ApplicationRecord
   end
 
   def assign_token(token_)
-    update_attribute!(:token, token_)
+    @token = token_
   end
 
   def update_token
@@ -122,7 +122,7 @@ class User < ApplicationRecord
   end
 
   def reset_token
-    update!(token: nil)
+    @token = nil
   end
 
   # (フォローしたときの処理)
