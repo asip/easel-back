@@ -16,6 +16,7 @@ module Api
           provider = auth_params[:provider]
 
           user = login_from_oauth(provider)
+          response.set_header("Authorization", "Bearer #{user.token}")
           render json: AccountResource.new(user).serializable_hash
         end
 

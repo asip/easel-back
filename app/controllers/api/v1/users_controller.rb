@@ -36,6 +36,7 @@ module Api
         mutation = Mutations::Users::UpdateUser.run(user: current_user, form_params:)
         user = mutation.user
         if mutation.success?
+          response.set_header("Authorization", "Bearer #{user.token}")
           render json: AccountResource.new(user).serializable_hash
         else
           render json: { errors: user.errors.to_hash(true) }.to_json

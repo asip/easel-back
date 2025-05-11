@@ -19,6 +19,7 @@ module Api
       def profile
         user = current_user
 
+        response.set_header("Authorization", "Bearer #{user.token}")
         render json: AccountResource.new(user).serializable_hash
       end
 
@@ -80,6 +81,7 @@ module Api
       end
 
       def create_successful(user:)
+        response.set_header("Authorization", "Bearer #{user.token}")
         render json: AccountResource.new(user).serializable_hash
       end
 
