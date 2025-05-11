@@ -1,4 +1,4 @@
-import ApplicationController from './application_controller'
+import ApplicationController from './application-controller'
 import Toastify from 'toastify-js'
 
 
