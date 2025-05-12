@@ -33,7 +33,7 @@ export default defineConfig({
   module: {
     rules: [
       {
-        test: /\.[jt]s$/,
+        test: /\.ts$/,
         exclude: [/node_modules/],
         loader: 'builtin:swc-loader',
         options: {
@@ -43,7 +43,7 @@ export default defineConfig({
             },
           },
         },
-        type: 'javascript/auto'
+        type: 'javascript/auto',
       }
     ]
   }
