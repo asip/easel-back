@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.1"
 gem "view_component", "~> 3.22.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.185.0"
+gem "aws-sdk-s3", "~> 1.186.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -114,7 +114,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.23.17", require: false
+  gem "ruby-lsp", "~> 0.23.18", require: false
 
   gem "dockerfile-rails", "~>1.7.9"
 end
