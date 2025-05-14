@@ -34,7 +34,7 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.18.4", require: false
+gem "bootsnap", "~> 1.18.5", require: false
 
 gem "cssbundling-rails", "~> 1.4.3"
 gem "jsbundling-rails", "~> 1.3.1"
@@ -114,7 +114,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.23.18", require: false
+  gem "ruby-lsp", "~> 0.23.19", require: false
 
   gem "dockerfile-rails", "~>1.7.9"
 end
