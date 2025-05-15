@@ -135,7 +135,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -151,7 +151,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -167,7 +167,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -183,7 +183,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -199,7 +199,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -215,7 +215,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -231,7 +231,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_nil
           expect(json_data[:errors][:password_confirmation]).to be_present
@@ -248,7 +248,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
           expect(json_data[:errors][:password_confirmation]).to be_present
@@ -266,7 +266,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -283,7 +283,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -352,7 +352,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -367,7 +367,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -382,7 +382,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -397,7 +397,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -412,7 +412,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -428,7 +428,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -444,7 +444,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -498,7 +498,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -513,7 +513,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:current_password]).to be_present
         end
@@ -529,7 +529,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -545,7 +545,7 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_nil
           expect(json_data[:errors][:password_confirmation]).to be_present

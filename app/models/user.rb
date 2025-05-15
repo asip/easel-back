@@ -108,12 +108,7 @@ class User < ApplicationRecord
   end
 
   def token_expire?
-    User.decode_token(token)
-    # Rails.logger.debug(decode_token[0]['exp'])
-    # decode_token[0]['exp'] < Time.zone.now.to_i
-    false
-  rescue StandardError # => e
-    true
+    raise NotImplementedError
   end
 
   def full_error_messages_on_login
@@ -131,9 +126,7 @@ class User < ApplicationRecord
   end
 
   def update_token
-    return unless saved_change_to_email?
-
-    assign_token(User.issue_token(id:, email:))
+    # return unless saved_change_to_email?
   end
 
   def assign_derivatives

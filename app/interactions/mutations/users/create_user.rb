@@ -16,7 +16,7 @@ module Mutations
 
       def execute
         @user = User.new(@form_params)
-        return if @user.save(context: :with_validation)
+        return if @user.save # (context: :with_validation)
 
         errors.merge!(@user.errors)
       end

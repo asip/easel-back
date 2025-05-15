@@ -18,12 +18,11 @@ module Mutations
       def execute
         @user.attributes = @form_params
         # puts 'testtest'
-        success = @user.valid?(:with_validation)
+        success = @user.valid? # (:with_validation)
         if success
           ApplicationRecord.transaction do
-            @user.save!(context: :with_validation)
-            # puts @user.saved_change_to_email?
-            @user.update_token
+            @user.save! # (context: :with_validation)
+            # @user.update_token
           end
         else
           errors.merge!(@user.errors)
