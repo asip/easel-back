@@ -4,45 +4,38 @@
 #
 # Table name: users
 #
-#  id                         :bigint           not null, primary key
-#  crypted_password           :string
-#  deleted_at                 :datetime
-#  email                      :string           not null
-#  failed_logins_count        :integer          default(0)
-#  image_data                 :text
-#  last_activity_at           :datetime
-#  last_login_at              :datetime
-#  last_login_from_ip_address :string
-#  last_logout_at             :datetime
-#  lock_expires_at            :datetime
-#  name                       :string           not null
-#  salt                       :string
-#  unlock_token               :string
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
+#  id                 :bigint           not null, primary key
+#  deleted_at         :datetime
+#  email              :string           not null
+#  encrypted_password :string           default(""), not null
+#  image_data         :text
+#  name               :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 # Indexes
 #
-#  index_users_on_deleted_at                           (deleted_at)
-#  index_users_on_email                                (email) UNIQUE
-#  index_users_on_last_logout_at_and_last_activity_at  (last_logout_at,last_activity_at)
-#  index_users_on_unlock_token                         (unlock_token)
+#  index_users_on_deleted_at  (deleted_at)
+#  index_users_on_email       (email) UNIQUE
 #
 
 # User
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable, # :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
+  devise :omniauthable, omniauth_providers: [ :google_oauth2 ]
   include Errors::Sortable
   include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
-
-  authenticates_with_sorcery!
 
   self.discard_column = :deleted_at
 
   attr_accessor :token
 
   has_many :authentications, dependent: :destroy
-  accepts_nested_attributes_for :authentications
+  # accepts_nested_attributes_for :authentications
 
   has_many :frames, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -59,23 +52,52 @@ class User < ApplicationRecord
 
   # VALID_NAME_REGEX = /\A\z|\A[a-zA-Z\d\s]{3,40}\z/
 
-  validates :password, length: { minimum: 3 }, confirmation: true,
-                       if: -> { new_record? || changes[:crypted_password] },
-                       on: :with_validation
-  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] },
-                                    on: :with_validation
-  validates :name, length: { minimum: 1, maximum: 40 },
-                   on: :with_validation # , format: { with: VALID_NAME_REGEX }
+  validates :password, length: { minimum: 6, maximum: 128 }, confirmation: true,
+                       if: -> { new_record? || changes[:encrypted_password] } # , on: :with_validation
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:encrypted_password] }# ,on: :with_validation
+  validates :name, length: { minimum: 1, maximum: 40 } # , on: :with_validation # , format: { with: VALID_NAME_REGEX }
   validates :email, length: { minimum: 3, maximum: 319 }, format: { with: URI::MailTo::EMAIL_REGEXP },
-                    uniqueness: true,
-                    on: :with_validation
+                    uniqueness: true # , on: :with_validation
 
-  validates :email, presence: true, on: :login
-  validates :password, presence: true, on: :login
+  # validates :email, presence: true, on: :login
+  # validates :password, presence: true, on: :login
 
   after_validation :assign_derivatives
 
   default_scope -> { kept }
+
+  def self.from_omniauth(auth)
+    authentication = Authentication.find_by(uid: auth[:uid], provider: auth[:provider])
+
+    if authentication
+      user = User.find_by(id: authentication.user_id)
+      if user
+        user.email = auth[:info]["email"]
+        user.save!
+      end
+
+      user
+    else
+      user = User.find_by(email: auth[:info]["email"])
+
+      unless user
+        user = User.new
+        user.name = auth[:info]["name"]
+        user.email = auth[:info]["email"]
+        user.password = Devise.friendly_token[0, 20]
+        # puts user.errors.to_hash(true)
+        user.save!(validate: false)
+      end
+
+      authentication = Authentication.new
+      authentication.user_id = user.id
+      authentication.provider = auth[:provider]
+      authentication.uid = auth[:uid]
+      authentication.save!
+
+      user
+    end
+  end
 
   def image_url_for_view(key)
     if image.blank?

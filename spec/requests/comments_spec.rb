@@ -8,23 +8,18 @@ describe 'Comments', type: :request do
     let(:endpoint) { "/api/v1/frames/#{frame.id}/comments" }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'regist comment (コメント登録)' do
       it 'success (成功)' do
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         post endpoint,
              params: {
                comment: {
                  body: 'testtest'
                }
              },
-             headers: {
-               'HTTP_ACCEPT_LANGUAGE': 'ja',
-               'Authorization': "Bearer #{user.token}"
-             }
+             headers: headers
         expect(response.status).to eq 200
         json_data = json
         expect(json_data).to include(:body)
@@ -32,32 +27,28 @@ describe 'Comments', type: :request do
 
       context 'failure (失敗)' do
         it 'empty body (bodyが空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           post endpoint,
                params: {
                  comment: {
                    body: ''
                  }
                },
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+               headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:body]).to be_present
         end
 
         it 'body exceeds 255 characters (bodyが255文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           post endpoint,
                params: {
                  comment: {
                    body: Faker::Alphanumeric.alpha(number: 256)
                  }
                },
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+               headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:body]).to be_present
@@ -72,27 +63,18 @@ describe 'Comments', type: :request do
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let!(:comment) { create(:comment, frame_id: frame.id, user_id: user.id) }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'delete comment (コメント削除)' do
       it 'success (成功)' do
-        delete endpoint,
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        delete endpoint, headers: headers
         expect(response.status).to eq 204
       end
 
       it 'failure (失敗)' do
-        delete endpoint_failure,
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        delete endpoint_failure, headers: headers
         expect(response.status).to eq 404
       end
     end

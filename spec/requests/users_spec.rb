@@ -11,8 +11,7 @@ describe 'Users', type: :request do
 
     context 'get user (ユーザー情報取得)' do
       it 'success (成功)' do
-        get endpoint,
-            headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+        get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         json_data = json
         expect(response.status).to eq(200)
         expect(json_data).to include('name')
@@ -20,8 +19,7 @@ describe 'Users', type: :request do
       end
 
       it 'failure (失敗)' do
-        get endpoint_failure,
-            headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+        get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         expect(response.status).to eq(404)
       end
     end
@@ -137,7 +135,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -153,7 +151,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -169,7 +167,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -185,7 +183,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -201,12 +199,12 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
 
-        it 'password is less than 3 characters (パスワードが３文字に満たない場合)' do
+        it 'password is less than 6 characters (パスワードが6文字に満たない場合)' do
           post endpoint,
                params: {
                  user: {
@@ -217,7 +215,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -233,7 +231,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_nil
           expect(json_data[:errors][:password_confirmation]).to be_present
@@ -250,7 +248,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
           expect(json_data[:errors][:password_confirmation]).to be_present
@@ -268,7 +266,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -285,7 +283,7 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -305,47 +303,20 @@ describe 'Users', type: :request do
     let(:file_different_mime_type) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
     }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'update user (ユーザー情報更新)' do
       context 'success (成功)' do
-        it 'password and passoword_confirmation are empty (パスワードとパスワード(確認)が空の場合)' do
-          put endpoint,
-              params: {
-                user: {
-                  name: 'test',
-                  email: 'test@test.jp',
-                  password: '',
-                  password_confirmation: ''
-                }
-              },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data).to include('name')
-          expect(json_data).to include('email')
-        end
-
         it 'without image' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 user: {
                   name: 'test_user01',
-                  email: 'test@test.jp',
-                  password: 'testtest',
-                  password_confirmation: 'testtest'
+                  email: 'test@test.jp'
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+              headers: headers
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data).to include('name')
@@ -354,20 +325,16 @@ describe 'Users', type: :request do
       end
 
       it 'with image' do
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         put endpoint,
             params: {
               user: {
                 name: 'test_user01',
                 email: 'test@test.jp',
-                password: 'testtest',
-                password_confirmation: 'testtest',
                 image: file_1024
               }
             },
-            headers: {
-              'HTTP_ACCEPT_LANGUAGE': 'ja',
-              'Authorization': "Bearer #{user.token}"
-            }
+            headers: headers
         expect(response.status).to eq(200)
         json_data = json
         expect(json_data).to include('name')
@@ -376,177 +343,212 @@ describe 'Users', type: :request do
 
       context 'failure (失敗)' do
         it 'empty name (名前が空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 user: {
                   name: '',
-                  email: 'test@test.jp',
-                  password: 'testtest',
-                  password_confirmation: 'testtest'
+                  email: 'test@test.jp'
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
+              headers: headers
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
 
         it 'name exceeds 40 characters (名前が40文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 user: {
                   name: Faker::Alphanumeric.alpha(number: 41),
-                  email: 'test@test.jp',
-                  password: 'testtest',
-                  password_confirmation: 'testtest'
+                  email: 'test@test.jp'
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
+              headers: headers
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
 
         it 'empty email (emailが空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 user: {
                   name: 'test',
-                  email: '',
-                  password: 'testtest',
-                  password_confirmation: 'testtest'
+                  email: ''
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
+              headers: headers
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
 
         it 'invalid email' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 user: {
                   name: 'test',
-                  email: 'invalidemail',
-                  password: 'testtest',
-                  password_confirmation: 'testtest'
+                  email: 'invalidemail'
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
+              headers: headers
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
 
         it 'email exceeds 319 characters (emailが319文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 user: {
                   name: 'test',
-                  email: "#{Faker::Alphanumeric.alpha(number: 315)}@test.jp",
-                  password: 'testtest',
-                  password_confirmation: 'testtest'
+                  email: "#{Faker::Alphanumeric.alpha(number: 315)}@test.jp"
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
+              headers: headers
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
 
-        it 'password is less than 3 characters (パスワードが３文字に満たない場合)' do
-          put endpoint,
-              params: {
-                user: {
-                  name: 'test',
-                  email: 'test@test.jp',
-                  password: 'te',
-                  password_confirmation: 'te'
-                }
-              },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data[:errors][:password]).to be_present
-        end
-
-        it 'password and passoword_confirmation don\'t match (パスワードとパスワード(確認)が一致しない場合)' do
-          put endpoint,
-              params: {
-                user: {
-                  name: 'test',
-                  email: 'test@test.jp',
-                  password: 'testtest',
-                  password_confirmation: 'testtesttest'
-                }
-              },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data[:errors][:password]).to be_nil
-          expect(json_data[:errors][:password_confirmation]).to be_present
-        end
-
         it 'image exceeds 5mb (イメージが5MBを超えている場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 user: {
                   name: 'test',
                   email: 'test@test.jp',
-                  password: 'testtest',
-                  password_confirmation: 'testtest',
                   image: file_over_capacity
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
+              headers: headers
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
 
         it 'image mime type is different (imageのmime typeが異なる場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 user: {
                   name: 'test',
                   email: 'test@test.jp',
-                  password: 'testtest',
-                  password_confirmation: 'testtest',
                   image: file_different_mime_type
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
-          expect(response.status).to eq(200)
+              headers: headers
+          expect(response.status).to eq(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
+        end
+      end
+    end
+  end
+
+  describe 'PUT /api/v1/account/password' do
+    let(:endpoint) { '/api/v1/account/password' }
+    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let(:file_1024) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
+    }
+    let(:file_over_capacity) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/over_capacity.jpg'), 'image/jpeg')
+    }
+    let(:file_different_mime_type) {
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
+    }
+    let!(:headers) { authenticated_headers(request, user) }
+
+    context 'update password (パスワード更新)' do
+      context 'success (成功)' do
+        it 'password and passoword_confirmation are empty (パスワードとパスワード(確認)が空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+              params: {
+                user: {
+                  current_password: "testtest",
+                  password: '',
+                  password_confirmation: ''
+                }
+              },
+              headers: headers
+          expect(response.status).to eq(200)
+          json_data = json
+          expect(json_data).to include('name')
+          expect(json_data).to include('email')
+        end
+      end
+
+      context 'failure (失敗)' do
+        it 'empty current password (現在のパスワードが空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+              params: {
+                user: {
+                  current_password: "",
+                  password: 'te',
+                  password_confirmation: 'te'
+                }
+              },
+              headers: headers
+          expect(response.status).to eq(422)
+          json_data = json
+          expect(json_data[:errors][:password]).to be_present
+        end
+        it 'invalid current password (現在のパスワードが間違っている場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+              params: {
+                user: {
+                  current_password: "testtest_error",
+                  password: 'te',
+                  password_confirmation: 'te'
+                }
+              },
+              headers: headers
+          expect(response.status).to eq(422)
+          json_data = json
+          expect(json_data[:errors][:current_password]).to be_present
+        end
+
+        it 'password is less than 6 characters (パスワードが6文字に満たない場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+              params: {
+                user: {
+                  current_password: "testtest",
+                  password: 'te',
+                  password_confirmation: 'te'
+                }
+              },
+              headers: headers
+          expect(response.status).to eq(422)
+          json_data = json
+          expect(json_data[:errors][:password]).to be_present
+        end
+
+        it 'password and passoword_confirmation don\'t match (パスワードとパスワード(確認)が一致しない場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+              params: {
+                user: {
+                  current_password: "testtest",
+                  password: 'testtest',
+                  password_confirmation: 'testtesttest'
+                }
+              },
+              headers: headers
+          expect(response.status).to eq(422)
+          json_data = json
+          expect(json_data[:errors][:password]).to be_nil
+          expect(json_data[:errors][:password_confirmation]).to be_present
         end
       end
     end

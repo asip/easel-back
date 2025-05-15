@@ -1,4 +1,4 @@
-<div id="users">
+<div id="admins">
   <br>
   <div class="card col-sm-10 kadomaru mx-auto">
     <div class="card-header">
@@ -8,7 +8,7 @@
     </div>
     <div class="card-block">
       <br>
-      <%= form_with model: @user, url: manager_sessions_path, method: :post, local: true do |form| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |form| %>
         <div class="row d-flex justify-content-sm-center border border-white">
           <div class="col-sm-10">
             <table class="table table-bordered table_rounded">
@@ -19,6 +19,7 @@
                   </td>
                   <td>
                     <%= form.text_field :email, placeholder: t("activerecord.attributes.user.email"),
+                                                autofocus: true, autocomplete: "email",
                                                 class: "form-control" %>
                   </td>
                 </tr>
@@ -28,6 +29,7 @@
                   </td>
                   <td>
                     <%= form.password_field :password, placeholder: t("activerecord.attributes.user.password"),
+                                                       autocomplete: "current-password",
                                                        class: "form-control" %>
                   </td>
                 </tr>

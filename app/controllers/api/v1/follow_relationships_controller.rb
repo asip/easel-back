@@ -6,7 +6,7 @@ module Api
   module V1
     # Frames Controller
     class FollowRelationshipsController < Api::V1::ApiController
-      before_action :authenticate
+      before_action :authenticate_user!
 
       def following
         user = User.find(query_params[:user_id])

@@ -16,6 +16,7 @@ describe 'oauth/sessions', type: :request do
                params: { provider: 'google', credential: 'test_credential' },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           expect(response.status).to eq(200)
+          # puts response.headers
           json_data = json
           expect(json_data).to include('name')
           expect(json_data).to include('email')
@@ -31,6 +32,7 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
             expect(response.status).to eq(200)
+            # puts response.headers
             json_data = json
             expect(json_data).to include('name')
             expect(json_data).to include('email')
@@ -47,6 +49,7 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
             expect(response.status).to eq(200)
+            # puts response.headers
             json_data = json
             expect(json_data).to include('name')
             expect(json_data).to include('email')

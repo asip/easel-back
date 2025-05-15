@@ -24,10 +24,10 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  config.authenticate_with do
+    warden.authenticate! scope: :admin
+  end
+  config.current_user_method(&:current_admin)
 
   ## == CancanCan ==
   # config.authorize_with :cancancan
@@ -44,12 +44,11 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
-  config.authenticate_with do
-    require_login
-  end
-
-  config.current_user_method(&:current_user)
-  config.parent_controller = "Manager::ApplicationController"
+  # config.authenticate_with do
+  #   require_login
+  # end
+  # config.current_user_method(&:current_user)
+  # config.parent_controller = "Manager::ApplicationController"
 
   config.default_hidden_fields = {
     show: %i[id created_at updated_at],

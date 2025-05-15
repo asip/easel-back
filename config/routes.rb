@@ -2,33 +2,51 @@
 
 # rubocop: disable Metrics/BlockLength
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root "manager/sessions#new"
-
-  namespace :manager do
-    get "/" => "sessions#new", as: "login"
-    resources :sessions, only: %i[new create destroy]
-    get "/sessions" => "sessions#new"
+  devise_for :admins, format: :html,
+    controllers: {
+      sessions: "admins/sessions"
+    }
+  devise_scope :admin do
+    get "sign_in" => "admins/sessions#new"
+    post "sign_in" => "admins/sessions#create"
   end
-  delete "/logout" => "manager/sessions#destroy", as: "logout"
+
+  mount RailsAdmin::Engine => "/", as: "rails_admin"
+
+  devise_for :users, path: "",
+    controllers: {
+      sessions: "users/sessions",
+      registrations: "users/registrations",
+      omniauth_callbacks: "users/omniauth_callbacks"
+    }
+  # ,
+  # path_names: {
+  #   sign_in: "login",
+  #   sign_out: "logout",
+  #   registration: "signup"
+  # }
+  devise_scope :user do
+    post "/api/v1/sessions", to: "users/sessions#create"
+    delete "/api/v1/sessions/logout", to: "users/sessions#destroy"
+    post "/api/v1/users", to: "users/registrations#create"
+    put "api/v1/account/profile", to: "users/registrations#update"
+    delete "/api/v1/account", to: "users/registrations#destroy"
+    get "/api/v1/users/:id", to: "api/v1/users#show"
+    post "/api/v1/oauth/sessions", to: "users/omniauth_callbacks#google_oauth2"
+  end
+
+  # root ""
+
+  put "/api/v1/account/password" => "account/passwords#update"
 
   namespace :api do
     namespace :v1 do
-      namespace :oauth do
-        resource :sessions, only: [ :create ]
-      end
-      resource :sessions, only: %i[create] do
-        delete "/logout" => "/api/v1/sessions#destroy"
-      end
-      resources :users, only: %i[show create] do
+      resources :users, only: [] do
         resource :follow_relationships, only: %i[create destroy]
         get "/frames" => "/api/v1/users#frames"
       end
       get "/account/profile" => "/api/v1/sessions#profile"
-      put "/account/profile" => "/api/v1/users#update"
-      delete "/account" => "/api/v1/sessions#delete"
       get "/account/frames" => "/api/v1/sessions#frames"
       get "/account/frames/:id" => "/api/v1/sessions#frame"
       get "/account/following/:user_id" => "/api/v1/follow_relationships#following"

@@ -9,7 +9,7 @@ module Api
       include Queries::Frames::Pagination
 
       skip_before_action :switch_locale, only: [ :comments ]
-      skip_before_action :authenticate, only: %i[index show comments]
+      skip_before_action :authenticate_user!, only: %i[index show comments]
 
       def index
         pagination, frames = list_frames_query(word: query_params[:q], page: query_params[:page])

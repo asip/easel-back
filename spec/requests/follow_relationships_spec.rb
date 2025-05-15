@@ -12,18 +12,12 @@ describe 'FollowRelationships', type: :request do
         create(:user, name: 'test_user2', email: 'test2@test.jp',
                       password: 'testtest', password_confirmation: 'testtest')
       end
-
-      before do
-        user.assign_token(User.issue_token(id: user.id, email: user.email))
-      end
+      let!(:headers) { authenticated_headers(request, user) }
 
       context 'not follow (フォロしていない場合)' do
         it 'success(成功)' do
-          get endpoint,
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, headers: headers
           expect(response.status).to be 200
           json_data = json
           expect(json_data[:following]).to be false
@@ -36,11 +30,8 @@ describe 'FollowRelationships', type: :request do
         end
 
         it 'success(成功)' do
-          get endpoint,
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, headers: headers
           expect(response.status).to be 200
           json_data = json
           expect(json_data[:following]).to be true
@@ -57,27 +48,19 @@ describe 'FollowRelationships', type: :request do
       create(:user, name: 'test_user2', email: 'test2@test.jp',
                     password: 'testtest', password_confirmation: 'testtest')
     end
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'follow (フォロー)' do
       it 'success (成功)' do
-        post endpoint,
-             headers: {
-               'HTTP_ACCEPT_LANGUAGE': 'ja',
-               'Authorization': "Bearer #{user.token}"
-             }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        post endpoint, headers: headers
         expect(response.status).to be 204
       end
 
       # it 'failure (失敗)' do
+      #  rheaders.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
       #  post endpoint_failure,
-      #       headers: {
-      #         'HTTP_ACCEPT_LANGUAGE': 'ja',
-      #         'Authorization': "Bearer #{user.token}"
-      #       }
+      #       headers: headers
       #  expect(response.status).to be 204
       # end
     end
@@ -91,28 +74,22 @@ describe 'FollowRelationships', type: :request do
       create(:user, name: 'test_user2', email: 'test2@test.jp',
                     password: 'testtest', password_confirmation: 'testtest')
     end
+    let!(:headers) { authenticated_headers(request, user) }
 
     before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
       create(:follow_relationship, follower_id: user.id, followee_id: followee_user.id)
     end
 
     context 'unfollow (アンフォロー)' do
       it 'success (成功)' do
-        delete endpoint,
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        delete endpoint, headers: headers
         expect(response.status).to be 204
       end
 
       it 'falure (失敗)' do
-        delete endpoint_failure,
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        delete endpoint_failure, headers: headers
         expect(response.status).to be 204
       end
     end

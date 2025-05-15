@@ -14,6 +14,7 @@ describe 'Sessions', type: :request do
              params: { user: { email: user.email, password: 'testtest' } },
              headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
         expect(response.status).to eq(200)
+        # puts response.headers
         json_data = json
         expect(json_data).to include(:name)
         expect(json_data).to include(:email)
@@ -24,18 +25,18 @@ describe 'Sessions', type: :request do
           post endpoint,
                params: { user: { email: 'invalid@test.jp', password: 'testtest' } },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data[:messages]).to be_present
+          expect(response.status).to eq(422)
+          # json_data = json
+          # expect(json_data[:messages]).to be_present
         end
 
         it 'invalid password (パスワードが正しくない場合)' do
           post endpoint,
                params: { user: { email: user.email, password: 'invalidtest' } },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data[:messages]).to be_present
+          expect(response.status).to eq(422)
+          # json_data = json
+          # expect(json_data[:messages]).to be_present
         end
       end
     end
@@ -44,17 +45,12 @@ describe 'Sessions', type: :request do
   describe 'GET /api/v1/account/profile' do
     let(:endpoint) { '/api/v1/account/profile' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'authenticate token (トークン認証)' do
       it 'success (成功)' do
-        get endpoint, headers: {
-          'HTTP_ACCEPT_LANGUAGE': 'ja',
-          'Authorization': "Bearer #{user.token}"
-        }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        get endpoint, headers: headers
         expect(response.status).to eq(200)
         json_data = json
         expect(json_data).to include(:name)
@@ -64,8 +60,8 @@ describe 'Sessions', type: :request do
 
     it 'failure (失敗)' do
       get endpoint, headers: {
-        'HTTP_ACCEPT_LANGUAGE': 'ja',
-        'Authorization': 'Bearer '
+        'Accept': "application/json",
+        'HTTP_ACCEPT_LANGUAGE': 'ja'
       }
       expect(response.status).to eq(401)
     end
@@ -74,21 +70,16 @@ describe 'Sessions', type: :request do
   describe 'DELETE /api/v1/sessions/logout' do
     let(:endpoint) { '/api/v1/sessions/logout' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'logout (ログアウト)' do
       it 'success (成功)' do
-        delete endpoint, headers: {
-          'HTTP_ACCEPT_LANGUAGE': 'ja',
-          'Authorization': "Bearer #{user.token}"
-        }
-        expect(response.status).to eq(200)
-        json_data = json
-        expect(json_data).to include(:name)
-        expect(json_data).to include(:email)
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        delete endpoint, headers: headers
+        expect(response.status).to eq(204)
+        # json_data = json
+        # expect(json_data).to include(:name)
+        # expect(json_data).to include(:email)
       end
     end
   end
@@ -96,17 +87,12 @@ describe 'Sessions', type: :request do
   describe 'DELETE /api/v1/account' do
     let(:endpoint) { '/api/v1/account' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'delete (退会)' do
       it 'success (成功)' do
-        delete endpoint, headers: {
-          'HTTP_ACCEPT_LANGUAGE': 'ja',
-          'Authorization': "Bearer #{user.token}"
-        }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        delete endpoint, headers: headers
         expect(response.status).to eq(200)
         json_data = json
         expect(json_data).to include(:name)
@@ -119,30 +105,23 @@ describe 'Sessions', type: :request do
     let(:endpoint) { "/api/v1/account/frames/#{frame.id}" }
     let(:endpoint_failure) { '/api/v1/account/frames/404' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'get frame (フレーム情報取得)' do
       context 'private = false' do
         let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
 
         it 'success (成功)' do
-          get endpoint, headers: {
-            'HTTP_ACCEPT_LANGUAGE': 'ja',
-            'Authorization': "Bearer #{user.token}"
-          }
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data).to include(:name)
         end
 
         it 'failure (失敗)' do
-          get endpoint_failure, headers: {
-            'HTTP_ACCEPT_LANGUAGE': 'ja',
-            'Authorization': "Bearer #{user.token}"
-          }
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint_failure, headers: headers
           expect(response.status).to eq 404
         end
       end
@@ -151,20 +130,16 @@ describe 'Sessions', type: :request do
         let!(:frame) { create(:frame, :skip_validate, user_id: user.id, private: true) }
 
         it 'success (成功)' do
-          get endpoint, headers: {
-            'HTTP_ACCEPT_LANGUAGE': 'ja',
-            'Authorization': "Bearer #{user.token}"
-          }
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data).to include(:name)
         end
 
         it 'failure (失敗)' do
-          get endpoint_failure, headers: {
-            'HTTP_ACCEPT_LANGUAGE': 'ja',
-            'Authorization': "Bearer #{user.token}"
-          }
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint_failure, headers: headers
           expect(response.status).to eq 404
         end
       end
@@ -193,16 +168,12 @@ describe 'Sessions', type: :request do
     end
 
     context "get login user's frame list (ログインユーザーのフレームリスト取得)" do
-      before do
-        user.assign_token(User.issue_token(id: user.id, email: user.email))
-      end
+      let!(:headers) { authenticated_headers(request, user) }
 
       context 'page=1 (1ページめ)' do
         it 'success (成功)' do
-          get endpoint, headers: {
-            'HTTP_ACCEPT_LANGUAGE': 'ja',
-            'Authorization': "Bearer #{user.token}"
-          }
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, headers: headers
           expect(response.status).to eq 200
           json_data = json[:frames]
           expect(json_data.size).to be 8
@@ -211,10 +182,8 @@ describe 'Sessions', type: :request do
 
       context 'page=2 (2ページめ)' do
         it 'success (成功)' do
-          get endpoint, params: { page: 2 }, headers: {
-            'HTTP_ACCEPT_LANGUAGE': 'ja',
-            'Authorization': "Bearer #{user.token}"
-          }
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { page: 2 }, headers: headers
           expect(response.status).to eq 200
           json_data = json[:frames]
           expect(json_data.size).to be 2

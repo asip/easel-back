@@ -37,6 +37,7 @@ module Easel
 
     # config.action_controller.forgery_protection_origin_check = false
 
+    config.middleware.use ActionDispatch::Flash
     config.middleware.use Rack::Locale
   end
 end

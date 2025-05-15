@@ -55,8 +55,10 @@ gem "rails-i18n", "~> 8.0.1"
 gem "rambulance", "~> 3.3.0"
 
 # authentication
-gem "sorcery", "~> 0.16.5"
-gem "sorcery-jwt", "~> 0.1.13"
+gem "devise", "4.9.4"
+gem "devise-jwt", "0.12.1"
+gem "devise-i18n", "1.13.0"
+gem "omniauth-google-oauth2", "1.2.1"
 
 gem "googleauth", "~> 1.14.0"
 

@@ -10,34 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_09_033126) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_14_234918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "admins", force: :cascade do |t|
     t.string "email", null: false
-    t.string "crypted_password"
-    t.string "salt"
-    t.integer "failed_logins_count", default: 0
-    t.datetime "lock_expires_at"
-    t.string "unlock_token"
-    t.datetime "last_login_at"
-    t.datetime "last_logout_at"
-    t.datetime "last_activity_at"
-    t.string "last_login_from_ip_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["last_logout_at", "last_activity_at"], name: "index_admins_on_last_logout_at_and_last_activity_at"
-    t.index ["unlock_token"], name: "index_admins_on_unlock_token"
   end
 
   create_table "authentications", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
@@ -98,23 +88,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_09_033126) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.string "crypted_password"
-    t.string "salt"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "failed_logins_count", default: 0
-    t.datetime "lock_expires_at", precision: nil
-    t.string "unlock_token"
-    t.datetime "last_login_at", precision: nil
-    t.datetime "last_logout_at", precision: nil
-    t.datetime "last_activity_at", precision: nil
-    t.string "last_login_from_ip_address"
     t.string "name", null: false
     t.text "image_data"
     t.datetime "deleted_at"
+    t.string "encrypted_password", default: "", null: false
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
-    t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
 end

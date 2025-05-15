@@ -143,13 +143,11 @@ describe 'Frames', type: :request do
     let(:file_different_mime_type) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
     }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     describe 'regist frame (フレーム情報登録)' do
       it 'success (成功)' do
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         post endpoint,
              params: {
                frame: {
@@ -160,10 +158,7 @@ describe 'Frames', type: :request do
                  file: file_1024
                }
              },
-             headers: {
-               'HTTP_ACCEPT_LANGUAGE': 'ja',
-               'Authorization': "Bearer #{user.token}"
-             }
+             headers: headers
         expect(response.status).to eq 200
         json_data = json
         expect(json_data).to include(:name)
@@ -171,6 +166,7 @@ describe 'Frames', type: :request do
 
       context 'failure (失敗)' do
         it 'empty name (名前が空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           post endpoint,
                params: {
                  frame: {
@@ -181,16 +177,14 @@ describe 'Frames', type: :request do
                    file: file_1024
                  }
                },
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+               headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
 
         it 'name exceeds 30 characters (名前が30文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           post endpoint,
                params: {
                  frame: {
@@ -201,16 +195,14 @@ describe 'Frames', type: :request do
                    file: file_1024
                  }
                },
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+               headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
 
         it 'tag exceeds 10 characters (タグが10文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           post endpoint,
                params: {
                  frame: {
@@ -221,16 +213,14 @@ describe 'Frames', type: :request do
                    file: file_1024
                  }
                },
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+               headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:tag_list]).to be_present
         end
 
         it 'empty file (file が空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           post endpoint,
                params: {
                  frame: {
@@ -240,16 +230,14 @@ describe 'Frames', type: :request do
                    shooted_at: Time.zone.now
                  }
                },
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+               headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
 
         it 'file exceeds 5mb (fileが5MBを超えている場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           post endpoint,
                params: {
                  frame: {
@@ -260,16 +248,14 @@ describe 'Frames', type: :request do
                    file: file_over_capacity
                  }
                },
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+               headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
 
         it 'file mime type is different (fileのmime typeが異なる場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           post endpoint,
                params: {
                  frame: {
@@ -280,10 +266,7 @@ describe 'Frames', type: :request do
                    file: file_different_mime_type
                  }
                },
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+               headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:file]).to be_present
@@ -305,13 +288,11 @@ describe 'Frames', type: :request do
     let(:file_different_mime_type) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
     }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     describe 'update frame (フレーム情報更新)' do
       it 'success (成功)' do
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         put endpoint,
             params: {
               frame: {
@@ -322,10 +303,7 @@ describe 'Frames', type: :request do
                 file: file_1024
               }
             },
-            headers: {
-              'HTTP_ACCEPT_LANGUAGE': 'ja',
-              'Authorization': "Bearer #{user.token}"
-            }
+            headers: headers
         expect(response.status).to eq 200
         json_data = json
         expect(json_data).to include(:name)
@@ -333,6 +311,7 @@ describe 'Frames', type: :request do
 
       context 'failure (失敗)' do
         it 'empty name (名前が空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 frame: {
@@ -343,16 +322,14 @@ describe 'Frames', type: :request do
                   file: file_1024
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+              headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
 
         it 'name exceeds 30 characters (名前が30文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 frame: {
@@ -363,16 +340,14 @@ describe 'Frames', type: :request do
                   file: file_1024
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+              headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
 
         it 'tag exceeds 10 characters (タグが10文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 frame: {
@@ -383,16 +358,14 @@ describe 'Frames', type: :request do
                   file: file_1024
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+              headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:tag_list]).to be_present
         end
 
         it 'empty file (file が空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 frame: {
@@ -402,16 +375,14 @@ describe 'Frames', type: :request do
                   shooted_at: Time.zone.now
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+              headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
 
         it 'file exceeds 5mb (fileが5MBを超えている場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 frame: {
@@ -422,16 +393,14 @@ describe 'Frames', type: :request do
                   file: file_over_capacity
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+              headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
 
         it 'file mime type is different (fileのmime typeが異なる場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           put endpoint,
               params: {
                 frame: {
@@ -442,10 +411,7 @@ describe 'Frames', type: :request do
                   file: file_different_mime_type
                 }
               },
-              headers: {
-                'HTTP_ACCEPT_LANGUAGE': 'ja',
-                'Authorization': "Bearer #{user.token}"
-              }
+              headers: headers
           expect(response.status).to eq 200
           json_data = json
           expect(json_data[:errors][:file]).to be_present
@@ -459,29 +425,20 @@ describe 'Frames', type: :request do
     let(:endpoint_failure) { '/api/v1/frames/404' }
     let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
-
-    before do
-      user.assign_token(User.issue_token(id: user.id, email: user.email))
-    end
+    let!(:headers) { authenticated_headers(request, user) }
 
     context 'delete frame (フレーム情報削除)' do
       it 'success (成功)' do
-        delete endpoint,
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        delete endpoint, headers: headers
         expect(response.status).to eq 200
         json_data = json
         expect(json_data).to include(:name)
       end
 
       it 'failure (失敗)' do
-        delete endpoint_failure,
-               headers: {
-                 'HTTP_ACCEPT_LANGUAGE': 'ja',
-                 'Authorization': "Bearer #{user.token}"
-               }
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        delete endpoint_failure, headers: headers
         expect(response.status).to eq 404
       end
     end
