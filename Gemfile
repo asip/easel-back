@@ -34,7 +34,7 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.18.5", require: false
+gem "bootsnap", "~> 1.18.6", require: false
 
 gem "cssbundling-rails", "~> 1.4.3"
 gem "jsbundling-rails", "~> 1.3.1"
@@ -101,7 +101,7 @@ end
 
 group :development do
   gem "brakeman", "~> 7.0.2", require: false
-  gem "bullet", "~> 8.0.6"
+  gem "bullet", "~> 8.0.7"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.2.1"
@@ -116,7 +116,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.23.19", require: false
+  gem "ruby-lsp", "~> 0.23.20", require: false
 
   gem "dockerfile-rails", "~>1.7.9"
 end
