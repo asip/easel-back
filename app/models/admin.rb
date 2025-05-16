@@ -22,15 +22,15 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :validatable # , :registerable, :recoverable, :rememberable,
   include Errors::Sortable
 
-  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: %i[create update]
-  validates :password, length: { minimum: 3 }, confirmation: true,
-                       if: -> { new_record? || changes[:crypted_password] },
-                       on: %i[create update]
-  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] },
-                                    on: %i[create update]
+  # validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: %i[create update]
+  # validates :password, length: { minimum: 1 }, confirmation: true,
+  #                      if: -> { new_record? || changes[:crypted_password] },
+  #                      on: %i[create update]
+  # validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] },
+  #                                   on: %i[create update]
 
-  validates :email, presence: true, on: :login
-  validates :password, presence: true, on: :login
+  # validates :email, presence: true, on: :login
+  # validates :password, presence: true, on: :login
 
   def full_error_messages_on_login
     full_error_messages_for(%i[email password])

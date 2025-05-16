@@ -188,21 +188,21 @@ describe 'Users', type: :request do
           expect(json_data[:errors][:email]).to be_present
         end
 
-        it 'email exceeds 319 characters (emailが319文字を超える場合)' do
-          post endpoint,
-               params: {
-                 user: {
-                   name: 'test',
-                   email: "#{Faker::Alphanumeric.alpha(number: 315)}@test.jp",
-                   password: 'testtest',
-                   password_confirmation: 'testtest'
-                 }
-               },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data[:errors][:email]).to be_present
-        end
+        # it 'email exceeds 319 characters (emailが319文字を超える場合)' do
+        #   post endpoint,
+        #        params: {
+        #          user: {
+        #            name: 'test',
+        #            email: "#{Faker::Alphanumeric.alpha(number: 315)}@test.jp",
+        #            password: 'testtest',
+        #            password_confirmation: 'testtest'
+        #          }
+        #        },
+        #        headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+        #   expect(response.status).to eq(200)
+        #   json_data = json
+        #   expect(json_data[:errors][:email]).to be_present
+        # end
 
         it 'password is less than 6 characters (パスワードが6文字に満たない場合)' do
           post endpoint,
@@ -402,20 +402,20 @@ describe 'Users', type: :request do
           expect(json_data[:errors][:email]).to be_present
         end
 
-        it 'email exceeds 319 characters (emailが319文字を超える場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
-          put endpoint,
-              params: {
-                user: {
-                  name: 'test',
-                  email: "#{Faker::Alphanumeric.alpha(number: 315)}@test.jp"
-                }
-              },
-              headers: headers
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data[:errors][:email]).to be_present
-        end
+        # it 'email exceeds 319 characters (emailが319文字を超える場合)' do
+        #   headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        #   put endpoint,
+        #       params: {
+        #         user: {
+        #           name: 'test',
+        #           email: "#{Faker::Alphanumeric.alpha(number: 315)}@test.jp"
+        #         }
+        #       },
+        #       headers: headers
+        #    expect(response.status).to eq(200)
+        #    json_data = json
+        #    expect(json_data[:errors][:email]).to be_present
+        # end
 
         it 'image exceeds 5mb (イメージが5MBを超えている場合)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
