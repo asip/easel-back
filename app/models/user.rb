@@ -80,20 +80,22 @@ class User < ApplicationRecord
     else
       user = User.find_by(email: auth[:info]["email"])
 
-      unless user
-        user = User.new
-        user.name = auth[:info]["name"]
-        user.email = auth[:info]["email"]
-        user.password = Devise.friendly_token[0, 20]
-        # puts user.errors.to_hash(true)
-        user.save!(validate: false)
-      end
+      ActiveRecord::Base.transaction do
+        unless user
+          user = User.new
+          user.name = auth[:info]["name"]
+          user.email = auth[:info]["email"]
+          user.password = Devise.friendly_token[0, 20]
+          # puts user.errors.to_hash(true)
+          user.save!
+        end
 
-      authentication = Authentication.new
-      authentication.user_id = user.id
-      authentication.provider = auth[:provider]
-      authentication.uid = auth[:uid]
-      authentication.save!
+        authentication = Authentication.new
+        authentication.user_id = user.id
+        authentication.provider = auth[:provider]
+        authentication.uid = auth[:uid]
+        authentication.save!
+      end
 
       user
     end
