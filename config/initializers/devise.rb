@@ -313,7 +313,7 @@ Devise.setup do |config|
   # config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
 
   config.jwt do |jwt|
-    jwt.aud_header = "easel"
+    # jwt.aud_header = "JWT_AUD"
     jwt.secret = Rails.application.secret_key_base
     jwt.dispatch_requests = [
       [ "POST", "/api/v1/sessions" ],
