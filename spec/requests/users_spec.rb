@@ -7,7 +7,7 @@ describe 'Users', type: :request do
   describe 'GET /api/v1/users/:id' do
     let(:endpoint) { "/api/v1/users/#{user.id}" }
     let(:endpoint_failure) { '/api/v1/users/404' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
 
     context 'get user (ユーザー情報取得)' do
       it 'success (成功)' do
@@ -28,7 +28,7 @@ describe 'Users', type: :request do
   describe 'GET /api/v1/users/:user_id/frames' do
     let(:endpoint) { "/api/v1/users/#{user.id}/frames" }
     let(:endpoint_failure) { '/api/v1/users/404/frames' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
 
     before do
       create(:frame, :skip_validate, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01', user_id: user.id)
@@ -251,7 +251,6 @@ describe 'Users', type: :request do
           expect(response.status).to eq(200)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
-          # expect(json_data[:errors][:password_confirmation]).to be_present
         end
 
         it 'image exceeds 5mb (イメージが5MBを超えている場合)' do
@@ -293,7 +292,7 @@ describe 'Users', type: :request do
 
   describe 'PUT /api/v1/account/profile' do
     let(:endpoint) { '/api/v1/account/profile' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
     }
@@ -454,7 +453,7 @@ describe 'Users', type: :request do
 
   describe 'PUT /api/v1/account/password' do
     let(:endpoint) { '/api/v1/account/password' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
     }

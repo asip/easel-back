@@ -6,7 +6,7 @@ require 'rails_helper'
 describe 'Frames', type: :request do
   describe 'GET /api/v1/frames' do
     let(:endpoint) { '/api/v1/frames' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
 
     before do
       create(:frame, :skip_validate, user: user, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
@@ -85,7 +85,7 @@ describe 'Frames', type: :request do
   describe 'GET /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
     let(:endpoint_failure) { '/api/v1/frames/404' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
 
     context 'get frame (フレーム情報取得)' do
@@ -106,7 +106,7 @@ describe 'Frames', type: :request do
   describe 'GET /api/v1/frames/:frame_id/comments' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}/comments" }
     let(:endpoint_failure) { '/api/v1/frames/404/comments' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
 
     before do
@@ -133,7 +133,7 @@ describe 'Frames', type: :request do
 
   describe 'POST /api/v1/frames' do
     let(:endpoint) { '/api/v1/frames' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
     }
@@ -277,7 +277,7 @@ describe 'Frames', type: :request do
 
   describe 'PUT /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
@@ -423,7 +423,7 @@ describe 'Frames', type: :request do
   describe 'DELETE /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
     let(:endpoint_failure) { '/api/v1/frames/404' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let!(:headers) { authenticated_headers(request, user) }
 

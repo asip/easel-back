@@ -24,7 +24,7 @@ describe 'oauth/sessions', type: :request do
       end
 
       context 'account registerd (アカウント登録済の場合)' do
-        let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+        let!(:user) { create(:user, password: 'testtest') }
 
         context 'not linked (未連携の場合)' do
           it 'success (成功)' do

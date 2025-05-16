@@ -7,10 +7,9 @@ describe 'FollowRelationships', type: :request do
   describe 'GET /api/v1/account/following/:user_id' do
     context 'get following (boolean value) (フォローしているかを取得する)' do
       let(:endpoint) { "/api/v1/account/following/#{followee_user.id}" }
-      let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+      let!(:user) { create(:user, password: 'testtest') }
       let!(:followee_user) do
-        create(:user, name: 'test_user2', email: 'test2@test.jp',
-                      password: 'testtest', password_confirmation: 'testtest')
+        create(:user, name: 'test_user2', email: 'test2@test.jp', password: 'testtest')
       end
       let!(:headers) { authenticated_headers(request, user) }
 
@@ -43,10 +42,9 @@ describe 'FollowRelationships', type: :request do
   describe 'POST /api/v1/user/:user_id/follow_relationships' do
     let(:endpoint) { "/api/v1/users/#{followee_user.id}/follow_relationships" }
     # let(:endpoint_failure) { '/api/v1/users/404/follow_relationships' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:followee_user) do
-      create(:user, name: 'test_user2', email: 'test2@test.jp',
-                    password: 'testtest', password_confirmation: 'testtest')
+      create(:user, name: 'test_user2', email: 'test2@test.jp', password: 'testtest')
     end
     let!(:headers) { authenticated_headers(request, user) }
 
@@ -69,10 +67,9 @@ describe 'FollowRelationships', type: :request do
   describe 'DELETE /api/v1/user/:user_id/follow_relationships' do
     let(:endpoint) { "/api/v1/users/#{followee_user.id}/follow_relationships" }
     let(:endpoint_failure) { '/api/v1/users/404/follow_relationships' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:followee_user) do
-      create(:user, name: 'test_user2', email: 'test2@test.jp',
-                    password: 'testtest', password_confirmation: 'testtest')
+      create(:user, name: 'test_user2', email: 'test2@test.jp', password: 'testtest')
     end
     let!(:headers) { authenticated_headers(request, user) }
 

@@ -6,7 +6,7 @@ require 'rails_helper'
 describe 'Sessions', type: :request do
   describe 'POST /api/v1/sessions' do
     let(:endpoint) { '/api/v1/sessions' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
 
     context 'login (ログイン)' do
       it 'success (成功)' do
@@ -44,7 +44,7 @@ describe 'Sessions', type: :request do
 
   describe 'GET /api/v1/account/profile' do
     let(:endpoint) { '/api/v1/account/profile' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
 
     context 'authenticate token (トークン認証)' do
@@ -69,7 +69,7 @@ describe 'Sessions', type: :request do
 
   describe 'DELETE /api/v1/sessions/logout' do
     let(:endpoint) { '/api/v1/sessions/logout' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
 
     context 'logout (ログアウト)' do
@@ -86,7 +86,7 @@ describe 'Sessions', type: :request do
 
   describe 'DELETE /api/v1/account' do
     let(:endpoint) { '/api/v1/account' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
 
     context 'delete (退会)' do
@@ -104,7 +104,7 @@ describe 'Sessions', type: :request do
   describe 'GET /api/v1/account/frames/:id' do
     let(:endpoint) { "/api/v1/account/frames/#{frame.id}" }
     let(:endpoint_failure) { '/api/v1/account/frames/404' }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
 
     context 'get frame (フレーム情報取得)' do
@@ -148,7 +148,7 @@ describe 'Sessions', type: :request do
 
   describe 'GET /api/v1/account/frames' do
     let(:endpoint) { "/api/v1/account/frames" }
-    let!(:user) { create(:user, password: 'testtest', password_confirmation: 'testtest') }
+    let!(:user) { create(:user, password: 'testtest') }
 
     before do
       create(:frame, :skip_validate, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01', user_id: user.id)
