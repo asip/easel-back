@@ -54,8 +54,8 @@ class User < ApplicationRecord
 
   # validates :password, length: { minimum: 6, maximum: 128 }, confirmation: true,
   #                     if: -> { new_record? || changes[:encrypted_password] } # , on: :with_validation
-  validates :name, length: { minimum: 1, maximum: 40 } # , on: :with_validation # , format: { with: VALID_NAME_REGEX }
-  # validates :email, length: { minimum: 1, maximum: 319 }, format: { with: URI::MailTo::EMAIL_REGEXP },
+  validates :name, length: { minimum: 3, maximum: 40 } # , on: :with_validation # , format: { with: VALID_NAME_REGEX }
+  # validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP },
   #                   uniqueness: true # , on: :with_validation
 
   # validates :email, presence: true, on: :login
