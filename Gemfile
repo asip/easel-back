@@ -79,7 +79,7 @@ gem "alba", "3.7.0"
 gem "rack-contrib", "2.5.0"
 
 # cors
-gem "rack-cors", "~> 2.0.2"
+gem "rack-cors", "~> 3.0.0"
 
 # soft delete
 gem "discard", "~> 1.4.0"
