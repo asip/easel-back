@@ -10,6 +10,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def twitter
   # end
 
+  # More info at:
+  # https://github.com/heartcombo/devise#omniauth
+
   def google_oauth2
     callback_for(:google)
   end
@@ -32,9 +35,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def auth_params
     params.permit(:provider, :credential)
   end
-
-  # More info at:
-  # https://github.com/heartcombo/devise#omniauth
 
   # GET|POST /resource/auth/twitter
   # def passthru
