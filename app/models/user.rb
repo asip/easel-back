@@ -109,16 +109,6 @@ class User < ApplicationRecord
     end
   end
 
-  def token_expire?
-    raise NotImplementedError
-  end
-
-  def assign_user_info(user_info)
-    self.name = user_info["name"]
-    self.email = user_info["email"]
-    self.save!
-  end
-
   def assign_token(token_)
     @token = token_
   end
