@@ -21,14 +21,15 @@
 
 # User
 class User < ApplicationRecord
+  include Errors::Sortable
+  include Discard::Model
+  include Profile::Image::Uploader::Attachment(:image)
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
   devise :omniauthable, omniauth_providers: [ :google_oauth2 ]
-  include Errors::Sortable
-  include Discard::Model
-  include Profile::Image::Uploader::Attachment(:image)
 
   self.discard_column = :deleted_at
 
@@ -112,10 +113,6 @@ class User < ApplicationRecord
     raise NotImplementedError
   end
 
-  def full_error_messages_on_login
-    full_error_messages_for(%i[email password])
-  end
-
   def assign_user_info(user_info)
     self.name = user_info["name"]
     self.email = user_info["email"]
@@ -160,14 +157,30 @@ class User < ApplicationRecord
     authentications.present?
   end
 
-  def validate_password_on_login(form_params)
-    self.password = form_params[:password]
-    valid?(:login)
-    errors.add(:password, I18n.t("action.login.invalid")) if form_params[:password].present?
-  end
+  # def full_error_messages_on_login
+  #   full_error_messages_for(%i[email password])
+  # end
 
-  def validate_email_on_login(form_params)
-    valid?(:login)
-    errors.add(:email, I18n.t("action.login.invalid")) if form_params[:email].present?
-  end
+  # def self.validate_login(form_params:)
+  #   user = User.find_by(email: form_params[:email])
+  #   if user
+  #     user.validate_password_on_login(form_params)
+  #   else
+  #     user = User.new(form_params)
+  #     user.validate_email_on_login(form_params)
+  #   end
+  #   success = user.errors.empty?
+  #     [ success, user ]
+  # end
+
+  # def validate_password_on_login(form_params)
+  #  self.password = form_params[:password]
+  #  valid?(:login)
+  #  errors.add(:password, I18n.t("action.login.invalid")) if form_params[:password].present?
+  # end
+
+  # def validate_email_on_login(form_params)
+  #  valid?(:login)
+  #  errors.add(:email, I18n.t("action.login.invalid")) if form_params[:email].present?
+  # end
 end
