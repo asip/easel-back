@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user_id = current_user&.id
     resource.discard
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    set_flash_message! :notice, :destroyed
+    # set_flash_message! :notice, :destroyed
     yield resource if block_given?
     resource = User.unscoped.find_by!(id: user_id)
     respond_with_navigational(resource)
