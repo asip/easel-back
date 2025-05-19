@@ -8,9 +8,13 @@ class Users::SessionsController < Devise::SessionsController
   @@form_params = [ :email, :password ]
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    self.resource = warden.authenticate(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource) if resource
+    # yield resource if block_given?
+    respond_with resource
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -25,27 +29,35 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-    login_sucess(resource)
+    if resource
+      login_success(resource)
+    else
+      login_failed
+    end
   end
 
-  def login_sucess(resource)
+  def login_success(resource)
     render json: AccountResource.new(resource).serializable_hash, status: :ok
   end
 
-  # def login_failed(form_params:)
-  #   success, user = User.validate_login(form_params:)
-  #   return if success
-  #
-  #   render json: {
-  #     messages: user.full_error_messages_on_login
-  #   }, status: :unprocessable_entity
-  # end
+  def login_failed
+    success, user = User.validate_login(form_params: sign_in_params)
+    return if success
+
+    render json: {
+      messages: user.full_error_messages_on_login
+    }, status: :ok
+  end
 
   def respond_to_on_destroy
     head :no_content
   end
 
   protected
+
+  def auth_options
+    { scope: resource_name, recall: "#{controller_path}#login_failed" }
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params

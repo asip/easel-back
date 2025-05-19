@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "admins" do %>
+  <%= render "admins/sessions/form/new" %>
+<% end %>
+<%= turbo_stream.prepend "flash_message" do %>
+  <%= render "layouts/flash" %>
+<% end %>
