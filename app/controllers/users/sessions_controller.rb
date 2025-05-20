@@ -46,7 +46,7 @@ class Users::SessionsController < Devise::SessionsController
 
     render json: {
       messages: user.full_error_messages_on_login
-    }, status: :ok
+    }, status: :unprocessable_entity
   end
 
   def respond_to_on_destroy

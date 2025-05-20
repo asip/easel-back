@@ -13,7 +13,7 @@ module Api
           # logger.debug CommentResource.new(comment).serialize
           render json: CommentResource.new(comment).serializable_hash
         else
-          render json: { errors: comment.errors.to_hash(true) }.to_json
+          render json: { errors: comment.errors.to_hash(true) }.to_json, status: :unprocessable_entity
         end
       end
 

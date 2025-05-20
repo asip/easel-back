@@ -178,7 +178,7 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -196,7 +196,7 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -214,7 +214,7 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:tag_list]).to be_present
         end
@@ -231,7 +231,7 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -249,7 +249,7 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -267,7 +267,7 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -323,7 +323,7 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -341,7 +341,7 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -359,7 +359,7 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:tag_list]).to be_present
         end
@@ -376,7 +376,7 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -394,7 +394,7 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -412,7 +412,7 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 200
+          expect(response.status).to eq 422
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end

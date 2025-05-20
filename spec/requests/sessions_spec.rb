@@ -25,7 +25,7 @@ describe 'Sessions', type: :request do
           post endpoint,
                params: { user: { email: 'invalid@test.jp', password: 'testtest' } },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           # json_data = json
           # expect(json_data[:messages]).to be_present
         end
@@ -34,7 +34,7 @@ describe 'Sessions', type: :request do
           post endpoint,
                params: { user: { email: user.email, password: 'invalidtest' } },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
+          expect(response.status).to eq(422)
           # json_data = json
           # expect(json_data[:messages]).to be_present
         end
