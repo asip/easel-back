@@ -50,7 +50,7 @@ class Admins::SessionsController < Devise::SessionsController
     return if success
     self.resource = admin
     flashes[:alert] = self.resource.full_error_messages_on_login#
-    render layout: false, content_type: "text/vnd.turbo-stream.html"
+    render layout: false, content_type: "text/vnd.turbo-stream.html", status: :unprocessable_entity
   end
 
   protected
