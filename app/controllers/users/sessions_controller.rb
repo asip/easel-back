@@ -56,7 +56,7 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def auth_options
-    { scope: resource_name, recall: "#{controller_path}#login_failed" }
+    { scope: resource_name }
   end
 
   # If you have extra params to permit, append them to the sanitizer.
