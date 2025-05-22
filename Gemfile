@@ -40,7 +40,7 @@ gem "cssbundling-rails", "~> 1.4.3"
 gem "jsbundling-rails", "~> 1.3.1"
 
 # view component
-gem "view_component", "~> 3.22.0"
+gem "view_component", "~> 3.23.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.186.1"
