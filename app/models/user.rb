@@ -53,13 +53,10 @@ class User < ApplicationRecord
   # VALID_NAME_REGEX = /\A\z|\A[a-zA-Z\d\s]{3,40}\z/
 
   # validates :password, length: { minimum: 6, maximum: 128 }, confirmation: true,
-  #                     if: -> { new_record? || changes[:encrypted_password] } # , on: :with_validation
-  validates :name, length: { minimum: 3, maximum: 40 } # , on: :with_validation # , format: { with: VALID_NAME_REGEX }
+  #                     if: -> { new_record? || changes[:encrypted_password] }
+  validates :name, length: { minimum: 3, maximum: 40 }, unless: -> { validation_context == :login } # , format: { with: VALID_NAME_REGEX }
   # validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP },
-  #                   uniqueness: true # , on: :with_validation
-
-  # validates :email, presence: true, on: :login
-  # validates :password, presence: true, on: :login
+  #                   uniqueness: true
 
   after_validation :assign_derivatives
 
@@ -160,12 +157,12 @@ class User < ApplicationRecord
 
   def validate_password_on_login(form_params)
     self.password = form_params[:password]
-    valid?
+    valid?(:login)
     errors.add(:password, I18n.t("action.login.invalid")) if form_params[:password].present?
   end
 
   def validate_email_on_login(form_params)
-    valid?
+    valid?(:login)
     errors.add(:email, I18n.t("action.login.invalid")) if form_params[:email].present?
   end
 end
