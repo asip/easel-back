@@ -4,3 +4,5 @@ google:
 origin: <%= ENV.fetch('BACKEND_ORIGIN_URL') { 'http://localhost:3000' } %>
 frontend:
   origin: <%= ENV.fetch('FRONTEND_ORIGIN_URL') { 'http://localhost:3030' } %>
+reverse_proxy:
+  origin: <%= ENV.fetch('REVERSE_PROXY_ORIGIN_URL') { 'http://localhost' } %>
