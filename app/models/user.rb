@@ -21,7 +21,6 @@
 
 # User
 class User < ApplicationRecord
-  include Errors::Sortable
   include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
 
