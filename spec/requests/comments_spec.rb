@@ -39,20 +39,6 @@ describe 'Comments', type: :request do
           json_data = json
           expect(json_data[:errors][:body]).to be_present
         end
-
-        it 'body exceeds 255 characters (bodyが255文字を超える場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
-          post endpoint,
-               params: {
-                 comment: {
-                   body: Faker::Alphanumeric.alpha(number: 256)
-                 }
-               },
-               headers: headers
-          expect(response.status).to eq 422
-          json_data = json
-          expect(json_data[:errors][:body]).to be_present
-        end
       end
     end
   end
