@@ -39,7 +39,7 @@ module Api
         if mutation.success?
           render json: Detail::FrameResource.new(frame).serializable_hash
         else
-          render json: { errors: frame.errors.to_hash(true) }.to_json, status: :unprocessable_entity
+          render json: { errors: frame.errors.to_hash(false) }.to_json, status: :unprocessable_entity
         end
       end
 
@@ -50,7 +50,7 @@ module Api
         if mutation.success?
           render json: Detail::FrameResource.new(frame).serializable_hash
         else
-          render json: { errors: frame.errors.to_hash(true) }.to_json, status: :unprocessable_entity
+          render json: { errors: frame.errors.to_hash(false) }.to_json, status: :unprocessable_entity
         end
       end
 

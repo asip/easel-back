@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.errors.empty?
       save_success(resource)
     else
-      # puts resource.errors.to_hash(true)
+      # puts resource.errors.to_hash(false)
       save_failed(resource)
     end
   end
@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def save_failed(resource)
-    render json: { errors: resource.errors.to_hash(true) }.to_json, status: :unprocessable_entity
+    render json: { errors: resource.errors.to_hash(false) }.to_json, status: :unprocessable_entity
   end
 
   def respond_with_navigational(resource)

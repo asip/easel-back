@@ -6,7 +6,7 @@ class Account::PasswordsController < ApplicationController
       bypass_sign_in current_user
       render json: AccountResource.new(current_user).serializable_hash, status: :ok
     else
-      render json: { errors: current_user.errors.to_hash(true) }.to_json, status: :unprocessable_entity
+      render json: { errors: current_user.errors.to_hash(false) }.to_json, status: :unprocessable_entity
     end
   end
 
