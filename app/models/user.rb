@@ -86,7 +86,7 @@ class User < ApplicationRecord
           user.name = auth[:info]["name"]
           user.email = auth[:info]["email"]
           user.password = Devise.friendly_token[0, 20]
-          # puts user.errors.to_hash(true)
+          # puts user.errors.to_hash(false)
           user.save!
         end
 
@@ -145,10 +145,6 @@ class User < ApplicationRecord
 
   def social_login?
     authentications.present?
-  end
-
-  def full_error_messages_on_login
-    full_error_messages_for(%i[email password])
   end
 
   def self.validate_login(form_params:)
