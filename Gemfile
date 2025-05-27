@@ -40,7 +40,7 @@ gem "cssbundling-rails", "~> 1.4.3"
 gem "jsbundling-rails", "~> 1.3.1"
 
 # view component
-gem "view_component", "~> 3.23.1"
+gem "view_component", "~> 3.23.2"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.186.1"
@@ -73,7 +73,7 @@ gem "pagy", "~> 9.3.4"
 gem "acts-as-taggable-on", "~> 12.0.0"
 
 # json
-gem "alba", "3.7.0"
+gem "alba", "3.7.1"
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
@@ -116,7 +116,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.23.22", require: false
+  gem "ruby-lsp", "~> 0.23.23", require: false
 
   gem "dockerfile-rails", "~>1.7.9"
 end
@@ -126,7 +126,7 @@ group :test do
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
-  gem "selenium-webdriver", "~> 4.32.0"
+  gem "selenium-webdriver", "~> 4.33.0"
 
   gem "factory_bot_rails", "~> 6.4.4"
   gem "faker", "~> 3.5.1"
