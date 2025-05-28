@@ -7,7 +7,7 @@ This is backend of [Easel](https://github.com/asip/easel).
 Rails8.0 + Devise(authentication) + Pagy(paging) +
 Shrine(upload) + ActsAsTaggableOn(tag) +
 RailsAdmin (management console) + Discard(soft delete) +
-Hotwire (Turbo + Stimulus3) + Bootstrap5
+Hotwire (Turbo + Stimulus3) + Tailwind CSS v4 + daisyUI v5
 
 The legacy frontend + backend implemented by Ruby on Rails moved to [easel-legacy](https://github.com/asip/easel-legacy).
 (+ Vue.js 3)

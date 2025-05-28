@@ -38,6 +38,9 @@ importers:
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
+      daisyui:
+        specifier: 5.0.38
+        version: 5.0.38
       esbuild:
         specifier: ^0.25.5
         version: 0.25.5
@@ -56,6 +59,9 @@ importers:
       stimulus:
         specifier: ^3.2.2
         version: 3.2.2
+      tailwindcss:
+        specifier: 4.1.7
+        version: 4.1.7
       toastify-js:
         specifier: ^1.12.0
         version: 1.12.0
@@ -1000,6 +1006,9 @@ packages:
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
+
+  daisyui@5.0.38:
+    resolution: {integrity: sha512-RsLsdePT/4ZU0N+vWivR/zJyAL9U9EeRtbis3K3VDvewrqY0NOFYBh6ib3n9GfN3Wb+FHwP80ae1qOA6ONWvyw==}
 
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -2076,6 +2085,9 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  tailwindcss@4.1.7:
+    resolution: {integrity: sha512-kr1o/ErIdNhTz8uzAYL7TpaUuzKIE6QPQ4qmSdxnoX/lo+5wmUHQA6h3L5yIqEImSRnAAURDirLu/BgiXGPAhg==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -3256,6 +3268,8 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
+  daisyui@5.0.38: {}
+
   debounce@1.2.1: {}
 
   debug@2.6.9:
@@ -4344,6 +4358,8 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  tailwindcss@4.1.7: {}
 
   tapable@2.2.1: {}
 

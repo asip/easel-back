@@ -7,13 +7,14 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "/palette.png", { type: "image/png" } %>
     <%= favicon_link_tag "/palette.svg", { type: "image/svg+xml" } %>
+    <%= stylesheet_link_tag "application.tailwind", media: "all", 'data-turbo-track': "reload" %>
     <%= stylesheet_link_tag "application", media: "all", 'data-turbo-track': "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
   <body>
     <%= render "layouts/admins/header" %>
     <div id="flash_message"></div>
-    <div class="container">
+    <div class="container mx-auto bg-aliceblue-200 min-h-[100vh]">
       <%= yield %>
     </div>
   </body>
