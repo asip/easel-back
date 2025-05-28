@@ -4,7 +4,7 @@
 
 This is backend of [Easel](https://github.com/asip/easel).
 
-Rails8.0 + Sorcery(authentication) + Pagy(paging) +
+Rails8.0 + Devise(authentication) + Pagy(paging) +
 Shrine(upload) + ActsAsTaggableOn(tag) +
 RailsAdmin (management console) + Discard(soft delete) +
 Hotwire (Turbo + Stimulus3) + Bootstrap5
