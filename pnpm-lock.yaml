@@ -39,8 +39,8 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       daisyui:
-        specifier: 5.0.40
-        version: 5.0.40
+        specifier: 5.0.42
+        version: 5.0.42
       esbuild:
         specifier: ^0.25.5
         version: 0.25.5
@@ -1017,8 +1017,8 @@ packages:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
-  daisyui@5.0.40:
-    resolution: {integrity: sha512-5GpRcRsArYjkeIhUrlMMIGGZzbuPCpCkEMokiO3PtkVr1/IFZezJO6lLR+lLxxMGm46EwRG/fSJw4VLeNMBZnw==}
+  daisyui@5.0.42:
+    resolution: {integrity: sha512-sZlqpPyu0wvjKtdryS62Njq18AJScr0V7Kruqc0ruSsl74SfGqaY8RMFkJoyNTorUx1OxWkAvkQP81uTyzNBqg==}
 
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
@@ -3293,7 +3293,7 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  daisyui@5.0.40: {}
+  daisyui@5.0.42: {}
 
   debounce@1.2.1: {}
 

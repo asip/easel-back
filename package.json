@@ -13,7 +13,7 @@
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.13.1",
     "copyfiles": "^2.4.1",
-    "daisyui": "5.0.40",
+    "daisyui": "5.0.42",
     "esbuild": "^0.25.5",
     "esbuild-loader": "^4.3.0",
     "flatpickr": "^4.6.13",
