@@ -35,7 +35,7 @@
     "build:rspack-watch": "rspack --watch --config ./config/rspack/rspack.config.js",
     "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules && pnpx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.tailwind.css --minify",
     "build:css-watch": "sass --watch ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules && pnpx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.tailwind.css --minify",
-    "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && copyfiles -f node_modules/@fortawesome/fontawesome-free/webfonts/* ./public/assets/~@fortawesome/fontawesome-free/webfonts",
+    "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && copyfiles -f node_modules/@fortawesome/fontawesome-free/webfonts/* ./public/assets/webfonts",
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",
     "lint": "eslint --fix './app/javascript/**/*.{js,ts}'"
   },
