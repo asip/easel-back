@@ -19,7 +19,7 @@ gem "pg", "~> 1.5.9"
 gem "puma", "~> 6.6.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", "~> 2.0.13"
+gem "turbo-rails", "~> 2.0.16"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", "~> 1.3.4"
@@ -43,7 +43,7 @@ gem "jsbundling-rails", "~> 1.3.1"
 gem "view_component", "~> 3.23.2"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.188.0"
+gem "aws-sdk-s3", "~> 1.189.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -116,7 +116,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.23.23", require: false
+  gem "ruby-lsp", "~> 0.23.24", require: false
 
   gem "dockerfile-rails", "~>1.7.9"
 end
