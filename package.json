@@ -2,6 +2,19 @@
   "name": "easel",
   "private": true,
   "type": "module",
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build-watch": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --watch",
+    "build:webpack": "webpack --config ./config/webpack/webpack.config.js",
+    "build:webpack-watch": "webpack --watch --config ./config/webpack/webpack.config.js",
+    "build:rspack": "rspack --config ./config/rspack/rspack.config.js",
+    "build:rspack-watch": "rspack --watch --config ./config/rspack/rspack.config.js",
+    "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules && pnpx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.tailwind.css --minify",
+    "build:css-watch": "sass --watch ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules && pnpx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.tailwind.css --minify",
+    "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && copyfiles -f node_modules/@fortawesome/fontawesome-free/webfonts/* ./public/assets/webfonts",
+    "watch:ts": "tsc-watch --noClear -p tsconfig.json",
+    "lint": "eslint --fix './app/javascript/**/*.{js,ts}'"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@hotwired/stimulus": "^3.2.2",
@@ -25,19 +38,6 @@
     "toastify-js": "^1.12.0",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1"
-  },
-  "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build-watch": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --watch",
-    "build:webpack": "webpack --config ./config/webpack/webpack.config.js",
-    "build:webpack-watch": "webpack --watch --config ./config/webpack/webpack.config.js",
-    "build:rspack": "rspack --config ./config/rspack/rspack.config.js",
-    "build:rspack-watch": "rspack --watch --config ./config/rspack/rspack.config.js",
-    "build:css": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules && pnpx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.tailwind.css --minify",
-    "build:css-watch": "sass --watch ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules && pnpx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.tailwind.css --minify",
-    "build:font": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts && copyfiles -f node_modules/@fortawesome/fontawesome-free/webfonts/* ./public/assets/webfonts",
-    "watch:ts": "tsc-watch --noClear -p tsconfig.json",
-    "lint": "eslint --fix './app/javascript/**/*.{js,ts}'"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
