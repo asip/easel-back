@@ -1,15 +1,13 @@
 <div id="admins">
   <br>
-  <div class="card bg-base-100 shadow shadow-sm kadomaru-10 ml-2 mr-2">
-    <div class="card-body">
-      <div class="d-flex">
-        <div class="float-start">
-          <%= t("action.administration.title") %>
-        </div>
+  <div class="card bg-base-100 shadow shadow-sm rounded-[20px] ml-2 mr-2">
+    <div class="card-body divide-y divide-gray-200">
+      <div class="flex justify-start items-center pb-1">
+        <%= t("action.administration.title") %>
       </div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
         <div class="flex justify-center">
-          <div class="grid grid-cols-[70px_1fr] border border-gray-100 rounded bg-base-00 p-3">
+          <div class="grid grid-cols-[70px_1fr] border border-gray-100 rounded bg-base-00 p-3 rounded-[10px]">
             <div class="col-span-2 w-120"></div>
             <label for="email" class="flex items-center"><%= t("activerecord.attributes.user.email") %></label>
             <div class="">
@@ -27,7 +25,7 @@
           </div>
         </div>
         <div class="flex justify-center mt-2">
-            <%= form.submit t("action.administration.login"), class: "btn btn-outline btn-primary" %>
+          <%= form.submit t("action.administration.login"), class: "btn btn-outline btn-primary" %>
         </div>
       <% end %>
     </div>
