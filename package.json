@@ -15,6 +15,17 @@
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",
     "lint": "eslint --fix './app/javascript/**/*.{js,ts}'"
   },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
+    "@types/toastify-js": "^1.12.4",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "prettier": "^3.5.3",
+    "tsc-watch": "^7.1.1",
+    "typescript": "5.8.3"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@hotwired/stimulus": "^3.2.2",
@@ -38,16 +49,5 @@
     "toastify-js": "^1.12.0",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1"
-  },
-  "devDependencies": {
-    "@types/bootstrap": "^5.2.10",
-    "@types/toastify-js": "^1.12.4",
-    "@typescript-eslint/eslint-plugin": "^8.33.1",
-    "@typescript-eslint/parser": "^8.33.1",
-    "eslint": "^9.28.0",
-    "eslint-config-prettier": "^10.1.5",
-    "prettier": "^3.5.3",
-    "tsc-watch": "^7.1.1",
-    "typescript": "5.8.3"
   }
 }
