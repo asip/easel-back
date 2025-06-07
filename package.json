@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build-watch": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --watch",
+    "build-watch": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --watch",
     "build:rspack": "rspack --config ./config/rspack/rspack.config.js",
     "build-watch:rspack": "rspack --watch --config ./config/rspack/rspack.config.js",
     "build:webpack": "webpack --config ./config/webpack/webpack.config.js",
