@@ -7,24 +7,32 @@
       </div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
         <div class="flex justify-center">
-          <div class="grid grid-cols-[80px_1fr] border border-gray-100 rounded bg-base-00 p-3 rounded-[10px]">
-            <div class="col-span-2 w-120"></div>
-            <label for="email" class="flex items-center"><%= t("activerecord.attributes.user.email") %>：</label>
-            <div class="">
-              <%= form.email_field :email, placeholder: t("activerecord.attributes.user.email"),
-                                           autofocus: true, autocomplete: "email",
-                                           class: "input" %>
-            </div>
-            <div class="col-span-2 divider h-0"></div>
-            <label for="password" class="flex items-center"><%= t("activerecord.attributes.user.password") %>：</label>
-            <div class="">
-              <%= form.password_field :password, placeholder: t("activerecord.attributes.user.password"),
-                                                 autocomplete: "current-password",
-                                                 class: "input" %>
-            </div>
-          </div>
+          <table class="table table-bordered table_rounded">
+            <tbody>
+              <tr>
+                <td style="width: 7em;">
+                  <label for="email" class="col-form-label-sm"><%= t("activerecord.attributes.user.email") %></label>
+                </td>
+                <td>
+                  <%= form.text_field :email, placeholder: t("activerecord.attributes.user.email"),
+                                              autofocus: true, autocomplete: "email",
+                                              class: "input" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="password" class=""><%= t("activerecord.attributes.user.password") %></label>
+                </td>
+                <td>
+                  <%= form.password_field :password, placeholder: t("activerecord.attributes.user.password"),
+                                                     autocomplete: "current-password",
+                                                     class: "input" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="flex justify-center mt-2">
+        <div class="flex justify-start mt-2">
           <%= form.submit t("action.administration.login"), class: "btn btn-outline btn-primary" %>
         </div>
       <% end %>
