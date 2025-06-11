@@ -63,11 +63,8 @@ ENV S3_BUCKET=${s3_bucket}
 ENV AWS_REGION=${aws_region}
 ENV REDIS_SESSION_URL=${redis_session_url}
 
-# Precompiling assets for development
-RUN ./bin/rails assets:precompile
-
-RUN pnpm build:font && pnpm build:css
-
+# Prepare icon fonts
+RUN pnpm build:font
 
 # Final stage for app image
 FROM base
@@ -101,4 +98,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["./bin/dev"]

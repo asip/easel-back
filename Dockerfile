@@ -65,11 +65,11 @@ ENV S3_BUCKET=${s3_bucket}
 ENV AWS_REGION=${aws_region}
 ENV REDIS_SESSION_URL=${redis_session_url}
 
+# Prepare icon fonts
+RUN pnpm build:font
+
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
-RUN pnpm build:font && pnpm build:css
-
 
 # Final stage for app image
 FROM base
