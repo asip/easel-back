@@ -14,14 +14,9 @@ ENV RAILS_ENV="development"
 RUN gem update --system --no-document && \
     gem install -N bundler
 
-
-# Throw-away build stage to reduce size of final image
-FROM base AS build
-
-# Install packages needed to build gems and node modules
+# Install package needed to build node
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl libpq-dev libyaml-dev libvips node-gyp pkg-config python-is-python3 && \
-    apt-get install --no-install-recommends -y git
+    apt-get install --no-install-recommends -y curl
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=22.16.0
@@ -31,6 +26,14 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
     npm install -g pnpm@$PNPM_VERSION && \
     rm -rf /tmp/node-build-master
+
+# Throw-away build stage to reduce size of final image
+FROM base AS build
+
+# Install packages needed to build gems and node modules
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential libpq-dev libyaml-dev libvips node-gyp pkg-config python-is-python3 && \
+    apt-get install --no-install-recommends -y git
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./
@@ -71,7 +74,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl imagemagick libvips postgresql-client libjemalloc2 && \
+    apt-get install --no-install-recommends -y imagemagick libvips postgresql-client libjemalloc2 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application
@@ -83,7 +86,13 @@ ARG UID=1000 \
     GID=1000
 RUN groupadd -f -g $GID rails && \
     useradd -u $UID -g $GID rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log public tmp config/master.key
+    chown -R rails:rails app/assets/builds db log public tmp config/master.key
+USER rails:rails
+
+USER root
+
+RUN gem install foreman
+
 USER rails:rails
 
 # Deployment options
