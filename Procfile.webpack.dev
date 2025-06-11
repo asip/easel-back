@@ -1,4 +1,4 @@
-web: bin/rails server -p 3000 -b 0.0.0.0 
+web: bin/rails server -p 3000 -b 0.0.0.0
 js: pnpm build-watch:webpack
 tailwind: pnpm build-watch:tailwind
 scss: pnpm build-watch:scss
