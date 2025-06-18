@@ -57,7 +57,7 @@ gem "rambulance", "~> 3.3.0"
 # authentication
 gem "devise", "4.9.4"
 gem "devise-jwt", "0.12.1"
-gem "devise-i18n", "1.13.0"
+gem "devise-i18n", "1.14.0"
 gem "omniauth-google-oauth2", "1.2.1"
 
 gem "googleauth", "~> 1.14.0"
@@ -109,7 +109,7 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
-  gem "annotaterb", "~> 4.15.0"
+  gem "annotaterb", "~> 4.16.0"
   gem "rails-erd", "~> 1.7.2"
 
   # Ruby style guide, linter, and formatter
