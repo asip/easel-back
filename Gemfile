@@ -94,7 +94,7 @@ gem "mutex_m", "~> 0.3.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "debug", "~> 1.10.0", platforms: %i[mri windows], require: "debug/prelude"
+  gem "debug", "~> 1.11.0", platforms: %i[mri windows], require: "debug/prelude"
   gem "pg_query", "~> 6.1.0"
   gem "prosopite", "~> 2.1.0"
 end
@@ -116,7 +116,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.24.1", require: false
+  gem "ruby-lsp", "~> 0.24.2", require: false
 
   gem "dockerfile-rails", "~>1.7.9"
 end
@@ -131,5 +131,5 @@ group :test do
   gem "factory_bot_rails", "~> 6.5.0"
   gem "faker", "~> 3.5.1"
   gem "jsonapi-rspec", "~> 0.0.11"
-  gem "rspec-rails", "~> 8.0.0"
+  gem "rspec-rails", "~> 8.0.1"
 end
