@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "esbuild app/javascript/*.* --bundle --minify --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "watch": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --watch",
     "build:rspack": "rspack --config ./config/rspack/rspack.config.js",
     "build:webpack": "webpack --config ./config/webpack/webpack.config.js",
     "build:scss": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules",
