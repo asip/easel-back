@@ -38,6 +38,7 @@ gem "bootsnap", "~> 1.18.6", require: false
 
 gem "cssbundling-rails", "~> 1.4.3"
 gem "jsbundling-rails", "~> 1.3.1"
+gem "vite_rails", "3.0.19"
 
 # view component
 gem "view_component", "~> 3.23.2"

@@ -4,13 +4,14 @@
     "strict": true,
     "module": "es2022",
     "target": "es2022",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "strictFunctionTypes": false,
     "outDir": "./app/assets/builds"
   },
   "include": [
-    "./app/javascript/**/*.ts"
+    "./app/frontend/**/*.ts",
+    "./vite.config.ts"
   ],
   "exclude": [
     "./node_modules"

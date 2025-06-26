@@ -4,12 +4,13 @@
     <title>Easel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= vite_client_tag %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "/palette.png", { type: "image/png" } %>
     <%= favicon_link_tag "/palette.svg", { type: "image/svg+xml" } %>
     <%= stylesheet_link_tag "tailwind", media: "all", 'data-turbo-track': "reload" %>
     <%= stylesheet_link_tag "application", media: "all", 'data-turbo-track': "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= vite_javascript_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
   <body class="min-h-[100vh]">
     <%= render "layouts/admins/header" %>

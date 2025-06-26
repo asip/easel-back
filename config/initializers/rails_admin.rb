@@ -19,7 +19,7 @@ module RailsAdmin
 end
 
 RailsAdmin.config do |config|
-  config.asset_source = :webpack
+  config.asset_source = :vite
 
   ### Popular gems integration
 
