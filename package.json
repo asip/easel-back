@@ -14,7 +14,7 @@
     "lint": "eslint --fix './app/frontend/**/*.{js,ts}'"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "4.1.10",
+    "@tailwindcss/cli": "4.1.11",
     "@types/bootstrap": "^5.2.10",
     "@types/toastify-js": "^1.12.4",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
@@ -23,12 +23,12 @@
     "daisyui": "5.0.43",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
-    "prettier": "^3.6.0",
+    "prettier": "^3.6.1",
     "sass": "^1.89.2",
-    "tailwindcss": "4.1.10",
+    "tailwindcss": "4.1.11",
     "tsc-watch": "^7.1.1",
     "typescript": "5.8.3",
-    "vite": "^6.3.5",
+    "vite": "^7.0.0",
     "vite-plugin-ruby": "^5.1.1"
   },
   "dependencies": {
