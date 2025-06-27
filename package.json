@@ -3,8 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "watch": "vite dev",
     "build:scss": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules",
     "build:tailwind": "pnpx @tailwindcss/cli -i ./app/assets/stylesheets/tailwind/application.css -o ./app/assets/builds/tailwind.css --minify",
     "build:css": "pnpm build:tailwind && pnpm build:scss",

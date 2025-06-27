@@ -37,7 +37,6 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "bootsnap", "~> 1.18.6", require: false
 
 gem "cssbundling-rails", "~> 1.4.3"
-gem "jsbundling-rails", "~> 1.3.1"
 gem "vite_rails", "3.0.19"
 
 # view component
