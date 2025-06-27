@@ -21,7 +21,7 @@
     "daisyui": "5.0.43",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
-    "prettier": "^3.6.1",
+    "prettier": "^3.6.2",
     "sass": "^1.89.2",
     "tailwindcss": "4.1.11",
     "tsc-watch": "^7.1.1",
