@@ -81,7 +81,7 @@ GEM
       zeitwerk (>= 2.4, < 3.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
-    alba (3.7.2)
+    alba (3.7.3)
     annotaterb (4.16.0)
       activerecord (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -562,7 +562,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 12.0.0)
-  alba (= 3.7.2)
+  alba (= 3.7.3)
   annotaterb (~> 4.16.0)
   aws-sdk-s3 (~> 1.191.0)
   bootsnap (~> 1.18.6)
