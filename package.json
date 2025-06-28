@@ -3,8 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:scss": "sass ./app/assets/stylesheets/:./app/assets/builds --no-source-map --load-path=node_modules",
-    "build:css": "pnpm build:scss",
     "build:font-bootstrap": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts",
     "build:font": "pnpm build:font-bootstrap",
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",

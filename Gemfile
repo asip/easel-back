@@ -36,7 +36,6 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.18.6", require: false
 
-gem "cssbundling-rails", "~> 1.4.3"
 gem "vite_rails", "3.0.19"
 
 # view component
