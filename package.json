@@ -19,7 +19,7 @@
     "eslint": "^9.30.0",
     "eslint-config-prettier": "^10.1.5",
     "prettier": "^3.6.2",
-    "sass": "^1.89.2",
+    "sass-embedded": "^1.89.2",
     "tailwindcss": "4.1.11",
     "tsc-watch": "^7.1.1",
     "typescript": "5.8.3",
