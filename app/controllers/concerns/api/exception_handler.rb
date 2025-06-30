@@ -7,11 +7,11 @@ module Api
     extend ActiveSupport::Concern
 
     included do
-      rescue_from StandardError, with: ->(e) { render500(e) }
-      rescue_from ActiveRecord::RecordNotFound, with: ->(e) { render404(e) }
-      rescue_from ActiveRecord::RecordNotUnique, with: ->(e) { render409(e) }
-      rescue_from ActiveRecord::RecordInvalid, with: ->(e) { render422(e) }
-      rescue_from UnauthorizedError, with: ->(e) { render401(e) }
+      rescue_from StandardError, with: ->(e) { request.format.json? ? render500(e) : raise(e) }
+      rescue_from ActiveRecord::RecordNotFound, with: ->(e) { request.format.json? ? render404(e) : raise(e) }
+      rescue_from ActiveRecord::RecordNotUnique, with: ->(e) { request.format.json? ? render409(e) : raise(e) }
+      rescue_from ActiveRecord::RecordInvalid, with: ->(e) { request.format.json? ? render422(e) : raise(e) }
+      rescue_from UnauthorizedError, with: ->(e) { request.format.json? ? render401(e) : raise(e) }
     end
 
     class UnauthorizedError < StandardError
