@@ -117,7 +117,7 @@ group :development do
   gem "erb_lint", "~> 0.9.0", require: false
   gem "ruby-lsp", "~> 0.24.2", require: false
 
-  gem "dockerfile-rails", "~>1.7.9"
+  gem "dockerfile-rails", "~>1.7.10"
 end
 
 group :test do
@@ -125,7 +125,7 @@ group :test do
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara", "~> 3.40.0"
-  gem "selenium-webdriver", "~> 4.33.0"
+  gem "selenium-webdriver", "~> 4.34.0"
 
   gem "factory_bot_rails", "~> 6.5.0"
   gem "faker", "~> 3.5.1"
