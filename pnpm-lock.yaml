@@ -20,18 +20,9 @@ importers:
       '@hotwired/turbo-rails':
         specifier: ^8.0.16
         version: 8.0.16
-      '@popperjs/core':
-        specifier: ^2.11.8
-        version: 2.11.8
-      bootstrap:
-        specifier: ^5.3.7
-        version: 5.3.7(@popperjs/core@2.11.8)
       bootstrap-icons:
         specifier: ^1.13.1
         version: 1.13.1
-      flatpickr:
-        specifier: ^4.6.13
-        version: 4.6.13
       rails_admin:
         specifier: 3.3.0
         version: 3.3.0
