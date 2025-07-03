@@ -47,6 +47,10 @@ gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
 
+# gem "anyway_config", "2.8.0"
+
+gem "imgproxy", "~> 3.0.0", require: false
+
 # i18n
 gem "rails-i18n", "~> 8.0.1"
 

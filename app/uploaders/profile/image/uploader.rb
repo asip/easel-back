@@ -13,15 +13,15 @@ module Profile
                            message: I18n.t("validations.message.user.image.mime_type")
       end
 
-      Attacher.derivatives do |original|
-        pipeline = ImageProcessing::Vips.source(original)
-
-        {
-          thumb: pipeline.resize_to_limit!(50, 50),
-          one: pipeline.resize_to_limit!(100, 100),
-          three: pipeline.resize_to_limit!(300, 300)
-        }
-      end
+      # Attacher.derivatives do |original|
+      #   pipeline = ImageProcessing::Vips.source(original)
+      #
+      #   {
+      #     thumb: pipeline.resize_to_limit!(50, 50),
+      #     one: pipeline.resize_to_limit!(100, 100),
+      #     three: pipeline.resize_to_limit!(300, 300)
+      #   }
+      # end
     end
   end
 end

@@ -46,11 +46,11 @@ module ListItem
     attribute :file_url, &:file_url
 
     attribute :file_two_url do |frame|
-      frame.file_url(:two)
+      frame.file_proxy_url(:two)
     end
 
     attribute :file_three_url do |frame|
-      frame.file_url(:three)
+      frame.file_proxy_url(:three)
     end
   end
 end

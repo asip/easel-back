@@ -58,7 +58,7 @@ class User < ApplicationRecord
   # validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP },
   #                   uniqueness: true
 
-  after_validation :assign_derivatives
+  # after_validation :assign_derivatives
 
   default_scope -> { kept }
 
@@ -97,11 +97,33 @@ class User < ApplicationRecord
     end
   end
 
+  def image_proxy_url(key)
+    if key == :thumb
+      if image.present?
+        image.imgproxy_url(width: 50, height: 50, resizing_type: :fill)
+      else
+        nil
+      end
+    elsif key == :one
+      if image.present?
+        image.imgproxy_url(width: 100, height: 100, resizing_type: :fill)
+      else
+        nil
+      end
+    elsif key == :three
+      if image.present?
+        image.imgproxy_url(width: 300, height: 300, resizing_type: :fill)
+      else
+        nil
+      end
+    end
+  end
+
   def image_url_for_view(key)
     if image.blank?
       "#{Settings.origin}/no-profile-image.png"
     else
-      image_url(key)
+      image_proxy_url(key)
     end
   end
 
@@ -113,12 +135,12 @@ class User < ApplicationRecord
     # return unless saved_change_to_email?
   end
 
-  def assign_derivatives
-    return if image.blank?
-    return unless errors[:image].empty?
-
-    image_derivatives!
-  end
+  # def assign_derivatives
+  #   return if image.blank?
+  #   return unless errors[:image].empty?
+  #
+  #   image_derivatives!
+  # end
 
   def reset_token
     @token = nil

@@ -11,13 +11,13 @@ module Contents
                          message: I18n.t("validations.message.frame.file.mime_type")
     end
 
-    Attacher.derivatives do |original|
-      pipeline = ImageProcessing::Vips.source(original)
-
-      {
-        two: pipeline.resize_to_limit!(200, 200),
-        three: pipeline.resize_to_limit!(300, 300)
-      }
-    end
+    # Attacher.derivatives do |original|
+    #   pipeline = ImageProcessing::Vips.source(original)
+    #
+    #   {
+    #     two: pipeline.resize_to_limit!(200, 200),
+    #     three: pipeline.resize_to_limit!(300, 300)
+    #   }
+    # end
   end
 end
