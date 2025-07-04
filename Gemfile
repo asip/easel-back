@@ -8,8 +8,6 @@ gem "rails", "~> 8.0.2"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.1.0"
 
-# gem 'dartsass-rails'
-
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.5.6'
 # Use postgresql as the database for Active Record
@@ -36,6 +34,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", "~> 1.18.6", require: false
 
+# vite integration
 gem "vite_rails", "3.0.19"
 
 # view component
@@ -48,7 +47,7 @@ gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
 
 # gem "anyway_config", "2.8.0"
-
+# image (processing) proxy
 gem "imgproxy", "~> 3.0.0", require: false
 
 # i18n
@@ -128,11 +127,10 @@ group :test do
   gem "observer", "~> 0.1.2"
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara", "~> 3.40.0"
-  gem "selenium-webdriver", "~> 4.34.0"
+  # gem "capybara", "~> 3.40.0"
+  # gem "selenium-webdriver", "~> 4.34.0"
 
   gem "factory_bot_rails", "~> 6.5.0"
   gem "faker", "~> 3.5.2"
-  gem "jsonapi-rspec", "~> 0.0.11"
   gem "rspec-rails", "~> 8.0.1"
 end
