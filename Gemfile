@@ -99,7 +99,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.11.0", platforms: %i[mri windows], require: "debug/prelude"
   gem "pg_query", "~> 6.1.0"
-  gem "prosopite", "~> 2.1.0"
+  gem "prosopite", "~> 2.1.1"
 end
 
 group :development do

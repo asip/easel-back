@@ -329,7 +329,7 @@ GEM
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    prosopite (2.1.0)
+    prosopite (2.1.1)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -596,7 +596,7 @@ DEPENDENCIES
   pg (~> 1.5.9)
   pg_query (~> 6.1.0)
   propshaft (~> 1.1.0)
-  prosopite (~> 2.1.0)
+  prosopite (~> 2.1.1)
   puma (~> 6.6.0)
   rack-contrib (= 2.5.0)
   rack-cors (~> 3.0.0)
