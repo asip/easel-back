@@ -17,7 +17,9 @@ describe 'FollowRelationships', type: :request do
         it 'success(成功)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           get endpoint, headers: headers
-          expect(response.status).to be 200
+          # expect(response.status).to be 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json
           expect(json_data[:following]).to be false
         end
@@ -31,7 +33,9 @@ describe 'FollowRelationships', type: :request do
         it 'success(成功)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           get endpoint, headers: headers
-          expect(response.status).to be 200
+          # expect(response.status).to be 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json
           expect(json_data[:following]).to be true
         end
@@ -52,14 +56,18 @@ describe 'FollowRelationships', type: :request do
       it 'success (成功)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         post endpoint, headers: headers
-        expect(response.status).to be 204
+        # expect(response.status).to be 204
+        assert_request_schema_confirm
+        assert_response_schema_confirm(204)
       end
 
       # it 'failure (失敗)' do
       #  rheaders.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
       #  post endpoint_failure,
       #       headers: headers
-      #  expect(response.status).to be 204
+      #  # expect(response.status).to be 204
+      #  assert_request_schema_confirm
+      #  assert_response_schema_confirm(204)
       # end
     end
   end
@@ -81,7 +89,9 @@ describe 'FollowRelationships', type: :request do
       it 'success (成功)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         delete endpoint, headers: headers
-        expect(response.status).to be 204
+        # expect(response.status).to be 204
+        assert_request_schema_confirm
+        assert_response_schema_confirm(204)
       end
     end
   end

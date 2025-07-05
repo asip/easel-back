@@ -374,6 +374,19 @@ paths:
                 - image_one_url
                 - image_three_url
                 - social_login
+        # start manual
+        '401':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        # end manual
     put:
       summary: update
       tags:
@@ -397,7 +410,7 @@ paths:
                   required:
                   - name
                   - email
-                  - image
+                  # - image # manual
               required:
               - user
           application/x-www-form-urlencoded:
@@ -628,7 +641,7 @@ paths:
                   - tag_list
                   - comment
                   - shooted_at
-                  - file
+                  # - file # manual 
               required:
               - frame
       responses:
@@ -1036,7 +1049,7 @@ paths:
                   - tag_list
                   - comment
                   - shooted_at
-                  - file
+                  # - file # manual
               required:
               - frame
       responses:
@@ -1282,7 +1295,7 @@ paths:
                   - email
                   - password
                   - password_confirmation
-                  - image
+                  #- image # manual
               required:
               - user
           application/x-www-form-urlencoded:

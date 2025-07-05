@@ -15,11 +15,11 @@ describe 'oauth/sessions', type: :request do
           post endpoint,
                params: { provider: 'google', credential: 'test_credential' },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
-          # puts response.headers
-          json_data = json
-          expect(json_data).to include('name')
-          expect(json_data).to include('email')
+          # expect(response.status).to eq(200)
+          ## puts response.headers
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          # json_data = json
         end
       end
 
@@ -31,11 +31,11 @@ describe 'oauth/sessions', type: :request do
             post endpoint,
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-            expect(response.status).to eq(200)
-            # puts response.headers
-            json_data = json
-            expect(json_data).to include('name')
-            expect(json_data).to include('email')
+            # expect(response.status).to eq(200)
+            ## puts response.headers
+            assert_request_schema_confirm
+            assert_response_schema_confirm(200)
+            # json_data = json
           end
         end
 
@@ -48,11 +48,11 @@ describe 'oauth/sessions', type: :request do
             post endpoint,
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-            expect(response.status).to eq(200)
-            # puts response.headers
-            json_data = json
-            expect(json_data).to include('name')
-            expect(json_data).to include('email')
+            # expect(response.status).to eq(200)
+            ## puts response.headers
+            assert_request_schema_confirm
+            assert_response_schema_confirm(200)
+            # json_data = json
           end
         end
       end

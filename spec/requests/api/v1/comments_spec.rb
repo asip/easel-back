@@ -20,9 +20,10 @@ describe 'Comments', type: :request do
                }
              },
              headers: headers
-        expect(response.status).to eq 200
-        json_data = json
-        expect(json_data).to include(:body)
+        # expect(response.status).to eq 200
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       context 'failure (失敗)' do
@@ -35,7 +36,9 @@ describe 'Comments', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:body]).to be_present
         end
@@ -55,13 +58,17 @@ describe 'Comments', type: :request do
       it 'success (成功)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         delete endpoint, headers: headers
-        expect(response.status).to eq 204
+        # expect(response.status).to eq 204
+        assert_request_schema_confirm
+        assert_response_schema_confirm(204)
       end
 
       it 'failure (失敗)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         delete endpoint_failure, headers: headers
-        expect(response.status).to eq 404
+        # expect(response.status).to eq 404
+        assert_request_schema_confirm
+        assert_response_schema_confirm(404)
       end
     end
   end

@@ -29,7 +29,9 @@ describe 'Frames', type: :request do
       context 'page=1 (1ページめ)' do
         it 'success (成功)' do
           get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -38,7 +40,9 @@ describe 'Frames', type: :request do
       context 'page=2 (2ページめ)' do
         it 'success (成功)' do
           get endpoint, params: { page: 2 }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -47,7 +51,9 @@ describe 'Frames', type: :request do
       context 'q=test1(name)' do
         it 'success (成功)' do
           get endpoint, params: { q: 'test1' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -56,7 +62,9 @@ describe 'Frames', type: :request do
       context 'q=testA(tag name)' do
         it 'success (成功)' do
           get endpoint, params: { q: 'testA' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -65,7 +73,9 @@ describe 'Frames', type: :request do
       context 'q=2022/01/01(shooted_at)' do
         it 'success (成功)' do
           get endpoint, params: { q: '2022/01/01' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -74,7 +84,9 @@ describe 'Frames', type: :request do
       context 'q=Time.zone.today(created_at)' do
         it 'success (成功)' do
           get endpoint, params: { q: Time.zone.today.strftime('%Y/%m/%d') }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -91,14 +103,17 @@ describe 'Frames', type: :request do
     context 'get frame (フレーム情報取得)' do
       it 'success (成功)' do
         get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-        expect(response.status).to eq 200
-        json_data = json
-        expect(json_data).to include(:name)
+        # expect(response.status).to eq 200
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       it 'failure (失敗)' do
         get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-        expect(response.status).to eq 404
+        # expect(response.status).to eq 404
+        assert_request_schema_confirm
+        assert_response_schema_confirm(404)
       end
     end
   end
@@ -117,7 +132,9 @@ describe 'Frames', type: :request do
     context 'get frame comment list (フレームのコメントリスト取得)' do
       it 'success (成功)' do
         get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-        expect(response.status).to eq 200
+        # expect(response.status).to eq 200
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
         json_data = json[:comments]
         expect(json_data.size).to be 2
       end
@@ -125,7 +142,9 @@ describe 'Frames', type: :request do
       context 'failure (失敗)' do
         it 'frame_id doesn\'t exist' do
           get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 404
+          # expect(response.status).to eq 404
+          assert_request_schema_confirm
+          assert_response_schema_confirm(404)
         end
       end
     end
@@ -159,9 +178,10 @@ describe 'Frames', type: :request do
                }
              },
              headers: headers
-        expect(response.status).to eq 200
-        json_data = json
-        expect(json_data).to include(:name)
+        # expect(response.status).to eq 200
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       context 'failure (失敗)' do
@@ -178,7 +198,9 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -196,7 +218,9 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -214,13 +238,15 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:tag_list]).to be_present
         end
 
         it 'empty file (file が空の場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' })
           post endpoint,
                params: {
                  frame: {
@@ -231,7 +257,9 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -249,7 +277,9 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -267,7 +297,9 @@ describe 'Frames', type: :request do
                  }
                },
                headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -304,9 +336,10 @@ describe 'Frames', type: :request do
               }
             },
             headers: headers
-        expect(response.status).to eq 200
-        json_data = json
-        expect(json_data).to include(:name)
+        # expect(response.status).to eq 200
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       context 'failure (失敗)' do
@@ -323,7 +356,9 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -341,7 +376,9 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -359,13 +396,15 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:tag_list]).to be_present
         end
 
         it 'empty file (file が空の場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' })
           put endpoint,
               params: {
                 frame: {
@@ -376,7 +415,9 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -394,7 +435,9 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -412,7 +455,9 @@ describe 'Frames', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq 422
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -431,15 +476,18 @@ describe 'Frames', type: :request do
       it 'success (成功)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         delete endpoint, headers: headers
-        expect(response.status).to eq 200
-        json_data = json
-        expect(json_data).to include(:name)
+        # expect(response.status).to eq 200
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       it 'failure (失敗)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         delete endpoint_failure, headers: headers
-        expect(response.status).to eq 404
+        # expect(response.status).to eq 404
+        assert_request_schema_confirm
+        assert_response_schema_confirm(404)
       end
     end
   end

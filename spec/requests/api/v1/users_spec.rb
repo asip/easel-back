@@ -12,15 +12,17 @@ describe 'Users', type: :request do
     context 'get user (ユーザー情報取得)' do
       it 'success (成功)' do
         get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-        json_data = json
-        expect(response.status).to eq(200)
-        expect(json_data).to include('name')
-        expect(json_data).to include('email')
+        # expect(response.status).to eq(200)
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       it 'failure (失敗)' do
         get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-        expect(response.status).to eq(404)
+        # expect(response.status).to eq(404)
+        assert_request_schema_confirm
+        assert_response_schema_confirm(404)
       end
     end
   end
@@ -51,7 +53,9 @@ describe 'Users', type: :request do
       context 'page=1 (1ページめ)' do
         it 'success (成功)' do
           get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -60,7 +64,9 @@ describe 'Users', type: :request do
       context 'page=2 (2ページめ)' do
         it 'success (成功)' do
           get endpoint, params: { page: 2 }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -68,7 +74,9 @@ describe 'Users', type: :request do
 
       it 'failure (失敗)' do
         get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-        expect(response.status).to eq 404
+        # expect(response.status).to eq 404
+        assert_request_schema_confirm
+        assert_response_schema_confirm(404)
       end
     end
   end
@@ -98,10 +106,10 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data).to include('name')
-          expect(json_data).to include('email')
+          # expect(response.status).to eq(200)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          # json_data = json
         end
       end
 
@@ -117,10 +125,10 @@ describe 'Users', type: :request do
                }
              },
              headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-        expect(response.status).to eq(200)
-        json_data = json
-        expect(json_data).to include('name')
-        expect(json_data).to include('email')
+        # expect(response.status).to eq(200)
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       context 'failure (失敗)' do
@@ -135,7 +143,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+        assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -151,7 +161,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -167,7 +179,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -183,7 +197,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -199,7 +215,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -215,7 +233,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_nil
           expect(json_data[:errors][:password_confirmation]).to be_present
@@ -232,7 +252,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -249,7 +271,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -266,7 +290,9 @@ describe 'Users', type: :request do
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -300,10 +326,10 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data).to include('name')
-          expect(json_data).to include('email')
+          # expect(response.status).to eq(200)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          # json_data = json
         end
       end
 
@@ -318,10 +344,10 @@ describe 'Users', type: :request do
               }
             },
             headers: headers
-        expect(response.status).to eq(200)
-        json_data = json
-        expect(json_data).to include('name')
-        expect(json_data).to include('email')
+        # expect(response.status).to eq(200)
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       context 'failure (失敗)' do
@@ -335,7 +361,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -350,7 +378,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -365,7 +395,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -380,7 +412,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -396,7 +430,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -412,7 +448,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -447,10 +485,10 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(200)
-          json_data = json
-          expect(json_data).to include('name')
-          expect(json_data).to include('email')
+          # expect(response.status).to eq(200)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          # json_data = json
         end
       end
 
@@ -466,7 +504,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -481,7 +521,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:current_password]).to be_present
         end
@@ -497,7 +539,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -513,7 +557,9 @@ describe 'Users', type: :request do
                 }
               },
               headers: headers
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_nil
           expect(json_data[:errors][:password_confirmation]).to be_present

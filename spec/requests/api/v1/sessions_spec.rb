@@ -13,11 +13,11 @@ describe 'Sessions', type: :request do
         post endpoint,
              params: { user: { email: user.email, password: 'testtest' } },
              headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-        expect(response.status).to eq(200)
+        # expect(response.status).to eq(200)
         # puts response.headers
-        json_data = json
-        expect(json_data).to include(:name)
-        expect(json_data).to include(:email)
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
 
       context 'failure (失敗)' do
@@ -25,7 +25,9 @@ describe 'Sessions', type: :request do
           post endpoint,
                params: { user: { email: 'invalid@test.jp', password: 'testtest' } },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           # json_data = json
           # expect(json_data[:messages]).to be_present
         end
@@ -34,7 +36,9 @@ describe 'Sessions', type: :request do
           post endpoint,
                params: { user: { email: user.email, password: 'invalidtest' } },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
-          expect(response.status).to eq(422)
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
           # json_data = json
           # expect(json_data[:messages]).to be_present
         end
@@ -51,10 +55,10 @@ describe 'Sessions', type: :request do
       it 'success (成功)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         get endpoint, headers: headers
-        expect(response.status).to eq(200)
-        json_data = json
-        expect(json_data).to include(:name)
-        expect(json_data).to include(:email)
+        # expect(response.status).to eq(200)
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
     end
 
@@ -63,7 +67,9 @@ describe 'Sessions', type: :request do
         'Accept': "application/json",
         'HTTP_ACCEPT_LANGUAGE': 'ja'
       }
-      expect(response.status).to eq(401)
+      # expect(response.status).to eq(401)
+      assert_request_schema_confirm
+      assert_response_schema_confirm(401)
     end
   end
 
@@ -76,10 +82,10 @@ describe 'Sessions', type: :request do
       it 'success (成功)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         delete endpoint, headers: headers
-        expect(response.status).to eq(204)
+        # expect(response.status).to eq(204)
+        assert_request_schema_confirm
+        assert_response_schema_confirm(204)
         # json_data = json
-        # expect(json_data).to include(:name)
-        # expect(json_data).to include(:email)
       end
     end
   end
@@ -93,10 +99,10 @@ describe 'Sessions', type: :request do
       it 'success (成功)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         delete endpoint, headers: headers
-        expect(response.status).to eq(200)
-        json_data = json
-        expect(json_data).to include(:name)
-        expect(json_data).to include(:email)
+        # expect(response.status).to eq(200)
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
       end
     end
   end
@@ -114,15 +120,18 @@ describe 'Sessions', type: :request do
         it 'success (成功)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           get endpoint, headers: headers
-          expect(response.status).to eq 200
-          json_data = json
-          expect(json_data).to include(:name)
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          # json_data = json
         end
 
         it 'failure (失敗)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           get endpoint_failure, headers: headers
-          expect(response.status).to eq 404
+          # expect(response.status).to eq 404
+          assert_request_schema_confirm
+        assert_response_schema_confirm(404)
         end
       end
 
@@ -132,15 +141,18 @@ describe 'Sessions', type: :request do
         it 'success (成功)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           get endpoint, headers: headers
-          expect(response.status).to eq 200
-          json_data = json
-          expect(json_data).to include(:name)
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          # json_data = json
         end
 
         it 'failure (失敗)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           get endpoint_failure, headers: headers
-          expect(response.status).to eq 404
+          # expect(response.status).to eq 404
+          assert_request_schema_confirm
+          assert_response_schema_confirm(404)
         end
       end
     end
@@ -174,7 +186,9 @@ describe 'Sessions', type: :request do
         it 'success (成功)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           get endpoint, headers: headers
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -184,7 +198,9 @@ describe 'Sessions', type: :request do
         it 'success (成功)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
           get endpoint, params: { page: 2 }, headers: headers
-          expect(response.status).to eq 200
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
