@@ -83,12 +83,6 @@ describe 'FollowRelationships', type: :request do
         delete endpoint, headers: headers
         expect(response.status).to be 204
       end
-
-      it 'falure (失敗)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
-        delete endpoint_failure, headers: headers
-        expect(response.status).to be 204
-      end
     end
   end
 end

@@ -133,4 +133,6 @@ group :test do
   gem "factory_bot_rails", "~> 6.5.0"
   gem "faker", "~> 3.5.2"
   gem "rspec-rails", "~> 8.0.1"
+  # Use to generate OpenAPI specs from RSpec request specs
+  gem "rspec-openapi", "~> 0.19.0"
 end
