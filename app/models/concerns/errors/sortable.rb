@@ -9,15 +9,9 @@ module Errors
     protected
 
     def full_error_messages_for(columns)
-      full_error_messages = []
-      columns.each do |column|
-        next unless errors.attribute_names.include?(column)
-
-        errors.full_messages_for(column).each do |message|
-          full_error_messages << message
-        end
+      columns.each_with_object([]) do |column, messages|
+        messages.concat(errors.full_messages_for(column))
       end
-      full_error_messages
     end
   end
 end
