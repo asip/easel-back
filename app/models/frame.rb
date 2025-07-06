@@ -73,24 +73,18 @@ class Frame < ApplicationRecord
 
   def file_proxy_url(key)
     # puts key
-    case key.to_s
-    when "two"
-      url = if file.present?
+    if file.present?
+      case key.to_s
+      when "two"
         file.imgproxy_url(width: 200, height: 200, resizing_type: :fit)
-      else
-        nil
-      end
-    when  "three"
-      url = if file.present?
+      when  "three"
         file.imgproxy_url(width: 300, height: 300, resizing_type: :fit)
       else
         nil
       end
     else
-      url = nil
+      nil
     end
-    # puts "URL:#{url}"
-    url
   end
 
   # def assign_derivatives
