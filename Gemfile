@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.14.0"
 gem "config", "~> 5.5.2"
 
 # paging
-gem "pagy", "~> 9.3.4"
+gem "pagy", "~> 9.3.5"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
