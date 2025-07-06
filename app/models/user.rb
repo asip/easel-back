@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   self.discard_column = :deleted_at
 
-  attr_accessor :token
+  attr_reader :token
 
   has_many :authentications, dependent: :destroy
   # accepts_nested_attributes_for :authentications
@@ -63,24 +63,31 @@ class User < ApplicationRecord
   default_scope -> { kept }
 
   def self.from_omniauth(auth)
-    authentication = Authentication.find_by(uid: auth[:uid], provider: auth[:provider])
+    uid = auth[:uid]
+    provider = auth[:provider]
+
+    authentication = Authentication.find_by(uid: uid, provider: provider)
+
+    info = auth[:info] || {}
+    info_email = info["email"]
+    info_name = info["name"]
 
     if authentication
       user = User.find_by(id: authentication.user_id)
       if user
-        user.email = auth[:info]["email"]
+        user.email = info_email
         user.save!
       end
 
       user
     else
-      user = User.find_by(email: auth[:info]["email"])
+      user = User.find_by(email: info_email)
 
       ActiveRecord::Base.transaction do
         unless user
           user = User.new
-          user.name = auth[:info]["name"]
-          user.email = auth[:info]["email"]
+          user.name = info_name
+          user.email = info_email
           user.password = Devise.friendly_token[0, 20]
           # puts user.errors.to_hash(false)
           user.save!
@@ -88,8 +95,8 @@ class User < ApplicationRecord
 
         authentication = Authentication.new
         authentication.user_id = user.id
-        authentication.provider = auth[:provider]
-        authentication.uid = auth[:uid]
+        authentication.provider = provider
+        authentication.uid = uid
         authentication.save!
       end
 
@@ -98,24 +105,17 @@ class User < ApplicationRecord
   end
 
   def image_proxy_url(key)
-    if key == :thumb
-      if image.present?
+    if image.present?
+      case key.to_s
+      when "thumb"
         image.imgproxy_url(width: 50, height: 50, resizing_type: :fill)
-      else
-        nil
-      end
-    elsif key == :one
-      if image.present?
+      when "one"
         image.imgproxy_url(width: 100, height: 100, resizing_type: :fill)
-      else
-        nil
-      end
-    elsif key == :three
-      if image.present?
+      when "three"
         image.imgproxy_url(width: 300, height: 300, resizing_type: :fill)
-      else
-        nil
       end
+    else
+      nil
     end
   end
 
