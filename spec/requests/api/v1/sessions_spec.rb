@@ -5,8 +5,8 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 describe 'Sessions', type: :request do
   describe 'POST /api/v1/sessions' do
-    let(:endpoint) { '/api/v1/sessions' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint) { '/api/v1/sessions' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
 
     context 'login (ログイン)' do
       it 'success (成功)' do
@@ -47,8 +47,8 @@ describe 'Sessions', type: :request do
   end
 
   describe 'GET /api/v1/account/profile' do
-    let(:endpoint) { '/api/v1/account/profile' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint) { '/api/v1/account/profile' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
 
     context 'authenticate token (トークン認証)' do
@@ -74,8 +74,8 @@ describe 'Sessions', type: :request do
   end
 
   describe 'DELETE /api/v1/sessions/logout' do
-    let(:endpoint) { '/api/v1/sessions/logout' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint) { '/api/v1/sessions/logout' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
 
     context 'logout (ログアウト)' do
@@ -91,7 +91,7 @@ describe 'Sessions', type: :request do
   end
 
   describe 'DELETE /api/v1/account' do
-    let(:endpoint) { '/api/v1/account' }
+    let_it_be(:endpoint) { '/api/v1/account' }
     let!(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
 
@@ -109,13 +109,13 @@ describe 'Sessions', type: :request do
 
   describe 'GET /api/v1/account/frames/:id' do
     let(:endpoint) { "/api/v1/account/frames/#{frame.id}" }
-    let(:endpoint_failure) { '/api/v1/account/frames/404' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint_failure) { '/api/v1/account/frames/404' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
 
     context 'get frame (フレーム情報取得)' do
       context 'private = false' do
-        let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
+        let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
 
         it 'success (成功)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
@@ -136,7 +136,7 @@ describe 'Sessions', type: :request do
       end
 
       context 'private = true' do
-        let!(:frame) { create(:frame, :skip_validate, user_id: user.id, private: true) }
+        let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id, private: true) }
 
         it 'success (成功)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
@@ -159,10 +159,10 @@ describe 'Sessions', type: :request do
   end
 
   describe 'GET /api/v1/account/frames' do
-    let(:endpoint) { "/api/v1/account/frames" }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint) { "/api/v1/account/frames" }
+    let_it_be(:user) { create(:user, password: 'testtest') }
 
-    before do
+    before_all do
       create(:frame, :skip_validate, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01', user_id: user.id)
       create(:frame, :skip_validate, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01', user_id: user.id)
       create(:frame, :skip_validate, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01', user_id: user.id)

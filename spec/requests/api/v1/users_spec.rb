@@ -6,8 +6,8 @@ require 'rails_helper'
 describe 'Users', type: :request do
   describe 'GET /api/v1/users/:id' do
     let(:endpoint) { "/api/v1/users/#{user.id}" }
-    let(:endpoint_failure) { '/api/v1/users/404' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint_failure) { '/api/v1/users/404' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
 
     context 'get user (ユーザー情報取得)' do
       it 'success (成功)' do
@@ -29,10 +29,10 @@ describe 'Users', type: :request do
 
   describe 'GET /api/v1/users/:user_id/frames' do
     let(:endpoint) { "/api/v1/users/#{user.id}/frames" }
-    let(:endpoint_failure) { '/api/v1/users/404/frames' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint_failure) { '/api/v1/users/404/frames' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
 
-    before do
+    before_all do
       create(:frame, :skip_validate, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01', user_id: user.id)
       create(:frame, :skip_validate, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01', user_id: user.id)
       create(:frame, :skip_validate, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01', user_id: user.id)
@@ -82,7 +82,7 @@ describe 'Users', type: :request do
   end
 
   describe 'POST /api/v1/users' do
-    let(:endpoint) { '/api/v1/users' }
+    let_it_be(:endpoint) { '/api/v1/users' }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
     }
@@ -301,7 +301,7 @@ describe 'Users', type: :request do
   end
 
   describe 'PUT /api/v1/account/profile' do
-    let(:endpoint) { '/api/v1/account/profile' }
+    let_it_be(:endpoint) { '/api/v1/account/profile' }
     let!(:user) { create(:user, password: 'testtest') }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
@@ -459,7 +459,7 @@ describe 'Users', type: :request do
   end
 
   describe 'PUT /api/v1/account/password' do
-    let(:endpoint) { '/api/v1/account/password' }
+    let_it_be(:endpoint) { '/api/v1/account/password' }
     let!(:user) { create(:user, password: 'testtest') }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')

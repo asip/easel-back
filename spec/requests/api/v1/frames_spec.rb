@@ -5,10 +5,10 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 describe 'Frames', type: :request do
   describe 'GET /api/v1/frames' do
-    let(:endpoint) { '/api/v1/frames' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint) { '/api/v1/frames' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
 
-    before do
+    before_all do
       create(:frame, :skip_validate, user: user, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
       create(:frame, :skip_validate, user: user, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
       create(:frame, :skip_validate, user: user, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01')
@@ -96,9 +96,9 @@ describe 'Frames', type: :request do
 
   describe 'GET /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
-    let(:endpoint_failure) { '/api/v1/frames/404' }
-    let!(:user) { create(:user, password: 'testtest') }
-    let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
+    let_it_be(:endpoint_failure) { '/api/v1/frames/404' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
+    let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
 
     context 'get frame (フレーム情報取得)' do
       it 'success (成功)' do
@@ -120,11 +120,11 @@ describe 'Frames', type: :request do
 
   describe 'GET /api/v1/frames/:frame_id/comments' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}/comments" }
-    let(:endpoint_failure) { '/api/v1/frames/404/comments' }
-    let!(:user) { create(:user, password: 'testtest') }
-    let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
+    let_it_be(:endpoint_failure) { '/api/v1/frames/404/comments' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
+    let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
 
-    before do
+    before_all do
       create(:comment, body: 'comment01', frame_id: frame.id, user_id: user.id)
       create(:comment, body: 'comment02', frame_id: frame.id, user_id: user.id)
     end
@@ -151,8 +151,8 @@ describe 'Frames', type: :request do
   end
 
   describe 'POST /api/v1/frames' do
-    let(:endpoint) { '/api/v1/frames' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint) { '/api/v1/frames' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
     }
@@ -309,7 +309,7 @@ describe 'Frames', type: :request do
 
   describe 'PUT /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let(:file_1024) {
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/1024x1024.png'), 'image/png')
@@ -467,8 +467,8 @@ describe 'Frames', type: :request do
 
   describe 'DELETE /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
-    let(:endpoint_failure) { '/api/v1/frames/404' }
-    let!(:user) { create(:user, password: 'testtest') }
+    let_it_be(:endpoint_failure) { '/api/v1/frames/404' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let!(:headers) { authenticated_headers(request, user) }
 
