@@ -65,10 +65,9 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     uid = auth[:uid]
     provider = auth[:provider]
+    info = auth[:info] || {}
 
     authentication = Authentication.find_by(uid: uid, provider: provider)
-
-    info = auth[:info] || {}
 
     if authentication
       info_email = info["email"]
