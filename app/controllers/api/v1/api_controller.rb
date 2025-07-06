@@ -6,7 +6,7 @@ module Api
   module V1
     # Api Controller
     class ApiController < ActionController::Base
-      include Api::ExceptionHandler
+      include Api::ErrorRenderable
       include Locale::AutoDetect
       include NPlusOne::Query::Detection unless Rails.env.production?
 

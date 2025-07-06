@@ -2,8 +2,8 @@
 
 # api
 module Api
-  # Exception Handler
-  module ExceptionHandler
+  # Error Renderable
+  module ErrorRenderable
     extend ActiveSupport::Concern
 
     included do
