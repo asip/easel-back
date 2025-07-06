@@ -120,6 +120,8 @@ group :development do
   gem "erb_lint", "~> 0.9.0", require: false
   gem "ruby-lsp", "~> 0.24.2", require: false
 
+  gem "reek", "~> 6.5.0", require: false
+
   gem "dockerfile-rails", "~>1.7.10"
 end
 
