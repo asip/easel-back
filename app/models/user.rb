@@ -69,39 +69,51 @@ class User < ApplicationRecord
     authentication = Authentication.find_by(uid: uid, provider: provider)
 
     info = auth[:info] || {}
-    info_email = info["email"]
-    info_name = info["name"]
 
     if authentication
-      user = User.find_by(id: authentication.user_id)
-      if user
-        user.email = info_email
+      info_email = info["email"]
+      user = update_email(id: authentication.user_id, email: info_email) if info_email.present?
+    else
+      user = update_info(info: info, provider: provider, uid: uid)
+    end
+
+    user
+  end
+
+  def self.update_email(id:, email:)
+    user = User.find_by(id: id)
+    if user
+      user.email = email
+      user.save!
+    end
+
+    user
+  end
+
+  def self.update_info(info:, provider:, uid:)
+    email = info["email"]
+    name = info["name"]
+
+    user = User.find_by(email: email)
+
+    ActiveRecord::Base.transaction do
+      unless user
+        user = User.new
+        user.name = name
+        user.email = email
+        user.password = Devise.friendly_token[0, 20]
+        # puts user.errors.to_hash(false)
         user.save!
       end
 
-      user
-    else
-      user = User.find_by(email: info_email)
-
-      ActiveRecord::Base.transaction do
-        unless user
-          user = User.new
-          user.name = info_name
-          user.email = info_email
-          user.password = Devise.friendly_token[0, 20]
-          # puts user.errors.to_hash(false)
-          user.save!
-        end
-
-        authentication = Authentication.new
-        authentication.user_id = user.id
-        authentication.provider = provider
-        authentication.uid = uid
-        authentication.save!
-      end
-
-      user
+      authentication = Authentication.new
+      authentication.user_id = user.id
+      authentication.provider = provider
+      authentication.uid = uid
+      authentication.save!
     end
+
+    user
   end
 
   def image_proxy_url(key)
