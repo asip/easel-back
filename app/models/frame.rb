@@ -20,7 +20,6 @@
 class Frame < ApplicationRecord
   # has_one_attached :file
   include Contents::Uploader::Attachment(:file)
-  include DateAndTime::Util
 
   acts_as_taggable_on :tags
 
@@ -40,7 +39,7 @@ class Frame < ApplicationRecord
     scope = scope.where(private: false)
 
     if word.present?
-      scope = if date_valid?(word)
+      scope = if DateAndTime::Util.valid_date?(word)
                 date_word = Time.zone.parse(word)
                 scope.merge(
                   Frame.where(shooted_at: date_word.beginning_of_day..date_word.end_of_day)
