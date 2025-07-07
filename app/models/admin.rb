@@ -48,9 +48,10 @@ class Admin < ApplicationRecord
   end
 
   def validate_password_on_login(form_params)
-    self.password = form_params[:password]
+    password_ = form_params[:password]
+    self.password = password_
     valid?
-    errors.add(:password, I18n.t("action.login.invalid")) if form_params[:password].present?
+    errors.add(:password, I18n.t("action.login.invalid")) if password_.present?
   end
 
   def validate_email_on_login(form_params)

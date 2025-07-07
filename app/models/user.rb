@@ -67,49 +67,16 @@ class User < ApplicationRecord
     provider = auth[:provider]
     info = auth[:info] || {}
 
+    # 認証レコードを検索
     authentication = Authentication.find_by(uid: uid, provider: provider)
 
     if authentication
       info_email = info["email"]
-      user = update_email(id: authentication.user_id, email: info_email) if info_email.present?
+      user = authentication.user
+      update_user_email(user, info_email) if info_email.present?
     else
-      user = update_info(info: info, provider: provider, uid: uid)
-    end
-
-    user
-  end
-
-  def self.update_email(id:, email:)
-    user = User.find_by(id: id)
-    if user
-      user.email = email
-      user.save!
-    end
-
-    user
-  end
-
-  def self.update_info(info:, provider:, uid:)
-    email = info["email"]
-    name = info["name"]
-
-    user = User.find_by(email: email)
-
-    ActiveRecord::Base.transaction do
-      unless user
-        user = User.new
-        user.name = name
-        user.email = email
-        user.password = Devise.friendly_token[0, 20]
-        # puts user.errors.to_hash(false)
-        user.save!
-      end
-
-      authentication = Authentication.new
-      authentication.user_id = user.id
-      authentication.provider = provider
-      authentication.uid = uid
-      authentication.save!
+      user = find_or_create_user_from_omniauth(info)
+      create_authentication_for_user(user, provider, uid)
     end
 
     user
@@ -191,13 +158,51 @@ class User < ApplicationRecord
   end
 
   def validate_password_on_login(form_params)
-    self.password = form_params[:password]
+    password_ = form_params[:password]
+    self.password = password_
     valid?(:login)
-    errors.add(:password, I18n.t("action.login.invalid")) if form_params[:password].present?
+    errors.add(:password, I18n.t("action.login.invalid")) if password_.present?
   end
 
   def validate_email_on_login(form_params)
     valid?(:login)
     errors.add(:email, I18n.t("action.login.invalid")) if form_params[:email].present?
+  end
+
+  private
+
+  def self.update_user_email(user, email)
+    return unless user && email.present?
+    if user.email != email
+      user.email = email
+      user.save!
+    end
+    user
+  end
+
+  def self.find_or_create_user_from_omniauth(info)
+    email = info["email"]
+    name = info["name"]
+
+    user = User.find_by(email: email)
+
+    unless user
+      user = User.new(
+        name: name,
+        email: email,
+        password: Devise.friendly_token[0, 20]
+      )
+      user.save!
+    end
+    user
+  end
+
+  def self.create_authentication_for_user(user, provider, uid)
+    authentication = Authentication.new(
+      user: user,
+      provider: provider,
+      uid: uid
+    )
+    authentication.save!
   end
 end
