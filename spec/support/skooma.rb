@@ -14,7 +14,7 @@
 #    if curr_directory.nil? || directory != curr_directory
 #      case directory
 #      when SPEC_DIR_V1
-#        path_to_openapi = Rails.root.join('doc/openapi/v1.yaml')
+#        path_to_openapi = Rails.root.join('doc/openapi/3_1/v1.yaml').to_s
 #        config.include Skooma::RSpec[path_to_openapi], type: :request
 #      end
 #      config.instance_variable_set(:@curr_directory, directory)

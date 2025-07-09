@@ -1,0 +1,1566 @@
+---
+openapi: 3.1.1
+info:
+  title: API v1 Documentation
+  version: 1.0.0
+servers: []
+paths:
+  "//{model_name}":
+    get:
+      summary: index
+      tags:
+      - RailsAdmin::Main
+      responses:
+        '401':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  "/api/v1/account":
+    delete:
+      summary: destroy
+      tags:
+      - Users::Registration
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  image_thumb_url:
+                    type: string
+                  image_one_url:
+                    type: string
+                  image_three_url:
+                    type: string
+                  social_login:
+                    type: boolean
+                required:
+                - id
+                - email
+                - name
+                - image_thumb_url
+                - image_one_url
+                - image_three_url
+                - social_login
+  "/api/v1/account/following/{user_id}":
+    get:
+      summary: following
+      tags:
+      - Api::V1::FollowRelationship
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success(成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  following:
+                    type: boolean
+                required:
+                - following
+  "/api/v1/account/frames":
+    get:
+      summary: frames
+      tags:
+      - Api::V1::Session
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  frames:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        user_id:
+                          type: integer
+                        user_name:
+                          type: string
+                        name:
+                          type: string
+                        comment:
+                          type: [string, "null"]
+                        private:
+                          type: boolean
+                        tag_list:
+                          type: [string, "null"]
+                        tags:
+                          type: [string, "null"]
+                        shooted_at:
+                          type: string
+                        shooted_at_html:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        file_url:
+                          type: [string, "null"]
+                        file_two_url:
+                          type: [string, "null"]
+                        file_three_url:
+                          type: [string, "null"]
+                      required:
+                      - id
+                      - user_id
+                      - user_name
+                      - name
+                      - comment
+                      - private
+                      - tag_list
+                      - tags
+                      - shooted_at
+                      - shooted_at_html
+                      - created_at
+                      - updated_at
+                      - file_url
+                      - file_two_url
+                      - file_three_url
+                  meta:
+                    type: object
+                    properties:
+                      pagination:
+                        type: object
+                        properties:
+                          count:
+                            type: integer
+                          pages:
+                            type: integer
+                          page:
+                            type: integer
+                          per:
+                            type: integer
+                        required:
+                        - count
+                        - pages
+                        - page
+                        - per
+                    required:
+                    - pagination
+                required:
+                - frames
+                - meta
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+  "/api/v1/account/frames/{id}":
+    get:
+      summary: frame
+      tags:
+      - Api::V1::Session
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  user_name:
+                    type: string
+                  name:
+                    type: string
+                  comment:
+                    type: [string, "null"]
+                  private:
+                    type: boolean
+                  tag_list:
+                    type: [string, "null"]
+                  tags:
+                    type: [string, "null"]
+                  shooted_at:
+                    type: string
+                  shooted_at_html:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  file_url:
+                    type: [string, "null"]
+                  file_two_url:
+                    type: [string, "null"]
+                  file_three_url:
+                    type: [string, "null"]
+                  comments:
+                    type: array
+                    items: {}
+                required:
+                - id
+                - user_id
+                - user_name
+                - name
+                - comment
+                - private
+                - tag_list
+                - tags
+                - shooted_at
+                - shooted_at_html
+                - created_at
+                - updated_at
+                - file_url
+                - file_two_url
+                - file_three_url
+                - comments
+        '404':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - message
+                - errors
+  "/api/v1/account/password":
+    put:
+      summary: update
+      tags:
+      - Account::Password
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    current_password:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+                  required:
+                  - current_password
+                  - password
+                  - password_confirmation
+              required:
+              - user
+      responses:
+        '200':
+          description: password and passoword_confirmation are empty (パスワードとパスワード(確認)が空の場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  image_thumb_url:
+                    type: string
+                  image_one_url:
+                    type: string
+                  image_three_url:
+                    type: string
+                  social_login:
+                    type: boolean
+                required:
+                - id
+                - email
+                - name
+                - image_thumb_url
+                - image_one_url
+                - image_three_url
+                - social_login
+        '422':
+          description: password and passoword_confirmation don't match (パスワードとパスワード(確認)が一致しない場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        items:
+                          type: string
+                      current_password:
+                        type: array
+                        items:
+                          type: string
+                      password_confirmation:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - errors
+  "/api/v1/account/profile":
+    get:
+      summary: profile
+      tags:
+      - Api::V1::Session
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  image_thumb_url:
+                    type: string
+                  image_one_url:
+                    type: string
+                  image_three_url:
+                    type: string
+                  social_login:
+                    type: boolean
+                required:
+                - id
+                - email
+                - name
+                - image_thumb_url
+                - image_one_url
+                - image_three_url
+                - social_login
+        # start manual
+        '401':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        # end manual
+    put:
+      summary: update
+      tags:
+      - Users::Registration
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    image:
+                      type: string
+                      format: binary
+                  required:
+                  - name
+                  - email
+                  # - image # manual
+              required:
+              - user
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                  required:
+                  - name
+                  - email
+              required:
+              - user
+      responses:
+        '200':
+          description: without image
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  image_thumb_url:
+                    type: string
+                  image_one_url:
+                    type: string
+                  image_three_url:
+                    type: string
+                  social_login:
+                    type: boolean
+                required:
+                - id
+                - email
+                - name
+                - image_thumb_url
+                - image_one_url
+                - image_three_url
+                - social_login
+        '422':
+          description: image mime type is different (imageのmime typeが異なる場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        items:
+                          type: string
+                      email:
+                        type: array
+                        items:
+                          type: string
+                      image:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - errors
+  "/api/v1/comments/{id}":
+    delete:
+      summary: destroy
+      tags:
+      - Api::V1::Comment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: success (成功)
+        '404':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - message
+                - errors
+  "/api/v1/frames":
+    get:
+      summary: index
+      tags:
+      - Api::V1::Frame
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  frames:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        user_id:
+                          type: integer
+                        user_name:
+                          type: string
+                        name:
+                          type: string
+                        comment:
+                          type: [string, "null"]
+                        private:
+                          type: boolean
+                        tag_list:
+                          type: [string, "null"]
+                        tags:
+                          type: [string, "null"]
+                        shooted_at:
+                          type: string
+                        shooted_at_html:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        file_url:
+                          type: [string, "null"]
+                        file_two_url:
+                          type: [string, "null"]
+                        file_three_url:
+                          type: [string, "null"]
+                      required:
+                      - id
+                      - user_id
+                      - user_name
+                      - name
+                      - comment
+                      - private
+                      - tag_list
+                      - tags
+                      - shooted_at
+                      - shooted_at_html
+                      - created_at
+                      - updated_at
+                      - file_url
+                      - file_two_url
+                      - file_three_url
+                  meta:
+                    type: object
+                    properties:
+                      pagination:
+                        type: object
+                        properties:
+                          count:
+                            type: integer
+                          pages:
+                            type: integer
+                          page:
+                            type: integer
+                          per:
+                            type: integer
+                        required:
+                        - count
+                        - pages
+                        - page
+                        - per
+                    required:
+                    - pagination
+                required:
+                - frames
+                - meta
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: q
+        in: query
+        required: false
+        schema:
+          type: string
+    post:
+      summary: create
+      tags:
+      - Api::V1::Frame
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                frame:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    tag_list:
+                      type: string
+                    comment:
+                      type: string
+                    shooted_at:
+                      type: string
+                    file:
+                      type: string
+                      format: binary
+                  required:
+                  - name
+                  - tag_list
+                  - comment
+                  - shooted_at
+                  # - file # manual 
+              required:
+              - frame
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  user_name:
+                    type: string
+                  name:
+                    type: string
+                  comment:
+                    type: string
+                  private:
+                    type: boolean
+                  tag_list:
+                    type: string
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  shooted_at:
+                    type: string
+                  shooted_at_html:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  file_url:
+                    type: string
+                  file_two_url:
+                    type: string
+                  file_three_url:
+                    type: string
+                  comments:
+                    type: array
+                    items: {}
+                required:
+                - id
+                - user_id
+                - user_name
+                - name
+                - comment
+                - private
+                - tag_list
+                - tags
+                - shooted_at
+                - shooted_at_html
+                - created_at
+                - updated_at
+                - file_url
+                - file_two_url
+                - file_three_url
+                - comments
+        '422':
+          description: file mime type is different (fileのmime typeが異なる場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        items:
+                          type: string
+                      tag_list:
+                        type: array
+                        items:
+                          type: string
+                      file:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - errors
+  "/api/v1/frames/{frame_id}/comments":
+    get:
+      summary: comments
+      tags:
+      - Api::V1::Frame
+      parameters:
+      - name: frame_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        user_id:
+                          type: integer
+                        frame_id:
+                          type: integer
+                        body:
+                          type: string
+                        user_name:
+                          type: string
+                        user_image_url:
+                          type: string
+                        updated_at:
+                          type: string
+                      required:
+                      - id
+                      - user_id
+                      - frame_id
+                      - body
+                      - user_name
+                      - user_image_url
+                      - updated_at
+                required:
+                - comments
+        '404':
+          description: frame_id doesn't exist
+          content:
+            text/html:
+              schema:
+                type: string
+    post:
+      summary: create
+      tags:
+      - Api::V1::Comment
+      parameters:
+      - name: frame_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    body:
+                      type: string
+                  required:
+                  - body
+              required:
+              - comment
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  frame_id:
+                    type: integer
+                  body:
+                    type: string
+                  user_name:
+                    type: string
+                  user_image_url:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                - id
+                - user_id
+                - frame_id
+                - body
+                - user_name
+                - user_image_url
+                - updated_at
+        '422':
+          description: empty body (bodyが空の場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      body:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                    - body
+                required:
+                - errors
+  "/api/v1/frames/{id}":
+    delete:
+      summary: destroy
+      tags:
+      - Api::V1::Frame
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  user_name:
+                    type: string
+                  name:
+                    type: string
+                  comment:
+                    type: [string, "null"]
+                  private:
+                    type: boolean
+                  tag_list:
+                    type: [string, "null"]
+                  tags:
+                    type: [string, "null"]
+                  shooted_at:
+                    type: string
+                  shooted_at_html:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  file_url:
+                    type: [string, "null"]
+                  file_two_url:
+                    type: [string, "null"]
+                  file_three_url:
+                    type: [string, "null"]
+                  comments:
+                    type: array
+                    items: {}
+                required:
+                - id
+                - user_id
+                - user_name
+                - name
+                - comment
+                - private
+                - tag_list
+                - tags
+                - shooted_at
+                - shooted_at_html
+                - created_at
+                - updated_at
+                - file_url
+                - file_two_url
+                - file_three_url
+                - comments
+        '404':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - message
+                - errors
+    get:
+      summary: show
+      tags:
+      - Api::V1::Frame
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  user_name:
+                    type: string
+                  name:
+                    type: string
+                  comment:
+                    type: [string, "null"]
+                  private:
+                    type: boolean
+                  tag_list:
+                    type: [string, "null"]
+                  tags:
+                    type: [string, "null"]
+                  shooted_at:
+                    type: string
+                  shooted_at_html:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  file_url:
+                    type: [string, "null"]
+                  file_two_url:
+                    type: [string, "null"]
+                  file_three_url:
+                    type: [string, "null"]
+                  comments:
+                    type: array
+                    items: {}
+                required:
+                - id
+                - user_id
+                - user_name
+                - name
+                - comment
+                - private
+                - tag_list
+                - tags
+                - shooted_at
+                - shooted_at_html
+                - created_at
+                - updated_at
+                - file_url
+                - file_two_url
+                - file_three_url
+                - comments
+        '404':
+          description: failure (失敗)
+          content:
+            text/html:
+              schema:
+                type: string
+    put:
+      summary: update
+      tags:
+      - Api::V1::Frame
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                frame:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    tag_list:
+                      type: string
+                    comment:
+                      type: string
+                    shooted_at:
+                      type: string
+                    file:
+                      type: string
+                      format: binary
+                  required:
+                  - name
+                  - tag_list
+                  - comment
+                  - shooted_at
+                  # - file # manual
+              required:
+              - frame
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  user_name:
+                    type: string
+                  name:
+                    type: string
+                  comment:
+                    type: string
+                  private:
+                    type: boolean
+                  tag_list:
+                    type: string
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  shooted_at:
+                    type: string
+                  shooted_at_html:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  file_url:
+                    type: string
+                  file_two_url:
+                    type: string
+                  file_three_url:
+                    type: string
+                  comments:
+                    type: array
+                    items: {}
+                required:
+                - id
+                - user_id
+                - user_name
+                - name
+                - comment
+                - private
+                - tag_list
+                - tags
+                - shooted_at
+                - shooted_at_html
+                - created_at
+                - updated_at
+                - file_url
+                - file_two_url
+                - file_three_url
+                - comments
+        '422':
+          description: file mime type is different (fileのmime typeが異なる場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        items:
+                          type: string
+                      tag_list:
+                        type: array
+                        items:
+                          type: string
+                      file:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - errors
+  "/api/v1/oauth/sessions":
+    post:
+      summary: google_oauth2
+      tags:
+      - Users::OmniauthCallback
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                provider:
+                  type: string
+                credential:
+                  type: string
+              required:
+              - provider
+              - credential
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  image_thumb_url:
+                    type: string
+                  image_one_url:
+                    type: string
+                  image_three_url:
+                    type: string
+                  social_login:
+                    type: boolean
+                required:
+                - id
+                - email
+                - name
+                - image_thumb_url
+                - image_one_url
+                - image_three_url
+                - social_login
+  "/api/v1/sessions":
+    post:
+      summary: create
+      tags:
+      - Users::Session
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+              required:
+              - user
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  image_thumb_url:
+                    type: string
+                  image_one_url:
+                    type: string
+                  image_three_url:
+                    type: string
+                  social_login:
+                    type: boolean
+                required:
+                - id
+                - email
+                - name
+                - image_thumb_url
+                - image_one_url
+                - image_three_url
+                - social_login
+        '422':
+          description: invalid password (パスワードが正しくない場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - errors
+  "/api/v1/sessions/logout":
+    delete:
+      summary: destroy
+      tags:
+      - Users::Session
+      responses:
+        '204':
+          description: success (成功)
+  "/api/v1/users":
+    post:
+      summary: create
+      tags:
+      - Users::Registration
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+                    image:
+                      type: string
+                      format: binary
+                  required:
+                  - name
+                  - email
+                  - password
+                  - password_confirmation
+                  #- image # manual
+              required:
+              - user
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+                  required:
+                  - name
+                  - email
+                  - password
+                  - password_confirmation
+              required:
+              - user
+      responses:
+        '200':
+          description: without image
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  image_thumb_url:
+                    type: string
+                  image_one_url:
+                    type: string
+                  image_three_url:
+                    type: string
+                  social_login:
+                    type: boolean
+                required:
+                - id
+                - email
+                - name
+                - image_thumb_url
+                - image_one_url
+                - image_three_url
+                - social_login
+        '422':
+          description: image mime type is different (imageのmime typeが異なる場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        items:
+                          type: string
+                      email:
+                        type: array
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        items:
+                          type: string
+                      password_confirmation:
+                        type: array
+                        items:
+                          type: string
+                      image:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - errors
+  "/api/v1/users/{id}":
+    get:
+      summary: show
+      tags:
+      - Api::V1::User
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+                  name:
+                    type: string
+                  image_thumb_url:
+                    type: string
+                  image_one_url:
+                    type: string
+                  image_three_url:
+                    type: string
+                required:
+                - id
+                - email
+                - name
+                - image_thumb_url
+                - image_one_url
+                - image_three_url
+        '404':
+          description: failure (失敗)
+          content:
+            text/html:
+              schema:
+                type: string
+  "/api/v1/users/{user_id}/follow_relationships":
+    delete:
+      summary: destroy
+      tags:
+      - Api::V1::FollowRelationship
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: success (成功)
+    post:
+      summary: create
+      tags:
+      - Api::V1::FollowRelationship
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '204':
+          description: success (成功)
+  "/api/v1/users/{user_id}/frames":
+    get:
+      summary: frames
+      tags:
+      - Api::V1::User
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  frames:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        user_id:
+                          type: integer
+                        user_name:
+                          type: string
+                        name:
+                          type: string
+                        comment:
+                          type: [string, "null"]
+                        private:
+                          type: boolean
+                        tag_list:
+                          type: [string, "null"]
+                        tags:
+                          type: [string, "null"]
+                        shooted_at:
+                          type: string
+                        shooted_at_html:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        file_url:
+                          type: [string, "null"]
+                        file_two_url:
+                          type: [string, "null"]
+                        file_three_url:
+                          type: [string, "null"]
+                      required:
+                      - id
+                      - user_id
+                      - user_name
+                      - name
+                      - comment
+                      - private
+                      - tag_list
+                      - tags
+                      - shooted_at
+                      - shooted_at_html
+                      - created_at
+                      - updated_at
+                      - file_url
+                      - file_two_url
+                      - file_three_url
+                  meta:
+                    type: object
+                    properties:
+                      pagination:
+                        type: object
+                        properties:
+                          count:
+                            type: integer
+                          pages:
+                            type: integer
+                          page:
+                            type: integer
+                          per:
+                            type: integer
+                        required:
+                        - count
+                        - pages
+                        - page
+                        - per
+                    required:
+                    - pagination
+                required:
+                - frames
+                - meta
+        '404':
+          description: failure (失敗)
+          content:
+            text/html:
+              schema:
+                type: string
