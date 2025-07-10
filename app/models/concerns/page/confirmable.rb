@@ -7,7 +7,7 @@ module Page
     extend ActiveSupport::Concern
 
     included do
-      attr_reader :confirming
+      attr_accessor :confirming
 
       validates :confirming, acceptance: true
 
