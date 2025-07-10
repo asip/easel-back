@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+# users / Sessions Controller
 class Users::SessionsController < Devise::SessionsController
   respond_to :json
 
   before_action :configure_sign_in_params, only: [ :create ]
 
-  @@form_params = [ :email, :password ]
+  FORM_PARAMS = [ :email, :password ]
 
   # POST /resource/sign_in
   def create
@@ -59,6 +60,6 @@ class Users::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: @@form_params)
+    devise_parameter_sanitizer.permit(:sign_in, keys: FORM_PARAMS)
   end
 end

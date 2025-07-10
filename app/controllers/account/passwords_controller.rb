@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# account / Passwords Controller
 class Account::PasswordsController < ApplicationController
   # before_action :authenticate_user!
 

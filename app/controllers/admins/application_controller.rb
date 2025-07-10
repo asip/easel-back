@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# admins / Application Controller
 module Admins
   # Application Controller
   class ApplicationController < ActionController::Base
@@ -15,7 +16,7 @@ module Admins
 
     protected
 
-    def after_sign_out_path_for(resource_or_scope)
+    def after_sign_out_path_for(_resource_or_scope)
       rails_admin_path
     end
   end

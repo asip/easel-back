@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# admins / Sessions Controller
 class Admins::SessionsController < Devise::SessionsController
   include Flashes
 
@@ -65,7 +66,7 @@ class Admins::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  def after_sign_out_path_for(resource)
+  def after_sign_out_path_for(_resource)
     rails_admin_path
   end
 end

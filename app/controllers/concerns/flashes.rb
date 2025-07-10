@@ -5,7 +5,7 @@ module Flashes
   extend ActiveSupport::Concern
 
   included do
-    attr_accessor :flashes
+    attr_reader :flashes
 
     before_action :init_flashes
   end

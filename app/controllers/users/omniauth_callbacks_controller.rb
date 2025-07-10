@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# users / Omniauth Callbacks Controller
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include ActionController::Cookies
 
