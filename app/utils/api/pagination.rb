@@ -2,11 +2,10 @@
 
 # api
 module Api
-  # Pagination module
-  module Pagination
-    extend ActiveSupport::Concern
+  # Pagination Class
+  class Pagination
 
-    def resources_with_pagination(pagy)
+    def self.resources_with_pagination(pagy)
       {
         meta: {
           pagination: {

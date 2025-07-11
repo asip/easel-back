@@ -9,12 +9,11 @@ module Queries
       extend ActiveSupport::Concern
 
       include Pagy::Backend
-      include Api::Pagination
 
       def list_frames_query(user:, page:)
         frames = Queries::Users::ListFrames.run(user:)
         pagy, frames = pagy(frames, page:)
-        pagination = resources_with_pagination(pagy)
+        pagination = Api::Pagination.resources_with_pagination(pagy)
         [ pagination, frames ]
       end
     end
