@@ -14,10 +14,10 @@ module Locale
 
     def switch_locale
       # logger.debug I18n.locale
-      locale = I18n.locale.to_s&.split(/-/)&.first
-      locale = I18n.available_locales.include?(locale.to_sym) ? locale : "en"
-      # logger.debug "* Locale set to '#{locale}'"
-      I18n.locale = locale.to_sym
+      requested_locale_code = I18n.locale.to_s&.split(/-/)&.first
+      effective_locale_code = I18n.available_locales.include?(requested_locale_code.to_sym) ? requested_locale_code : "en"
+      # logger.debug "* Locale set to '#{effective_locale_code}'"
+      I18n.locale = effective_locale_code.to_sym
     end
   end
 end
