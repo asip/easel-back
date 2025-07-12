@@ -61,6 +61,8 @@ ARG redis_session_url
 ARG imgproxy_endpoint
 ARG imgproxy_use_s3_urls
 ARG imgproxy_shrine_host
+ARG imgproxy_key
+ARG imgproxy_salt
 ENV TIME_ZONE=${time_zone}
 ENV S3_ACCESS_KEY=${s3_access_key}
 ENV S3_SECRET_KEY=${s3_secret_key}
@@ -71,6 +73,8 @@ ENV REDIS_SESSION_URL=${redis_session_url}
 ENV IMGPROXY_ENDPOINT=${imgproxy_endpoint}
 ENV IMGPROXY_USE_S3_URLS=${imgproxy_use_s3_urls}
 ENV IMGPROXY_SHRINE_HOST=${imgproxy_shrine_host}
+ENV IMGPROXY_KEY=${imgproxy_key}
+ENV IMGPROXY_SALT=${imgproxy_salt}
 
 # Prepare icon fonts
 RUN pnpm build:font
