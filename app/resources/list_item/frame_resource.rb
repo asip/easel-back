@@ -43,7 +43,9 @@ module ListItem
       I18n.l(frame.updated_at)
     end
 
-    attribute :file_url, &:file_url
+    attribute :file_url do |frame|
+      frame.file_proxy_url(:original)
+    end
 
     attribute :file_two_url do |frame|
       frame.file_proxy_url(:two)
