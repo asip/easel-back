@@ -65,7 +65,7 @@ gem "omniauth-google-oauth2", "1.2.1"
 gem "googleauth", "~> 1.14.0"
 
 # settings
-gem "config", "~> 5.5.2"
+gem "config", "~> 5.6.1"
 
 # paging
 gem "pagy", "~> 9.3.5"
@@ -111,7 +111,7 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
-  gem "annotaterb", "~> 4.16.0"
+  gem "annotaterb", "~> 4.17.0"
   gem "rails-erd", "~> 1.7.2"
 
   # Ruby style guide, linter, and formatter
