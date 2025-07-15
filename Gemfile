@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gem "rails", "~> 8.0.2"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem "propshaft", "~> 1.1.0"
+gem "propshaft", "~> 1.2.0"
 
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.5.6'
@@ -41,7 +41,7 @@ gem "vite_rails", "3.0.19"
 gem "view_component", "~> 3.23.2"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.192.0"
+gem "aws-sdk-s3", "~> 1.193.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
