@@ -102,7 +102,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "brakeman", "~> 7.0.2", require: false
   gem "bullet", "~> 8.0.8"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -118,8 +117,9 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.25.0", require: false
+  gem "ruby-lsp", "~> 0.26.0", require: false
 
+  gem "brakeman", "~> 7.1.0", require: false
   gem "reek", "~> 6.5.0", require: false
 
   gem "dockerfile-rails", "~>1.7.10"
