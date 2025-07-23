@@ -121,6 +121,7 @@ group :development do
 
   gem "brakeman", "~> 7.1.0", require: false
   gem "reek", "~> 6.5.0", require: false
+  gem "traceroute", "~> 0.8.1"
 
   gem "dockerfile-rails", "~>1.7.10"
 end
