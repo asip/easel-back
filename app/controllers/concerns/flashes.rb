@@ -5,12 +5,16 @@ module Flashes
   extend ActiveSupport::Concern
 
   included do
-    attr_reader :flashes
+    helper_method :flashes
 
     before_action :init_flashes
   end
 
   protected
+
+  def flashes
+    @flashes
+  end
 
   def init_flashes
     @flashes = {}

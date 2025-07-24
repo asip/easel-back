@@ -12,6 +12,8 @@ module NPlusOne
         around_action :n_plus_one_detection
       end
 
+      protected
+
       def n_plus_one_detection
         Prosopite.scan
         yield

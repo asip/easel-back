@@ -10,6 +10,8 @@ module Queries
 
       include Pagy::Backend
 
+      protected
+
       def list_frames_query(user:, page:)
         frames = Queries::Users::ListFrames.run(user:)
         pagy, frames = pagy(frames, page:)

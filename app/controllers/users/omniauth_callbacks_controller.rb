@@ -18,6 +18,22 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:google)
   end
 
+  # GET|POST /resource/auth/twitter
+  # def passthru
+  #   super
+  # end
+
+  # GET|POST /users/auth/twitter/callback
+  # def failure
+  #   super
+  # end
+
+  private
+
+  def auth_params
+    params.permit(:provider, :credential)
+  end
+
   def callback_for(provider)
     auth = {}
     auth[:info] = Google::Auth::IDTokens.verify_oidc(params["credential"],
@@ -32,20 +48,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     render json: AccountResource.new(user).serializable_hash
   end
-
-  def auth_params
-    params.permit(:provider, :credential)
-  end
-
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
-
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
 
   # protected
 
