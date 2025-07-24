@@ -75,7 +75,7 @@ gem "pagy", "~> 9.3.5"
 gem "acts-as-taggable-on", "~> 12.0.0"
 
 # json
-gem "alba", "3.7.3"
+gem "alba", "3.7.4"
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
