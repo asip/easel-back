@@ -34,7 +34,7 @@
 # User Resource
 class UserResource < BaseResource
   root_key :user, :users
-  attributes :id, :email, :name
+  attributes :id, :name
 
   attribute :image_thumb_url do |user|
     user.image_url_for_view(:thumb)

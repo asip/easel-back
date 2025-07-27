@@ -51,11 +51,11 @@ paths:
                     type: boolean
                 required:
                 - id
-                - email
                 - name
                 - image_thumb_url
                 - image_one_url
                 - image_three_url
+                - email
                 - social_login
   "/api/v1/account/following/{user_id}":
     get:
@@ -309,11 +309,11 @@ paths:
                     type: boolean
                 required:
                 - id
-                - email
                 - name
                 - image_thumb_url
                 - image_one_url
                 - image_three_url
+                - email
                 - social_login
         '422':
           description: password and passoword_confirmation don't match (パスワードとパスワード(確認)が一致しない場合)
@@ -368,25 +368,21 @@ paths:
                     type: boolean
                 required:
                 - id
-                - email
                 - name
                 - image_thumb_url
                 - image_one_url
                 - image_three_url
+                - email
                 - social_login
-        # start manual
         '401':
           description: failure (失敗)
           content:
             application/json:
               schema:
                 type: object
-                properties:
-                  error:
-                    type: string
+                properties: {}
                 required:
                 - error
-        # end manual
     put:
       summary: update
       tags:
@@ -410,7 +406,6 @@ paths:
                   required:
                   - name
                   - email
-                  # - image # manual
               required:
               - user
           application/x-www-form-urlencoded:
@@ -453,11 +448,11 @@ paths:
                     type: boolean
                 required:
                 - id
-                - email
                 - name
                 - image_thumb_url
                 - image_one_url
                 - image_three_url
+                - email
                 - social_login
         '422':
           description: image mime type is different (imageのmime typeが異なる場合)
@@ -641,7 +636,6 @@ paths:
                   - tag_list
                   - comment
                   - shooted_at
-                  # - file # manual 
               required:
               - frame
       responses:
@@ -1049,7 +1043,6 @@ paths:
                   - tag_list
                   - comment
                   - shooted_at
-                  # - file # manual
               required:
               - frame
       responses:
@@ -1178,11 +1171,11 @@ paths:
                     type: boolean
                 required:
                 - id
-                - email
                 - name
                 - image_thumb_url
                 - image_one_url
                 - image_three_url
+                - email
                 - social_login
   "/api/v1/sessions":
     post:
@@ -1231,11 +1224,11 @@ paths:
                     type: boolean
                 required:
                 - id
-                - email
                 - name
                 - image_thumb_url
                 - image_one_url
                 - image_three_url
+                - email
                 - social_login
         '422':
           description: invalid password (パスワードが正しくない場合)
@@ -1295,7 +1288,6 @@ paths:
                   - email
                   - password
                   - password_confirmation
-                  #- image # manual
               required:
               - user
           application/x-www-form-urlencoded:
@@ -1344,11 +1336,11 @@ paths:
                     type: boolean
                 required:
                 - id
-                - email
                 - name
                 - image_thumb_url
                 - image_one_url
                 - image_three_url
+                - email
                 - social_login
         '422':
           description: image mime type is different (imageのmime typeが異なる場合)
@@ -1403,8 +1395,6 @@ paths:
                 properties:
                   id:
                     type: integer
-                  email:
-                    type: string
                   name:
                     type: string
                   image_thumb_url:
@@ -1415,7 +1405,6 @@ paths:
                     type: string
                 required:
                 - id
-                - email
                 - name
                 - image_thumb_url
                 - image_one_url
