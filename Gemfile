@@ -11,7 +11,7 @@ gem "propshaft", "~> 1.2.1"
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.5.6'
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.5.9"
+gem "pg", "~> 1.6.0"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.6.0"
