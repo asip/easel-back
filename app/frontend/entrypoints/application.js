@@ -29,4 +29,4 @@
 // import '~/index.css'
 
 import '../libraries/turbo.js'
-import '../controllers/application.ts'
+import '../controllers/index.ts'
