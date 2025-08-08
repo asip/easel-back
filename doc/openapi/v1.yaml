@@ -37,8 +37,6 @@ paths:
                 properties:
                   id:
                     type: integer
-                  email:
-                    type: string
                   name:
                     type: string
                   image_thumb_url:
@@ -46,6 +44,8 @@ paths:
                   image_one_url:
                     type: string
                   image_three_url:
+                    type: string
+                  email:
                     type: string
                   social_login:
                     type: boolean
@@ -295,8 +295,6 @@ paths:
                 properties:
                   id:
                     type: integer
-                  email:
-                    type: string
                   name:
                     type: string
                   image_thumb_url:
@@ -304,6 +302,8 @@ paths:
                   image_one_url:
                     type: string
                   image_three_url:
+                    type: string
+                  email:
                     type: string
                   social_login:
                     type: boolean
@@ -354,8 +354,6 @@ paths:
                 properties:
                   id:
                     type: integer
-                  email:
-                    type: string
                   name:
                     type: string
                   image_thumb_url:
@@ -363,6 +361,8 @@ paths:
                   image_one_url:
                     type: string
                   image_three_url:
+                    type: string
+                  email:
                     type: string
                   social_login:
                     type: boolean
@@ -374,15 +374,24 @@ paths:
                 - image_three_url
                 - email
                 - social_login
+        # start manual
         '401':
           description: failure (失敗)
           content:
             application/json:
               schema:
                 type: object
-                properties: {}
+                properties:
+                  message:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
                 required:
                 - error
+        # end manual
+
     put:
       summary: update
       tags:
@@ -406,6 +415,7 @@ paths:
                   required:
                   - name
                   - email
+                  - image
               required:
               - user
           application/x-www-form-urlencoded:
@@ -434,8 +444,6 @@ paths:
                 properties:
                   id:
                     type: integer
-                  email:
-                    type: string
                   name:
                     type: string
                   image_thumb_url:
@@ -443,6 +451,8 @@ paths:
                   image_one_url:
                     type: string
                   image_three_url:
+                    type: string
+                  email:
                     type: string
                   social_login:
                     type: boolean
@@ -636,6 +646,7 @@ paths:
                   - tag_list
                   - comment
                   - shooted_at
+                  # - file # manual
               required:
               - frame
       responses:
@@ -1043,6 +1054,7 @@ paths:
                   - tag_list
                   - comment
                   - shooted_at
+                  # - file # manual
               required:
               - frame
       responses:
@@ -1157,8 +1169,6 @@ paths:
                 properties:
                   id:
                     type: integer
-                  email:
-                    type: string
                   name:
                     type: string
                   image_thumb_url:
@@ -1166,6 +1176,8 @@ paths:
                   image_one_url:
                     type: string
                   image_three_url:
+                    type: string
+                  email:
                     type: string
                   social_login:
                     type: boolean
@@ -1210,8 +1222,6 @@ paths:
                 properties:
                   id:
                     type: integer
-                  email:
-                    type: string
                   name:
                     type: string
                   image_thumb_url:
@@ -1219,6 +1229,8 @@ paths:
                   image_one_url:
                     type: string
                   image_three_url:
+                    type: string
+                  email:
                     type: string
                   social_login:
                     type: boolean
@@ -1288,6 +1300,7 @@ paths:
                   - email
                   - password
                   - password_confirmation
+                  - image
               required:
               - user
           application/x-www-form-urlencoded:
@@ -1322,8 +1335,6 @@ paths:
                 properties:
                   id:
                     type: integer
-                  email:
-                    type: string
                   name:
                     type: string
                   image_thumb_url:
@@ -1331,6 +1342,8 @@ paths:
                   image_one_url:
                     type: string
                   image_three_url:
+                    type: string
+                  email:
                     type: string
                   social_login:
                     type: boolean

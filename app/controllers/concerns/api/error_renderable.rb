@@ -16,15 +16,15 @@ module Api
       rescue_from ActiveRecord::RecordInvalid, with: ->(e) { request.format.json? ? render422(e) : raise(e) }
 
       # UnauthorizedError
-      rescue_from UnauthorizedError, with: ->(e) { request.format.json? ? render401(e) : raise(e) }
+      # rescue_from UnauthorizedError, with: ->(e) { request.format.json? ? render401(e) : raise(e) }
     end
 
     # Custom error class for unauthorized access (未認証アクセス用のカスタムエラークラス)
-    class UnauthorizedError < StandardError
-      def initialize(message = "Authentication information is invalid.")
-        super(message)
-      end
-    end
+    # class UnauthorizedError < StandardError
+    #  def initialize(message = "Authentication information is invalid.")
+    #    super(message)
+    #  end
+    # end
 
     protected
 
@@ -36,9 +36,9 @@ module Api
     end
 
     # HTTP Status 401 Unauthorized
-    def render401(exception = nil, *messages)
-      render_error(401, "Unauthorized", exception&.message, *messages)
-    end
+    # def render401(exception = nil, *messages)
+    #   render_error(401, "Unauthorized", exception&.message, *messages)
+    # end
 
     # HTTP Status 404 Not Found
     def render404(exception = nil, *messages)
