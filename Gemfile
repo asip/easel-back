@@ -11,7 +11,7 @@ gem "propshaft", "~> 1.2.1"
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.5.6'
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.6.0"
+gem "pg", "~> 1.6.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.6.1"
@@ -38,10 +38,10 @@ gem "bootsnap", "~> 1.18.6", require: false
 gem "vite_rails", "3.0.19"
 
 # view component
-gem "view_component", "~> 4.0.0"
+gem "view_component", "~> 4.0.1"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.195.0"
+gem "aws-sdk-s3", "~> 1.196.1"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -75,7 +75,7 @@ gem "pagy", "~> 9.3.5"
 gem "acts-as-taggable-on", "~> 12.0.0"
 
 # json
-gem "alba", "3.7.4"
+gem "alba", "3.8.0"
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
@@ -110,7 +110,7 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
-  gem "annotaterb", "~> 4.17.0"
+  gem "annotaterb", "~> 4.18.0"
   gem "rails-erd", "~> 1.7.2"
 
   # Ruby style guide, linter, and formatter
