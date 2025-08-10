@@ -1,7 +1,7 @@
 {
   "name": "easel",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "build:font-bootstrap": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts",
     "build:font": "pnpm build:font-bootstrap",
