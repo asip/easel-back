@@ -17,11 +17,12 @@ module Devise
     def http_auth_body
       return i18n_message unless request_format
       format = request_format
+      # puts format
       method = "to_#{format}"
       # puts method
       if format == "xml"
         { error: i18n_message }.to_xml(root: "errors")
-      elsif format == "*/*"
+      elsif format == "json"
         { message: "Unauthorized", errors: [ i18n_message ] }.to_json
       elsif {}.respond_to?(method)
         { error: i18n_message }.send(method)
