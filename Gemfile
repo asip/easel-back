@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.2"
+gem "rails", "~> 8.0.2.1"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.2.1"
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.14.0"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 9.3.5"
+gem "pagy", "~> 9.4.0"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
@@ -131,11 +131,11 @@ group :test do
 
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   # gem "capybara", "~> 3.40.0"
-  # gem "selenium-webdriver", "~> 4.34.0"
+  # gem "selenium-webdriver", "~> 4.35.0"
 
   gem "factory_bot_rails", "~> 6.5.0"
   gem "faker", "~> 3.5.2"
-  gem "rspec-rails", "~> 8.0.1"
+  gem "rspec-rails", "~> 8.0.2"
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.19.0"
   gem "committee-rails", "~> 0.8.0"
