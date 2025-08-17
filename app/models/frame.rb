@@ -36,7 +36,6 @@ class Frame < ApplicationRecord
 
   scope :search_by, lambda { |word:|
     scope = current_scope || relation
-    scope = scope.where(private: false)
 
     if word.present?
       scope = if DateAndTime::Util.valid_date?(word)

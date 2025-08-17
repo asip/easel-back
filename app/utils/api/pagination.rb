@@ -4,7 +4,6 @@
 module Api
   # Pagination Class
   class Pagination
-
     def self.resources_with_pagination(pagy)
       {
         meta: {
