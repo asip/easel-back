@@ -38,7 +38,7 @@ gem "bootsnap", "~> 1.18.6", require: false
 gem "vite_rails", "3.0.19"
 
 # view component
-gem "view_component", "~> 4.0.1"
+gem "view_component", "~> 4.0.2"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.196.1"
@@ -51,7 +51,7 @@ gem "shrine", "~> 3.6.0"
 gem "imgproxy", "~> 3.0.0", require: false
 
 # i18n
-gem "rails-i18n", "~> 8.0.1"
+gem "rails-i18n", "~> 8.0.2"
 
 # error page handling
 gem "rambulance", "~> 3.3.0"
@@ -75,7 +75,7 @@ gem "pagy", "~> 9.4.0"
 gem "acts-as-taggable-on", "~> 12.0.0"
 
 # json
-gem "alba", "3.8.0"
+gem "alba", "3.9.0"
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
