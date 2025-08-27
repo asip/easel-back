@@ -41,7 +41,7 @@ gem "vite_rails", "3.0.19"
 gem "view_component", "~> 4.0.2"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.197.0"
+gem "aws-sdk-s3", "~> 1.198.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"
@@ -59,10 +59,10 @@ gem "rambulance", "~> 3.3.0"
 # authentication
 gem "devise", "4.9.4"
 gem "devise-jwt", "0.12.1"
-gem "devise-i18n", "1.14.0"
+gem "devise-i18n", "1.15.0"
 gem "omniauth-google-oauth2", "1.2.1"
 
-gem "googleauth", "~> 1.14.0"
+gem "googleauth", "~> 1.15.0"
 
 # settings
 gem "config", "~> 5.6.1"
