@@ -27,22 +27,6 @@ module ListItem
 
     attribute :tags, &:tags_display
 
-    attribute :shooted_at do |frame|
-      frame.shooted_at.present? ? I18n.l(frame.shooted_at, format: "%Y/%m/%d %H:%M") : ""
-    end
-
-    attribute :shooted_at_html do |frame|
-      frame.shooted_at.present? ? I18n.l(frame.shooted_at) : ""
-    end
-
-    attribute :created_at do |frame|
-      I18n.l(frame.created_at)
-    end
-
-    attribute :updated_at do |frame|
-      I18n.l(frame.updated_at)
-    end
-
     attribute :file_url do |frame|
       frame.file_proxy_url(:original)
     end

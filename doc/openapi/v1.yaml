@@ -114,14 +114,6 @@ paths:
                           nullable: true
                         tags:
                           nullable: true
-                        shooted_at:
-                          type: string
-                        shooted_at_html:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
                         file_url:
                           nullable: true
                         file_two_url:
@@ -137,10 +129,6 @@ paths:
                       - private
                       - tag_list
                       - tags
-                      - shooted_at
-                      - shooted_at_html
-                      - created_at
-                      - updated_at
                       - file_url
                       - file_two_url
                       - file_three_url
@@ -209,6 +197,12 @@ paths:
                     nullable: true
                   tags:
                     nullable: true
+                  file_url:
+                    nullable: true
+                  file_two_url:
+                    nullable: true
+                  file_three_url:
+                    nullable: true
                   shooted_at:
                     type: string
                   shooted_at_html:
@@ -217,12 +211,6 @@ paths:
                     type: string
                   updated_at:
                     type: string
-                  file_url:
-                    nullable: true
-                  file_two_url:
-                    nullable: true
-                  file_three_url:
-                    nullable: true
                   comments:
                     type: array
                     items: {}
@@ -235,13 +223,13 @@ paths:
                 - private
                 - tag_list
                 - tags
+                - file_url
+                - file_two_url
+                - file_three_url
                 - shooted_at
                 - shooted_at_html
                 - created_at
                 - updated_at
-                - file_url
-                - file_two_url
-                - file_three_url
                 - comments
         '404':
           description: failure (失敗)
@@ -391,7 +379,6 @@ paths:
                 required:
                 - error
         # end manual
-
     put:
       summary: update
       tags:
@@ -552,14 +539,6 @@ paths:
                           nullable: true
                         tags:
                           nullable: true
-                        shooted_at:
-                          type: string
-                        shooted_at_html:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
                         file_url:
                           nullable: true
                         file_two_url:
@@ -575,10 +554,6 @@ paths:
                       - private
                       - tag_list
                       - tags
-                      - shooted_at
-                      - shooted_at_html
-                      - created_at
-                      - updated_at
                       - file_url
                       - file_two_url
                       - file_three_url
@@ -675,6 +650,12 @@ paths:
                     type: array
                     items:
                       type: string
+                  file_url:
+                    type: string
+                  file_two_url:
+                    type: string
+                  file_three_url:
+                    type: string
                   shooted_at:
                     type: string
                   shooted_at_html:
@@ -682,12 +663,6 @@ paths:
                   created_at:
                     type: string
                   updated_at:
-                    type: string
-                  file_url:
-                    type: string
-                  file_two_url:
-                    type: string
-                  file_three_url:
                     type: string
                   comments:
                     type: array
@@ -701,13 +676,13 @@ paths:
                 - private
                 - tag_list
                 - tags
+                - file_url
+                - file_two_url
+                - file_three_url
                 - shooted_at
                 - shooted_at_html
                 - created_at
                 - updated_at
-                - file_url
-                - file_two_url
-                - file_three_url
                 - comments
         '422':
           description: file mime type is different (fileのmime typeが異なる場合)
@@ -769,6 +744,8 @@ paths:
                           type: string
                         user_image_url:
                           type: string
+                        created_at:
+                          type: string
                         updated_at:
                           type: string
                       required:
@@ -778,6 +755,7 @@ paths:
                       - body
                       - user_name
                       - user_image_url
+                      - created_at
                       - updated_at
                 required:
                 - comments
@@ -832,6 +810,8 @@ paths:
                     type: string
                   user_image_url:
                     type: string
+                  created_at:
+                    type: string
                   updated_at:
                     type: string
                 required:
@@ -841,6 +821,7 @@ paths:
                 - body
                 - user_name
                 - user_image_url
+                - created_at
                 - updated_at
         '422':
           description: empty body (bodyが空の場合)
@@ -895,6 +876,12 @@ paths:
                     nullable: true
                   tags:
                     nullable: true
+                  file_url:
+                    nullable: true
+                  file_two_url:
+                    nullable: true
+                  file_three_url:
+                    nullable: true
                   shooted_at:
                     type: string
                   shooted_at_html:
@@ -903,12 +890,6 @@ paths:
                     type: string
                   updated_at:
                     type: string
-                  file_url:
-                    nullable: true
-                  file_two_url:
-                    nullable: true
-                  file_three_url:
-                    nullable: true
                   comments:
                     type: array
                     items: {}
@@ -921,13 +902,13 @@ paths:
                 - private
                 - tag_list
                 - tags
+                - file_url
+                - file_two_url
+                - file_three_url
                 - shooted_at
                 - shooted_at_html
                 - created_at
                 - updated_at
-                - file_url
-                - file_two_url
-                - file_three_url
                 - comments
         '404':
           description: failure (失敗)
@@ -979,6 +960,12 @@ paths:
                     nullable: true
                   tags:
                     nullable: true
+                  file_url:
+                    nullable: true
+                  file_two_url:
+                    nullable: true
+                  file_three_url:
+                    nullable: true
                   shooted_at:
                     type: string
                   shooted_at_html:
@@ -987,12 +974,6 @@ paths:
                     type: string
                   updated_at:
                     type: string
-                  file_url:
-                    nullable: true
-                  file_two_url:
-                    nullable: true
-                  file_three_url:
-                    nullable: true
                   comments:
                     type: array
                     items: {}
@@ -1005,13 +986,13 @@ paths:
                 - private
                 - tag_list
                 - tags
+                - file_url
+                - file_two_url
+                - file_three_url
                 - shooted_at
                 - shooted_at_html
                 - created_at
                 - updated_at
-                - file_url
-                - file_two_url
-                - file_three_url
                 - comments
         '404':
           description: failure (失敗)
@@ -1083,6 +1064,12 @@ paths:
                     type: array
                     items:
                       type: string
+                  file_url:
+                    type: string
+                  file_two_url:
+                    type: string
+                  file_three_url:
+                    type: string
                   shooted_at:
                     type: string
                   shooted_at_html:
@@ -1090,12 +1077,6 @@ paths:
                   created_at:
                     type: string
                   updated_at:
-                    type: string
-                  file_url:
-                    type: string
-                  file_two_url:
-                    type: string
-                  file_three_url:
                     type: string
                   comments:
                     type: array
@@ -1109,13 +1090,13 @@ paths:
                 - private
                 - tag_list
                 - tags
+                - file_url
+                - file_two_url
+                - file_three_url
                 - shooted_at
                 - shooted_at_html
                 - created_at
                 - updated_at
-                - file_url
-                - file_two_url
-                - file_three_url
                 - comments
         '422':
           description: file mime type is different (fileのmime typeが異なる場合)
@@ -1506,14 +1487,6 @@ paths:
                           nullable: true
                         tags:
                           nullable: true
-                        shooted_at:
-                          type: string
-                        shooted_at_html:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
                         file_url:
                           nullable: true
                         file_two_url:
@@ -1529,10 +1502,6 @@ paths:
                       - private
                       - tag_list
                       - tags
-                      - shooted_at
-                      - shooted_at_html
-                      - created_at
-                      - updated_at
                       - file_url
                       - file_two_url
                       - file_three_url
