@@ -25,6 +25,10 @@ class CommentResource < BaseResource
     comment.user.image_url_for_view(:thumb)
   end
 
+  attribute :created_at do |comment|
+    I18n.l(comment.created_at)
+  end
+
   attribute :updated_at do |comment|
     I18n.l(comment.updated_at)
   end
