@@ -26,7 +26,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y git
 
 # Install JavaScript dependencies
-ARG NODE_VERSION=22.18.0
+ARG NODE_VERSION=22.19.0
 ARG PNPM_VERSION=10.15.0
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
