@@ -11,14 +11,14 @@
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
     "@types/toastify-js": "^1.12.4",
-    "@typescript-eslint/eslint-plugin": "^8.41.0",
-    "@typescript-eslint/parser": "^8.41.0",
+    "@typescript-eslint/eslint-plugin": "^8.42.0",
+    "@typescript-eslint/parser": "^8.42.0",
     "copyfiles": "^2.4.1",
-    "daisyui": "5.0.54",
+    "daisyui": "5.1.6",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
-    "sass-embedded": "^1.91.0",
+    "sass-embedded": "^1.92.0",
     "tailwindcss": "4.1.12",
     "tsc-watch": "^7.1.1",
     "typescript": "5.9.2",
@@ -26,7 +26,7 @@
     "vite-plugin-ruby": "^5.1.1"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.0.0",
+    "@fortawesome/fontawesome-free": "^7.0.1",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo": "^8.0.13",
     "@hotwired/turbo-rails": "^8.0.16",
