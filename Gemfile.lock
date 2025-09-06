@@ -353,7 +353,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
-    puma (7.0.0)
+    puma (7.0.1)
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.1.14)
@@ -616,7 +616,7 @@ DEPENDENCIES
   pg_query (~> 6.1.0)
   propshaft (~> 1.2.1)
   prosopite (~> 2.1.1)
-  puma (~> 7.0.0)
+  puma (~> 7.0.1)
   rack-contrib (= 2.5.0)
   rack-cors (~> 3.0.0)
   rails (~> 8.0.2.1)
