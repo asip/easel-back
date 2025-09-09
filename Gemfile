@@ -14,7 +14,7 @@ gem "propshaft", "~> 1.2.1"
 gem "pg", "~> 1.6.2"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 7.0.1"
+gem "puma", "~> 7.0.2"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.16"
@@ -41,7 +41,7 @@ gem "vite_rails", "3.0.19"
 gem "view_component", "~> 4.0.2"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.198.0"
+gem "aws-sdk-s3", "~> 1.199.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.0.4"
 gem "shrine", "~> 3.6.0"

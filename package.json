@@ -11,10 +11,10 @@
   "devDependencies": {
     "@tailwindcss/vite": "4.1.13",
     "@types/toastify-js": "^1.12.4",
-    "@typescript-eslint/eslint-plugin": "^8.42.0",
-    "@typescript-eslint/parser": "^8.42.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
     "copyfiles": "^2.4.1",
-    "daisyui": "5.1.7",
+    "daisyui": "5.1.9",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
@@ -22,7 +22,7 @@
     "tailwindcss": "4.1.13",
     "tsc-watch": "^7.1.1",
     "typescript": "5.9.2",
-    "vite": "^7.1.4",
+    "vite": "^7.1.5",
     "vite-plugin-ruby": "^5.1.1"
   },
   "dependencies": {
