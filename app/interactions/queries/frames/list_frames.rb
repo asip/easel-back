@@ -8,12 +8,12 @@ module Queries
     class ListFrames
       include Query
 
-      def initialize(word:)
-        @word = word
+      def initialize(items:)
+        @items = items
       end
 
       def execute
-        Frame.where(private: false).search_by(word: @word).order(created_at: "desc")
+        Frame.where(private: false).search_by(items: @items).order(created_at: "desc")
       end
     end
   end

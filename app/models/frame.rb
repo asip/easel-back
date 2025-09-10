@@ -34,8 +34,10 @@ class Frame < ApplicationRecord
 
   # after_validation :assign_derivatives
 
-  scope :search_by, lambda { |word:|
+  scope :search_by, lambda { |items:|
     scope = current_scope || relation
+
+    word = items["word"]
 
     if word.present?
       scope = if DateAndTime::Util.valid_date?(word)

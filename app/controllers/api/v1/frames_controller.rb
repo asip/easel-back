@@ -12,7 +12,10 @@ module Api
       skip_before_action :authenticate_user!, only: %i[index show comments]
 
       def index
-        pagination, frames = list_frames_query(word: query_params[:q], page: query_params[:page])
+        query = query_params[:q]
+        items = query.present? ? JSON.parse(query) : {}
+        page = query_params[:page]
+        pagination, frames = list_frames_query(items:, page:)
 
         render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
       end

@@ -48,9 +48,9 @@ describe 'Frames', type: :request do
         end
       end
 
-      context 'q=test1(name)' do
+      context 'q={ "word": "test1" } (name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: 'test1' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: { word: 'test1' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -59,9 +59,9 @@ describe 'Frames', type: :request do
         end
       end
 
-      context 'q=testA(tag name)' do
+      context 'q={ "word: "testA" } (tag name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: 'testA' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: { word: 'testA' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -70,9 +70,9 @@ describe 'Frames', type: :request do
         end
       end
 
-      context 'q=2022/01/01(shooted_at)' do
+      context 'q={ "word": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: '2022/01/01' }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: { word: '2022/01/01' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -81,9 +81,9 @@ describe 'Frames', type: :request do
         end
       end
 
-      context 'q=Time.zone.today(created_at)' do
+      context 'q={ "word": Time.zone.today } (created_at/ updated_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Time.zone.today.strftime('%Y/%m/%d') }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: { word: Time.zone.today.strftime('%Y/%m/%d') }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)

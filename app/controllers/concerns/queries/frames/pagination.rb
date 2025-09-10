@@ -12,8 +12,8 @@ module Queries
 
       protected
 
-      def list_frames_query(word:, page:)
-        frames = Queries::Frames::ListFrames.run(word:)
+      def list_frames_query(items:, page:)
+        frames = Queries::Frames::ListFrames.run(items:)
         pagy, frames = pagy(frames, page:)
         frame_ids = frames.pluck(:id)
         frames = Frame.eager_load(:user).where(id: frame_ids).order(created_at: "desc")
