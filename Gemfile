@@ -133,7 +133,7 @@ group :test do
   # gem "capybara", "~> 3.40.0"
   # gem "selenium-webdriver", "~> 4.35.0"
 
-  gem "factory_bot_rails", "~> 6.5.0"
+  gem "factory_bot_rails", "~> 6.5.1"
   gem "faker", "~> 3.5.2"
   gem "rspec-rails", "~> 8.0.2"
   # Use to generate OpenAPI specs from RSpec request specs
