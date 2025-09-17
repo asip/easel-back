@@ -106,7 +106,7 @@ paths:
                           type: string
                         name:
                           type: string
-                        comment:
+                        creator_name:
                           nullable: true
                         private:
                           type: boolean
@@ -125,7 +125,7 @@ paths:
                       - user_id
                       - user_name
                       - name
-                      - comment
+                      - creator_name
                       - private
                       - tag_list
                       - tags
@@ -189,7 +189,7 @@ paths:
                     type: string
                   name:
                     type: string
-                  comment:
+                  creator_name:
                     nullable: true
                   private:
                     type: boolean
@@ -202,6 +202,8 @@ paths:
                   file_two_url:
                     nullable: true
                   file_three_url:
+                    nullable: true
+                  comment:
                     nullable: true
                   shooted_at:
                     type: string
@@ -219,13 +221,14 @@ paths:
                 - user_id
                 - user_name
                 - name
-                - comment
+                - creator_name
                 - private
                 - tag_list
                 - tags
                 - file_url
                 - file_two_url
                 - file_three_url
+                - comment
                 - shooted_at
                 - shooted_at_html
                 - created_at
@@ -531,7 +534,7 @@ paths:
                           type: string
                         name:
                           type: string
-                        comment:
+                        creator_name:
                           nullable: true
                         private:
                           type: boolean
@@ -550,7 +553,7 @@ paths:
                       - user_id
                       - user_name
                       - name
-                      - comment
+                      - creator_name
                       - private
                       - tag_list
                       - tags
@@ -611,6 +614,8 @@ paths:
                       type: string
                     comment:
                       type: string
+                    creator_name:
+                      type: string
                     shooted_at:
                       type: string
                     file:
@@ -620,6 +625,7 @@ paths:
                   - name
                   - tag_list
                   - comment
+                  - creator_name
                   - shooted_at
                   # - file # manual
               required:
@@ -640,7 +646,7 @@ paths:
                     type: string
                   name:
                     type: string
-                  comment:
+                  creator_name:
                     type: string
                   private:
                     type: boolean
@@ -655,6 +661,8 @@ paths:
                   file_two_url:
                     type: string
                   file_three_url:
+                    type: string
+                  comment:
                     type: string
                   shooted_at:
                     type: string
@@ -672,13 +680,14 @@ paths:
                 - user_id
                 - user_name
                 - name
-                - comment
+                - creator_name
                 - private
                 - tag_list
                 - tags
                 - file_url
                 - file_two_url
                 - file_three_url
+                - comment
                 - shooted_at
                 - shooted_at_html
                 - created_at
@@ -699,6 +708,10 @@ paths:
                         items:
                           type: string
                       tag_list:
+                        type: array
+                        items:
+                          type: string
+                      creator_name:
                         type: array
                         items:
                           type: string
@@ -868,7 +881,7 @@ paths:
                     type: string
                   name:
                     type: string
-                  comment:
+                  creator_name:
                     nullable: true
                   private:
                     type: boolean
@@ -881,6 +894,8 @@ paths:
                   file_two_url:
                     nullable: true
                   file_three_url:
+                    nullable: true
+                  comment:
                     nullable: true
                   shooted_at:
                     type: string
@@ -898,13 +913,14 @@ paths:
                 - user_id
                 - user_name
                 - name
-                - comment
+                - creator_name
                 - private
                 - tag_list
                 - tags
                 - file_url
                 - file_two_url
                 - file_three_url
+                - comment
                 - shooted_at
                 - shooted_at_html
                 - created_at
@@ -952,7 +968,7 @@ paths:
                     type: string
                   name:
                     type: string
-                  comment:
+                  creator_name:
                     nullable: true
                   private:
                     type: boolean
@@ -965,6 +981,8 @@ paths:
                   file_two_url:
                     nullable: true
                   file_three_url:
+                    nullable: true
+                  comment:
                     nullable: true
                   shooted_at:
                     type: string
@@ -982,13 +1000,14 @@ paths:
                 - user_id
                 - user_name
                 - name
-                - comment
+                - creator_name
                 - private
                 - tag_list
                 - tags
                 - file_url
                 - file_two_url
                 - file_three_url
+                - comment
                 - shooted_at
                 - shooted_at_html
                 - created_at
@@ -1025,6 +1044,8 @@ paths:
                       type: string
                     comment:
                       type: string
+                    creator_name:
+                      type: string
                     shooted_at:
                       type: string
                     file:
@@ -1034,6 +1055,7 @@ paths:
                   - name
                   - tag_list
                   - comment
+                  - creator_name
                   - shooted_at
                   # - file # manual
               required:
@@ -1054,7 +1076,7 @@ paths:
                     type: string
                   name:
                     type: string
-                  comment:
+                  creator_name:
                     type: string
                   private:
                     type: boolean
@@ -1069,6 +1091,8 @@ paths:
                   file_two_url:
                     type: string
                   file_three_url:
+                    type: string
+                  comment:
                     type: string
                   shooted_at:
                     type: string
@@ -1086,13 +1110,14 @@ paths:
                 - user_id
                 - user_name
                 - name
-                - comment
+                - creator_name
                 - private
                 - tag_list
                 - tags
                 - file_url
                 - file_two_url
                 - file_three_url
+                - comment
                 - shooted_at
                 - shooted_at_html
                 - created_at
@@ -1113,6 +1138,10 @@ paths:
                         items:
                           type: string
                       tag_list:
+                        type: array
+                        items:
+                          type: string
+                      creator_name:
                         type: array
                         items:
                           type: string
@@ -1479,7 +1508,7 @@ paths:
                           type: string
                         name:
                           type: string
-                        comment:
+                        creator_name:
                           nullable: true
                         private:
                           type: boolean
@@ -1498,7 +1527,7 @@ paths:
                       - user_id
                       - user_name
                       - name
-                      - comment
+                      - creator_name
                       - private
                       - tag_list
                       - tags

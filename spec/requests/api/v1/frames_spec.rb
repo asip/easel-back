@@ -173,6 +173,7 @@ describe 'Frames', type: :request do
                  name: 'test_frame',
                  tag_list: 'test',
                  comment: 'testtest',
+                 creator_name: 'test_creator',
                  shooted_at: Time.zone.now,
                  file: file_1024
                }
@@ -193,6 +194,7 @@ describe 'Frames', type: :request do
                    name: '',
                    tag_list: 'test',
                    comment: 'testtest',
+                   creator_name: 'test_creator',
                    shooted_at: Time.zone.now,
                    file: file_1024
                  }
@@ -213,6 +215,7 @@ describe 'Frames', type: :request do
                    name: Faker::Alphanumeric.alpha(number: 31),
                    tag_list: 'test',
                    comment: 'testtest',
+                   creator_name: 'test_creator',
                    shooted_at: Time.zone.now,
                    file: file_1024
                  }
@@ -233,6 +236,7 @@ describe 'Frames', type: :request do
                    name: Faker::Alphanumeric.alpha(number: 21),
                    tag_list: Faker::Alphanumeric.alpha(number: 11),
                    comment: 'testtest',
+                   creator_name: 'test_creator',
                    shooted_at: Time.zone.now,
                    file: file_1024
                  }
@@ -245,6 +249,27 @@ describe 'Frames', type: :request do
           expect(json_data[:errors][:tag_list]).to be_present
         end
 
+        it 'creator_name exceeds 40 characters (撮影者名/作者名が40文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          post endpoint,
+               params: {
+                 frame: {
+                   name: 'test_frame',
+                   tag_list: 'test',
+                   comment: 'testtest',
+                   creator_name: Faker::Alphanumeric.alpha(number: 41),
+                   shooted_at: Time.zone.now,
+                   file: file_1024
+                 }
+               },
+               headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:creator_name]).to be_present
+        end
+
         it 'empty file (file が空の場合)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' })
           post endpoint,
@@ -253,6 +278,7 @@ describe 'Frames', type: :request do
                    name: 'test_frame',
                    tag_list: 'test',
                    comment: 'testtest',
+                   creator_name: 'test_creator',
                    shooted_at: Time.zone.now
                  }
                },
@@ -272,6 +298,7 @@ describe 'Frames', type: :request do
                    name: 'test_frame',
                    tag_list: 'test',
                    comment: 'testtest',
+                   creator_name: 'test_creator',
                    shooted_at: Time.zone.now,
                    file: file_over_capacity
                  }
@@ -292,6 +319,7 @@ describe 'Frames', type: :request do
                    name: 'test_frame',
                    tag_list: 'test',
                    comment: 'testtest',
+                   creator_name: 'test_creator',
                    shooted_at: Time.zone.now,
                    file: file_different_mime_type
                  }
@@ -331,6 +359,7 @@ describe 'Frames', type: :request do
                 name: 'test_frame',
                 tag_list: 'test',
                 comment: 'testtest',
+                creator_name: 'test_creator',
                 shooted_at: Time.zone.now,
                 file: file_1024
               }
@@ -351,6 +380,7 @@ describe 'Frames', type: :request do
                   name: '',
                   tag_list: 'test',
                   comment: 'testtest',
+                  creator_name: 'test_creator',
                   shooted_at: Time.zone.now,
                   file: file_1024
                 }
@@ -371,6 +401,7 @@ describe 'Frames', type: :request do
                   name: Faker::Alphanumeric.alpha(number: 31),
                   tag_list: 'test',
                   comment: 'testtest',
+                  creator_name: 'test_creator',
                   shooted_at: Time.zone.now,
                   file: file_1024
                 }
@@ -391,6 +422,7 @@ describe 'Frames', type: :request do
                   name: Faker::Alphanumeric.alpha(number: 21),
                   tag_list: Faker::Alphanumeric.alpha(number: 11),
                   comment: 'testtest',
+                  creator_name: 'test_creator',
                   shooted_at: Time.zone.now,
                   file: file_1024
                 }
@@ -403,6 +435,27 @@ describe 'Frames', type: :request do
           expect(json_data[:errors][:tag_list]).to be_present
         end
 
+        it 'creator_name exceeds 40 characters (撮影者名/作者名が40文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+              params: {
+                frame: {
+                  name: 'test_frame',
+                  tag_list: 'test',
+                  comment: 'testtest',
+                  creator_name: Faker::Alphanumeric.alpha(number: 41),
+                  shooted_at: Time.zone.now,
+                  file: file_1024
+                }
+              },
+              headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:creator_name]).to be_present
+        end
+
         it 'empty file (file が空の場合)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' })
           put endpoint,
@@ -411,6 +464,7 @@ describe 'Frames', type: :request do
                   name: 'test_frame',
                   tag_list: 'test',
                   comment: 'testtest',
+                  creator_name: 'test_creator',
                   shooted_at: Time.zone.now
                 }
               },
@@ -430,6 +484,7 @@ describe 'Frames', type: :request do
                   name: 'test_frame',
                   tag_list: 'test',
                   comment: 'testtest',
+                  creator_name: 'test_creator',
                   shooted_at: Time.zone.now,
                   file: file_over_capacity
                 }
@@ -450,6 +505,7 @@ describe 'Frames', type: :request do
                   name: 'test_frame',
                   tag_list: 'test',
                   comment: 'testtest',
+                  creator_name: 'test_creator',
                   shooted_at: Time.zone.now,
                   file: file_different_mime_type
                 }

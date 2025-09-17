@@ -30,6 +30,7 @@ class Frame < ApplicationRecord
 
   validates :name, length: { in: 1..30 }
   validates :file, presence: true
+  validates :creator_name, length: { maximum: 40 }
   validate :check_tag
 
   # after_validation :assign_derivatives
@@ -56,6 +57,7 @@ class Frame < ApplicationRecord
                                                     "#{ActiveRecord::Base.sanitize_sql_like(word)}%")
                         )
                        .or(Frame.where("frames.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
+                       .or(Frame.where("frames.creator_name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
                        .or(User.where(name: word))
                 )
       end

@@ -18,6 +18,8 @@
 module Detail
   # Frame Resource
   class FrameResource < ListItem::FrameResource
+    attributes :comment
+
     attribute :shooted_at do |frame|
       frame.shooted_at.present? ? I18n.l(frame.shooted_at, format: "%Y/%m/%d %H:%M") : ""
     end

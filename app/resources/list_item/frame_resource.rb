@@ -19,7 +19,7 @@ module ListItem
   # Frame Resource
   class FrameResource < BaseResource
     root_key :frame, :frames
-    attributes :id, :user_id, :user_name, :name, :comment, :private
+    attributes :id, :user_id, :user_name, :name, :creator_name, :private
 
     attribute :tag_list do |frame|
       frame.tags_display&.join(",")

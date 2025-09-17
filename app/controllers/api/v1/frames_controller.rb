@@ -73,7 +73,7 @@ module Api
 
       def form_params
         params.require(:frame).permit(
-          :name, :tag_list, :comment, :file, :shooted_at
+          :name, :tag_list, :comment, :file, :creator_name, :shooted_at
         )
       end
     end
