@@ -207,8 +207,6 @@ paths:
                     nullable: true
                   shooted_at:
                     type: string
-                  shooted_at_html:
-                    type: string
                   created_at:
                     type: string
                   updated_at:
@@ -230,7 +228,6 @@ paths:
                 - file_three_url
                 - comment
                 - shooted_at
-                - shooted_at_html
                 - created_at
                 - updated_at
                 - comments
@@ -666,8 +663,6 @@ paths:
                     type: string
                   shooted_at:
                     type: string
-                  shooted_at_html:
-                    type: string
                   created_at:
                     type: string
                   updated_at:
@@ -689,7 +684,6 @@ paths:
                 - file_three_url
                 - comment
                 - shooted_at
-                - shooted_at_html
                 - created_at
                 - updated_at
                 - comments
@@ -899,8 +893,6 @@ paths:
                     nullable: true
                   shooted_at:
                     type: string
-                  shooted_at_html:
-                    type: string
                   created_at:
                     type: string
                   updated_at:
@@ -922,7 +914,6 @@ paths:
                 - file_three_url
                 - comment
                 - shooted_at
-                - shooted_at_html
                 - created_at
                 - updated_at
                 - comments
@@ -986,8 +977,6 @@ paths:
                     nullable: true
                   shooted_at:
                     type: string
-                  shooted_at_html:
-                    type: string
                   created_at:
                     type: string
                   updated_at:
@@ -1009,7 +998,6 @@ paths:
                 - file_three_url
                 - comment
                 - shooted_at
-                - shooted_at_html
                 - created_at
                 - updated_at
                 - comments
@@ -1096,8 +1084,6 @@ paths:
                     type: string
                   shooted_at:
                     type: string
-                  shooted_at_html:
-                    type: string
                   created_at:
                     type: string
                   updated_at:
@@ -1119,7 +1105,6 @@ paths:
                 - file_three_url
                 - comment
                 - shooted_at
-                - shooted_at_html
                 - created_at
                 - updated_at
                 - comments

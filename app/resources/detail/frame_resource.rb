@@ -24,16 +24,12 @@ module Detail
       frame.shooted_at.present? ? I18n.l(frame.shooted_at, format: "%Y/%m/%d %H:%M") : ""
     end
 
-    attribute :shooted_at_html do |frame|
-      frame.shooted_at.present? ? I18n.l(frame.shooted_at) : ""
-    end
-
     attribute :created_at do |frame|
-      I18n.l(frame.created_at)
+      I18n.l(frame.created_at, format: "%Y/%m/%d %H:%M")
     end
 
     attribute :updated_at do |frame|
-      I18n.l(frame.updated_at)
+      I18n.l(frame.updated_at, format: "%Y/%m/%d %H:%M")
     end
 
     many :comments, resource: CommentResource

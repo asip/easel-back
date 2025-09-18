@@ -26,10 +26,10 @@ class CommentResource < BaseResource
   end
 
   attribute :created_at do |comment|
-    I18n.l(comment.created_at)
+    I18n.l(comment.created_at, format: "%Y/%m/%d %H:%M")
   end
 
   attribute :updated_at do |comment|
-    I18n.l(comment.updated_at)
+    I18n.l(comment.updated_at, format: "%Y/%m/%d %H:%M")
   end
 end
