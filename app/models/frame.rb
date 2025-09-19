@@ -24,7 +24,7 @@ class Frame < ApplicationRecord
   acts_as_taggable_on :tags
 
   has_many :comments, dependent: :destroy
-  belongs_to :user, -> { with_discarded }, optional: true
+  belongs_to :user, -> { with_discarded }
 
   delegate :name, to: :user, prefix: true
 
