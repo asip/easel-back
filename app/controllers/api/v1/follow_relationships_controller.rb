@@ -9,7 +9,7 @@ module Api
       before_action :authenticate_user!
 
       def following
-        user = User.find(query_params[:user_id])
+        user = User.with_discarded.find(query_params[:user_id])
         following_ = current_user.following?(user)
         render json: { following: following_ }
       end

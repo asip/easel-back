@@ -18,5 +18,5 @@
 
 # Authentication
 class Authentication < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, -> { with_discarded }
 end

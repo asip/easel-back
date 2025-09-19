@@ -6,7 +6,7 @@ RSpec.configure do |config|
   config.include Committee::Rails::Test::Methods
 
   config.before(:each, type: :request) do |example|
-    # 各RequestSpecのディレクトリがどのAPIに該当するのかを識別する
+    # (各RequestSpecのディレクトリがどのAPIに該当するのかを識別する)
     path = example.metadata[:example_group][:file_path]
     directory = if path.include?(SPEC_DIR_V1)
       SPEC_DIR_V1

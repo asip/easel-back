@@ -53,7 +53,7 @@ class User < ApplicationRecord
   # VALID_NAME_REGEX = /\A\z|\A[a-zA-Z\d\s]{3,40}\z/
 
   # validates :password, length: { minimum: 6, maximum: 128 }, confirmation: true,
-  #                     if: -> { new_record? || changes[:encrypted_password] }
+  #                      if: -> { new_record? || changes[:encrypted_password] }
   validates :name, length: { minimum: 3, maximum: 40 }, unless: -> { validation_context == :login } # , format: { with: VALID_NAME_REGEX }
   # validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP },
   #                   uniqueness: true
@@ -62,18 +62,23 @@ class User < ApplicationRecord
 
   default_scope -> { kept }
 
+  ## devise
+  # def active_for_authentication?
+  #   super && !discarded?
+  # end
+
   def self.from_omniauth(auth)
     uid = auth[:uid]
     provider = auth[:provider]
     info = auth[:info] || {}
 
-    # 認証レコードを検索
+    # (認証レコードを検索)
     authentication = Authentication.find_by(uid: uid, provider: provider)
 
     if authentication
       info_email = info["email"]
-      user = authentication.user
-      update_user_email(user, info_email) if info_email.present?
+      user = User.unscoped.find_by(id: authentication.user_id)
+      update_user_info(user, email: info_email) if info_email.present?
     else
       user = find_or_create_user_from_omniauth(info)
       create_authentication_for_user(user, provider, uid)
@@ -154,7 +159,7 @@ class User < ApplicationRecord
       user.validate_email_on_login(form_params)
     end
     success = user.errors.empty?
-      [ success, user ]
+    [ success, user ]
   end
 
   def validate_password_on_login(form_params)
@@ -166,17 +171,19 @@ class User < ApplicationRecord
 
   def validate_email_on_login(form_params)
     valid?(:login)
+    errors.delete(:email) if errors[:email].include?(I18n.t("errors.messages.taken"))
     errors.add(:email, I18n.t("action.login.invalid")) if form_params[:email].present?
   end
 
   private
 
-  def self.update_user_email(user, email)
+  def self.update_user_info(user, email:)
     return unless user && email.present?
     if user.email != email
       user.email = email
-      user.save!
     end
+    user.deleted_at = nil
+    user.save!
     user
   end
 
@@ -184,7 +191,7 @@ class User < ApplicationRecord
     email = info["email"]
     name = info["name"]
 
-    user = User.find_by(email: email)
+    user = User.unscoped.find_by(email: email)
 
     unless user
       user = User.new(
@@ -192,6 +199,9 @@ class User < ApplicationRecord
         email: email,
         password: Devise.friendly_token[0, 20]
       )
+      user.save!
+    else
+      user.deleted_at = nil
       user.save!
     end
     user

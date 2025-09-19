@@ -14,7 +14,7 @@
 
 # Comment
 class Comment < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, -> { with_discarded }
   belongs_to :frame
 
   validates :body, presence: true

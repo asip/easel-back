@@ -13,7 +13,7 @@ module Queries
       end
 
       def execute
-        User.find_by!(id: @user_id)
+        User.with_discarded.find_by!(id: @user_id)
       end
     end
   end

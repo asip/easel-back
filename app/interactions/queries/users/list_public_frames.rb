@@ -13,7 +13,7 @@ module Queries
       end
 
       def execute
-        User.find_by!(id: @user_id).frames.where(private: false).order('frames.created_at': "desc")
+        User.with_discarded.find_by!(id: @user_id).frames.where(private: false).order('frames.created_at': "desc")
       end
     end
   end
