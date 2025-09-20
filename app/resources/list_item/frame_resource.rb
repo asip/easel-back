@@ -22,10 +22,10 @@ module ListItem
     attributes :id, :user_id, :user_name, :name, :creator_name, :private
 
     attribute :tag_list do |frame|
-      frame.tags_display&.join(",")
+      frame.joined_tags
     end
 
-    attribute :tags, &:tags_display
+    attribute :tags, &:plain_tags
 
     attribute :file_url do |frame|
       frame.file_proxy_url(:original)

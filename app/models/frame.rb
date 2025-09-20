@@ -70,7 +70,7 @@ class Frame < ApplicationRecord
     tag_list.to_s.split(/\s*,\s*/)
   end
 
-  def tags_display
+  def plain_tags
     joined_tags&.split(/\s*,\s*/)
   end
 

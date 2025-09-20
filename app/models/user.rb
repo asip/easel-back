@@ -199,11 +199,10 @@ class User < ApplicationRecord
         email: email,
         password: Devise.friendly_token[0, 20]
       )
-      user.save!
     else
       user.deleted_at = nil
-      user.save!
     end
+    user.save!
     user
   end
 

@@ -10,14 +10,15 @@ module Mutations
 
       attr_reader :frame
 
-      def initialize(user:, frame:)
+      def initialize(user:, frame:, form_params:)
         @user = user
         @frame = frame
+        @form_params = form_params
       end
 
       def execute
         @frame.user_id = @user.id
-        @frame.joined_tags = @frame.tag_list
+        @frame.joined_tags = @form_params[:tag_list]
         return if @frame.save
 
         errors.merge!(@frame.errors)
