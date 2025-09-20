@@ -43,7 +43,7 @@ gem "view_component", "~> 4.0.2"
 # Shrine
 gem "aws-sdk-s3", "~> 1.199.0"
 gem "image_processing", "~> 1.14.0"
-gem "marcel", "~> 1.0.4"
+gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
 
 # gem "anyway_config", "2.8.0"
@@ -98,7 +98,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.11.0", platforms: %i[mri windows], require: "debug/prelude"
   gem "pg_query", "~> 6.1.0"
-  gem "prosopite", "~> 2.1.1"
+  gem "prosopite", "~> 2.1.2"
 end
 
 group :development do
