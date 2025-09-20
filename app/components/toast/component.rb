@@ -5,24 +5,22 @@ module Toast
   # Component
   class Component < ViewComponent::Base
     def initialize(flash: {}, flashes: {})
-      @flash = flash
-      @flashes = flashes
-      @flashes_json = flashes_json
+      @flashes_json = flashes_json(flash:, flashes:)
     end
 
     private
 
-    def flashes_json
-      if @flash.present?
-        flash_to_json
-      elsif @flashes.present?
-        @flashes.to_json
+    def flashes_json(flash:, flashes:)
+      if flash.present?
+        to_json(flash:)
+      elsif flashes.present?
+        flashes.to_json
       end
     end
 
-    def flash_to_json
+    def to_json(flash:)
       flash_ = {}
-      @flash.each do |key, value|
+      flash.each do |key, value|
         flash_[key] = [ value ]
       end
       flash_.to_json
