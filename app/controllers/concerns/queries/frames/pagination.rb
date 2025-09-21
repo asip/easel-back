@@ -12,7 +12,7 @@ module Queries
 
       protected
 
-      def list_frames_query(items:, page:)
+      def list_frames(items:, page:)
         frames = Queries::Frames::ListFrames.run(items:)
         pagy, frames = pagy(frames, page:)
         frame_ids = frames.pluck(:id)

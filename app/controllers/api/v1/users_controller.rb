@@ -17,7 +17,7 @@ module Api
       end
 
       def frames
-        pagination, frames = list_frames_query(user_id: query_params[:user_id], page: query_params[:page])
+        pagination, frames = list_frames(user_id: query_params[:user_id], page: query_params[:page])
 
         render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
       end

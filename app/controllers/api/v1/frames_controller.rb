@@ -15,7 +15,7 @@ module Api
         query = query_params[:q]
         items = query.present? ? JSON.parse(query) : {}
         page = query_params[:page]
-        pagination, frames = list_frames_query(items:, page:)
+        pagination, frames = list_frames(items:, page:)
 
         render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
       end
