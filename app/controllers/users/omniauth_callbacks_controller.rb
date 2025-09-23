@@ -40,6 +40,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
                                           aud: Settings.google.client_id)
     auth[:uid] = auth[:info]["sub"]
     auth[:provider] = provider
+    auth[:time_zone] = request.headers["Time-Zone"]
 
     # puts auth
 

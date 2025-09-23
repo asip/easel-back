@@ -15,11 +15,13 @@ ja:
         email: 'Eメール'
         password: 'パスワード'
         password_confirmation: 'パスワード(確認)'
+        time_zone: 'タイムゾーン'
       frame:
         id: 'ID'
         name: '名前'
         file: 'ファイル'
         tag_list: 'タグ'
+        creator_name: '撮影者/作者'
         shooted_at: '撮影日時'
         comment: 'コメント'
       comment:

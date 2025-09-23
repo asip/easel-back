@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [ :create ]
   before_action :configure_account_update_params, only: [ :update ]
 
-  FORM_PARAMS = [ :name, :email, :password, :password_confirmation, :image ]
+  FORM_PARAMS = [ :name, :email, :password, :password_confirmation, :image, :time_zone ]
 
   # GET /resource/sign_up
   # def new

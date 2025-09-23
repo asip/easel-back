@@ -4,16 +4,17 @@
 #
 # Table name: frames
 #
-#  id          :bigint           not null, primary key
-#  comment     :text
-#  file_data   :text
-#  joined_tags :string
-#  name        :string           not null
-#  private     :boolean          default(FALSE)
-#  shooted_at  :datetime
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :bigint
+#  id           :bigint           not null, primary key
+#  comment      :text
+#  creator_name :string
+#  file_data    :text
+#  joined_tags  :string
+#  name         :string           not null
+#  private      :boolean          default(FALSE)
+#  shooted_at   :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :bigint
 #
 
 # Frame

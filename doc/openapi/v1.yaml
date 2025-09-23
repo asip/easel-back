@@ -47,6 +47,8 @@ paths:
                     type: string
                   email:
                     type: string
+                  time_zone:
+                    nullable: true
                   social_login:
                     type: boolean
                 required:
@@ -56,6 +58,7 @@ paths:
                 - image_one_url
                 - image_three_url
                 - email
+                - time_zone
                 - social_login
   "/api/v1/account/following/{user_id}":
     get:
@@ -293,6 +296,8 @@ paths:
                     type: string
                   email:
                     type: string
+                  time_zone:
+                    nullable: true
                   social_login:
                     type: boolean
                 required:
@@ -302,6 +307,7 @@ paths:
                 - image_one_url
                 - image_three_url
                 - email
+                - time_zone
                 - social_login
         '422':
           description: password and passoword_confirmation don't match (パスワードとパスワード(確認)が一致しない場合)
@@ -352,6 +358,8 @@ paths:
                     type: string
                   email:
                     type: string
+                  time_zone:
+                    nullable: true
                   social_login:
                     type: boolean
                 required:
@@ -361,6 +369,7 @@ paths:
                 - image_one_url
                 - image_three_url
                 - email
+                - time_zone
                 - social_login
         # start manual
         '401':
@@ -399,10 +408,13 @@ paths:
                     image:
                       type: string
                       format: binary
+                    time_zone:
+                      type: string
                   required:
                   - name
                   - email
                   - image
+                  - time_zone
               required:
               - user
           application/x-www-form-urlencoded:
@@ -416,9 +428,12 @@ paths:
                       type: string
                     email:
                       type: string
+                    time_zone:
+                      type: string
                   required:
                   - name
                   - email
+                  - time_zone
               required:
               - user
       responses:
@@ -441,6 +456,8 @@ paths:
                     type: string
                   email:
                     type: string
+                  time_zone:
+                    type: string
                   social_login:
                     type: boolean
                 required:
@@ -450,6 +467,7 @@ paths:
                 - image_one_url
                 - image_three_url
                 - email
+                - time_zone
                 - social_login
         '422':
           description: image mime type is different (imageのmime typeが異なる場合)
@@ -1174,6 +1192,8 @@ paths:
                     type: string
                   email:
                     type: string
+                  time_zone:
+                    nullable: true
                   social_login:
                     type: boolean
                 required:
@@ -1183,6 +1203,7 @@ paths:
                 - image_one_url
                 - image_three_url
                 - email
+                - time_zone
                 - social_login
   "/api/v1/sessions":
     post:
@@ -1227,6 +1248,8 @@ paths:
                     type: string
                   email:
                     type: string
+                  time_zone:
+                    nullable: true
                   social_login:
                     type: boolean
                 required:
@@ -1236,6 +1259,7 @@ paths:
                 - image_one_url
                 - image_three_url
                 - email
+                - time_zone
                 - social_login
         '422':
           description: invalid password (パスワードが正しくない場合)
@@ -1290,12 +1314,15 @@ paths:
                     image:
                       type: string
                       format: binary
+                    time_zone:
+                      type: string
                   required:
                   - name
                   - email
                   - password
                   - password_confirmation
                   - image
+                  - time_zone
               required:
               - user
           application/x-www-form-urlencoded:
@@ -1313,11 +1340,14 @@ paths:
                       type: string
                     password_confirmation:
                       type: string
+                    time_zone:
+                      type: string
                   required:
                   - name
                   - email
                   - password
                   - password_confirmation
+                  - time_zone
               required:
               - user
       responses:
@@ -1340,6 +1370,8 @@ paths:
                     type: string
                   email:
                     type: string
+                  time_zone:
+                    type: string
                   social_login:
                     type: boolean
                 required:
@@ -1349,6 +1381,7 @@ paths:
                 - image_one_url
                 - image_three_url
                 - email
+                - time_zone
                 - social_login
         '422':
           description: image mime type is different (imageのmime typeが異なる場合)

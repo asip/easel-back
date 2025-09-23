@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_17_002635) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_21_231032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -95,6 +95,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_17_002635) do
     t.text "image_data"
     t.datetime "deleted_at"
     t.string "encrypted_password", default: "", null: false
+    t.string "time_zone"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

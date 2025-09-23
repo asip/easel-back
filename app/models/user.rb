@@ -10,6 +10,7 @@
 #  encrypted_password :string           default(""), not null
 #  image_data         :text
 #  name               :string           not null
+#  time_zone          :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -57,10 +58,15 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 40 }, unless: -> { validation_context == :login } # , format: { with: VALID_NAME_REGEX }
   # validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP },
   #                   uniqueness: true
+  validates :time_zone, presence: true, unless: -> { validation_context == :login }, on: :create
 
   # after_validation :assign_derivatives
 
   default_scope -> { kept }
+
+  def nonweb_time_zone
+    time_zone.present? ? time_zone : Time.zone.name
+  end
 
   ## devise
   # def active_for_authentication?
@@ -70,6 +76,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     uid = auth[:uid]
     provider = auth[:provider]
+    time_zone = auth[:time_zone]
     info = auth[:info] || {}
 
     # (認証レコードを検索)
@@ -80,7 +87,7 @@ class User < ApplicationRecord
       user = User.unscoped.find_by(id: authentication.user_id)
       update_user_info(user, email: info_email) if info_email.present?
     else
-      user = find_or_create_user_from_omniauth(info)
+      user = find_or_create_user_from_omniauth(info, time_zone:)
       create_authentication_for_user(user, provider, uid)
     end
 
@@ -187,7 +194,7 @@ class User < ApplicationRecord
     user
   end
 
-  def self.find_or_create_user_from_omniauth(info)
+  def self.find_or_create_user_from_omniauth(info, time_zone:)
     email = info["email"]
     name = info["name"]
 
@@ -197,7 +204,8 @@ class User < ApplicationRecord
       user = User.new(
         name: name,
         email: email,
-        password: Devise.friendly_token[0, 20]
+        password: Devise.friendly_token[0, 20],
+        time_zone:
       )
     else
       user.deleted_at = nil

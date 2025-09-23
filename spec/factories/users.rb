@@ -10,6 +10,7 @@
 #  encrypted_password :string           default(""), not null
 #  image_data         :text
 #  name               :string           not null
+#  time_zone          :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -22,5 +23,6 @@ FactoryBot.define do
   factory :user do
     name { 'test_user' }
     email { 'test@test.jp' }
+    time_zone { 'asia/Tokyo' }
   end
 end

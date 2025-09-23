@@ -102,7 +102,8 @@ describe 'Users', type: :request do
                    name: 'test_user01',
                    email: 'test@test.jp',
                    password: 'testtest',
-                   password_confirmation: 'testtest'
+                   password_confirmation: 'testtest',
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -121,7 +122,8 @@ describe 'Users', type: :request do
                  email: 'test@test.jp',
                  password: 'testtest',
                  password_confirmation: 'testtest',
-                 image: file_1024
+                 image: file_1024,
+                 time_zone: 'Asia/Tokyo'
                }
              },
              headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -139,7 +141,8 @@ describe 'Users', type: :request do
                    name: '',
                    email: 'test@test.jp',
                    password: 'testtest',
-                   password_confirmation: 'testtest'
+                   password_confirmation: 'testtest',
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -157,7 +160,8 @@ describe 'Users', type: :request do
                    name: Faker::Alphanumeric.alpha(number: 41),
                    email: 'test@test.jp',
                    password: 'testtest',
-                   password_confirmation: 'testtest'
+                   password_confirmation: 'testtest',
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -175,7 +179,8 @@ describe 'Users', type: :request do
                    name: 'test',
                    email: '',
                    password: 'testtest',
-                   password_confirmation: 'testtest'
+                   password_confirmation: 'testtest',
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -193,7 +198,8 @@ describe 'Users', type: :request do
                    name: 'test',
                    email: 'invalidemail',
                    password: 'testtest',
-                   password_confirmation: 'testtest'
+                   password_confirmation: 'testtest',
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -211,7 +217,8 @@ describe 'Users', type: :request do
                    name: 'test',
                    email: 'test@test.jp',
                    password: 'te',
-                   password_confirmation: 'te'
+                   password_confirmation: 'te',
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -229,7 +236,8 @@ describe 'Users', type: :request do
                    name: 'test',
                    email: 'test@test.jp',
                    password: 'testtest',
-                   password_confirmation: 'testtesttest'
+                   password_confirmation: 'testtesttest',
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -248,7 +256,8 @@ describe 'Users', type: :request do
                    name: 'test',
                    email: 'test@test.jp',
                    password: '',
-                   password_confirmation: ''
+                   password_confirmation: '',
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -267,7 +276,8 @@ describe 'Users', type: :request do
                    email: 'test@test.jp',
                    password: 'testtest',
                    password_confirmation: 'testtest',
-                   image: file_over_capacity
+                   image: file_over_capacity,
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -286,7 +296,8 @@ describe 'Users', type: :request do
                    email: 'test@test.jp',
                    password: 'testtest',
                    password_confirmation: 'testtest',
-                   image: file_different_mime_type
+                   image: file_different_mime_type,
+                   time_zone: 'Asia/Tokyo'
                  }
                },
                headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
@@ -322,7 +333,8 @@ describe 'Users', type: :request do
               params: {
                 user: {
                   name: 'test_user01',
-                  email: 'test@test.jp'
+                  email: 'test@test.jp',
+                  time_zone: 'Asia/Tokyo'
                 }
               },
               headers: headers
@@ -340,7 +352,8 @@ describe 'Users', type: :request do
               user: {
                 name: 'test_user01',
                 email: 'test@test.jp',
-                image: file_1024
+                image: file_1024,
+                time_zone: 'Asia/Tokyo'
               }
             },
             headers: headers
@@ -357,7 +370,8 @@ describe 'Users', type: :request do
               params: {
                 user: {
                   name: '',
-                  email: 'test@test.jp'
+                  email: 'test@test.jp',
+                  time_zone: 'Asia/Tokyo'
                 }
               },
               headers: headers
@@ -374,7 +388,8 @@ describe 'Users', type: :request do
               params: {
                 user: {
                   name: Faker::Alphanumeric.alpha(number: 41),
-                  email: 'test@test.jp'
+                  email: 'test@test.jp',
+                  time_zone: 'Asia/Tokyo'
                 }
               },
               headers: headers
@@ -391,7 +406,8 @@ describe 'Users', type: :request do
               params: {
                 user: {
                   name: 'test',
-                  email: ''
+                  email: '',
+                  time_zone: 'Asia/Tokyo'
                 }
               },
               headers: headers
@@ -408,7 +424,8 @@ describe 'Users', type: :request do
               params: {
                 user: {
                   name: 'test',
-                  email: 'invalidemail'
+                  email: 'invalidemail',
+                  time_zone: 'Asia/Tokyo'
                 }
               },
               headers: headers
@@ -426,7 +443,8 @@ describe 'Users', type: :request do
                 user: {
                   name: 'test',
                   email: 'test@test.jp',
-                  image: file_over_capacity
+                  image: file_over_capacity,
+                  time_zone: 'Asia/Tokyo'
                 }
               },
               headers: headers
@@ -444,7 +462,8 @@ describe 'Users', type: :request do
                 user: {
                   name: 'test',
                   email: 'test@test.jp',
-                  image: file_different_mime_type
+                  image: file_different_mime_type,
+                  time_zone: 'Asia/Tokyo'
                 }
               },
               headers: headers
