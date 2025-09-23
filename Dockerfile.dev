@@ -76,6 +76,8 @@ ENV IMGPROXY_SHRINE_HOST=${imgproxy_shrine_host}
 ENV IMGPROXY_KEY=${imgproxy_key}
 ENV IMGPROXY_SALT=${imgproxy_salt}
 
+ENV TZ=${time_zone}
+
 # Prepare icon fonts
 RUN pnpm build:font
 
