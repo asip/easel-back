@@ -18,7 +18,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version : 3.4
-* Rails version : 8.0.2
+* Rails version : 8.0
 * System dependencies : pnpm & postgresql & minio & imgproxy & valkey & libvips & direnv
 * Deployment instructions
   * Run `bundle install --path vendor/bundle` to install the required Rubygems
