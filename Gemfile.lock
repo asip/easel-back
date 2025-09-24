@@ -345,7 +345,7 @@ GEM
     pg_query (6.1.0)
       google-protobuf (>= 3.25.3)
     prism (1.4.0)
-    propshaft (1.2.1)
+    propshaft (1.3.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
@@ -353,7 +353,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
-    puma (7.0.3)
+    puma (7.0.4)
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.1.14)
@@ -586,6 +586,7 @@ PLATFORMS
   aarch64-linux
   arm64-darwin-23
   arm64-darwin-24
+  arm64-darwin-25
 
 DEPENDENCIES
   acts-as-taggable-on (~> 12.0.0)
@@ -616,9 +617,9 @@ DEPENDENCIES
   pagy (~> 9.4.0)
   pg (~> 1.6.2)
   pg_query (~> 6.1.0)
-  propshaft (~> 1.2.1)
+  propshaft (~> 1.3.1)
   prosopite (~> 2.1.2)
-  puma (~> 7.0.3)
+  puma (~> 7.0.4)
   rack-contrib (= 2.5.0)
   rack-cors (~> 3.0.0)
   rails (~> 8.0.3)
