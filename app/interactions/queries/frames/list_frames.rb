@@ -13,7 +13,7 @@ module Queries
       end
 
       def execute
-        Frame.where(private: false).search_by(items: @items).order(created_at: "desc")
+        Frame.where(private: false).search_by(items: @items)
       end
     end
   end
