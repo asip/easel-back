@@ -3,6 +3,7 @@
 # users / Omniauth Callbacks Controller
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include ActionController::Cookies
+  include TimeZone::Detect
 
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
@@ -40,7 +41,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
                                           aud: Settings.google.client_id)
     auth[:uid] = auth[:info]["sub"]
     auth[:provider] = provider
-    auth[:time_zone] = request.headers["Time-Zone"]
+    auth[:time_zone] = @time_zone
+    # puts @time_zone
 
     # puts auth
 
