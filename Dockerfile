@@ -50,8 +50,8 @@ COPY --link . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-ARG tz
 ARG time_zone
+ARG time_zone_db
 ARG s3_access_key
 ARG s3_secret_key
 ARG s3_endpoint
@@ -64,6 +64,7 @@ ARG imgproxy_shrine_host
 ARG imgproxy_key
 ARG imgproxy_salt
 ENV TIME_ZONE=${time_zone}
+ENV TIME_ZONE_DB=${time_zone_db}
 ENV S3_ACCESS_KEY=${s3_access_key}
 ENV S3_SECRET_KEY=${s3_secret_key}
 ENV S3_ENDPOINT=${s3_endpoint}
@@ -76,7 +77,7 @@ ENV IMGPROXY_SHRINE_HOST=${imgproxy_shrine_host}
 ENV IMGPROXY_KEY=${imgproxy_key}
 ENV IMGPROXY_SALT=${imgproxy_salt}
 
-ENV TZ=${tz}
+ENV TZ=${time_zone}
 
 # Prepare icon fonts
 RUN pnpm build:font

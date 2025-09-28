@@ -32,8 +32,15 @@ module Easel
     config.action_view.form_with_generates_remote_forms = false
 
     # timezone
-    config.active_record.default_timezone = :local
-    config.time_zone = ENV.fetch("TIME_ZONE") { "Asia/Tokyo" }
+    time_zone = ENV.fetch("TIME_ZONE") { "Asia/Tokyo" }
+    time_zone_db = ENV.fetch("TIME_ZONE_DB") { "Asia/Tokyo" }
+
+    config.time_zone = time_zone
+    if time_zone_db == time_zone
+      config.active_record.default_timezone = :local
+    else
+      config.active_record.default_timezone = :utc
+    end
 
     # config.action_controller.forgery_protection_origin_check = false
 
