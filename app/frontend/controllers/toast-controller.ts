@@ -17,7 +17,8 @@ export default class ToastController extends ApplicationController {
         flashes[flashType].reverse().forEach((message: string) => {
           Toastify({
             text: message,
-            duration: 2000
+            duration: 2000,
+            style: { 'border-radius': '5px' }
           }).showToast()
         })
       }
