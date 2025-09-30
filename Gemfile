@@ -17,7 +17,7 @@ gem "pg", "~> 1.6.2"
 gem "puma", "~> 7.0.4"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", "~> 2.0.16"
+gem "turbo-rails", "~> 2.0.17"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", "~> 1.3.4"
@@ -75,7 +75,7 @@ gem "pagy", "~> 9.4.0"
 gem "acts-as-taggable-on", "~> 12.0.0"
 
 # json
-gem "alba", "3.9.0"
+gem "alba", "3.9.1"
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
