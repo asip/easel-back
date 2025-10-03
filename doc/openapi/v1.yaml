@@ -49,6 +49,7 @@ paths:
                     type: string
                   time_zone:
                     nullable: true
+                    type: string
                   social_login:
                     type: boolean
                 required:
@@ -298,6 +299,7 @@ paths:
                     type: string
                   time_zone:
                     nullable: true
+                    type: string
                   social_login:
                     type: boolean
                 required:
@@ -360,6 +362,7 @@ paths:
                     type: string
                   time_zone:
                     nullable: true
+                    type: string
                   social_login:
                     type: boolean
                 required:
@@ -371,23 +374,15 @@ paths:
                 - email
                 - time_zone
                 - social_login
-        # start manual
         '401':
           description: failure (失敗)
           content:
             application/json:
               schema:
                 type: object
-                properties:
-                  message:
-                    type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
+                properties: {}
                 required:
                 - error
-        # end manual
     put:
       summary: update
       tags:
@@ -642,7 +637,6 @@ paths:
                   - comment
                   - creator_name
                   - shooted_at
-                  # - file # manual
               required:
               - frame
       responses:
@@ -796,6 +790,88 @@ paths:
       - Api::V1::Comment
       parameters:
       - name: frame_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    body:
+                      type: string
+                  required:
+                  - body
+              required:
+              - comment
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  frame_id:
+                    type: integer
+                  body:
+                    type: string
+                  user_name:
+                    type: string
+                  user_image_url:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                - id
+                - user_id
+                - frame_id
+                - body
+                - user_name
+                - user_image_url
+                - created_at
+                - updated_at
+        '422':
+          description: empty body (bodyが空の場合)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      body:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                    - body
+                required:
+                - errors
+  "/api/v1/frames/{frame_id}/comments/{id}":
+    put:
+      summary: update
+      tags:
+      - Api::V1::Comment
+      parameters:
+      - name: frame_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: id
         in: path
         required: true
         schema:
@@ -1063,7 +1139,6 @@ paths:
                   - comment
                   - creator_name
                   - shooted_at
-                  # - file # manual
               required:
               - frame
       responses:
@@ -1194,6 +1269,7 @@ paths:
                     type: string
                   time_zone:
                     nullable: true
+                    type: string
                   social_login:
                     type: boolean
                 required:
@@ -1250,6 +1326,7 @@ paths:
                     type: string
                   time_zone:
                     nullable: true
+                    type: string
                   social_login:
                     type: boolean
                 required:

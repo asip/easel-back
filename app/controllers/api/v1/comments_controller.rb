@@ -17,6 +17,17 @@ module Api
         end
       end
 
+      def update
+        mutation = Mutations::Comments::UpdateComment.run(user: current_user, comment_id: params[:id], form_params:)
+        comment = mutation.comment
+        if mutation.success?
+          # logger.debug CommentResource.new(comment).serialize
+          render json: CommentResource.new(comment).serializable_hash
+        else
+          render json: { errors: comment.errors.to_hash(false) }.to_json, status: :unprocessable_entity
+        end
+      end
+
       def destroy
         Mutations::Comments::DeleteComment.run(user: current_user, comment_id: params[:id])
         head :no_content

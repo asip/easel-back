@@ -52,7 +52,7 @@ Rails.application.routes.draw do
       get "/account/following/:user_id" => "/api/v1/follow_relationships#following"
       resources :frames, only: %i[index show create update destroy] do
         get "/comments" => "/api/v1/frames#comments"
-        resources :comments, only: %i[create]
+        resources :comments, only: %i[create update]
       end
       resources :comments, only: [ :destroy ]
     end

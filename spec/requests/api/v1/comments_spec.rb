@@ -46,6 +46,49 @@ describe 'Comments', type: :request do
     end
   end
 
+  describe 'PUT /api/v1/frames/:frame_id/comments/:id' do
+    let(:endpoint) { "/api/v1/frames/#{frame.id}/comments/#{comment.id}" }
+    let_it_be(:user) { create(:user, password: 'testtest') }
+    let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
+    let!(:comment) { create(:comment, frame_id: frame.id, user_id: user.id) }
+    let!(:headers) { authenticated_headers(request, user) }
+
+    context 'update comment (コメント更新)' do
+      it 'success (成功)' do
+        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        put endpoint,
+             params: {
+               comment: {
+                 body: 'testtest'
+               }
+             },
+             headers: headers
+        # expect(response.status).to eq 200
+        assert_request_schema_confirm
+        assert_response_schema_confirm(200)
+        # json_data = json
+      end
+
+      context 'failure (失敗)' do
+        it 'empty body (bodyが空の場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+               params: {
+                 comment: {
+                   body: ''
+                 }
+               },
+               headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:body]).to be_present
+        end
+      end
+    end
+  end
+
   describe 'DELETE /api/v1/comments/:id' do
     let(:endpoint) { "/api/v1/comments/#{comment.id}" }
     let_it_be(:endpoint_failure) { '/api/v1/comments/404' }
