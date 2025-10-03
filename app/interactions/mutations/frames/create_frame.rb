@@ -17,7 +17,8 @@ module Mutations
 
       def execute
         frame = Frame.new(@form_params)
-        mutation = Mutations::Frames::SaveFrame.run(user: @user, frame:, form_params: @form_params)
+        frame.joined_tags = @form_params[:tag_list]
+        mutation = Mutations::Frames::SaveFrame.run(user: @user, frame:)
         errors.merge!(mutation.errors) unless mutation.success?
         @frame = mutation.frame
       end
