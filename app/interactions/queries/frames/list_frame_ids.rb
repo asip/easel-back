@@ -4,8 +4,8 @@
 module Queries
   # frames
   module Frames
-    # ListFrames
-    class ListFrames
+    # ListFrameIds
+    class ListFrameIds
       include Query
 
       def initialize(items:)
@@ -13,7 +13,7 @@ module Queries
       end
 
       def execute
-        Frame.where(private: false).search_by(items: @items)
+        Frame.select(:id).where(private: false).search_by(items: @items)
       end
     end
   end
