@@ -48,7 +48,7 @@ describe 'Frames', type: :request do
         end
       end
 
-      context 'q={ "word": "test1" } (name)' do
+      context 'q={ "word": "test1" } (frame name)' do
         it 'success (成功)' do
           get endpoint, params: { q: { word: 'test1' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           # expect(response.status).to eq 200
@@ -59,7 +59,7 @@ describe 'Frames', type: :request do
         end
       end
 
-      context 'q={ "word: "testA" } (tag name)' do
+      context 'q={ "word": "testA" } (tag name)' do
         it 'success (成功)' do
           get endpoint, params: { q: { word: 'testA' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           # expect(response.status).to eq 200
@@ -67,6 +67,28 @@ describe 'Frames', type: :request do
           assert_response_schema_confirm(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "word": "test" } (user name)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: { word: 'test' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "word": "test_creator" } (creator name)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: { word: 'test_creator' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
         end
       end
 
@@ -81,9 +103,75 @@ describe 'Frames', type: :request do
         end
       end
 
-      context 'q={ "word": Time.zone.today } (created_at/ updated_at)' do
+      context 'q={ "word": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
           get endpoint, params: { q: { word: Time.zone.today.strftime('%Y/%m/%d') }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "frame_name": "test1" } (frame name)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: { frame_name: 'test1' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "tag_name": "testA" } (tag name)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: { tag_name: 'testA' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "user_name": "test" } (user name)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: { user_name: 'test' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "creator_name": "test_creator" } (creator name)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: { creator_name: 'test_creator' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "date": "2022/01/01" } (shooted_at)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: { date: '2022/01/01' }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "date": Time.zone.today } (created_at / updated_at)' do
+        it 'success (成功)' do
+          get endpoint, params: { q: { date: Time.zone.today.strftime('%Y/%m/%d') }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)

@@ -19,6 +19,7 @@
 FactoryBot.define do
   factory :frame do
     name { 'test_frame' }
+    creator_name { 'test_creator' }
 
     trait :skip_validate do
       to_create { |instance| instance.save(validate: false) }

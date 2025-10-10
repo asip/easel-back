@@ -40,6 +40,11 @@ class Frame < ApplicationRecord
     scope = current_scope || relation
 
     word = items["word"]
+    frame_name = items["frame_name"]
+    tag_name = items["tag_name"]
+    user_name = items["user_name"]
+    creator_name = items["creator_name"]
+    date = items["date"]
 
     if word.present?
       scope = if DateAndTime::Util.valid_date?(word)
@@ -59,8 +64,44 @@ class Frame < ApplicationRecord
                         )
                        .or(Frame.where("frames.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
                        .or(Frame.where("frames.creator_name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
-                       .or(User.where(name: word))
+                       .or(User.where("users.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
                 ).distinct
+      end
+    else
+      if frame_name.present?
+        scope = scope.where("frames.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(frame_name)}%")
+      end
+
+      if tag_name.present?
+        scope = scope.merge(
+          Frame.left_joins(:tags)
+               .merge(
+                  ActsAsTaggableOn::Tag.where("tags.name like ?",
+                                              "#{ActiveRecord::Base.sanitize_sql_like(tag_name)}%")
+                )
+        ).distinct
+      end
+
+      if user_name.present?
+        scope = scope.merge(
+          Frame.left_joins(:user)
+               .merge(
+                  User.where("users.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(user_name)}%")
+               )
+        )
+      end
+
+      if creator_name.present?
+        scope = scope.where("frames.creator_name like ?", "#{ActiveRecord::Base.sanitize_sql_like(creator_name)}%")
+      end
+
+      if date.present?
+        date_ = Time.zone.parse(date)
+        scope = scope.merge(
+          Frame.where(shooted_at: date_.beginning_of_day..date_.end_of_day)
+               .or(Frame.where(created_at: date_.beginning_of_day..date_.end_of_day))
+               .or(Frame.where(updated_at: date_.beginning_of_day..date_.end_of_day))
+        )
       end
     end
 
