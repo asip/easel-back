@@ -14,7 +14,7 @@
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "@typescript-eslint/parser": "^8.46.0",
     "copyfiles": "^2.4.1",
-    "daisyui": "5.1.29",
+    "daisyui": "5.1.31",
     "eslint": "^9.37.0",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
