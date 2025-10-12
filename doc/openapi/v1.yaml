@@ -48,7 +48,6 @@ paths:
                   email:
                     type: string
                   time_zone:
-                    nullable: true
                     type: string
                   social_login:
                     type: boolean
@@ -111,12 +110,10 @@ paths:
                         name:
                           type: string
                         creator_name:
-                          nullable: true
+                          type: string
                         private:
                           type: boolean
                         tag_list:
-                          nullable: true
-                        tags:
                           nullable: true
                         file_url:
                           nullable: true
@@ -132,7 +129,6 @@ paths:
                       - creator_name
                       - private
                       - tag_list
-                      - tags
                       - file_url
                       - file_two_url
                       - file_three_url
@@ -194,12 +190,10 @@ paths:
                   name:
                     type: string
                   creator_name:
-                    nullable: true
+                    type: string
                   private:
                     type: boolean
                   tag_list:
-                    nullable: true
-                  tags:
                     nullable: true
                   file_url:
                     nullable: true
@@ -226,7 +220,6 @@ paths:
                 - creator_name
                 - private
                 - tag_list
-                - tags
                 - file_url
                 - file_two_url
                 - file_three_url
@@ -298,7 +291,6 @@ paths:
                   email:
                     type: string
                   time_zone:
-                    nullable: true
                     type: string
                   social_login:
                     type: boolean
@@ -361,7 +353,6 @@ paths:
                   email:
                     type: string
                   time_zone:
-                    nullable: true
                     type: string
                   social_login:
                     type: boolean
@@ -545,12 +536,10 @@ paths:
                         name:
                           type: string
                         creator_name:
-                          nullable: true
+                          type: string
                         private:
                           type: boolean
                         tag_list:
-                          nullable: true
-                        tags:
                           nullable: true
                         file_url:
                           nullable: true
@@ -566,7 +555,6 @@ paths:
                       - creator_name
                       - private
                       - tag_list
-                      - tags
                       - file_url
                       - file_two_url
                       - file_three_url
@@ -637,6 +625,7 @@ paths:
                   - comment
                   - creator_name
                   - shooted_at
+                  # - file # manual
               required:
               - frame
       responses:
@@ -661,10 +650,6 @@ paths:
                     type: boolean
                   tag_list:
                     type: string
-                  tags:
-                    type: array
-                    items:
-                      type: string
                   file_url:
                     type: string
                   file_two_url:
@@ -690,7 +675,6 @@ paths:
                 - creator_name
                 - private
                 - tag_list
-                - tags
                 - file_url
                 - file_two_url
                 - file_three_url
@@ -970,12 +954,10 @@ paths:
                   name:
                     type: string
                   creator_name:
-                    nullable: true
+                    type: string
                   private:
                     type: boolean
                   tag_list:
-                    nullable: true
-                  tags:
                     nullable: true
                   file_url:
                     nullable: true
@@ -1002,7 +984,6 @@ paths:
                 - creator_name
                 - private
                 - tag_list
-                - tags
                 - file_url
                 - file_two_url
                 - file_three_url
@@ -1054,12 +1035,10 @@ paths:
                   name:
                     type: string
                   creator_name:
-                    nullable: true
+                    type: string
                   private:
                     type: boolean
                   tag_list:
-                    nullable: true
-                  tags:
                     nullable: true
                   file_url:
                     nullable: true
@@ -1086,7 +1065,6 @@ paths:
                 - creator_name
                 - private
                 - tag_list
-                - tags
                 - file_url
                 - file_two_url
                 - file_three_url
@@ -1139,6 +1117,7 @@ paths:
                   - comment
                   - creator_name
                   - shooted_at
+                  # - file # manual
               required:
               - frame
       responses:
@@ -1163,10 +1142,6 @@ paths:
                     type: boolean
                   tag_list:
                     type: string
-                  tags:
-                    type: array
-                    items:
-                      type: string
                   file_url:
                     type: string
                   file_two_url:
@@ -1192,7 +1167,6 @@ paths:
                 - creator_name
                 - private
                 - tag_list
-                - tags
                 - file_url
                 - file_two_url
                 - file_three_url
@@ -1268,7 +1242,6 @@ paths:
                   email:
                     type: string
                   time_zone:
-                    nullable: true
                     type: string
                   social_login:
                     type: boolean
@@ -1325,7 +1298,6 @@ paths:
                   email:
                     type: string
                   time_zone:
-                    nullable: true
                     type: string
                   social_login:
                     type: boolean
@@ -1604,12 +1576,10 @@ paths:
                         name:
                           type: string
                         creator_name:
-                          nullable: true
+                          type: string
                         private:
                           type: boolean
                         tag_list:
-                          nullable: true
-                        tags:
                           nullable: true
                         file_url:
                           nullable: true
@@ -1625,7 +1595,6 @@ paths:
                       - creator_name
                       - private
                       - tag_list
-                      - tags
                       - file_url
                       - file_two_url
                       - file_three_url

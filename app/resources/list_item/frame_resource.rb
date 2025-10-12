@@ -25,8 +25,6 @@ module ListItem
       frame.joined_tags
     end
 
-    attribute :tags, &:plain_tags
-
     attribute :file_url do |frame|
       frame.file_proxy_url(:original)
     end

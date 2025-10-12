@@ -109,10 +109,6 @@ class Frame < ApplicationRecord
   }
 
   def tags_preview
-    tag_list.to_s.split(/\s*,\s*/)
-  end
-
-  def plain_tags
     joined_tags&.split(/\s*,\s*/)
   end
 
