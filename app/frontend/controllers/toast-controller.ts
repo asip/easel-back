@@ -1,7 +1,6 @@
 import ApplicationController from './application-controller'
 import Toastify from 'toastify-js'
 
-
 export default class ToastController extends ApplicationController {
   static values = {
     flashes: String
