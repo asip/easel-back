@@ -3,8 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:font-bootstrap": "copyfiles -f node_modules/bootstrap-icons/font/fonts/* public/assets/fonts",
-    "build:font": "pnpm build:font-bootstrap",
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",
     "lint": "eslint --fix './app/frontend/**/*.{js,ts}'"
   },
