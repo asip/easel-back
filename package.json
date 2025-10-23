@@ -4,9 +4,11 @@
   "type": "module",
   "scripts": {
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",
-    "lint": "eslint --fix './app/frontend/**/*.{js,ts}'"
+    "lint": "eslint --fix './app/frontend/**/*.{js,ts}'",
+    "markuplint": "markuplint './app/**/**/*.{erb,vue}'"
   },
   "devDependencies": {
+    "@markuplint/erb-parser": "4.6.21",
     "@tailwindcss/vite": "4.1.14",
     "@types/toastify-js": "^1.12.4",
     "@typescript-eslint/eslint-plugin": "^8.46.0",
@@ -15,6 +17,7 @@
     "daisyui": "5.1.31",
     "eslint": "^9.37.0",
     "eslint-config-prettier": "^10.1.8",
+    "markuplint": "^4.13.1",
     "prettier": "^3.6.2",
     "sass-embedded": "^1.93.2",
     "tailwindcss": "4.1.14",
