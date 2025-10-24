@@ -55,7 +55,7 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def auth_options
-    { scope: resource_name }
+    { scope: resource_name, locale: I18n.locale }
   end
 
   # If you have extra params to permit, append them to the sanitizer.
