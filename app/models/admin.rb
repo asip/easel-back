@@ -36,7 +36,7 @@ class Admin < ApplicationRecord
   end
 
   def self.validate_login(form_params:)
-    admin = Admin.find_by(email: form_params[:email])
+    admin = Admin.find_for_authentication(email: form_params[:email])
     if admin
       admin.validate_password_on_login(form_params)
     else
