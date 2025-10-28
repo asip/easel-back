@@ -65,7 +65,7 @@ module Api
 
     def render_error(code, default_message, *error_messages)
       response = {
-        message: default_message,
+        title: default_message,
         errors: error_messages.compact.uniq
       }
 

@@ -20,10 +20,10 @@ module Devise
       # puts format
       method = "to_#{format}"
       # puts method
-      if format == "xml"
+      if format == :xml
         { error: i18n_message }.to_xml(root: "errors")
-      elsif format == "json"
-        { message: "Unauthorized", errors: [ i18n_message ] }.to_json
+      elsif format == :json
+        { title: "Unauthorized", errors: [ i18n_message ] }.to_json
       elsif {}.respond_to?(method)
         { error: i18n_message }.send(method)
       else

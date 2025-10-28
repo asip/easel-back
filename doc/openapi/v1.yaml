@@ -235,14 +235,14 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
+                  title:
                     type: string
                   errors:
                     type: array
                     items:
                       type: string
                 required:
-                - message
+                - title
                 - errors
   "/api/v1/account/password":
     put:
@@ -365,6 +365,7 @@ paths:
                 - email
                 - time_zone
                 - social_login
+        # start manual
         '401':
           description: failure (失敗)
           content:
@@ -373,7 +374,8 @@ paths:
                 type: object
                 properties: {}
                 required:
-                - error
+                - errors
+        # end manual
     put:
       summary: update
       tags:
@@ -500,14 +502,14 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
+                  title:
                     type: string
                   errors:
                     type: array
                     items:
                       type: string
                 required:
-                - message
+                - title
                 - errors
   "/api/v1/frames":
     get:
@@ -999,14 +1001,14 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
+                  title:
                     type: string
                   errors:
                     type: array
                     items:
                       type: string
                 required:
-                - message
+                - title
                 - errors
     get:
       summary: show
