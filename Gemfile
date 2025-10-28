@@ -14,7 +14,7 @@ gem "propshaft", "~> 1.3.1"
 gem "pg", "~> 1.6.2"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 7.0.4"
+gem "puma", "~> 7.1.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.17"
@@ -38,10 +38,10 @@ gem "bootsnap", "~> 1.18.6", require: false
 gem "vite_rails", "3.0.19"
 
 # view component
-gem "view_component", "~> 4.0.2"
+gem "view_component", "~> 4.1.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.199.1"
+gem "aws-sdk-s3", "~> 1.201.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -62,7 +62,7 @@ gem "devise-jwt", "0.12.1"
 gem "devise-i18n", "1.15.0"
 gem "omniauth-google-oauth2", "1.2.1"
 
-gem "googleauth", "~> 1.15.0"
+gem "googleauth", "~> 1.15.1"
 
 # settings
 gem "config", "~> 5.6.1"
@@ -102,7 +102,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "bullet", "~> 8.0.8"
+  gem "bullet", "~> 8.1.0"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.2.1"
@@ -110,7 +110,7 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
-  gem "annotaterb", "~> 4.19.0"
+  gem "annotaterb", "~> 4.20.0"
   gem "rails-erd", "~> 1.7.2"
 
   # Ruby style guide, linter, and formatter
@@ -137,7 +137,7 @@ group :test do
   gem "faker", "~> 3.5.2"
   gem "rspec-rails", "~> 8.0.2"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.19.0"
+  gem "rspec-openapi", "~> 0.20.0"
   gem "committee-rails", "~> 0.8.0"
   gem "test-prof", "~> 1.4.4"
 end
