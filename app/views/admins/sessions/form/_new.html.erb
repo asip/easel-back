@@ -5,7 +5,7 @@
       <div class="flex justify-start pb-1">
         <%= t("action.administration.title") %>
       </div>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
+      <%= form_for(resource, as: resource_name, method: :post, url: session_path(resource_name)) do |form| %>
         <div class="flex justify-center">
           <table class="table table-bordered table-rounded">
             <tbody>
