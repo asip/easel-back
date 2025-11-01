@@ -12,7 +12,7 @@
     <%= vite_stylesheet_tag "application", media: "all", 'data-turbo-track': "reload" %>
     <%= vite_javascript_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
-  <body class="min-h-[100vh]">
+  <body class="min-h-screen">
     <%= render "layouts/admins/header" %>
     <div id="flash_message"></div>
     <div class="container mx-auto bg-aliceblue-200">
