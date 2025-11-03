@@ -102,7 +102,7 @@ class User < ApplicationRecord
       when "one"
         image.imgproxy_url(width: 100, height: 100, resizing_type: :fill)
       when "three"
-        image.imgproxy_url(width: 300, height: 300, resizing_type: :fill)
+        image.imgproxy_url(width: 320, height: 320, resizing_type: :fill)
       else
         nil
       end

@@ -121,6 +121,8 @@ paths:
                           nullable: true
                         file_three_url:
                           nullable: true
+                        file_six_url:
+                          nullable: true
                       required:
                       - id
                       - user_id
@@ -132,6 +134,7 @@ paths:
                       - file_url
                       - file_two_url
                       - file_three_url
+                      - file_six_url
                   meta:
                     type: object
                     properties:
@@ -201,6 +204,8 @@ paths:
                     nullable: true
                   file_three_url:
                     nullable: true
+                  file_six_url:
+                    nullable: true
                   comment:
                     nullable: true
                   shooted_at:
@@ -223,6 +228,7 @@ paths:
                 - file_url
                 - file_two_url
                 - file_three_url
+                - file_six_url
                 - comment
                 - shooted_at
                 - created_at
@@ -549,6 +555,8 @@ paths:
                           nullable: true
                         file_three_url:
                           nullable: true
+                        file_six_url:
+                          nullable: true
                       required:
                       - id
                       - user_id
@@ -560,6 +568,7 @@ paths:
                       - file_url
                       - file_two_url
                       - file_three_url
+                      - file_six_url
                   meta:
                     type: object
                     properties:
@@ -658,6 +667,8 @@ paths:
                     type: string
                   file_three_url:
                     type: string
+                  file_six_url:
+                    type: string
                   comment:
                     type: string
                   shooted_at:
@@ -680,6 +691,7 @@ paths:
                 - file_url
                 - file_two_url
                 - file_three_url
+                - file_six_url
                 - comment
                 - shooted_at
                 - created_at
@@ -967,6 +979,8 @@ paths:
                     nullable: true
                   file_three_url:
                     nullable: true
+                  file_six_url:
+                    nullable: true
                   comment:
                     nullable: true
                   shooted_at:
@@ -989,6 +1003,7 @@ paths:
                 - file_url
                 - file_two_url
                 - file_three_url
+                - file_six_url
                 - comment
                 - shooted_at
                 - created_at
@@ -1048,6 +1063,8 @@ paths:
                     nullable: true
                   file_three_url:
                     nullable: true
+                  file_six_url:
+                    nullable: true
                   comment:
                     nullable: true
                   shooted_at:
@@ -1070,6 +1087,7 @@ paths:
                 - file_url
                 - file_two_url
                 - file_three_url
+                - file_six_url
                 - comment
                 - shooted_at
                 - created_at
@@ -1150,6 +1168,8 @@ paths:
                     type: string
                   file_three_url:
                     type: string
+                  file_six_url:
+                    type: string
                   comment:
                     type: string
                   shooted_at:
@@ -1172,6 +1192,7 @@ paths:
                 - file_url
                 - file_two_url
                 - file_three_url
+                - file_six_url
                 - comment
                 - shooted_at
                 - created_at
@@ -1589,6 +1610,8 @@ paths:
                           nullable: true
                         file_three_url:
                           nullable: true
+                        file_six_url:
+                          nullable: true
                       required:
                       - id
                       - user_id
@@ -1600,6 +1623,7 @@ paths:
                       - file_url
                       - file_two_url
                       - file_three_url
+                      - file_six_url
                   meta:
                     type: object
                     properties:

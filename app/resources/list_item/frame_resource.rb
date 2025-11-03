@@ -36,5 +36,9 @@ module ListItem
     attribute :file_three_url do |frame|
       frame.file_proxy_url(:three)
     end
+
+    attribute :file_six_url do |frame|
+      frame.file_proxy_url(:six)
+    end
   end
 end
