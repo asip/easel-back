@@ -32,12 +32,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def auth_params
-    params.permit(:provider, :credential)
+    params.permit(:provider, :credential).to_h
   end
 
   def callback_for(provider)
     auth = {}
-    auth[:info] = Google::Auth::IDTokens.verify_oidc(params["credential"],
+    auth[:info] = Google::Auth::IDTokens.verify_oidc(auth_params["credential"],
                                           aud: Settings.google.client_id)
     auth[:uid] = auth[:info]["sub"]
     auth[:provider] = provider

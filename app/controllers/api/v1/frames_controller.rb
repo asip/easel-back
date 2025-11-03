@@ -68,13 +68,13 @@ module Api
       def query_params
         params.permit(
           :q, :page, :frame_id
-        )
+        ).to_h
       end
 
       def form_params
         params.require(:frame).permit(
           :name, :tag_list, :comment, :file, :creator_name, :shooted_at
-        )
+        ).to_h
       end
     end
   end

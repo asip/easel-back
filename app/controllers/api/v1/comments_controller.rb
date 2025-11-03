@@ -36,7 +36,7 @@ module Api
       private
 
       def form_params
-        params.require(:comment).permit(:body)
+        params.require(:comment).permit(:body).to_h
       end
     end
   end

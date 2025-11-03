@@ -29,7 +29,7 @@ module Api
       private
 
       def query_params
-        params.permit(:user_id)
+        params.permit(:user_id).to_h
       end
     end
   end
