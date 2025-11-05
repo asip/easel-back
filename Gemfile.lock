@@ -76,8 +76,8 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    acts-as-taggable-on (12.0.0)
-      activerecord (>= 7.1, < 8.1)
+    acts-as-taggable-on (13.0.0)
+      activerecord (>= 7.1, < 8.2)
       zeitwerk (>= 2.4, < 3.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
@@ -592,7 +592,7 @@ PLATFORMS
   arm64-darwin-25
 
 DEPENDENCIES
-  acts-as-taggable-on (~> 12.0.0)
+  acts-as-taggable-on (~> 13.0.0)
   alba (= 3.9.1)
   annotaterb (~> 4.20.0)
   aws-sdk-s3 (~> 1.202.0)

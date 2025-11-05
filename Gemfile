@@ -72,7 +72,7 @@ gem "pagy", "~> 43.0.0"
 
 # tags
 # gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
-gem "acts-as-taggable-on", "~> 12.0.0"
+gem "acts-as-taggable-on", "~> 13.0.0"
 
 # json
 gem "alba", "3.9.1"
