@@ -179,6 +179,72 @@ describe 'Frames', type: :request do
           expect(json_data.size).to be 8
         end
       end
+
+       context 'q={ "word": exceeds 40 characters }' do
+        it 'failure (失敗)' do
+          get endpoint, params: { q: { word: Faker::Alphanumeric.alpha(number: 41) }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:word]).to be_present
+        end
+      end
+
+      context 'q={ "frame_name": exceeds 30 characters } (frame name)' do
+        it 'failure (失敗)' do
+          get endpoint, params: { q: { frame_name: Faker::Alphanumeric.alpha(number: 31) }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:frame_name]).to be_present
+        end
+      end
+
+      context 'q={ "tag_name": exceeds 10 characters } (tag name)' do
+        it 'failure (失敗)' do
+          get endpoint, params: { q: { tag_name: Faker::Alphanumeric.alpha(number: 11) }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:tag_name]).to be_present
+        end
+      end
+
+      context 'q={ "user_name": exceeds 40 characters } (user name)' do
+        it 'failure (失敗)' do
+          get endpoint, params: { q: { user_name: Faker::Alphanumeric.alpha(number: 41) }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:user_name]).to be_present
+        end
+      end
+
+      context 'q={ "creator_name": exceeds 40 characters } (creator name)' do
+        it 'failure (失敗)' do
+          get endpoint, params: { q: { creator_name: Faker::Alphanumeric.alpha(number: 41) }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:creator_name]).to be_present
+        end
+      end
+
+      context 'q={ "date": invalid date } (date)' do
+        it 'failure (失敗)' do
+          get endpoint, params: { q: { date: "AAAA/AA/AA" }.to_json }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:date]).to be_present
+        end
+      end
     end
   end
 

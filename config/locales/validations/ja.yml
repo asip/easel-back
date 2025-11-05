@@ -14,3 +14,8 @@ ja:
         tags:
           array_length: 'は５つまでです'
           length: 'は10文字以内で入力してください'
+      model:
+        date:
+          invalid: 'には日付を入力してください'
+        datetime:
+          invalid: 'には日時を入力してください'

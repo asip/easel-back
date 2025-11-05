@@ -96,11 +96,10 @@ class Frame < ApplicationRecord
       end
 
       if date.present?
-        date_ = Time.zone.parse(date)
         scope = scope.merge(
-          Frame.where(shooted_at: date_.beginning_of_day..date_.end_of_day)
-               .or(Frame.where(created_at: date_.beginning_of_day..date_.end_of_day))
-               .or(Frame.where(updated_at: date_.beginning_of_day..date_.end_of_day))
+          Frame.where(shooted_at: date.beginning_of_day..date.end_of_day)
+               .or(Frame.where(created_at: date.beginning_of_day..date.end_of_day))
+               .or(Frame.where(updated_at: date.beginning_of_day..date.end_of_day))
         )
       end
     end

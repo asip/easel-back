@@ -18,10 +18,15 @@ paths:
               schema:
                 type: object
                 properties:
-                  error:
+                  title:
                     type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
                 required:
-                - error
+                - title
+                - errors
   "/api/v1/account":
     delete:
       summary: destroy
@@ -371,7 +376,6 @@ paths:
                 - email
                 - time_zone
                 - social_login
-        # start manual
         '401':
           description: failure (失敗)
           content:
@@ -381,7 +385,6 @@ paths:
                 properties: {}
                 required:
                 - errors
-        # end manual
     put:
       summary: update
       tags:
@@ -593,6 +596,42 @@ paths:
                 required:
                 - frames
                 - meta
+        '422':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      word:
+                        type: array
+                        items:
+                          type: string
+                      frame_name:
+                        type: array
+                        items:
+                          type: string
+                      tag_name:
+                        type: array
+                        items:
+                          type: string
+                      user_name:
+                        type: array
+                        items:
+                          type: string
+                      creator_name:
+                        type: array
+                        items:
+                          type: string
+                      date:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - errors
       parameters:
       - name: page
         in: query
@@ -636,7 +675,6 @@ paths:
                   - comment
                   - creator_name
                   - shooted_at
-                  # - file # manual
               required:
               - frame
       responses:
@@ -1137,7 +1175,6 @@ paths:
                   - comment
                   - creator_name
                   - shooted_at
-                  # - file # manual
               required:
               - frame
       responses:

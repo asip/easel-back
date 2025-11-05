@@ -14,3 +14,8 @@ en:
         tags:
           array_length: ' are limited to 5'
           length: ' are limited to 10 characters'
+      model:
+        date:
+          invalid: 'must be a valid date'
+        datetime:
+          invalid: 'must be a valid datetime'

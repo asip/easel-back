@@ -13,11 +13,16 @@ module Api
 
       def index
         query = query_params[:q]
-        items = query.present? ? JSON.parse(query) : {}
+        items = (query.present? ? JSON.parse(query) : {}).with_indifferent_access
         page = query_params[:page]
-        pagination, frames = list_frames(items:, page:)
+        form = FrameSearchForm.new(items)
+        if form.valid?
+          pagination, frames = list_frames(items: form.to_h, page:)
 
-        render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
+          render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
+        else
+          render json: { errors: form.errors.to_hash(false) }.to_json, status: :unprocessable_entity
+        end
       end
 
       def show
