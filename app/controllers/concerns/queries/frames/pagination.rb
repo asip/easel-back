@@ -8,7 +8,7 @@ module Queries
     module Pagination
       extend ActiveSupport::Concern
 
-      include Pagy::Backend
+      include Pagy::Method
 
       protected
 
