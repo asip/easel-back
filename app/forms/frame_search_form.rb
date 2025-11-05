@@ -11,17 +11,17 @@ class FrameSearchForm
   attribute :user_name, :string
   attribute :creator_name, :string
   attribute :date, :date
-  attribute :date_before, :string
+  attribute :date_before_type_cast, :string
 
   validates :word, length: { maximum: 40 }
   validates :frame_name, length: { maximum: 30 }
   validates :tag_name, length: { maximum: 10 }
   validates :user_name, length: { maximum: 40 }
   validates :creator_name, length: { maximum: 40 }
-  validates :date_before, date: { attribute: :date }
+  validates :date_before_type_cast, date: { attribute: :date }
 
   def initialize(attributes)
-    attributes[:date_before] = attributes[:date]
+    attributes[:date_before_type_cast] = attributes[:date]
     super(attributes)
   end
 

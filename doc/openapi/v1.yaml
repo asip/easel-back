@@ -761,6 +761,10 @@ paths:
                         type: array
                         items:
                           type: string
+                      shooted_at:
+                        type: array
+                        items:
+                          type: string
                 required:
                 - errors
   "/api/v1/frames/{frame_id}/comments":
@@ -1258,6 +1262,10 @@ paths:
                         items:
                           type: string
                       file:
+                        type: array
+                        items:
+                          type: string
+                      shooted_at:
                         type: array
                         items:
                           type: string
