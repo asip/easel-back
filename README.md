@@ -4,7 +4,7 @@
 
 This is backend of [Easel](https://github.com/asip/easel).
 
-Rails8.0 + Devise(authentication) + Pagy(paging) +
+Rails8.1 + Devise(authentication) + Pagy(paging) +
 Shrine(upload) + ActsAsTaggableOn(tag) +
 RailsAdmin (management console) + Discard(soft delete) +
 Hotwire (Turbo + Stimulus3) + Tailwind CSS v4 + daisyUI v5
@@ -18,7 +18,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version : 3.4
-* Rails version : 8.0
+* Rails version : 8.1
 * System dependencies : pnpm & postgresql & minio & imgproxy & valkey & libvips & direnv
 * Deployment instructions
   * Run `bundle install --path vendor/bundle` to install the required Rubygems

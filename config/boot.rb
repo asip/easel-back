@@ -11,4 +11,4 @@ unless ENV["BUNDLE_GEMFILE"] && File.exist?(ENV["BUNDLE_GEMFILE"])
 end
 
 require "bundler/setup" # Set up gems listed in the Gemfile.
-require "bootsnap/setup"
+require "bootsnap/setup" # Speed up boot time by caching expensive operations.

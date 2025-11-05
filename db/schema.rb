@@ -10,63 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_21_231032) do
+ActiveRecord::Schema[8.1].define(version: 2025_09_21_231032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "admins", force: :cascade do |t|
-    t.string "email", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "email", null: false
     t.string "encrypted_password", default: "", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
   create_table "authentications", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
     t.string "provider", null: false
     t.string "uid", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "frame_id", null: false
     t.text "body"
     t.datetime "created_at", precision: nil, null: false
+    t.bigint "frame_id", null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "follow_relationships", force: :cascade do |t|
-    t.bigint "follower_id"
-    t.bigint "followee_id"
     t.datetime "created_at", null: false
+    t.bigint "followee_id"
+    t.bigint "follower_id"
     t.datetime "updated_at", null: false
   end
 
   create_table "frames", force: :cascade do |t|
-    t.string "name", null: false
     t.text "comment"
     t.datetime "created_at", precision: nil, null: false
+    t.string "creator_name"
+    t.text "file_data"
+    t.string "joined_tags"
+    t.string "name", null: false
+    t.boolean "private", default: false
+    t.datetime "shooted_at"
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "user_id"
-    t.text "file_data"
-    t.datetime "shooted_at"
-    t.boolean "private", default: false
-    t.string "joined_tags"
-    t.string "creator_name"
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.string "taggable_type"
-    t.bigint "taggable_id"
-    t.string "tagger_type"
-    t.bigint "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at", precision: nil
+    t.bigint "tag_id"
+    t.bigint "taggable_id"
+    t.string "taggable_type"
+    t.bigint "tagger_id"
+    t.string "tagger_type"
     t.datetime "updated_at", precision: nil
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
@@ -80,22 +80,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_21_231032) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
+    t.string "name"
     t.integer "taggings_count", default: 0
+    t.datetime "updated_at", precision: nil
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "name", null: false
-    t.text "image_data"
     t.datetime "deleted_at"
+    t.string "email", null: false
     t.string "encrypted_password", default: "", null: false
+    t.text "image_data"
+    t.string "name", null: false
     t.string "time_zone"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
