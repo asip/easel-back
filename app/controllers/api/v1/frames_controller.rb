@@ -13,8 +13,8 @@ module Api
 
       def index
         query = query_params[:q]
-        items = (query.present? ? JSON.parse(query) : {}).with_indifferent_access
         page = query_params[:page]
+        items = Json::Util.to_hash(query)
         form = FrameSearchForm.new(items)
         if form.valid?
           pagination, frames = list_frames(items: form.to_h, page:)
