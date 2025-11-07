@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_09_21_231032) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_06_141812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,26 @@ ActiveRecord::Schema[8.1].define(version: 2025_09_21_231032) do
     t.string "encrypted_password", default: "", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
+  end
+
+  create_table "application_taggings", force: :cascade do |t|
+    t.string "context", null: false
+    t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.bigint "tag_id", null: false
+    t.bigint "taggable_id", null: false
+    t.string "taggable_type", null: false
+    t.datetime "updated_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["context"], name: "index_application_taggings_on_context"
+    t.index ["tag_id"], name: "index_application_taggings_on_tag_id"
+    t.index ["taggable_type", "taggable_id", "context", "tag_id"], name: "index_app_taggings_uniqueness", unique: true
+    t.index ["taggable_type", "taggable_id"], name: "index_application_taggings_on_taggable"
+  end
+
+  create_table "application_tags", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.string "name", null: false
+    t.datetime "updated_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["name"], name: "index_application_tags_on_name", unique: true
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -59,34 +79,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_09_21_231032) do
     t.bigint "user_id"
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.string "context", limit: 128
-    t.datetime "created_at", precision: nil
-    t.bigint "tag_id"
-    t.bigint "taggable_id"
-    t.string "taggable_type"
-    t.bigint "tagger_id"
-    t.string "tagger_type"
-    t.datetime "updated_at", precision: nil
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.datetime "created_at", precision: nil
-    t.string "name"
-    t.integer "taggings_count", default: 0
-    t.datetime "updated_at", precision: nil
-    t.index ["name"], name: "index_tags_on_name", unique: true
-  end
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.datetime "deleted_at"
@@ -99,4 +91,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_09_21_231032) do
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
+  add_foreign_key "application_taggings", "application_tags", column: "tag_id"
 end

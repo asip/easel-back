@@ -7,10 +7,14 @@ describe 'Frames', type: :request do
   describe 'GET /api/v1/frames' do
     let_it_be(:endpoint) { '/api/v1/frames' }
     let_it_be(:user) { create(:user, password: 'testtest') }
+    let_it_be(:tag1) { create(:application_tag, name: 'testA0') }
+    let_it_be(:tag2) { create(:application_tag, name: 'testA1') }
 
     before_all do
-      create(:frame, :skip_validate, user: user, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
-      create(:frame, :skip_validate, user: user, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
+      frame_01 = create(:frame, :skip_validate, user: user, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
+      create(:application_tagging, tag_id: tag1.id, taggable_id: frame_01.id)
+      frame_02 = create(:frame, :skip_validate, user: user, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
+      create(:application_tagging, tag_id: tag2.id, taggable_id: frame_02.id)
       create(:frame, :skip_validate, user: user, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01')
       create(:frame, :skip_validate, user: user, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01')
       create(:frame, :skip_validate, user: user, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01')

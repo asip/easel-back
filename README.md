@@ -5,7 +5,7 @@
 This is backend of [Easel](https://github.com/asip/easel).
 
 Rails8.1 + Devise(authentication) + Pagy(paging) +
-Shrine(upload) + ActsAsTaggableOn(tag) +
+Shrine(upload) + No Fly List(tag) +
 RailsAdmin (management console) + Discard(soft delete) +
 Hotwire (Turbo + Stimulus3) + Tailwind CSS v4 + daisyUI v5
 

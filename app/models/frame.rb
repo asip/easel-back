@@ -21,8 +21,9 @@
 class Frame < ApplicationRecord
   # has_one_attached :file
   include Contents::Uploader::Attachment(:file)
+  include NoFlyList::TaggableRecord
 
-  acts_as_taggable_on :tags
+  has_tags :tags, polymorphic: true
 
   has_many :comments, dependent: :destroy
   belongs_to :user, -> { with_discarded }
@@ -60,7 +61,7 @@ class Frame < ApplicationRecord
                 scope.merge(
                   Frame.left_joins(:tags, :user)
                        .merge(
-                          ActsAsTaggableOn::Tag.where("tags.name like ?",
+                          ApplicationTag.where("application_tags.name like ?",
                                                       "#{ActiveRecord::Base.sanitize_sql_like(word)}%")
                         )
                        .or(Frame.where("frames.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
@@ -77,8 +78,8 @@ class Frame < ApplicationRecord
         scope = scope.merge(
           Frame.left_joins(:tags)
                .merge(
-                  ActsAsTaggableOn::Tag.where("tags.name like ?",
-                                              "#{ActiveRecord::Base.sanitize_sql_like(tag_name)}%")
+                  ApplicationTag.where("application_tags.name like ?",
+                            "#{ActiveRecord::Base.sanitize_sql_like(tag_name)}%")
                 )
         ).distinct
       end
@@ -105,8 +106,18 @@ class Frame < ApplicationRecord
       end
     end
 
+    # puts scope.to_sql
     scope
   }
+
+  def tag_list
+    self.tags_list
+  end
+
+  def tag_list=(tags_list)
+    self.tags_list = tags_list
+    self.joined_tags = tags_list
+  end
 
   def tags_preview
     joined_tags&.split(/\s*,\s*/)

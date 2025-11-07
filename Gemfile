@@ -71,8 +71,7 @@ gem "config", "~> 5.6.1"
 gem "pagy", "~> 43.0.0"
 
 # tags
-# gem "acts-as-taggable-on", github: "mbleigh/acts-as-taggable-on"
-gem "acts-as-taggable-on", "~> 13.0.0"
+gem "no_fly_list", "0.7.3"
 
 # json
 gem "alba", "3.9.1"
