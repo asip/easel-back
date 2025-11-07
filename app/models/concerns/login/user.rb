@@ -45,7 +45,7 @@ module Login
         user = ::User.unscoped.find_by(id: authentication.user_id)
         update_user_info(user, email: info_email) if info_email.present?
       else
-        user = find_or_create_user_from_omniauth(info, time_zone:)
+        user = find_or_create_from_omniauth(info, time_zone:)
         create_authentication_for_user(user, provider, uid)
       end
 
@@ -64,7 +64,7 @@ module Login
       user
     end
 
-    def self.find_or_create_user_from_omniauth(info, time_zone:)
+    def self.find_or_create_from_omniauth(info, time_zone:)
       email = info["email"]
       name = info["name"]
 
