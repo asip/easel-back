@@ -44,7 +44,7 @@ class Admins::SessionsController < Devise::SessionsController
   end
 
   def login_success(resource)
-    redirect_to after_sign_out_path_for(resource)
+    redirect_to after_sign_in_path_for(resource)
   end
 
   def login_failed
@@ -64,6 +64,10 @@ class Admins::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_in_path_for(_resource_or_scope)
+    rails_admin_path
+  end
 
   def after_sign_out_path_for(_resource)
     rails_admin_path

@@ -11,13 +11,5 @@ module Admins
     protect_from_forgery with: :exception
 
     before_action :authenticate_admin!
-
-    private
-
-    protected
-
-    def after_sign_out_path_for(_resource_or_scope)
-      rails_admin_path
-    end
   end
 end
