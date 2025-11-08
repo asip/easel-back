@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 namespace :easel do
-  # 1日刻みで実行
   desc "From AATO to NFL"
   task from_aato_to_nfl: :environment do
     tag_id_map = {}
