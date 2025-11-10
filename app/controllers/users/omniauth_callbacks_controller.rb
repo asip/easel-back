@@ -46,7 +46,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     # puts auth
 
-    user = User.from_omniauth(auth)
+    user = User.from(auth:)
     sign_in(user, event: :authentication)
 
     render json: AccountResource.new(user).serializable_hash

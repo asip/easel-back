@@ -32,7 +32,7 @@ module Login
         [ success, user ]
       end
 
-      def from_omniauth(auth)
+      def from(auth:)
         uid = auth[:uid]
         provider = auth[:provider]
         time_zone = auth[:time_zone]
@@ -42,12 +42,12 @@ module Login
         authentication = Authentication.find_by(uid: uid, provider: provider)
 
         if authentication
-          info_email = info["email"]
+          email = info["email"]
           user = ::User.unscoped.find_by(id: authentication.user_id)
-          update_user_info(user, email: info_email) if info_email.present?
+          update(user:, email:) if email.present?
         else
-          user = find_or_create_from_omniauth(info, time_zone:)
-          create_authentication_for_user(user, provider, uid)
+          user = find_or_create_from(info:, time_zone:)
+          create_authentication_for(user:, provider:, uid:)
         end
 
         user
@@ -55,7 +55,7 @@ module Login
 
       private
 
-      def update_user_info(user, email:)
+      def update(user:, email:)
         return unless user && email.present?
         if user.email != email
           user.email = email
@@ -65,11 +65,11 @@ module Login
         user
       end
 
-      def find_or_create_from_omniauth(info, time_zone:)
+      def find_or_create_from(info:, time_zone:)
         email = info["email"]
         name = info["name"]
 
-        user = ::User.unscoped.find_for_authentication(email: email)
+        user = ::User.unscoped.find_for_authentication(email:)
 
         unless user
           user = ::User.new(
@@ -85,7 +85,7 @@ module Login
         user
       end
 
-      def create_authentication_for_user(user, provider, uid)
+      def create_authentication_for(user:, provider:, uid:)
         authentication = Authentication.new(
           user: user,
           provider: provider,
