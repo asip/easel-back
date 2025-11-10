@@ -18,7 +18,7 @@ class FrameSearchForm
   validates :tag_name, length: { maximum: 10 }
   validates :user_name, length: { maximum: 40 }
   validates :creator_name, length: { maximum: 40 }
-  validates :date_before_type_cast, date: { attribute: :date }
+  validates :date_before_type_cast, date: true
 
   def initialize(attributes)
     attributes[:date_before_type_cast] = attributes[:date]
