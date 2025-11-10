@@ -19,7 +19,11 @@ module ListItem
   # Frame Resource
   class FrameResource < BaseResource
     root_key :frame, :frames
-    attributes :id, :user_id, :user_name, :name, :tag_list, :creator_name, :private
+    attributes :id, :user_id, :user_name, :name, :creator_name, :private
+
+    attribute :tag_list do |frame|
+      frame.tag_list.present? ? frame.tag_list.to_s&.split(/\s*,\s*/) : []
+    end
 
     attribute :file_url do |frame|
       frame.file_proxy_url(:original)

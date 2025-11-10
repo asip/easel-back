@@ -120,6 +120,9 @@ paths:
                           type: boolean
                         tag_list:
                           nullable: true
+                          type: array
+                          items:
+                            type: string
                         file_url:
                           nullable: true
                         file_two_url:
@@ -203,6 +206,9 @@ paths:
                     type: boolean
                   tag_list:
                     nullable: true
+                    type: array
+                    items:
+                      type: string
                   file_url:
                     nullable: true
                   file_two_url:
@@ -552,6 +558,9 @@ paths:
                           type: boolean
                         tag_list:
                           nullable: true
+                          type: array
+                          items:
+                            type: string
                         file_url:
                           nullable: true
                         file_two_url:
@@ -698,7 +707,9 @@ paths:
                   private:
                     type: boolean
                   tag_list:
-                    type: string
+                    type: array
+                    items:
+                      type: string
                   file_url:
                     type: string
                   file_two_url:
@@ -1015,6 +1026,9 @@ paths:
                     type: boolean
                   tag_list:
                     nullable: true
+                    type: array
+                    items:
+                      type: string
                   file_url:
                     nullable: true
                   file_two_url:
@@ -1099,6 +1113,9 @@ paths:
                     type: boolean
                   tag_list:
                     nullable: true
+                    type: array
+                    items:
+                      type: string
                   file_url:
                     nullable: true
                   file_two_url:
@@ -1202,7 +1219,9 @@ paths:
                   private:
                     type: boolean
                   tag_list:
-                    type: string
+                    type: array
+                    items:
+                      type: string
                   file_url:
                     type: string
                   file_two_url:
@@ -1649,6 +1668,9 @@ paths:
                           type: boolean
                         tag_list:
                           nullable: true
+                          type: array
+                          items:
+                            type: string
                         file_url:
                           nullable: true
                         file_two_url:
