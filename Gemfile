@@ -41,7 +41,7 @@ gem "vite_rails", "3.0.19"
 gem "view_component", "~> 4.1.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.203.0"
+gem "aws-sdk-s3", "~> 1.203.1"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -68,13 +68,13 @@ gem "googleauth", "~> 1.15.1"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.0.0"
+gem "pagy", "~> 43.0.2"
 
 # tags
 gem "no_fly_list", "0.7.3"
 
 # json
-gem "alba", "3.9.1"
+gem "alba", "3.10.0"
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
