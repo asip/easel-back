@@ -22,7 +22,7 @@ module ListItem
     attributes :id, :user_id, :user_name, :name, :creator_name, :private
 
     attribute :tag_list do |frame|
-      frame.tag_list.present? ? frame.tag_list.to_s&.split(/\s*,\s*/) : []
+      frame.tag_list.present? ? frame.tag_list.to_s&.split(",") : []
     end
 
     attribute :file_url do |frame|

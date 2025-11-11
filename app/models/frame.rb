@@ -120,7 +120,7 @@ class Frame < ApplicationRecord
   end
 
   def tags_preview
-    joined_tags&.split(/\s*,\s*/)
+    joined_tags&.split(",")
   end
 
   def file_proxy_url(key)
