@@ -41,12 +41,12 @@ class Frame < ApplicationRecord
   scope :search_by, lambda { |items:|
     scope = current_scope || relation
 
-    word = items["word"]
-    frame_name = items["frame_name"]
-    tag_name = items["tag_name"]
-    user_name = items["user_name"]
-    creator_name = items["creator_name"]
-    date = items["date"]
+    word = items[:word]
+    frame_name = items[:frame_name]
+    tag_name = items[:tag_name]
+    user_name = items[:user_name]
+    creator_name = items[:creator_name]
+    date = items[:date]
 
     if word.present?
       scope = if DateAndTime::Util.valid_date?(word)
@@ -59,15 +59,12 @@ class Frame < ApplicationRecord
 
       else
                 scope.merge(
-                  Frame.left_joins(:tags, :user)
-                       .merge(
-                          ApplicationTag.where("application_tags.name like ?",
-                                                      "#{ActiveRecord::Base.sanitize_sql_like(word)}%")
-                        )
+                  Frame.left_joins(:user)
+                       .merge(Frame.where("EXISTS(#{Frame.tags_where(tag_name: word).to_sql})"))
                        .or(Frame.where("frames.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
                        .or(Frame.where("frames.creator_name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
                        .or(User.where("users.name like ?", "#{ActiveRecord::Base.sanitize_sql_like(word)}%"))
-                ).distinct
+                )
       end
     else
       if frame_name.present?
@@ -76,12 +73,8 @@ class Frame < ApplicationRecord
 
       if tag_name.present?
         scope = scope.merge(
-          Frame.left_joins(:tags)
-               .merge(
-                  ApplicationTag.where("application_tags.name like ?",
-                            "#{ActiveRecord::Base.sanitize_sql_like(tag_name)}%")
-                )
-        ).distinct
+          Frame.where("EXISTS(#{Frame.tags_where(tag_name:).to_sql})")
+        )
       end
 
       if user_name.present?
@@ -109,6 +102,15 @@ class Frame < ApplicationRecord
     # puts scope.to_sql
     scope
   }
+
+  def self.tags_where(tag_name:)
+    ApplicationTag.joins(:taggings)
+                  .where("application_taggings.tag_id=application_tags.id")
+                  .where("application_taggings.taggable_type='Frame'")
+                  .where("application_taggings.taggable_id=frames.id")
+                  .where("application_tags.name like ?",
+                         "#{ActiveRecord::Base.sanitize_sql_like(tag_name)}%")
+  end
 
   def tag_list
     self.joined_tags
