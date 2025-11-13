@@ -42,7 +42,7 @@ module Login
         authentication = Authentication.find_by(uid: uid, provider: provider)
 
         if authentication
-          email = info["email"]
+          email = info[:email]
           user = ::User.unscoped.find_by(id: authentication.user_id)
           update(user:, email:) if email.present?
         else
@@ -66,8 +66,8 @@ module Login
       end
 
       def find_or_create_from(info:, time_zone:)
-        email = info["email"]
-        name = info["name"]
+        email = info[:email]
+        name = info[:name]
 
         user = ::User.unscoped.find_for_authentication(email:)
 

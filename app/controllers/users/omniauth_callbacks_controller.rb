@@ -37,9 +37,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def callback_for(provider)
     auth = {}
-    auth[:info] = Google::Auth::IDTokens.verify_oidc(auth_params["credential"],
-                                          aud: Settings.google.client_id)
-    auth[:uid] = auth[:info]["sub"]
+    auth[:info] = Google::Auth::IDTokens.verify_oidc(auth_params[:credential],
+                                                     aud: Settings.google.client_id)
+                                        .with_indifferent_access
+    auth[:uid] = auth[:info][:sub]
     auth[:provider] = provider
     auth[:time_zone] = @time_zone
     # puts @time_zone
