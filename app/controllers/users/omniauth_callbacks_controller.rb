@@ -32,7 +32,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def auth_params
-    params.permit(:provider, :credential).to_h
+    params.permit(:provider, :credential, omniauth_callback: [ :provider, :credential ]).to_h
   end
 
   def callback_for(provider)
