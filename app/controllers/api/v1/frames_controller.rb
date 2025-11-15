@@ -72,7 +72,7 @@ module Api
 
       def query_params
         params.permit(
-          :q, :page, frame: {}
+          :q, :page
         ).to_h
       end
 
