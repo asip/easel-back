@@ -6,7 +6,7 @@ require 'rails_helper'
 describe 'oauth/sessions', type: :request do
   include_context :authenticate_google_one_tap_user
 
-  describe 'POST /api/v1/sessions' do
+  describe 'POST /api/v1/oauth/sessions' do
     let_it_be(:endpoint) { '/api/v1/oauth/sessions' }
 
     context 'login (ログイン)' do
