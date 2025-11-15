@@ -71,9 +71,7 @@ module Api
       private
 
       def query_params
-        params.permit(
-          :q, :page
-        ).to_h
+        params.permit(:q, :page).to_h
       end
 
       def path_params
