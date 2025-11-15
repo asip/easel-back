@@ -32,7 +32,7 @@ module Api
       end
 
       def comments
-        comments = Queries::Frames::ListCommentsWithUser.run(frame_id: query_params[:frame_id])
+        comments = Queries::Frames::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
 
         # options = {}
         # options[:include] = [:user]
@@ -72,13 +72,17 @@ module Api
 
       def query_params
         params.permit(
-          :q, :page, :frame_id, frame: {}
+          :q, :page, frame: {}
         ).to_h
       end
 
+      def path_params
+        params.permit(:frame_id).to_h
+      end
+
       def form_params
-        params.require(:frame).permit(
-          :name, :tag_list, :comment, :file, :creator_name, :shooted_at
+        params.expect(
+          frame: [ :name, :tag_list, :comment, :file, :creator_name, :shooted_at ]
         ).to_h
       end
     end
