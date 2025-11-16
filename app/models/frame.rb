@@ -122,7 +122,7 @@ class Frame < ApplicationRecord
     self.joined_tags = tags_list
   end
 
-  def tags_preview
+  def plain_tags
     joined_tags&.split(",")
   end
 
@@ -156,8 +156,8 @@ class Frame < ApplicationRecord
   private
 
   def check_tag
-    errors.add(:tag_list, I18n.t("validations.message.frame.tags.array_length")) if tags_preview.size > 5
-    tags_preview.each do |tag|
+    errors.add(:tag_list, I18n.t("validations.message.frame.tags.array_length")) if plain_tags.size > 5
+    plain_tags.each do |tag|
       if tag.to_s.size > 10
         errors.add(:tag_list, I18n.t("validations.message.frame.tags.length"))
         break

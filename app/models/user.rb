@@ -77,6 +77,8 @@ class User < ApplicationRecord
   def image_proxy_url(key)
     if image.present?
       case key.to_s
+      # when "original"
+      #   image.imgproxy_url
       when "thumb"
         image.imgproxy_url(width: 50, height: 50, resizing_type: :fill)
       when "one"
@@ -99,6 +101,13 @@ class User < ApplicationRecord
     end
   end
 
+  # def assign_derivatives
+  #   return if image.blank?
+  #   return unless errors[:image].empty?
+  #
+  #   image_derivatives!
+  # end
+
   def assign_token(token_)
     @token = token_
   end
@@ -106,13 +115,6 @@ class User < ApplicationRecord
   def update_token
     # return unless saved_change_to_email?
   end
-
-  # def assign_derivatives
-  #   return if image.blank?
-  #   return unless errors[:image].empty?
-  #
-  #   image_derivatives!
-  # end
 
   def reset_token
     @token = nil
