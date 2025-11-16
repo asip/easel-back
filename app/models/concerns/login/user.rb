@@ -57,9 +57,8 @@ module Login
 
       def update(user:, email:)
         return unless user && email.present?
-        if user.email != email
-          user.email = email
-        end
+
+        user.email = email if user.email != email
         user.deleted_at = nil
         user.save!
         user
