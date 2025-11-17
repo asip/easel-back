@@ -128,19 +128,15 @@ class Frame < ApplicationRecord
 
   def file_proxy_url(key)
     # puts key
-    if file.present?
-      case key.to_s
-      when "original"
-        file.imgproxy_url
-      when "two"
-        file.imgproxy_url(width: 240, height: 240, resizing_type: :fit)
-      when  "three"
-        file.imgproxy_url(width: 320, height: 320, resizing_type: :fit)
-      when  "six"
-        file.imgproxy_url(width: 640, height: 640, resizing_type: :fit)
-      else
-        nil
-      end
+    case key.to_s
+    when "original"
+      file&.imgproxy_url
+    when "two"
+      file&.imgproxy_url(width: 240, height: 240, resizing_type: :fit)
+    when  "three"
+      file&.imgproxy_url(width: 320, height: 320, resizing_type: :fit)
+    when  "six"
+      file&.imgproxy_url(width: 640, height: 640, resizing_type: :fit)
     else
       nil
     end

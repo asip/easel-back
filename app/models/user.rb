@@ -22,9 +22,11 @@
 
 # User
 class User < ApplicationRecord
-  include Login::User
   include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
+  include Jwt::Token
+  include Login::User
+  include Follow::User
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -33,8 +35,6 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [ :google_oauth2 ]
 
   self.discard_column = :deleted_at
-
-  attr_reader :token
 
   has_many :authentications, dependent: :destroy
   # accepts_nested_attributes_for :authentications
@@ -75,19 +75,15 @@ class User < ApplicationRecord
   # end
 
   def image_proxy_url(key)
-    if image.present?
-      case key.to_s
-      # when "original"
-      #   image.imgproxy_url
-      when "thumb"
-        image.imgproxy_url(width: 50, height: 50, resizing_type: :fill)
-      when "one"
-        image.imgproxy_url(width: 100, height: 100, resizing_type: :fill)
-      when "three"
-        image.imgproxy_url(width: 320, height: 320, resizing_type: :fill)
-      else
-        nil
-      end
+    case key.to_s
+    # when "original"
+    #   image&.imgproxy_url
+    when "thumb"
+      image&.imgproxy_url(width: 50, height: 50, resizing_type: :fill)
+    when "one"
+      image&.imgproxy_url(width: 100, height: 100, resizing_type: :fill)
+    when "three"
+      image&.imgproxy_url(width: 320, height: 320, resizing_type: :fill)
     else
       nil
     end
@@ -107,31 +103,4 @@ class User < ApplicationRecord
   #
   #   image_derivatives!
   # end
-
-  def assign_token(token_)
-    @token = token_
-  end
-
-  def update_token
-    # return unless saved_change_to_email?
-  end
-
-  def reset_token
-    @token = nil
-  end
-
-  # (フォローしたときの処理)
-  def follow(user_id)
-    follower_relationships.create(followee_id: user_id)
-  end
-
-  # (フォローを外すときの処理)
-  def unfollow(user_id)
-    follower_relationships.find_by(followee_id: user_id)&.destroy
-  end
-
-  # (フォローしているか判定)
-  def following?(user)
-    followees.include?(user)
-  end
 end
