@@ -13,8 +13,7 @@ module TimeZone
     protected
 
     def set_time_zone
-      # puts cookies.to_h
-      # puts cookies[:time_zone]
+      # puts request.headers["Time-Zone"]
       @time_zone = request.headers["Time-Zone"]
       # puts @time_zone
     end
