@@ -18,6 +18,7 @@
 # Admin
 class Admin < ApplicationRecord
   include Errors::Sortable
+  include Errors::Login
   include Login::Admin
 
   # Include default devise modules. Others available are:

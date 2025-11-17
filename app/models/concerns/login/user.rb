@@ -6,6 +6,10 @@ module Login
   module User
     extend ActiveSupport::Concern
 
+    def social_login?
+      authentications.present?
+    end
+
     def validate_password_on_login(form_params)
       password_ = form_params[:password]
       self.password = password_

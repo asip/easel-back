@@ -6,10 +6,6 @@ module Login
   module Admin
     extend ActiveSupport::Concern
 
-    def full_error_messages_on_login
-      full_error_messages_for(%i[email password])
-    end
-
     def validate_password_on_login(form_params)
       password_ = form_params[:password]
       self.password = password_
