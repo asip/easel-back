@@ -44,8 +44,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
                                         .with_indifferent_access
     auth[:uid] = auth[:info][:sub]
     auth[:provider] = provider
-    auth[:time_zone] = @time_zone
-    # puts @time_zone
+    auth[:time_zone] = time_zone
+    # puts time_zone
 
     # puts auth
 
