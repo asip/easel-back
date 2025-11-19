@@ -8,7 +8,6 @@ class DateValidator < ActiveModel::EachValidator
     begin
       Date.parse(value.to_s)
     rescue
-      attribute = attribute.to_s.sub("_before_type_cast", "").to_sym
       record.errors.add(attribute, options[:message] || I18n.t("validations.message.model.date.invalid"))
     end
   end
