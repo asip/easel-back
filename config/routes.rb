@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => "/", as: "rails_admin"
 
-  devise_for :users, path: "",
+  devise_for :users, format: :json,
     controllers: {
       sessions: "users/sessions",
       registrations: "users/registrations",
