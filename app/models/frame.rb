@@ -34,6 +34,7 @@ class Frame < ApplicationRecord
   validates :file, presence: true
   validates :creator_name, length: { maximum: 40 }
   validates :shooted_at_before_type_cast, datetime: true
+  validates :private_before_type_cast, inclusion: { in: [ "true", "false", true, false ] }
   validate :check_tag
 
   # after_validation :assign_derivatives

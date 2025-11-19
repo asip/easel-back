@@ -23,6 +23,7 @@ en:
         creator_name: 'Cameraman/Creator'
         shooted_at: 'Shooting Date'
         comment: 'Comment'
+        private: 'Private'
       comment:
         id: 'ID'
         body: 'Comment'

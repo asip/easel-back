@@ -24,6 +24,7 @@ ja:
         creator_name: '撮影者/作者'
         shooted_at: '撮影日時'
         comment: 'コメント'
+        private: 'プライベート'
       comment:
         id: 'ID'
         body: 'コメント'

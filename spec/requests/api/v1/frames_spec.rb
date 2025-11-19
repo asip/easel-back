@@ -333,6 +333,7 @@ describe 'Frames', type: :request do
                  comment: 'testtest',
                  creator_name: 'test_creator',
                  shooted_at: Time.zone.now,
+                 private: true,
                  file: file_1024
                }
              },
@@ -449,6 +450,28 @@ describe 'Frames', type: :request do
           expect(json_data[:errors][:shooted_at]).to be_present
         end
 
+        it 'private is invalid' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          post endpoint,
+               params: {
+               frame: {
+                 name: 'test_frame',
+                 tag_list: 'test',
+                 comment: 'testtest',
+                 creator_name: 'test_creator',
+                 shooted_at: Time.zone.now,
+                 private: 'test',
+                 file: file_1024
+               }
+             },
+             headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:private]).to be_present
+        end
+
         it 'empty file (file が空の場合)' do
           headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' })
           post endpoint,
@@ -540,7 +563,8 @@ describe 'Frames', type: :request do
                 comment: 'testtest',
                 creator_name: 'test_creator',
                 shooted_at: Time.zone.now,
-                file: file_1024
+                file: file_1024,
+                private: false
               }
             },
             headers: headers
@@ -654,6 +678,28 @@ describe 'Frames', type: :request do
           assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:shooted_at]).to be_present
+        end
+
+        it 'private is invalid' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+              params: {
+                frame: {
+                  name: 'test_frame',
+                  tag_list: 'test',
+                  comment: 'testtest',
+                  creator_name: 'test_creator',
+                  shooted_at: Time.zone.now,
+                  private: 'test',
+                  file: file_1024
+                }
+              },
+              headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:private]).to be_present
         end
 
         it 'empty file (file が空の場合)' do
