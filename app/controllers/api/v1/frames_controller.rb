@@ -26,10 +26,11 @@ module Api
       end
 
       def show
+        frame_id = params[:id]
         if current_user
-          frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], user: current_user)
+          frame = Queries::Frames::FindFrameWithRelations.run(frame_id:, user: current_user)
         else
-          frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], private: false)
+          frame = Queries::Frames::FindFrameWithRelations.run(frame_id:, private: false)
         end
 
         render json: Detail::FrameResource.new(frame).serializable_hash
@@ -75,15 +76,15 @@ module Api
       private
 
       def query_params
-        params.permit(:q, :page).to_h
+        @query_params ||= params.permit(:q, :page).to_h
       end
 
       def path_params
-        params.permit(:frame_id).to_h
+        @path_params ||= params.permit(:frame_id).to_h
       end
 
       def form_params
-        params.expect(
+        @form_params ||= params.expect(
           frame: [ :name, :tag_list, :comment, :file, :creator_name, :shooted_at, :private ]
         ).to_h
       end

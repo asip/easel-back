@@ -16,7 +16,7 @@ class Account::PasswordsController < ApplicationController
   private
 
   def password_params
-    params.expect(
+    @password_params ||= params.expect(
       user: [ :current_password, :password, :password_confirmation ]
     ).to_h
   end

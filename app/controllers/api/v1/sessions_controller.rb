@@ -35,7 +35,7 @@ module Api
       private
 
       def query_params
-        params.permit(:page).to_h
+        @query_params ||= params.permit(:page).to_h
       end
     end
   end

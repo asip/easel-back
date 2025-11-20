@@ -36,7 +36,7 @@ module Api
       private
 
       def form_params
-        params.expect(comment: [ :body ]).to_h
+        @form_params ||= params.expect(comment: [ :body ]).to_h
       end
     end
   end

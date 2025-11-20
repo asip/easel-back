@@ -29,7 +29,7 @@ module Api
       private
 
       def path_params
-        params.permit(:user_id).to_h
+        @path_params ||= params.permit(:user_id).to_h
       end
     end
   end
