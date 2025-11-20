@@ -10,6 +10,7 @@
 #  encrypted_password :string           default(""), not null
 #  image_data         :text
 #  name               :string           not null
+#  profile            :text
 #  time_zone          :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
