@@ -15,11 +15,11 @@ module Queries
       end
 
       def execute
-        if @private.nil? && @user.nil?
+        if @user.blank? && @private.blank?
           Frame.eager_load(:user, comments: :user).find_by!(id: @frame_id)
-        elsif @user.nil? && !@private.nil?
+        elsif @user.blank? && @private.present?
           Frame.eager_load(:user, comments: :user).find_by!(id: @frame_id, private: @private)
-        elsif !@user.nil? && @private.nil?
+        elsif @user.present? && @private.blank?
           Frame.eager_load(:user, comments: :user)
           .merge(
             Frame.where(user_id: @user.id).or(
