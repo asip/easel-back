@@ -26,6 +26,6 @@ class FrameSearchForm
   end
 
   def to_h
-    self.attributes.with_indifferent_access
+    attributes.with_indifferent_access
   end
 end
