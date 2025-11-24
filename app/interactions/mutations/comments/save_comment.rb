@@ -12,14 +12,20 @@ module Mutations
 
       def initialize(user:, comment:)
         @user = user
-        @comment = comment
+        self.comment = comment
       end
 
       def execute
-        @comment.user_id = @user.id
-        return if @comment.save
+        comment.user_id = @user.id
+        return if comment.save
 
-        errors.merge!(@comment.errors)
+        errors.merge!(comment.errors)
+      end
+
+      private
+
+      def comment=(comment)
+        @comment = comment
       end
     end
   end

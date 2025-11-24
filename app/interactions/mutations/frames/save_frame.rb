@@ -12,14 +12,20 @@ module Mutations
 
       def initialize(user:, frame:)
         @user = user
-        @frame = frame
+        self.frame = frame
       end
 
       def execute
-        @frame.user_id = @user.id
-        return if @frame.save
+        frame.user_id = @user.id
+        return if frame.save
 
-        errors.merge!(@frame.errors)
+        errors.merge!(frame.errors)
+      end
+
+      private
+
+      def frame=(frame)
+        @frame = frame
       end
     end
   end

@@ -21,7 +21,13 @@ module Mutations
         comment.attributes = @form_params
         mutation = Mutations::Comments::SaveComment.run(user: @user, comment:)
         errors.merge!(mutation.errors) unless mutation.success?
-        @comment = mutation.comment
+        self.comment = mutation.comment
+      end
+
+      private
+
+      def comment=(comment)
+        @comment = comment
       end
     end
   end

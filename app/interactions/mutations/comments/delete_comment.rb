@@ -16,9 +16,15 @@ module Mutations
       end
 
       def execute
-        @comment = Comment.find_by!(id: @comment_id, user_id: @user.id)
-        @comment.destroy
-        @comment
+        comment = Comment.find_by!(id: @comment_id, user_id: @user.id)
+        comment.destroy
+        self.comment = comment
+      end
+
+      private
+
+      def comment=(comment)
+        @comment = comment
       end
     end
   end

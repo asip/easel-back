@@ -16,9 +16,15 @@ module Mutations
       end
 
       def execute
-        @frame = Frame.find_by!(id: @frame_id, user_id: @user.id)
-        @frame.destroy
-        @frame
+        frame = Frame.find_by!(id: @frame_id, user_id: @user.id)
+        frame.destroy
+        self.frame = frame
+      end
+
+      private
+
+      def frame=(frame)
+        @frame = frame
       end
     end
   end
