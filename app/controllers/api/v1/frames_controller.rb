@@ -12,9 +12,8 @@ module Api
       skip_before_action :authenticate_user!, only: %i[index show comments]
 
       def index
-        query = query_params[:q]
         page = query_params[:page]
-        items = Json::Util.to_hash(query)
+        items = Json::Util.to_hash(query_params[:q])
         form = FrameSearchForm.new(items)
         if form.valid?
           pagination, frames = list_frames(items: form.to_h, page:)
@@ -46,7 +45,7 @@ module Api
       end
 
       def create
-        mutation = Mutations::Frames::CreateFrame.run(user: current_user, form_params:)
+        mutation = Mutations::Frames::CreateFrame.run(user: current_user, form: form_params)
         frame = mutation.frame
 
         if mutation.success?
@@ -57,7 +56,7 @@ module Api
       end
 
       def update
-        mutation = Mutations::Frames::UpdateFrame.run(user: current_user, frame_id: params[:id], form_params:)
+        mutation = Mutations::Frames::UpdateFrame.run(user: current_user, frame_id: params[:id], form: form_params)
         frame = mutation.frame
 
         if mutation.success?

@@ -10,13 +10,13 @@ module Mutations
 
       attr_reader :frame
 
-      def initialize(user:, form_params:)
+      def initialize(user:, form:)
         @user = user
-        @form_params = form_params
+        @form = form
       end
 
       def execute
-        frame = Frame.new(@form_params)
+        frame = Frame.new(@form)
         mutation = Mutations::Frames::SaveFrame.run(user: @user, frame:)
         errors.merge!(mutation.errors) unless mutation.success?
         self.frame = mutation.frame

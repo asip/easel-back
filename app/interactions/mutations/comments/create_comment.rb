@@ -10,14 +10,14 @@ module Mutations
 
       attr_reader :comment
 
-      def initialize(user:, frame_id:, form_params:)
+      def initialize(user:, frame_id:, form:)
         @user = user
         @frame_id = frame_id
-        @form_params = form_params
+        @form = form
       end
 
       def execute
-        comment = Comment.new(@form_params)
+        comment = Comment.new(@form)
         comment.frame_id = @frame_id
         mutation = Mutations::Comments::SaveComment.run(user: @user, comment:)
         errors.merge!(mutation.errors) unless mutation.success?

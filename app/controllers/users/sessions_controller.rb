@@ -42,7 +42,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def login_failed
-    success, user = User.validate_on_login(form_params: sign_in_params)
+    success, user = User.validate_on_login(form: sign_in_params)
     return if success
 
     render json: { errors: user.errors.to_hash(false) }.to_json, status: :unprocessable_entity
