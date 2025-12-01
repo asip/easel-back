@@ -16,7 +16,7 @@ module Api
         items = Json::Util.to_hash(query_params[:q])
         form = FrameSearchForm.new(items)
         if form.valid?
-          pagination, frames = list_frames(items: form.to_h, page:)
+          pagination, frames = list_frames(user: current_user, items: form.to_h, page:)
 
           render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
         else
@@ -24,13 +24,12 @@ module Api
         end
       end
 
+      def authenticated
+        index
+      end
+
       def show
-        frame_id = params[:id]
-        if current_user
-          frame = Queries::Frames::FindFrameWithRelations.run(frame_id:, user: current_user)
-        else
-          frame = Queries::Frames::FindFrameWithRelations.run(frame_id:, private: false)
-        end
+        frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], private: false)
 
         render json: Detail::FrameResource.new(frame).serializable_hash
       end

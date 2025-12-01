@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       get "/account/frames" => "/api/v1/sessions#frames"
       get "/account/frames/:id" => "/api/v1/sessions#frame"
       get "/account/following/:user_id" => "/api/v1/follow_relationships#following"
+      get "/frames/authenticated" => "/api/v1/frames#authenticated"
       resources :frames, only: %i[index show create update destroy] do
         get "/comments" => "/api/v1/frames#comments"
         resources :comments, only: %i[create update]

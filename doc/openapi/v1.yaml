@@ -56,6 +56,8 @@ paths:
                     type: string
                   social_login:
                     type: boolean
+                  profile:
+                    nullable: true
                 required:
                 - id
                 - name
@@ -311,6 +313,8 @@ paths:
                     type: string
                   social_login:
                     type: boolean
+                  profile:
+                    nullable: true
                 required:
                 - id
                 - name
@@ -373,6 +377,8 @@ paths:
                     type: string
                   social_login:
                     type: boolean
+                  profile:
+                    nullable: true
                 required:
                 - id
                 - name
@@ -463,6 +469,8 @@ paths:
                     type: string
                   social_login:
                     type: boolean
+                  profile:
+                    nullable: true
                 required:
                 - id
                 - name
@@ -678,6 +686,8 @@ paths:
                     file:
                       type: string
                       format: binary
+                    private:
+                      type: string
                   required:
                   - name
                   - tag_list
@@ -776,8 +786,137 @@ paths:
                         type: array
                         items:
                           type: string
+                      private:
+                        type: array
+                        items:
+                          type: string
                 required:
                 - errors
+  "/api/v1/frames/authenticated":
+    get:
+      summary: authenticated
+      tags:
+      - Api::V1::Frame
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  frames:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        user_id:
+                          type: integer
+                        user_name:
+                          type: string
+                        name:
+                          type: string
+                        creator_name:
+                          type: string
+                        private:
+                          type: boolean
+                        tag_list:
+                          type: array
+                          items:
+                            type: string
+                        file_url:
+                          nullable: true
+                        file_two_url:
+                          nullable: true
+                        file_three_url:
+                          nullable: true
+                        file_six_url:
+                          nullable: true
+                      required:
+                      - id
+                      - user_id
+                      - user_name
+                      - name
+                      - creator_name
+                      - private
+                      - tag_list
+                      - file_url
+                      - file_two_url
+                      - file_three_url
+                      - file_six_url
+                  meta:
+                    type: object
+                    properties:
+                      pagination:
+                        type: object
+                        properties:
+                          count:
+                            type: integer
+                          pages:
+                            type: integer
+                          page:
+                            type: integer
+                          per:
+                            type: integer
+                        required:
+                        - count
+                        - pages
+                        - page
+                        - per
+                    required:
+                    - pagination
+                required:
+                - frames
+                - meta
+        '422':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      word:
+                        type: array
+                        items:
+                          type: string
+                      frame_name:
+                        type: array
+                        items:
+                          type: string
+                      tag_name:
+                        type: array
+                        items:
+                          type: string
+                      user_name:
+                        type: array
+                        items:
+                          type: string
+                      creator_name:
+                        type: array
+                        items:
+                          type: string
+                      date:
+                        type: array
+                        items:
+                          type: string
+                required:
+                - errors
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: q
+        in: query
+        required: false
+        schema:
+          type: string
   "/api/v1/frames/{frame_id}/comments":
     get:
       summary: comments
@@ -1190,6 +1329,8 @@ paths:
                     file:
                       type: string
                       format: binary
+                    private:
+                      type: string
                   required:
                   - name
                   - tag_list
@@ -1288,6 +1429,10 @@ paths:
                         type: array
                         items:
                           type: string
+                      private:
+                        type: array
+                        items:
+                          type: string
                 required:
                 - errors
   "/api/v1/oauth/sessions":
@@ -1332,6 +1477,8 @@ paths:
                     type: string
                   social_login:
                     type: boolean
+                  profile:
+                    nullable: true
                 required:
                 - id
                 - name
@@ -1388,6 +1535,8 @@ paths:
                     type: string
                   social_login:
                     type: boolean
+                  profile:
+                    nullable: true
                 required:
                 - id
                 - name
@@ -1510,6 +1659,8 @@ paths:
                     type: string
                   social_login:
                     type: boolean
+                  profile:
+                    nullable: true
                 required:
                 - id
                 - name
@@ -1580,6 +1731,8 @@ paths:
                     type: string
                   image_three_url:
                     type: string
+                  profile:
+                    nullable: true
                 required:
                 - id
                 - name

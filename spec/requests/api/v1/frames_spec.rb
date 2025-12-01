@@ -252,6 +252,275 @@ describe 'Frames', type: :request do
     end
   end
 
+  describe 'GET /api/v1/frames/authenticated' do
+    let_it_be(:endpoint) { '/api/v1/frames/authenticated' }
+    let_it_be(:user) { create(:user, password: 'testtest') }
+    let_it_be(:tag1) { create(:application_tag, name: 'testA0') }
+    let_it_be(:tag2) { create(:application_tag, name: 'testA1') }
+    let!(:headers) { authenticated_headers(request, user) }
+
+    before_all do
+      frame_01 = create(:frame, :skip_validate, user: user, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
+      create(:application_tagging, tag_id: tag1.id, taggable_id: frame_01.id)
+      frame_02 = create(:frame, :skip_validate, user: user, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
+      create(:application_tagging, tag_id: tag2.id, taggable_id: frame_02.id)
+      create(:frame, :skip_validate, user: user, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01', private: true)
+      create(:frame, :skip_validate, user: user, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01', private: true)
+      create(:frame, :skip_validate, user: user, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01', private: true)
+      create(:frame, :skip_validate, user: user, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01', private: true)
+      create(:frame, :skip_validate, user: user, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user: user, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user: user, name: 'test50', tag_list: 'testE0', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user: user, name: 'test51', tag_list: 'testE1', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user: user, name: 'test62', tag_list: 'testF2', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user: user, name: 'test63', tag_list: 'testF3', shooted_at: '2022/04/01')
+    end
+
+    context 'get frame list (フレームリスト取得)' do
+      context 'page=1 (1ページめ)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'page=2 (2ページめ)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { page: 2 }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "word": "test1" } (frame name)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { word: 'test1' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "word": "testA" } (tag name)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { word: 'testA' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "word": "test" } (user name)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { word: 'test' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "word": "test_creator" } (creator name)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { word: 'test_creator' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "word": "2022/01/01" } (shooted_at)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { word: '2022/01/01' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "word": Time.zone.today } (created_at / updated_at)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { word: Time.zone.today.strftime('%Y/%m/%d') }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "frame_name": "test1" } (frame name)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { frame_name: 'test1' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "tag_name": "testA" } (tag name)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { tag_name: 'testA' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "user_name": "test" } (user name)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { user_name: 'test' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "creator_name": "test_creator" } (creator name)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { creator_name: 'test_creator' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+      context 'q={ "date": "2022/01/01" } (shooted_at)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { date: '2022/01/01' }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 2
+        end
+      end
+
+      context 'q={ "date": Time.zone.today } (created_at / updated_at)' do
+        it 'success (成功)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { date: Time.zone.today.strftime('%Y/%m/%d') }.to_json }, headers: headers
+          # expect(response.status).to eq 200
+          assert_request_schema_confirm
+          assert_response_schema_confirm(200)
+          json_data = json[:frames]
+          expect(json_data.size).to be 8
+        end
+      end
+
+       context 'q={ "word": exceeds 40 characters }' do
+        it 'failure (失敗)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { word: Faker::Alphanumeric.alpha(number: 41) }.to_json }, headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:word]).to be_present
+        end
+      end
+
+      context 'q={ "frame_name": exceeds 30 characters } (frame name)' do
+        it 'failure (失敗)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { frame_name: Faker::Alphanumeric.alpha(number: 31) }.to_json }, headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:frame_name]).to be_present
+        end
+      end
+
+      context 'q={ "tag_name": exceeds 10 characters } (tag name)' do
+        it 'failure (失敗)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { tag_name: Faker::Alphanumeric.alpha(number: 11) }.to_json }, headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:tag_name]).to be_present
+        end
+      end
+
+      context 'q={ "user_name": exceeds 40 characters } (user name)' do
+        it 'failure (失敗)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { user_name: Faker::Alphanumeric.alpha(number: 41) }.to_json }, headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:user_name]).to be_present
+        end
+      end
+
+      context 'q={ "creator_name": exceeds 40 characters } (creator name)' do
+        it 'failure (失敗)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { creator_name: Faker::Alphanumeric.alpha(number: 41) }.to_json }, headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:creator_name]).to be_present
+        end
+      end
+
+      context 'q={ "date": invalid date } (date)' do
+        it 'failure (失敗)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          get endpoint, params: { q: { date: "AAAA/AA/AA" }.to_json }, headers: headers
+          # expect(response.status).to eq 422
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:date]).to be_present
+        end
+      end
+    end
+  end
+
   describe 'GET /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
     let_it_be(:endpoint_failure) { '/api/v1/frames/404' }

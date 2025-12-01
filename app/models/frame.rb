@@ -39,7 +39,7 @@ class Frame < ApplicationRecord
 
   # after_validation :assign_derivatives
 
-  scope :search_by, ->(items:) do
+  scope :search_by, ->(user:, items:) do
     scope = current_scope || relation
 
     word = items[:word]
@@ -48,6 +48,12 @@ class Frame < ApplicationRecord
     user_name = items[:user_name]
     creator_name = items[:creator_name]
     date = items[:date]
+
+    scope = scope.where(private: false)
+
+    if user.present?
+      scope = scope.or(Frame.where(user_id: user.id, private: true))
+    end
 
     if word.present?
       scope = if DateAndTime::Util.valid_date?(word)

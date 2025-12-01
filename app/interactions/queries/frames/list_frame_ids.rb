@@ -8,12 +8,13 @@ module Queries
     class ListFrameIds
       include Query
 
-      def initialize(items:)
+      def initialize(user:, items:)
+        @user = user
         @items = items
       end
 
       def execute
-        Frame.select(:id).where(private: false).search_by(items: @items).order(created_at: :desc)
+        Frame.select(:id).search_by(user: @user, items: @items).order(created_at: :desc)
       end
     end
   end
