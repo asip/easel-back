@@ -175,94 +175,6 @@ paths:
         required: false
         schema:
           type: integer
-  "/api/v1/account/frames/{id}":
-    get:
-      summary: frame
-      tags:
-      - Api::V1::Session
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-      responses:
-        '200':
-          description: success (成功)
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  user_id:
-                    type: integer
-                  user_name:
-                    type: string
-                  name:
-                    type: string
-                  creator_name:
-                    type: string
-                  private:
-                    type: boolean
-                  tag_list:
-                    nullable: true
-                    type: array
-                    items:
-                      type: string
-                  file_url:
-                    nullable: true
-                  file_two_url:
-                    nullable: true
-                  file_three_url:
-                    nullable: true
-                  file_six_url:
-                    nullable: true
-                  comment:
-                    nullable: true
-                  shooted_at:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  comments:
-                    type: array
-                    items: {}
-                required:
-                - id
-                - user_id
-                - user_name
-                - name
-                - creator_name
-                - private
-                - tag_list
-                - file_url
-                - file_two_url
-                - file_three_url
-                - file_six_url
-                - comment
-                - shooted_at
-                - created_at
-                - updated_at
-                - comments
-        '404':
-          description: failure (失敗)
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  title:
-                    type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
-                required:
-                - title
-                - errors
   "/api/v1/account/password":
     put:
       summary: update
@@ -794,7 +706,7 @@ paths:
                 - errors
   "/api/v1/frames/authenticated":
     get:
-      summary: authenticated
+      summary: authenticated_index
       tags:
       - Api::V1::Frame
       responses:
@@ -917,6 +829,92 @@ paths:
         required: false
         schema:
           type: string
+  "/api/v1/frames/{frame_id}/authenticated":
+    get:
+      summary: authenticated
+      tags:
+      - Api::V1::Frame
+      parameters:
+      - name: frame_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  user_name:
+                    type: string
+                  name:
+                    type: string
+                  creator_name:
+                    type: string
+                  private:
+                    type: boolean
+                  tag_list:
+                    type: array
+                    items: {}
+                  file_url:
+                    nullable: true
+                  file_two_url:
+                    nullable: true
+                  file_three_url:
+                    nullable: true
+                  file_six_url:
+                    nullable: true
+                  comment:
+                    nullable: true
+                  shooted_at:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  comments:
+                    type: array
+                    items: {}
+                required:
+                - id
+                - user_id
+                - user_name
+                - name
+                - creator_name
+                - private
+                - tag_list
+                - file_url
+                - file_two_url
+                - file_three_url
+                - file_six_url
+                - comment
+                - shooted_at
+                - created_at
+                - updated_at
+                - comments
+        '404':
+          description: failure (失敗)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - title
+                - errors
   "/api/v1/frames/{frame_id}/comments":
     get:
       summary: comments

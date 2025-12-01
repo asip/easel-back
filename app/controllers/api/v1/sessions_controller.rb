@@ -20,12 +20,6 @@ module Api
         render json: AccountResource.new(user).serializable_hash
       end
 
-      def frame
-        frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], user: current_user)
-
-        render json: Detail::FrameResource.new(frame).serializable_hash
-      end
-
       def frames
         pagination, frames = list_frames(user: current_user, page: query_params[:page])
 

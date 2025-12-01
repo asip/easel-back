@@ -24,12 +24,18 @@ module Api
         end
       end
 
-      def authenticated
+      def authenticated_index
         index
       end
 
       def show
         frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], private: false)
+
+        render json: Detail::FrameResource.new(frame).serializable_hash
+      end
+
+      def authenticated
+        frame = Queries::Frames::FindFrameWithRelations.run(frame_id: path_params[:frame_id], user: current_user)
 
         render json: Detail::FrameResource.new(frame).serializable_hash
       end

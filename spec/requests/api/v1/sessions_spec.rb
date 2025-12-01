@@ -107,57 +107,6 @@ describe 'Sessions', type: :request do
     end
   end
 
-  describe 'GET /api/v1/account/frames/:id' do
-    let(:endpoint) { "/api/v1/account/frames/#{frame.id}" }
-    let_it_be(:endpoint_failure) { '/api/v1/account/frames/404' }
-    let_it_be(:user) { create(:user, password: 'testtest') }
-    let!(:headers) { authenticated_headers(request, user) }
-
-    context 'get frame (フレーム情報取得)' do
-      context 'private = false' do
-        let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
-
-        it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
-          get endpoint, headers: headers
-          # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
-          # json_data = json
-        end
-
-        it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
-          get endpoint_failure, headers: headers
-          # expect(response.status).to eq 404
-          assert_request_schema_confirm
-        assert_response_schema_confirm(404)
-        end
-      end
-
-      context 'private = true' do
-        let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id, private: true) }
-
-        it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
-          get endpoint, headers: headers
-          # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
-          # json_data = json
-        end
-
-        it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
-          get endpoint_failure, headers: headers
-          # expect(response.status).to eq 404
-          assert_request_schema_confirm
-          assert_response_schema_confirm(404)
-        end
-      end
-    end
-  end
-
   describe 'GET /api/v1/account/frames' do
     let_it_be(:endpoint) { "/api/v1/account/frames" }
     let_it_be(:user) { create(:user, password: 'testtest') }
