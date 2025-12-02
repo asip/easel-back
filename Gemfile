@@ -74,6 +74,7 @@ gem "pagy", "~> 43.1.8"
 gem "no_fly_list", "0.7.3"
 
 # json
+gem "oj", "3.16.12"
 gem "alba", "3.10.0"
 
 # Rack::Locale

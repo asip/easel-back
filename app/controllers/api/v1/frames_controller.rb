@@ -18,7 +18,7 @@ module Api
         if form.valid?
           pagination, frames = list_frames(user: current_user, items: form.to_h, page:)
 
-          render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
+          render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
         else
           render json: { errors: form.errors.to_hash(false) }.to_json, status: :unprocessable_entity
         end

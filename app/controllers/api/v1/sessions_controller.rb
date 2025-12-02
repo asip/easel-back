@@ -23,7 +23,7 @@ module Api
       def frames
         pagination, frames = list_frames(user: current_user, page: query_params[:page])
 
-        render json: JSON.parse(ListItem::FrameResource.new(frames).serialize).merge(pagination)
+        render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
       end
 
       private

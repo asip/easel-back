@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require 'oj'
+
 module ResponseHelpers
   def json
-    ActiveSupport::HashWithIndifferentAccess.new(JSON.parse(response.body, symbolize_names: true))
+    ActiveSupport::HashWithIndifferentAccess.new(Oj.load(response.body, symbolize_names: true))
   end
 end
 
