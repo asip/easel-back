@@ -11,7 +11,7 @@ namespace :easel do
       tag_id_map[tag.id] = application_tag.id
     }
 
-    ActsAsTaggableOn::Tagging.all.each { |tagging|
+    ActsAsTaggableOn::Tagging.find_each { |tagging|
       application_tagging = ApplicationTagging.new
       application_tagging.tag_id = tag_id_map[tagging.tag_id]
       application_tagging.taggable_type = tagging.taggable_type
