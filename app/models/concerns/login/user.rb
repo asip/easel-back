@@ -23,8 +23,10 @@ module Login
       errors.add(:email, I18n.t("action.login.invalid")) if form[:email].present? && !errors.include?(:email)
     end
 
-    def enable_with(email:)
-      self.email = email if self.email != email
+    def enable_with(info:)
+      email = info[:email]
+
+      self.email = email if email.present? && self.email != email
       self.deleted_at = nil
       self.save!
       self
@@ -64,9 +66,8 @@ module Login
         authentication = ::Authentication.find_by(uid: uid, provider: provider)
 
         if authentication
-          email = info[:email]
           user = ::User.unscoped.find_by(id: authentication.user_id)
-          user.enable_with(email:) if user && email.present?
+          user.enable_with(info:) if user.present?
         else
           user = find_or_create_from(info:, time_zone:)
           ::Authentication.create_from(user:, provider:, uid:)
