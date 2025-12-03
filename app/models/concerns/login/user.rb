@@ -23,6 +23,13 @@ module Login
       errors.add(:email, I18n.t("action.login.invalid")) if form[:email].present? && !errors.include?(:email)
     end
 
+    def enable_with(email:)
+      self.email = email if self.email != email
+      self.deleted_at = nil
+      self.save!
+      self
+    end
+
     class_methods do
       def validate_on_login(form:)
         user = ::User.find_for_authentication(email: form[:email])
@@ -54,7 +61,7 @@ module Login
         info = auth[:info] || {}
 
         # (認証レコードを検索)
-        authentication = Authentication.find_by(uid: uid, provider: provider)
+        authentication = ::Authentication.find_by(uid: uid, provider: provider)
 
         if authentication
           email = info[:email]
@@ -62,7 +69,7 @@ module Login
           user.enable_with(email:) if user && email.present?
         else
           user = find_or_create_from(info:, time_zone:)
-          create_authentication_from(user:, provider:, uid:)
+          ::Authentication.create_from(user:, provider:, uid:)
         end
 
         user
@@ -89,22 +96,6 @@ module Login
         user.save!
         user
       end
-
-      def create_authentication_from(user:, provider:, uid:)
-        authentication = Authentication.new(
-          user: user,
-          provider: provider,
-          uid: uid
-        )
-        authentication.save!
-      end
-    end
-
-    def enable_with(email:)
-      self.email = email if self.email != email
-      self.deleted_at = nil
-      self.save!
-      self
     end
   end
 end
