@@ -59,25 +59,16 @@ module Login
         if authentication
           email = info[:email]
           user = ::User.unscoped.find_by(id: authentication.user_id)
-          update(user:, email:) if email.present?
+          user.enable_with(email:) if user && email.present?
         else
           user = find_or_create_from(info:, time_zone:)
-          create_authentication_for(user:, provider:, uid:)
+          create_authentication_from(user:, provider:, uid:)
         end
 
         user
       end
 
       private
-
-      def update(user:, email:)
-        return unless user && email.present?
-
-        user.email = email if user.email != email
-        user.deleted_at = nil
-        user.save!
-        user
-      end
 
       def find_or_create_from(info:, time_zone:)
         email = info[:email]
@@ -99,7 +90,7 @@ module Login
         user
       end
 
-      def create_authentication_for(user:, provider:, uid:)
+      def create_authentication_from(user:, provider:, uid:)
         authentication = Authentication.new(
           user: user,
           provider: provider,
@@ -107,6 +98,13 @@ module Login
         )
         authentication.save!
       end
+    end
+
+    def enable_with(email:)
+      self.email = email if self.email != email
+      self.deleted_at = nil
+      self.save!
+      self
     end
   end
 end
