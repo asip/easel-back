@@ -45,16 +45,6 @@ module Login
         [ success, user ]
       end
 
-      def auth_from(credential:, provider:)
-        auth = {}
-        auth[:info] = Google::Auth::IDTokens.verify_oidc(credential,
-                                                         aud: Settings.google.client_id)
-                                            .with_indifferent_access
-        auth[:uid] = auth[:info][:sub]
-        auth[:provider] = provider
-        auth
-      end
-
       def from(auth:, time_zone:)
         uid = auth[:uid]
         provider = auth[:provider]
@@ -73,8 +63,6 @@ module Login
 
         user
       end
-
-      private
 
       def find_or_create_from(info:, time_zone:)
         email = info[:email]
