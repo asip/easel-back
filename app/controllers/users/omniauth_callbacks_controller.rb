@@ -38,7 +38,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def callback_for(provider)
-    auth = Google::Oauth.auth_from(provider:, credential: auth_params[:credential],)
+    auth = Auth::Google.auth_from(provider:, credential: auth_params[:credential],)
     user = User.from(auth:, time_zone:)
     sign_in(user, event: :authentication)
 
