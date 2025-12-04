@@ -41,7 +41,7 @@ gem "vite_rails", "3.0.19"
 gem "view_component", "~> 4.1.1"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.205.0"
+gem "aws-sdk-s3", "~> 1.206.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.16.0"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.1.8"
+gem "pagy", "~> 43.2.0"
 
 # tags
 gem "no_fly_list", "0.7.3"
@@ -134,10 +134,10 @@ group :test do
   # gem "selenium-webdriver", "~> 4.35.0"
 
   gem "factory_bot_rails", "~> 6.5.1"
-  gem "faker", "~> 3.5.2"
+  gem "faker", "~> 3.5.3"
   gem "rspec-rails", "~> 8.0.2"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.21.1"
+  gem "rspec-openapi", "~> 0.21.2"
   gem "committee-rails", "~> 0.9.0"
   gem "test-prof", "~> 1.4.4"
 end
