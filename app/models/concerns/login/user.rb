@@ -45,21 +45,19 @@ module Login
         [ success, user ]
       end
 
-      def auth_from(credential:, provider:, time_zone:)
+      def auth_from(credential:, provider:)
         auth = {}
         auth[:info] = Google::Auth::IDTokens.verify_oidc(credential,
                                                          aud: Settings.google.client_id)
                                             .with_indifferent_access
         auth[:uid] = auth[:info][:sub]
         auth[:provider] = provider
-        auth[:time_zone] = time_zone
         auth
       end
 
-      def from(auth:)
+      def from(auth:, time_zone:)
         uid = auth[:uid]
         provider = auth[:provider]
-        time_zone = auth[:time_zone]
         info = auth[:info] || {}
 
         # (認証レコードを検索)

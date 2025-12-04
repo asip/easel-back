@@ -38,8 +38,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def callback_for(provider)
-    auth = User.auth_from(provider:, credential: auth_params[:credential], time_zone:)
-    user = User.from(auth:)
+    auth = User.auth_from(provider:, credential: auth_params[:credential],)
+    user = User.from(auth:, time_zone:)
     sign_in(user, event: :authentication)
 
     render json: AccountResource.new(user).serializable_hash
