@@ -74,7 +74,7 @@ gem "pagy", "~> 43.2.0"
 gem "no_fly_list", "0.7.3"
 
 # json
-gem "oj", "3.16.12"
+gem "oj", "3.16.13"
 gem "alba", "3.10.0"
 
 # Rack::Locale
@@ -139,5 +139,5 @@ group :test do
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.21.2"
   gem "committee-rails", "~> 0.9.0"
-  gem "test-prof", "~> 1.4.4"
+  gem "test-prof", "~> 1.5.0"
 end
