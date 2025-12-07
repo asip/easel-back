@@ -43,9 +43,6 @@ module Api
       def comments
         comments = Queries::Frames::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
 
-        # options = {}
-        # options[:include] = [:user]
-
         render json: CommentResource.new(comments).serialize
       end
 
