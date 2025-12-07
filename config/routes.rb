@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     put "api/v1/account/profile", to: "users/registrations#update"
     delete "/api/v1/account", to: "users/registrations#destroy"
     get "/api/v1/users/:id", to: "api/v1/users#show"
-    post "/api/v1/oauth/sessions", to: "users/omniauth_callbacks#google_oauth2"
+    post "/api/v1/oauth/sessions", to: "users/omniauth_callbacks#google"
   end
 
   # root ""

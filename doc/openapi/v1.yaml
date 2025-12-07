@@ -1435,7 +1435,7 @@ paths:
                 - errors
   "/api/v1/oauth/sessions":
     post:
-      summary: google_oauth2
+      summary: google
       tags:
       - Users::OmniauthCallback
       requestBody:

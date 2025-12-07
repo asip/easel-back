@@ -33,7 +33,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
-  devise :omniauthable, omniauth_providers: [ :google_oauth2 ]
+  devise :omniauthable, omniauth_providers: [ :google ]
 
   self.discard_column = :deleted_at
 

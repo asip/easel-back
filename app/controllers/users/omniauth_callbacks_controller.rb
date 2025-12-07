@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
 
-  def google_oauth2
+  def google
     callback_for(:google)
   end
 
