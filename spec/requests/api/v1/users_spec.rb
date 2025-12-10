@@ -210,6 +210,26 @@ describe 'Users', type: :request do
           expect(json_data[:errors][:email]).to be_present
         end
 
+        it 'profile exceeds 160 characters (プロフィールが160文字を超える場合)' do
+          post endpoint,
+               params: {
+                 user: {
+                   name: 'test',
+                   email: 'test@test.jp',
+                   profile: Faker::Alphanumeric.alpha(number: 161),
+                   password: 'testtest',
+                   password_confirmation: 'testtest',
+                   time_zone: 'Asia/Tokyo'
+                 }
+               },
+               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:profile]).to be_present
+        end
+
         it 'password is less than 6 characters (パスワードが6文字に満たない場合)' do
           post endpoint,
                params: {
@@ -434,6 +454,25 @@ describe 'Users', type: :request do
           assert_response_schema_confirm(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
+        end
+
+        it 'profile exceeds 160 characters (プロフィールが160文字を超える場合)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint,
+              params: {
+                user: {
+                  name: 'test',
+                  email: 'test@test.jp',
+                  profile: Faker::Alphanumeric.alpha(number: 161),
+                  time_zone: 'Asia/Tokyo'
+                }
+              },
+              headers: headers
+          # expect(response.status).to eq(422)
+          assert_request_schema_confirm
+          assert_response_schema_confirm(422)
+          json_data = json
+          expect(json_data[:errors][:profile]).to be_present
         end
 
         it 'image exceeds 5mb (イメージが5MBを超えている場合)' do

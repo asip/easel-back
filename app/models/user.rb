@@ -60,7 +60,8 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 3, maximum: 40 }, unless: -> { validation_context == :login } # , format: { with: VALID_NAME_REGEX }
   # validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP },
   #                   uniqueness: true
-  validates :time_zone, presence: true, unless: -> { validation_context == :login }, on: :create
+  validates :time_zone, presence: true, unless: -> { validation_context == :login }
+  validates :profile, length: { maximum: 160 }, unless: -> { validation_context == :login }
 
   # after_validation :assign_derivatives
 
