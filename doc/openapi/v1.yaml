@@ -414,37 +414,11 @@ paths:
                         type: array
                         items:
                           type: string
+                      profile:
+                        type: array
+                        items:
+                          type: string
                 required:
-                - errors
-  "/api/v1/comments/{id}":
-    delete:
-      summary: destroy
-      tags:
-      - Api::V1::Comment
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-      responses:
-        '204':
-          description: success (成功)
-        '404':
-          description: failure (失敗)
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  title:
-                    type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
-                required:
-                - title
                 - errors
   "/api/v1/frames":
     get:
@@ -912,6 +886,8 @@ paths:
                     type: array
                     items:
                       type: string
+                  source:
+                    type: string
                 required:
                 - title
                 - errors
@@ -1030,6 +1006,25 @@ paths:
                 - user_image_url
                 - created_at
                 - updated_at
+        '404':
+          description: frame has been deleted (frame削除済み)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                  source:
+                    type: string
+                required:
+                - title
+                - errors
+                - source
         '422':
           description: empty body (bodyが空の場合)
           content:
@@ -1049,6 +1044,43 @@ paths:
                 required:
                 - errors
   "/api/v1/frames/{frame_id}/comments/{id}":
+    delete:
+      summary: destroy
+      tags:
+      - Api::V1::Comment
+      parameters:
+      - name: frame_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: success (成功)
+        '404':
+          description: comment has been deleted (コメント削除済み)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                  source:
+                    type: string
+                required:
+                - title
+                - errors
+                - source
     put:
       summary: update
       tags:
@@ -1112,6 +1144,25 @@ paths:
                 - user_image_url
                 - created_at
                 - updated_at
+        '404':
+          description: comment has been deleted (コメント削除済み)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                  source:
+                    type: string
+                required:
+                - title
+                - errors
+                - source
         '422':
           description: empty body (bodyが空の場合)
           content:
@@ -1203,7 +1254,7 @@ paths:
                 - updated_at
                 - comments
         '404':
-          description: failure (失敗)
+          description: frame has been deleted (フレーム削除済み)
           content:
             application/json:
               schema:
@@ -1215,6 +1266,8 @@ paths:
                     type: array
                     items:
                       type: string
+                  source:
+                    type: string
                 required:
                 - title
                 - errors
@@ -1397,6 +1450,25 @@ paths:
                 - created_at
                 - updated_at
                 - comments
+        '404':
+          description: frame has been deleted (frame削除済み)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                  source:
+                    type: string
+                required:
+                - title
+                - errors
+                - source
         '422':
           description: file mime type is different (fileのmime typeが異なる場合)
           content:
@@ -1695,6 +1767,10 @@ paths:
                         items:
                           type: string
                       image:
+                        type: array
+                        items:
+                          type: string
+                      profile:
                         type: array
                         items:
                           type: string

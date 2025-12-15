@@ -32,27 +32,27 @@ module Api
 
     # HTTP Status 400 Bad Request
     def render400(exception = nil, *messages)
-      render_error(400, "Bad Request", exception&.message, *messages)
+      render_error(400, "Bad Request", exception, exception&.message, *messages)
     end
 
     # HTTP Status 401 Unauthorized
     # def render401(exception = nil, *messages)
-    #   render_error(401, "Unauthorized", exception&.message, *messages)
+    #   render_error(401, "Unauthorized", exception, exception&.message, *messages)
     # end
 
     # HTTP Status 404 Not Found
     def render404(exception = nil, *messages)
-      render_error(404, "Not Found", exception&.message, *messages)
+      render_error(404, "Not Found", exception, exception&.message, *messages)
     end
 
     # HTTP Status 409 Conflict
     def render409(exception = nil, *messages)
-      render_error(409, "Conflict", exception&.message, *messages)
+      render_error(409, "Conflict", exception, exception&.message, *messages)
     end
 
     # HTTP Status 422 Unprocessable Entity
     def render422(exception = nil, *messages)
-      render_error(422, "Unprocessable Entity", exception&.message, *messages)
+      render_error(422, "Unprocessable Entity", exception, exception&.message, *messages)
     end
 
     # HTTP Status 500 Internal Server Error
@@ -60,14 +60,18 @@ module Api
       logger.error exception.full_message
       # logger.error exception.backtrace.join("\n") # backtrace
 
-      render_error(500, "Internal Server Error", exception&.message, *messages)
+      render_error(500, "Internal Server Error", exception, exception&.message, *messages)
     end
 
-    def render_error(code, default_message, *error_messages)
+    def render_error(code, default_message, exception, *error_messages)
       response = {
         title: default_message,
         errors: error_messages.compact.uniq
       }
+
+      if code == 404
+        response[:source] = exception.model
+      end
 
       render json: response, status: code
     end

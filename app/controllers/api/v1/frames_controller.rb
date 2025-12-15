@@ -58,7 +58,9 @@ module Api
       end
 
       def update
-        mutation = Mutations::Frames::UpdateFrame.run(user: current_user, frame_id: params[:id], form: form_params)
+        frame = Queries::Frames::FindFrame.run(user: current_user, frame_id: params[:id])
+
+        mutation = Mutations::Frames::UpdateFrame.run(frame:, form: form_params)
         frame = mutation.frame
 
         if mutation.success?
@@ -69,7 +71,9 @@ module Api
       end
 
       def destroy
-        mutation = Mutations::Frames::DeleteFrame.run(user: current_user, frame_id: params[:id])
+        frame = Queries::Frames::FindFrame.run(user: current_user, frame_id: params[:id])
+
+        mutation = Mutations::Frames::DeleteFrame.run(frame:)
         frame = mutation.frame
         render json: Detail::FrameResource.new(frame).serializable_hash
       end

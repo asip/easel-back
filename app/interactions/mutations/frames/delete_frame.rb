@@ -10,21 +10,12 @@ module Mutations
 
       attr_reader :frame
 
-      def initialize(user:, frame_id:)
-        @user = user
-        @frame_id = frame_id
+      def initialize(frame:)
+        @frame = frame
       end
 
       def execute
-        frame = Frame.find_by!(id: @frame_id, user_id: @user.id)
         frame.destroy
-        self.frame = frame
-      end
-
-      private
-
-      def frame=(frame)
-        @frame = frame
       end
     end
   end

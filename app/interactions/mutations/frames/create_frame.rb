@@ -17,7 +17,8 @@ module Mutations
 
       def execute
         frame = Frame.new(@form)
-        mutation = Mutations::Frames::SaveFrame.run(user: @user, frame:)
+        frame.user_id = @user.id
+        mutation = Mutations::Frames::SaveFrame.run(frame:)
         errors.merge!(mutation.errors) unless mutation.success?
         self.frame = mutation.frame
       end

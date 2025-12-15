@@ -53,9 +53,8 @@ Rails.application.routes.draw do
       resources :frames, only: %i[index show create update destroy] do
         get "/comments" => "/api/v1/frames#comments"
         get "/authenticated" => "/api/v1/frames#authenticated"
-        resources :comments, only: %i[create update]
+        resources :comments, only: %i[create update destroy]
       end
-      resources :comments, only: [ :destroy ]
     end
   end
 end

@@ -7,7 +7,10 @@ module Api
     # Comments Controller
     class CommentsController < Api::V1::ApiController
       def create
-        mutation = Mutations::Comments::CreateComment.run(user: current_user, frame_id: params[:frame_id], form: form_params)
+        frame = Queries::Frames::FindFrame.run(user: current_user, frame_id: params[:frame_id])
+
+        mutation = Mutations::Comments::CreateComment.run(user: current_user, frame_id: frame.id,
+                                                          form: form_params)
         comment = mutation.comment
         if mutation.success?
           # logger.debug CommentResource.new(comment).serialize
@@ -18,7 +21,10 @@ module Api
       end
 
       def update
-        mutation = Mutations::Comments::UpdateComment.run(user: current_user, comment_id: params[:id], form: form_params)
+        frame = Queries::Frames::FindFrame.run(user: current_user, frame_id: params[:frame_id])
+        comment = Queries::Comments::FindComment.run(user: current_user, frame_id: frame.id, comment_id: params[:id])
+
+        mutation = Mutations::Comments::UpdateComment.run(comment:, form: form_params)
         comment = mutation.comment
         if mutation.success?
           # logger.debug CommentResource.new(comment).serialize
@@ -29,7 +35,10 @@ module Api
       end
 
       def destroy
-        Mutations::Comments::DeleteComment.run(user: current_user, comment_id: params[:id])
+        frame = Queries::Frames::FindFrame.run(user: current_user, frame_id: params[:frame_id])
+        comment = Queries::Comments::FindComment.run(user: current_user, frame_id: frame.id, comment_id: params[:id])
+
+        Mutations::Comments::DeleteComment.run(comment:)
         head :no_content
       end
 

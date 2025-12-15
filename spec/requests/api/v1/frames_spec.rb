@@ -859,6 +859,7 @@ describe 'Frames', type: :request do
 
   describe 'PUT /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
+    let_it_be(:endpoint_frame_not_found_failure) { "/api/v1/frames/404" }
     let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let(:file_1024) {
@@ -1083,13 +1084,32 @@ describe 'Frames', type: :request do
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
+
+        it 'frame has been deleted (frame削除済み)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          put endpoint_frame_not_found_failure,
+              params: {
+                frame: {
+                  name: 'test_frame',
+                  tag_list: 'test',
+                  comment: 'testtest',
+                  creator_name: 'test_creator',
+                  shooted_at: Time.zone.now,
+                  file: file_different_mime_type
+                }
+              },
+              headers: headers
+          # expect(response.status).to eq 404
+          assert_request_schema_confirm
+          assert_response_schema_confirm(404)
+        end
       end
     end
   end
 
   describe 'DELETE /api/v1/frames/:id' do
     let(:endpoint) { "/api/v1/frames/#{frame.id}" }
-    let_it_be(:endpoint_failure) { '/api/v1/frames/404' }
+    let_it_be(:endpoint_frame_not_found_failure) { '/api/v1/frames/404' }
     let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let!(:headers) { authenticated_headers(request, user) }
@@ -1104,12 +1124,14 @@ describe 'Frames', type: :request do
         # json_data = json
       end
 
-      it 'failure (失敗)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
-        delete endpoint_failure, headers: headers
-        # expect(response.status).to eq 404
-        assert_request_schema_confirm
-        assert_response_schema_confirm(404)
+      context 'failure (失敗)' do
+        it 'frame has been deleted (フレーム削除済み)' do
+          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          delete endpoint_frame_not_found_failure, headers: headers
+          # expect(response.status).to eq 404
+          assert_request_schema_confirm
+          assert_response_schema_confirm(404)
+        end
       end
     end
   end

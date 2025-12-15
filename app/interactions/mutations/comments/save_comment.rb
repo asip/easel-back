@@ -10,22 +10,14 @@ module Mutations
 
       attr_reader :comment
 
-      def initialize(user:, comment:)
-        @user = user
-        self.comment = comment
+      def initialize(comment:)
+        @comment = comment
       end
 
       def execute
-        comment.user_id = @user.id
         return if comment.save
 
         errors.merge!(comment.errors)
-      end
-
-      private
-
-      def comment=(comment)
-        @comment = comment
       end
     end
   end
