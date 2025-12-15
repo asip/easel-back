@@ -15,14 +15,15 @@ module Queries
       end
 
       def execute
+        private_nil = @private.nil?
         scope = Frame.eager_load(:user, comments: :user)
         if @user.blank?
-          if  @private.present?
-            scope.find_by!(id: @frame_id, private: @private)
-          else
+          if private_nil
             scope.find_by!(id: @frame_id)
+          else
+            scope.find_by!(id: @frame_id, private: @private)
           end
-        elsif @private.blank?
+        elsif private_nil
           user_id = @user.id
           scope.eager_load(:user, comments: :user)
           .merge(
