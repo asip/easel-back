@@ -11,22 +11,22 @@ describe 'Frames', type: :request do
     let_it_be(:tag2) { create(:application_tag, name: 'testA1') }
 
     before_all do
-      frame_01 = create(:frame, :skip_validate, user: user, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
+      frame_01 = create(:frame, :skip_validate, user:, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
       create(:application_tagging, tag_id: tag1.id, taggable_id: frame_01.id)
-      frame_02 = create(:frame, :skip_validate, user: user, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
+      frame_02 = create(:frame, :skip_validate, user:, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
       create(:application_tagging, tag_id: tag2.id, taggable_id: frame_02.id)
-      create(:frame, :skip_validate, user: user, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01')
-      create(:frame, :skip_validate, user: user, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01')
-      create(:frame, :skip_validate, user: user, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01')
-      create(:frame, :skip_validate, user: user, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01')
-      create(:frame, :skip_validate, user: user, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, user: user, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, user: user, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, user: user, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
-      # create(:frame, :skip_validate, user: user, name: 'test50', tag_list: 'testE0', shooted_at: '2022/04/01')
-      # create(:frame, :skip_validate, user: user, name: 'test51', tag_list: 'testE1', shooted_at: '2022/04/01')
-      # create(:frame, :skip_validate, user: user, name: 'test62', tag_list: 'testF2', shooted_at: '2022/04/01')
-      # create(:frame, :skip_validate, user: user, name: 'test63', tag_list: 'testF3', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user:, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01')
+      create(:frame, :skip_validate, user:, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01')
+      create(:frame, :skip_validate, user:, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01')
+      create(:frame, :skip_validate, user:, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01')
+      create(:frame, :skip_validate, user:, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user:, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user:, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user:, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user:, name: 'test50', tag_list: 'testE0', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user:, name: 'test51', tag_list: 'testE1', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user:, name: 'test62', tag_list: 'testF2', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user:, name: 'test63', tag_list: 'testF3', shooted_at: '2022/04/01')
     end
 
     context 'get frame list (フレームリスト取得)' do
@@ -260,22 +260,22 @@ describe 'Frames', type: :request do
     let!(:headers) { authenticated_headers(request, user) }
 
     before_all do
-      frame_01 = create(:frame, :skip_validate, user: user, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
+      frame_01 = create(:frame, :skip_validate, user:, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
       create(:application_tagging, tag_id: tag1.id, taggable_id: frame_01.id)
-      frame_02 = create(:frame, :skip_validate, user: user, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
+      frame_02 = create(:frame, :skip_validate, user:, name: 'test01', tag_list: 'testA1', shooted_at: '2022/01/01')
       create(:application_tagging, tag_id: tag2.id, taggable_id: frame_02.id)
-      create(:frame, :skip_validate, user: user, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01', private: true)
-      create(:frame, :skip_validate, user: user, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01', private: true)
-      create(:frame, :skip_validate, user: user, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01', private: true)
-      create(:frame, :skip_validate, user: user, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01', private: true)
-      create(:frame, :skip_validate, user: user, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, user: user, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, user: user, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
-      create(:frame, :skip_validate, user: user, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
-      # create(:frame, :skip_validate, user: user, name: 'test50', tag_list: 'testE0', shooted_at: '2022/04/01')
-      # create(:frame, :skip_validate, user: user, name: 'test51', tag_list: 'testE1', shooted_at: '2022/04/01')
-      # create(:frame, :skip_validate, user: user, name: 'test62', tag_list: 'testF2', shooted_at: '2022/04/01')
-      # create(:frame, :skip_validate, user: user, name: 'test63', tag_list: 'testF3', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user:, name: 'test12', tag_list: 'testB2', shooted_at: '2022/02/01', private: true)
+      create(:frame, :skip_validate, user:, name: 'test13', tag_list: 'testB3', shooted_at: '2022/02/01', private: true)
+      create(:frame, :skip_validate, user:, name: 'test24', tag_list: 'testC4', shooted_at: '2022/03/01', private: true)
+      create(:frame, :skip_validate, user:, name: 'test25', tag_list: 'testC5', shooted_at: '2022/03/01', private: true)
+      create(:frame, :skip_validate, user:, name: 'test36', tag_list: 'testC6', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user:, name: 'test37', tag_list: 'testC7', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user:, name: 'test48', tag_list: 'testD8', shooted_at: '2022/04/01')
+      create(:frame, :skip_validate, user:, name: 'test49', tag_list: 'testD9', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user:, name: 'test50', tag_list: 'testE0', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user:, name: 'test51', tag_list: 'testE1', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user:, name: 'test62', tag_list: 'testF2', shooted_at: '2022/04/01')
+      # create(:frame, :skip_validate, user:, name: 'test63', tag_list: 'testF3', shooted_at: '2022/04/01')
     end
 
     context 'get frame list (フレームリスト取得)' do

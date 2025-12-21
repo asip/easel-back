@@ -51,7 +51,7 @@ module Login
         info = auth[:info] || {}
 
         # (認証レコードを検索)
-        authentication = ::Authentication.find_by(uid: uid, provider: provider)
+        authentication = ::Authentication.find_by(uid:, provider:)
 
         if authentication
           user = ::User.unscoped.find_by(id: authentication.user_id)
@@ -71,12 +71,7 @@ module Login
         user = ::User.unscoped.find_for_authentication(email:)
 
         unless user
-          user = ::User.new(
-            name: name,
-            email: email,
-            password: Devise.friendly_token[0, 20],
-            time_zone:
-          )
+          user = ::User.new(name:, email:, password: Devise.friendly_token[0, 20], time_zone:)
         else
           user.deleted_at = nil
         end
