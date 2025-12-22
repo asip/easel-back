@@ -63,9 +63,9 @@ module Api
       render_error(500, "Internal Server Error", exception, exception&.message, *messages)
     end
 
-    def render_error(code, default_message, exception, *error_messages)
+    def render_error(code, title, exception, *error_messages)
       response = {
-        title: default_message,
+        title:,
         errors: error_messages.compact.uniq
       }
 
