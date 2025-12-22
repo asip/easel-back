@@ -23,8 +23,8 @@ module Login
       errors.add(:email, I18n.t("action.login.invalid")) if form[:email].present? && !errors.include?(:email)
     end
 
-    def enable_with(info:)
-      email = info[:email]
+    def enable_with(auth:)
+      email = auth.email
 
       self.email = email if email.present? && self.email != email
       self.deleted_at = nil
@@ -46,27 +46,26 @@ module Login
       end
 
       def from(auth:, time_zone:)
-        uid = auth[:uid]
-        provider = auth[:provider]
-        info = auth[:info] || {}
+        uid = auth.uid
+        provider = auth.provider
 
         # (認証レコードを検索)
         authentication = ::Authentication.find_by(uid:, provider:)
 
         if authentication
           user = ::User.unscoped.find_by(id: authentication.user_id)
-          user.enable_with(info:) if user.present?
+          user&.enable_with(auth:)
         else
-          user = find_or_create_from(info:, time_zone:)
+          user = find_or_create_from(auth:, time_zone:)
           ::Authentication.create_from(user:, provider:, uid:)
         end
 
         user
       end
 
-      def find_or_create_from(info:, time_zone:)
-        email = info[:email]
-        name = info[:name]
+      def find_or_create_from(auth:, time_zone:)
+        email = auth.email
+        name = auth.name
 
         user = ::User.unscoped.find_for_authentication(email:)
 
