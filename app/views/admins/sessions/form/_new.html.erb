@@ -11,7 +11,7 @@
             <tbody>
               <tr>
                 <td class="w-[8em]">
-                  <label for="email" class="col-form-label-sm"><%= t("activerecord.attributes.user.email") %></label>
+                  <label for="admin_email"><%= t("activerecord.attributes.user.email") %></label>
                 </td>
                 <td>
                   <%= form.text_field :email, placeholder: t("activerecord.attributes.user.email"),
@@ -21,7 +21,7 @@
               </tr>
               <tr>
                 <td>
-                  <label for="password" class=""><%= t("activerecord.attributes.user.password") %></label>
+                  <label for="admin_password"><%= t("activerecord.attributes.user.password") %></label>
                 </td>
                 <td>
                   <%= form.password_field :password, placeholder: t("activerecord.attributes.user.password"),
