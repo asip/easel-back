@@ -6,6 +6,7 @@
 class AuthInfo
   include ActiveModel::API
   include ActiveModel::Attributes
+  include Google
 
   attribute :uid, :string
   attribute :provider, :string
