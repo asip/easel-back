@@ -26,8 +26,9 @@ class User < ApplicationRecord
   include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
   include Jwt::Token
-  include Login::User
-  include Follow::User
+  include Login
+  include Login::Save
+  include Follow
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
