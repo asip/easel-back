@@ -15,18 +15,14 @@ module User::Login::Save
 
   class_methods do
     def from(auth:, time_zone:)
-      uid = auth.uid
-      provider = auth.provider
-
-      # (認証レコードを検索)
-      authentication = ::Authentication.find_by(uid:, provider:)
+      authentication = Authentication.find_from(auth:)
 
       if authentication
         user = ::User.unscoped.find_by(id: authentication.user_id)
         user&.enable_with(auth:)
       else
         user = find_or_create_from(auth:, time_zone:)
-        ::Authentication.create_from(user:, provider:, uid:)
+        ::Authentication.create_from(user:, auth:)
       end
 
       user

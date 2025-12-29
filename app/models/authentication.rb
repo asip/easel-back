@@ -18,6 +18,7 @@
 
 # Authentication
 class Authentication < ApplicationRecord
+  include Login::Find
   include Login::Save
 
   belongs_to :user, -> { with_discarded }
