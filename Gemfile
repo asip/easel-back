@@ -11,7 +11,7 @@ gem "propshaft", "~> 1.3.1"
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.5.6'
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.6.2"
+gem "pg", "~> 1.6.3"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 7.1.0"
@@ -32,7 +32,7 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.19.0", require: false
+gem "bootsnap", "~> 1.20.1", require: false
 
 # vite integration
 gem "vite_rails", "3.0.19"
@@ -41,7 +41,7 @@ gem "vite_rails", "3.0.19"
 gem "view_component", "~> 4.1.1"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.206.0"
+gem "aws-sdk-s3", "~> 1.209.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.16.0"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.2.0"
+gem "pagy", "~> 43.2.2"
 
 # tags
 gem "no_fly_list", "0.7.3"
@@ -119,7 +119,7 @@ group :development do
   gem "erb_lint", "~> 0.9.0", require: false
   gem "ruby-lsp", "~> 0.26.4", require: false
 
-  gem "brakeman", "~> 7.1.1", require: false
+  gem "brakeman", "~> 7.1.2", require: false
   gem "reek", "~> 6.5.0", require: false
   gem "traceroute", "~> 0.8.1"
 
@@ -137,7 +137,7 @@ group :test do
   gem "faker", "~> 3.5.3"
   gem "rspec-rails", "~> 8.0.2"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.21.2"
+  gem "rspec-openapi", "~> 0.21.5"
   gem "committee-rails", "~> 0.9.0"
   gem "test-prof", "~> 1.5.0"
 end
