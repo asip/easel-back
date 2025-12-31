@@ -16,7 +16,7 @@ module Api
         items = Json::Util.to_hash(query_params[:q])
         form = FrameSearchForm.new(items)
         if form.valid?
-          pagination, frames = list_frames(user: current_user, items: form.to_h, page:)
+          pagination, frames = list_frames(user: current_user, form:, page:)
 
           render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
         else

@@ -39,15 +39,15 @@ class Frame < ApplicationRecord
 
   # after_validation :assign_derivatives
 
-  scope :search_by, ->(user:, items:) do
+  scope :search_by, ->(user:, form:) do
     scope = current_scope || relation
 
-    word = items[:word]
-    frame_name = items[:frame_name]
-    tag_name = items[:tag_name]
-    user_name = items[:user_name]
-    creator_name = items[:creator_name]
-    date = items[:date]
+    word = form.word
+    frame_name = form.frame_name
+    tag_name = form.tag_name
+    user_name = form.user_name
+    creator_name = form.creator_name
+    date = form.date
 
     scope = scope.where(private: false)
 
