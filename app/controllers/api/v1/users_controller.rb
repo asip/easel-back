@@ -6,10 +6,8 @@ module Api
   module V1
     # Users Controller
     class UsersController < Api::V1::ApiController
-      include ActionController::Cookies
       include Queries::Users::Pagination
-
-      skip_before_action :authenticate_user!, only: %i[show frames]
+      include Account::Authentication::Skip
 
       def show
         user = Queries::Users::FindUser.run(user_id: params[:id])

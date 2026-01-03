@@ -9,10 +9,10 @@ module Api
       include Api::ErrorRenderable
       include Locale::AutoDetect
       include NPlusOne::Query::Detection unless Rails.env.production?
+      include Account::Authentication
 
       # protect_from_forgery with: :exception
 
-      before_action :authenticate_user!
       skip_before_action :verify_authenticity_token
     end
   end

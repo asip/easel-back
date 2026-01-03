@@ -6,8 +6,6 @@ module Api
   module V1
     # Frames Controller
     class FollowRelationshipsController < Api::V1::ApiController
-      before_action :authenticate_user!
-
       def following
         user = User.with_discarded.find(path_params[:user_id])
         following_ = current_user.following?(user)

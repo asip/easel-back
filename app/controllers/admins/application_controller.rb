@@ -7,9 +7,8 @@ module Admins
     include Locale::AutoDetect
     # include NPlusOne::Query::Detection unless Rails.env.production? || Rails.env.test?
     include Flashes
+    include Admin::Authentication
 
     protect_from_forgery with: :exception
-
-    before_action :authenticate_admin!
   end
 end
