@@ -12,8 +12,8 @@
     <%= vite_stylesheet_tag "application", media: "all", 'data-turbo-track': "reload" %>
   </head>
   <body class="min-h-screen">
-    <%= render "errors/header" %>
-    <%= render "errors/style" %>
+    <%= render Errors::Header::Component.new %>
+    <%= render Errors::Style::Component.new %>
     <div class="container mx-auto error-html">
       <%= yield %>
     </div>
