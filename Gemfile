@@ -94,6 +94,8 @@ gem "rails_admin", "3.3.0"
 
 gem "mutex_m", "~> 0.3.0"
 
+gem "cgi", "~> 0.5.1"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.11.0", platforms: %i[mri windows], require: "debug/prelude"

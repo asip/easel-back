@@ -17,7 +17,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version : 3.4
+* Ruby version : 4.0
 * Rails version : 8.1
 * System dependencies : pnpm & postgresql & minio & imgproxy & valkey & libvips & direnv
 * Deployment instructions
