@@ -8,8 +8,7 @@ module Api
     class FramesController < Api::V1::ApiController
       include Queries::Frames::Pagination
       include Account::Authentication::Frames::Skip
-
-      skip_before_action :switch_locale, only: [ :comments ]
+      include Locale::Detect::Frames::Skip
 
       def index
         page = query_params[:page]

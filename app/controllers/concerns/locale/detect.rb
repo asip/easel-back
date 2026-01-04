@@ -2,8 +2,8 @@
 
 # locale
 module Locale
-  # AutoDetect module
-  module AutoDetect
+  # Detect module
+  module Detect
     extend ActiveSupport::Concern
 
     included do

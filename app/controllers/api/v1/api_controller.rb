@@ -7,7 +7,7 @@ module Api
     # Api Controller
     class ApiController < ActionController::Base
       include Api::ErrorRenderable
-      include Locale::AutoDetect
+      include Locale::Detect
       include NPlusOne::Query::Detection unless Rails.env.production?
       include Account::Authentication
 
