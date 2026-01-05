@@ -50,9 +50,9 @@ module Api
       render_error(409, "Conflict", exception, exception&.message, *messages)
     end
 
-    # HTTP Status 422 Unprocessable Entity
+    # HTTP Status 422 Unprocessable Content
     def render422(exception = nil, *messages)
-      render_error(422, "Unprocessable Entity", exception, exception&.message, *messages)
+      render_error(422, "Unprocessable Content", exception, exception&.message, *messages)
     end
 
     # HTTP Status 500 Internal Server Error

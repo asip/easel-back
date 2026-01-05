@@ -45,7 +45,7 @@ class Users::SessionsController < Devise::SessionsController
     success, user = User.validate_on_login(form: sign_in_params)
     return if success
 
-    render json: { errors: user.errors.to_hash(false) }.to_json, status: :unprocessable_entity
+    render json: { errors: user.errors.to_hash(false) }.to_json, status: :unprocessable_content
   end
 
   def respond_to_on_destroy

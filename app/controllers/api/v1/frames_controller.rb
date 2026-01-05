@@ -19,7 +19,7 @@ module Api
 
           render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
         else
-          render json: { errors: form.errors.to_hash(false) }.to_json, status: :unprocessable_entity
+          render json: { errors: form.errors.to_hash(false) }.to_json, status: :unprocessable_content
         end
       end
 
@@ -52,7 +52,7 @@ module Api
         if mutation.success?
           render json: Detail::FrameResource.new(frame).serializable_hash
         else
-          render json: { errors: frame.errors.to_hash(false) }.to_json, status: :unprocessable_entity
+          render json: { errors: frame.errors.to_hash(false) }.to_json, status: :unprocessable_content
         end
       end
 
@@ -65,7 +65,7 @@ module Api
         if mutation.success?
           render json: Detail::FrameResource.new(frame).serializable_hash
         else
-          render json: { errors: frame.errors.to_hash(false) }.to_json, status: :unprocessable_entity
+          render json: { errors: frame.errors.to_hash(false) }.to_json, status: :unprocessable_content
         end
       end
 
