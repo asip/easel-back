@@ -8,15 +8,15 @@ module Api
 
     included do
       # Standard Error
-      rescue_from StandardError, with: ->(e) { request.format.json? ? render500(e) : raise(e) }
+      rescue_from StandardError, with: ->(exception) { request.format.json? ? internal_server_error(exception) : raise(exception) }
 
       # ActiveRecord Error
-      rescue_from ActiveRecord::RecordNotFound, with: ->(e) { request.format.json? ? render404(e) : raise(e) }
-      rescue_from ActiveRecord::RecordNotUnique, with: ->(e) { request.format.json? ? render409(e) : raise(e) }
-      rescue_from ActiveRecord::RecordInvalid, with: ->(e) { request.format.json? ? render422(e) : raise(e) }
+      rescue_from ActiveRecord::RecordNotFound, with: ->(exception) { request.format.json? ? not_found(exception) : raise(exception) }
+      rescue_from ActiveRecord::RecordNotUnique, with: ->(exception) { request.format.json? ? conflict(exception) : raise(exception) }
+      rescue_from ActiveRecord::RecordInvalid, with: ->(exception) { request.format.json? ? unprocessable_content(exception) : raise(exception) }
 
       # UnauthorizedError
-      # rescue_from UnauthorizedError, with: ->(e) { request.format.json? ? render401(e) : raise(e) }
+      # rescue_from UnauthorizedError, with: ->(exception) { request.format.json? ? unauthorized(exception) : raise(exception) }
     end
 
     # Custom error class for unauthorized access (未認証アクセス用のカスタムエラークラス)
@@ -31,42 +31,42 @@ module Api
     # Common helper methods for rendering error response (エラーレスポンスをレンダリングする共通のヘルパーメソッド
 
     # HTTP Status 400 Bad Request
-    def render400(exception = nil, *messages)
-      render_error(400, "Bad Request", exception, exception&.message, *messages)
+    def bad_request(exception = nil)
+      render_error(400, "Bad Request", exception)
     end
 
     # HTTP Status 401 Unauthorized
-    # def render401(exception = nil, *messages)
-    #   render_error(401, "Unauthorized", exception, exception&.message, *messages)
+    # def unauthorized(exception = nil)
+    #   render_error(401, "Unauthorized", exception)
     # end
 
     # HTTP Status 404 Not Found
-    def render404(exception = nil, *messages)
-      render_error(404, "Not Found", exception, exception&.message, *messages)
+    def not_found(exception = nil)
+      render_error(404, "Not Found", exception)
     end
 
     # HTTP Status 409 Conflict
-    def render409(exception = nil, *messages)
-      render_error(409, "Conflict", exception, exception&.message, *messages)
+    def conflict(exception = nil)
+      render_error(409, "Conflict", exception)
     end
 
     # HTTP Status 422 Unprocessable Content
-    def render422(exception = nil, *messages)
-      render_error(422, "Unprocessable Content", exception, exception&.message, *messages)
+    def unprocessable_content(exception = nil)
+      render_error(422, "Unprocessable Content", exception)
     end
 
     # HTTP Status 500 Internal Server Error
-    def render500(exception = nil, *messages)
+    def internal_server_error(exception = nil)
       logger.error exception.full_message
       # logger.error exception.backtrace.join("\n") # backtrace
 
-      render_error(500, "Internal Server Error", exception, exception&.message, *messages)
+      render_error(500, "Internal Server Error", exception)
     end
 
-    def render_error(code, title, exception, *error_messages)
+    def render_error(code, title, exception)
       response = {
         title:,
-        errors: error_messages.compact.uniq
+        errors: exception&.message ? [ exception&.message ] : []
       }
 
       if code == 404
