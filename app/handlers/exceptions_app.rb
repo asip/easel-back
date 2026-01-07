@@ -2,6 +2,7 @@
 
 # ExceptionsApp class
 class ExceptionsApp < Rambulance::ExceptionsApp
+=begin
   # HTTP Status 400 Bad Request
   def bad_request
     render_error(400, "Bad Request")
@@ -54,4 +55,5 @@ class ExceptionsApp < Rambulance::ExceptionsApp
       render json: response, status: code
     end
   end
+=end
 end
