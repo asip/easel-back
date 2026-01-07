@@ -4,7 +4,7 @@
 module Admins
   # header
   module Header
-    # Component
+    # Component class
     class Component < ViewComponent::Base
       def initialize
       end

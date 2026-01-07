@@ -4,7 +4,7 @@
 module Errors
   # style
   module Style
-    # Component
+    # Component class
     class Component < ViewComponent::Base
       def initialize
       end

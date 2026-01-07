@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# ApplicationTagTransformer module
 module ApplicationTagTransformer
   module_function
 

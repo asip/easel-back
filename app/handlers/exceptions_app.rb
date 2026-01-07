@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# ExceptionsApp class
 class ExceptionsApp < Rambulance::ExceptionsApp
   # HTTP Status 400 Bad Request
   def bad_request

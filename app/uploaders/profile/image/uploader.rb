@@ -4,7 +4,7 @@
 module Profile
   # image
   module Image
-    # Uploader
+    # Uploader class
     class Uploader < Shrine
       Attacher.validate do
         validate_max_size 5 * 1024 * 1024, message: I18n.t("validations.message.user.image.max_size")

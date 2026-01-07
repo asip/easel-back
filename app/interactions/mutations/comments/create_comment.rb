@@ -4,7 +4,7 @@
 module Mutations
   # comments
   module Comments
-    # CreateComment
+    # CreateComment class
     class CreateComment
       include Mutation
 

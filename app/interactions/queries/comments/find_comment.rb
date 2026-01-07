@@ -4,7 +4,7 @@
 module Queries
   # comments
   module Comments
-    # FindComment
+    # FindComment class
     class FindComment
       include Query
 

@@ -4,7 +4,7 @@
 module Queries
   # frames
   module Frames
-    # ListFrameIds
+    # ListFrameIds class
     class ListFrameIds
       include Query
 

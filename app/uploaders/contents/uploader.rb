@@ -2,7 +2,7 @@
 
 # contents
 module Contents
-  # Uploader
+  # Uploader class
   class Uploader < Shrine
     Attacher.validate do
       validate_max_size 5 * 1024 * 1024, message: I18n.t("validations.message.frame.file.max_size")

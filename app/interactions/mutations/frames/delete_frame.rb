@@ -4,7 +4,7 @@
 module Mutations
   # frames
   module Frames
-    # DeleteFrame
+    # DeleteFrame class
     class DeleteFrame
       include Mutation
 

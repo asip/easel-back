@@ -4,7 +4,7 @@
 module Mutations
   # frames
   module Frames
-    # CreateFrame
+    # CreateFrame class
     class CreateFrame
       include Mutation
 

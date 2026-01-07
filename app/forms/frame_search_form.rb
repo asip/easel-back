@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Frame Search Form
+# Frame Search Form class
 class FrameSearchForm
   include ActiveModel::API
   include ActiveModel::Attributes

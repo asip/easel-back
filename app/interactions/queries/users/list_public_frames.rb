@@ -4,7 +4,7 @@
 module Queries
   # frames
   module Users
-    # ListPublicFrames
+    # ListPublicFrames class
     class ListPublicFrames
       include Query
 

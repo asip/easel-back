@@ -4,7 +4,7 @@
 module Queries
   # frames
   module Frames
-    # FindFrameWithRelations
+    # FindFrameWithRelations class
     class FindFrameWithRelations
       include Query
 

@@ -2,7 +2,7 @@
 
 # toast
 module Toast
-  # Component
+  # Component class
   class Component < ViewComponent::Base
     def initialize(flash: {}, flashes: {})
       @flashes_json = flashes_to_json(flash:, flashes:)

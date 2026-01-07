@@ -5,7 +5,7 @@ module UseCase
   extend ActiveSupport::Concern
   include ActiveModel::Model
 
-  # class
+  # ClassMethods module
   module ClassMethods
     def run(**args)
       new(**args).tap { |use_case| use_case.valid? && use_case.execute }
