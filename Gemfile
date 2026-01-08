@@ -35,13 +35,13 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "bootsnap", "~> 1.20.1", require: false
 
 # vite integration
-gem "vite_rails", "3.0.19"
+gem "vite_rails", "3.0.20"
 
 # view component
 gem "view_component", "~> 4.1.1"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.209.0"
+gem "aws-sdk-s3", "~> 1.210.1"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -142,6 +142,6 @@ group :test do
   gem "rspec-rails", "~> 8.0.2"
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.21.5"
-  gem "committee-rails", "~> 0.9.0"
+  gem "committee-rails", "~> 0.10.0"
   gem "test-prof", "~> 1.5.0"
 end
