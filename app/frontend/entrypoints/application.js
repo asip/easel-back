@@ -28,5 +28,4 @@
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 
-import '../libraries/turbo.js'
-import '../controllers/index.ts'
+import '../startup/index'
