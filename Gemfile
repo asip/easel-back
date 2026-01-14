@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.1"
+gem "rails", "~> 8.1.2"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.3.1"
@@ -32,16 +32,16 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.20.1", require: false
+gem "bootsnap", "~> 1.21.0", require: false
 
 # vite integration
 gem "vite_rails", "3.0.20"
 
 # view component
-gem "view_component", "~> 4.1.1"
+gem "view_component", "~> 4.2.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.210.1"
+gem "aws-sdk-s3", "~> 1.211.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -58,7 +58,7 @@ gem "rambulance", "~> 3.3.0"
 
 # authentication
 gem "devise", "4.9.4"
-gem "devise-jwt", "0.12.1"
+gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.15.0"
 gem "omniauth-google-oauth2", "1.2.1"
 
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.16.0"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.2.2"
+gem "pagy", "~> 43.2.4"
 
 # tags
 gem "no_fly_list", "0.7.3"
@@ -141,7 +141,7 @@ group :test do
   gem "faker", "~> 3.5.3"
   gem "rspec-rails", "~> 8.0.2"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.21.5"
+  gem "rspec-openapi", "~> 0.23.0"
   gem "committee-rails", "~> 0.10.0"
   gem "test-prof", "~> 1.5.0"
 end
