@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# jwt
+# Jwt::Token module
 module Jwt::Token
   extend ActiveSupport::Concern
 
