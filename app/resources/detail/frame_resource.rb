@@ -14,24 +14,21 @@
 #  user_id    :integer
 #
 
-# detail
-module Detail
-  # Frame Resource
-  class FrameResource < ListItem::FrameResource
-    attributes :comment
+# Detail::FrameResource class
+class Detail::FrameResource < ListItem::FrameResource
+  attributes :comment
 
-    attribute :shooted_at do |frame|
-      frame.shooted_at.present? ? I18n.l(frame.shooted_at, format: "%Y/%m/%d %H:%M") : ""
-    end
-
-    attribute :created_at do |frame|
-      I18n.l(frame.created_at, format: "%Y/%m/%d %H:%M")
-    end
-
-    attribute :updated_at do |frame|
-      I18n.l(frame.updated_at, format: "%Y/%m/%d %H:%M")
-    end
-
-    many :comments, resource: CommentResource
+  attribute :shooted_at do |frame|
+    frame.shooted_at.present? ? I18n.l(frame.shooted_at, format: "%Y/%m/%d %H:%M") : ""
   end
+
+  attribute :created_at do |frame|
+    I18n.l(frame.created_at, format: "%Y/%m/%d %H:%M")
+  end
+
+  attribute :updated_at do |frame|
+    I18n.l(frame.updated_at, format: "%Y/%m/%d %H:%M")
+  end
+
+  many :comments, resource: CommentResource
 end

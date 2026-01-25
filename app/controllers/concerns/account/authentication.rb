@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# account/Authentication module
+# Account::Authentication module
 module Account::Authentication
   extend ActiveSupport::Concern
 

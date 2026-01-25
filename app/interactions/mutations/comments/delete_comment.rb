@@ -1,22 +1,16 @@
 # frozen_string_literal: true
 
-# mutations
-module Mutations
-  # comments
-  module Comments
-    # DeleteComment class
-    class DeleteComment
-      include Mutation
+# Mutations::Comments::DeleteComment class
+class Mutations::Comments::DeleteComment
+  include Mutation
 
-      attr_reader :comment
+  attr_reader :comment
 
-      def initialize(comment:)
-        @comment = comment
-      end
+  def initialize(comment:)
+    @comment = comment
+  end
 
-      def execute
-        comment.destroy
-      end
-    end
+  def execute
+    comment.destroy
   end
 end

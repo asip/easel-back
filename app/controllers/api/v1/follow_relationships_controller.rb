@@ -1,34 +1,28 @@
 # frozen_string_literal: true
 
-# api
-module Api
-  # v1
-  module V1
-    # Frames Controller
-    class FollowRelationshipsController < Api::V1::ApiController
-      def following
-        user = User.with_discarded.find(path_params[:user_id])
-        following_ = current_user.following?(user)
-        render json: { following: following_ }
-      end
+# follow relationship api controller
+class Api::V1::FollowRelationshipsController < Api::V1::ApiController
+  def following
+    user = User.with_discarded.find(path_params[:user_id])
+    following_ = current_user.following?(user)
+    render json: { following: following_ }
+  end
 
-      # follow
-      def create
-        current_user.follow(path_params[:user_id])
-        head :no_content
-      end
+  # follow
+  def create
+    current_user.follow(path_params[:user_id])
+    head :no_content
+  end
 
-      # unfollow (フォロー外すとき)
-      def destroy
-        current_user.unfollow(path_params[:user_id])
-        head :no_content
-      end
+  # unfollow (フォロー外すとき)
+  def destroy
+    current_user.unfollow(path_params[:user_id])
+    head :no_content
+  end
 
-      private
+  private
 
-      def path_params
-        @path_params ||= params.permit(:user_id).to_h
-      end
-    end
+  def path_params
+    @path_params ||= params.permit(:user_id).to_h
   end
 end

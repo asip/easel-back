@@ -14,31 +14,28 @@
 #  user_id    :integer
 #
 
-# list item
-module ListItem
-  # Frame Resource
-  class FrameResource < BaseResource
-    root_key :frame, :frames
-    attributes :id, :user_id, :user_name, :name, :creator_name, :private
+# ListItem::FrameResource class
+class ListItem::FrameResource < BaseResource
+  root_key :frame, :frames
+  attributes :id, :user_id, :user_name, :name, :creator_name, :private
 
-    attribute :tag_list do |frame|
-      frame.tag_list.present? ? frame.tag_list.to_s&.split(",") : []
-    end
+  attribute :tag_list do |frame|
+    frame.tag_list.present? ? frame.tag_list.to_s&.split(",") : []
+  end
 
-    attribute :file_url do |frame|
-      frame.file_proxy_url(:original)
-    end
+  attribute :file_url do |frame|
+    frame.file_proxy_url(:original)
+  end
 
-    attribute :file_two_url do |frame|
-      frame.file_proxy_url(:two)
-    end
+  attribute :file_two_url do |frame|
+    frame.file_proxy_url(:two)
+  end
 
-    attribute :file_three_url do |frame|
-      frame.file_proxy_url(:three)
-    end
+  attribute :file_three_url do |frame|
+    frame.file_proxy_url(:three)
+  end
 
-    attribute :file_six_url do |frame|
-      frame.file_proxy_url(:six)
-    end
+  attribute :file_six_url do |frame|
+    frame.file_proxy_url(:six)
   end
 end

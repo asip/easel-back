@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# admin/Authentication module
+# Admin::Authentication module
 module Admin::Authentication
   extend ActiveSupport::Concern
 

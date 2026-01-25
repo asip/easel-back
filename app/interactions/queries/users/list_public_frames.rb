@@ -1,20 +1,14 @@
 # frozen_string_literal: true
 
-# queries
-module Queries
-  # frames
-  module Users
-    # ListPublicFrames class
-    class ListPublicFrames
-      include Query
+# Queries::Users::ListPublicFrames class
+class Queries::Users::ListPublicFrames
+  include Query
 
-      def initialize(user_id:)
-        @user_id = user_id
-      end
+  def initialize(user_id:)
+    @user_id = user_id
+  end
 
-      def execute
-        User.with_discarded.find_by!(id: @user_id).frames.where(private: false).order('frames.created_at': "desc")
-      end
-    end
+  def execute
+    User.with_discarded.find_by!(id: @user_id).frames.where(private: false).order('frames.created_at': "desc")
   end
 end

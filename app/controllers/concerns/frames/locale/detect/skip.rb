@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# locale/detect/frames/Skip module
-module Locale::Detect::Frames::Skip
+# Frames::Locale::Detect::Skip module
+module Frames::Locale::Detect::Skip
   extend ActiveSupport::Concern
 
   included do

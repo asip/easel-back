@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
-# json
-module Json
-  # Utility module
-  class Util
-    def self.to_hash(str)
-      (str.present? ? Oj.load(str) : {}).with_indifferent_access
-    end
+# Json::Util class
+class Json::Util
+  def self.to_hash(str)
+    (str.present? ? Oj.load(str) : {}).with_indifferent_access
   end
 end

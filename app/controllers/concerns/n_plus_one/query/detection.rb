@@ -1,25 +1,19 @@
 # frozen_string_literal: true
 
-# n plus one
-module NPlusOne
-  # query
-  module Query
-    # Detection module
-    module Detection
-      extend ActiveSupport::Concern
+# NPlusOne::Query::Detection module
+module NPlusOne::Query::Detection
+  extend ActiveSupport::Concern
 
-      included do
-        around_action :n_plus_one_detection
-      end
+  included do
+    around_action :n_plus_one_detection
+  end
 
-      protected
+  protected
 
-      def n_plus_one_detection
-        Prosopite.scan
-        yield
-      ensure
-        Prosopite.finish
-      end
-    end
+  def n_plus_one_detection
+    Prosopite.scan
+    yield
+  ensure
+    Prosopite.finish
   end
 end

@@ -1,24 +1,18 @@
 # frozen_string_literal: true
 
-# mutations
-module Mutations
-  # comments
-  module Comments
-    # SaveComment class
-    class SaveComment
-      include Mutation
+# Mutations::Comments::SaveComment class
+class Mutations::Comments::SaveComment
+  include Mutation
 
-      attr_reader :comment
+  attr_reader :comment
 
-      def initialize(comment:)
-        @comment = comment
-      end
+  def initialize(comment:)
+    @comment = comment
+  end
 
-      def execute
-        return if comment.save
+  def execute
+    return if comment.save
 
-        errors.merge!(comment.errors)
-      end
-    end
+    errors.merge!(comment.errors)
   end
 end

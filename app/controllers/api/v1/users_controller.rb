@@ -1,30 +1,24 @@
 # frozen_string_literal: true
 
-# api
-module Api
-  # v1
-  module V1
-    # Users Controller
-    class UsersController < Api::V1::ApiController
-      include Queries::Users::Pagination
-      include Account::Authentication::Skip
+# user api controller
+class Api::V1::UsersController < Api::V1::ApiController
+  include ::Users::Queries::Pagination
+  include Account::Authentication::Skip
 
-      def show
-        user = Queries::Users::FindUser.run(user_id: params[:id])
-        render json: UserResource.new(user).serializable_hash
-      end
+  def show
+    user = Queries::Users::FindUser.run(user_id: params[:id])
+    render json: UserResource.new(user).serializable_hash
+  end
 
-      def frames
-        pagination, frames = list_frames(user_id: query_params[:user_id], page: query_params[:page])
+  def frames
+    pagination, frames = list_frames(user_id: query_params[:user_id], page: query_params[:page])
 
-        render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
-      end
+    render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
+  end
 
-      private
+  private
 
-      def query_params
-        @query_params ||= params.permit(:user_id, :page).to_h
-      end
-    end
+  def query_params
+    @query_params ||= params.permit(:user_id, :page).to_h
   end
 end

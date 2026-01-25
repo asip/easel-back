@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# user/login/Save module
+# User::Login::Save module
 module User::Login::Save
   extend ActiveSupport::Concern
 

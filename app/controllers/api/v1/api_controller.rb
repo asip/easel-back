@@ -1,19 +1,13 @@
 # frozen_string_literal: true
 
-# api
-module Api
-  # v1
-  module V1
-    # Api Controller
-    class ApiController < ActionController::Base
-      include Api::ErrorRenderable
-      include Locale::Detect
-      include NPlusOne::Query::Detection unless Rails.env.production?
-      include Account::Authentication
+# Api Controller
+class Api::V1::ApiController < ActionController::Base
+  include Api::ErrorRenderable
+  include Locale::Detect
+  include NPlusOne::Query::Detection unless Rails.env.production?
+  include Account::Authentication
 
-      # protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
 
-      skip_before_action :verify_authenticity_token
-    end
-  end
+  skip_before_action :verify_authenticity_token
 end
