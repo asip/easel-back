@@ -6,11 +6,7 @@ module Authentication::Login::Find
 
   class_methods do
     def find_from(auth:)
-      uid = auth.uid
-      provider = auth.provider
-
-      # (認証レコードを検索)
-      ::Authentication.find_by(uid:, provider:)
+      Queries::Authentication::FindFromAuth.run(auth:)
     end
   end
 end

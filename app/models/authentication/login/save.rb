@@ -6,11 +6,8 @@ module Authentication::Login::Save
 
   class_methods do
     def create_from(user:, auth:)
-      uid = auth.uid
-      provider = auth.provider
-
-      authentication = ::Authentication.new(user:, provider:, uid:)
-      authentication.save!
+      mutation = Mutations::Authentication::CreateFromUserAndAuth.run(user:, auth:)
+      mutation.authentication
     end
   end
 end

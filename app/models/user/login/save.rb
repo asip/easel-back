@@ -5,42 +5,19 @@ module User::Login::Save
   extend ActiveSupport::Concern
 
   def enable_with(auth:)
-    email = auth.email
-
-    self.email = email if email.present? && self.email != email
-    self.deleted_at = nil
-    self.save!
-    self
+    mutation = Mutations::User::EnableWithAuth.run(auth:, user: self)
+    mutation.user
   end
 
   class_methods do
     def from(auth:, time_zone:)
-      authentication = Authentication.find_from(auth:)
-
-      if authentication
-        user = ::User.unscoped.find_by(id: authentication.user_id)
-        user&.enable_with(auth:)
-      else
-        user = find_or_create_from(auth:, time_zone:)
-        ::Authentication.create_from(user:, auth:)
-      end
-
-      user
+      mutation = Mutations::User::FromAuthAndTimeZone.run(auth:, time_zone:)
+      mutation.user
     end
 
     def find_or_create_from(auth:, time_zone:)
-      email = auth.email
-      name = auth.name
-
-      user = ::User.unscoped.find_for_authentication(email:)
-
-      unless user
-        user = ::User.new(name:, email:, password: Devise.friendly_token[0, 20], time_zone:)
-      else
-        user.deleted_at = nil
-      end
-      user.save!
-      user
+      mutation = Mutations::User::FindOrCreateFromAuthAndTimeZone.run(auth:, time_zone:)
+      mutation.user
     end
   end
 end
