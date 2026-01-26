@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Queries::Frames::ListCommentsWithUser class
-class Queries::Frames::ListCommentsWithUser
+# Queries::Frame::ListCommentsWithUser class
+class Queries::Frame::ListCommentsWithUser
   include Query
 
   def initialize(frame_id:)

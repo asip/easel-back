@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Mutations::Frames::UpdateFrame class
-class Mutations::Frames::UpdateFrame
+# Mutations::Frame::UpdateFrame class
+class Mutations::Frame::UpdateFrame
   include Mutation
 
   attr_reader :frame
@@ -13,7 +13,7 @@ class Mutations::Frames::UpdateFrame
 
   def execute
     frame.attributes = @form
-    mutation = Mutations::Frames::SaveFrame.run(frame:)
+    mutation = Mutations::Frame::SaveFrame.run(frame:)
     errors.merge!(mutation.errors) unless mutation.success?
   end
 end

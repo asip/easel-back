@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Mutations::Frames::DeleteFrame class
-class Mutations::Frames::DeleteFrame
+# Mutations::Frame::SaveFrame class
+class Mutations::Frame::SaveFrame
   include Mutation
 
   attr_reader :frame
@@ -11,6 +11,8 @@ class Mutations::Frames::DeleteFrame
   end
 
   def execute
-    frame.destroy
+    return if frame.save
+
+    errors.merge!(frame.errors)
   end
 end

@@ -6,7 +6,7 @@ class Api::V1::UsersController < Api::V1::ApiController
   include Account::Authentication::Skip
 
   def show
-    user = Queries::Users::FindUser.run(user_id: params[:id])
+    user = Queries::User::FindUser.run(user_id: params[:id])
     render json: UserResource.new(user).serializable_hash
   end
 

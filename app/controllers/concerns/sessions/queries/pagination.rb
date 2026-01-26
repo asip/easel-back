@@ -9,7 +9,7 @@ module Sessions::Queries::Pagination
   protected
 
   def list_frames(user:, page:)
-    frames = Queries::Users::ListFrames.run(user:)
+    frames = Queries::User::ListFrames.run(user:)
     pagy, frames = pagy(frames, page:)
     pagination = Api::Pagination.resources_with_pagination(pagy)
     [ pagination, frames ]

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Queries::Users::FindUser class
-class Queries::Users::FindUser
+# Queries::User::FindUser class
+class Queries::User::FindUser
   include Query
 
   def initialize(user_id:)

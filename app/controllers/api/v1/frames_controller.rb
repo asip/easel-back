@@ -24,25 +24,25 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def show
-    frame = Queries::Frames::FindFrameWithRelations.run(frame_id: params[:id], private: false)
+    frame = Queries::Frame::FindFrameWithRelations.run(frame_id: params[:id], private: false)
 
     render json: Detail::FrameResource.new(frame).serializable_hash
   end
 
   def authenticated
-    frame = Queries::Frames::FindFrameWithRelations.run(frame_id: path_params[:frame_id], user: current_user)
+    frame = Queries::Frame::FindFrameWithRelations.run(frame_id: path_params[:frame_id], user: current_user)
 
     render json: Detail::FrameResource.new(frame).serializable_hash
   end
 
   def comments
-    comments = Queries::Frames::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
+    comments = Queries::Frame::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
 
     render json: CommentResource.new(comments).serialize
   end
 
   def create
-    mutation = Mutations::Frames::CreateFrame.run(user: current_user, form: form_params)
+    mutation = Mutations::Frame::CreateFrame.run(user: current_user, form: form_params)
     frame = mutation.frame
 
     if mutation.success?
@@ -53,9 +53,9 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def update
-    frame = Queries::Frames::FindFrame.run(user: current_user, frame_id: params[:id])
+    frame = Queries::Frame::FindFrame.run(user: current_user, frame_id: params[:id])
 
-    mutation = Mutations::Frames::UpdateFrame.run(frame:, form: form_params)
+    mutation = Mutations::Frame::UpdateFrame.run(frame:, form: form_params)
     frame = mutation.frame
 
     if mutation.success?
@@ -66,9 +66,9 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def destroy
-    frame = Queries::Frames::FindFrame.run(user: current_user, frame_id: params[:id])
+    frame = Queries::Frame::FindFrame.run(user: current_user, frame_id: params[:id])
 
-    mutation = Mutations::Frames::DeleteFrame.run(frame:)
+    mutation = Mutations::Frame::DeleteFrame.run(frame:)
     frame = mutation.frame
     render json: Detail::FrameResource.new(frame).serializable_hash
   end

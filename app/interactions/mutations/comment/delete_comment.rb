@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Mutations::Comments::SaveComment class
-class Mutations::Comments::SaveComment
+# Mutations::Comment::DeleteComment class
+class Mutations::Comment::DeleteComment
   include Mutation
 
   attr_reader :comment
@@ -11,8 +11,6 @@ class Mutations::Comments::SaveComment
   end
 
   def execute
-    return if comment.save
-
-    errors.merge!(comment.errors)
+    comment.destroy
   end
 end

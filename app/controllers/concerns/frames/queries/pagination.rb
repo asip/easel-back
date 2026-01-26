@@ -9,7 +9,7 @@ module Frames::Queries::Pagination
   protected
 
   def list_frames(user:, form:, page:)
-    frame_ids = Queries::Frames::ListFrameIds.run(user:, form:)
+    frame_ids = Queries::Frame::ListFrameIds.run(user:, form:)
     pagy, frame_ids = pagy(frame_ids, page:)
     frames = Frame.eager_load(:user).where(id: frame_ids).order(created_at: "desc")
 

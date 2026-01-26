@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Queries::Comments::FindComment class
-class Queries::Comments::FindComment
+# Queries::Comment::FindComment class
+class Queries::Comment::FindComment
   include Query
 
   def initialize(user:, frame_id: nil, comment_id:)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Queries::Frames::FindFrame class
-class Queries::Frames::FindFrame
+# Queries::Frame::FindFrame class
+class Queries::Frame::FindFrame
   include Query
 
   def initialize(frame_id:, private: nil, user: nil)

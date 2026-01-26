@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Queries::Users::ListPublicFrames class
-class Queries::Users::ListPublicFrames
+# Queries::User::ListPublicFrames class
+class Queries::User::ListPublicFrames
   include Query
 
   def initialize(user_id:)
