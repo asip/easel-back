@@ -5,10 +5,10 @@ module Login::Validate
   def self.run(form:, type:)
     model = type.find_for_authentication(email: form[:email])
     if model
-      Login::Validate.validate_password(model:, form:)
+      self.validate_password(model:, form:)
     else
       model = type.new(form)
-      Login::Validate.validate_email(model:, form:)
+      self.validate_email(model:, form:)
     end
     success = model.errors.empty?
     [ success, model ]
