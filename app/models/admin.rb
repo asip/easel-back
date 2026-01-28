@@ -19,7 +19,7 @@
 class Admin < ApplicationRecord
   include Errors::Sortable
   include Errors::Login
-  include Login
+  include ::Login
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

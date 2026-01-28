@@ -26,7 +26,7 @@ class User < ApplicationRecord
   include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
   include Jwt::Token
-  include Login
+  include ::Login
   include Login::Save
   include Follow
 

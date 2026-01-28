@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-# User::Login module
-module User::Login
+# Login module
+module Login
   extend ActiveSupport::Concern
 
   class_methods do
     def validate_on_login(form:)
-      Login::Validate.run(form:, type: self)
+      Validations::ValidateAccount.run(form:, type: self)
     end
   end
 end
