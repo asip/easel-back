@@ -56,6 +56,12 @@ Rails.application.routes.draw do
         get "/authenticated" => "/api/v1/frames#authenticated"
         resources :comments, only: %i[create update destroy]
       end
+
+      resources :tags, only: [] do
+        collection do
+          get :search
+        end
+      end
     end
   end
 end

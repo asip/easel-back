@@ -1644,6 +1644,31 @@ paths:
       responses:
         '204':
           description: success (成功)
+  "/api/v1/tags/search":
+    get:
+      summary: search
+      tags:
+      - Api::V1::Tag
+      parameters:
+      - name: q
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success (成功)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - tags
   "/api/v1/users":
     post:
       summary: create
