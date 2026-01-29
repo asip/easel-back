@@ -15,4 +15,12 @@ class ApplicationTag < ApplicationRecord
   include NoFlyList::ApplicationTag
 
   # has_many :taggings, class_name: "ApplicationTagging", dependent: :destroy
+
+  scope :search_by, ->(name:) do
+    if name.present?
+      where("name like ?", "#{ActiveRecord::Base.sanitize_sql_like(name)}%")
+    else
+      none
+    end
+  end
 end
