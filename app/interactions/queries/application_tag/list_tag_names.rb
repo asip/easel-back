@@ -9,6 +9,6 @@ class Queries::ApplicationTag::ListTagNames
   end
 
   def execute
-    ApplicationTag.search_by(name: @name).order(name: :asc).limit(5)
+    ApplicationTag.filter_by(name: @name).order(name: :asc).limit(5)
   end
 end

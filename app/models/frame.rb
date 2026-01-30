@@ -39,7 +39,7 @@ class Frame < ApplicationRecord
 
   # after_validation :assign_derivatives
 
-  scope :search_by, ->(user:, form:) do
+  scope :filter_by, ->(user:, form:) do
     scope = current_scope || relation
 
     word = form.word

@@ -10,6 +10,6 @@ class Queries::Frame::ListFrameIds
   end
 
   def execute
-    Frame.select(:id).search_by(user: @user, form: @form).order(created_at: :desc)
+    Frame.select(:id).filter_by(user: @user, form: @form).order(created_at: :desc)
   end
 end

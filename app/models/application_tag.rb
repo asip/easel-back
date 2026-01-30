@@ -16,7 +16,7 @@ class ApplicationTag < ApplicationRecord
 
   # has_many :taggings, class_name: "ApplicationTagging", dependent: :destroy
 
-  scope :search_by, ->(name:) do
+  scope :filter_by, ->(name:) do
     if name.present?
       where("name like ?", "#{ActiveRecord::Base.sanitize_sql_like(name)}%")
     else
