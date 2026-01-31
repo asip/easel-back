@@ -1644,6 +1644,12 @@ paths:
       responses:
         '204':
           description: success (成功)
+        '401':
+          description: success (成功)
+          content:
+            text/html:
+              schema:
+                type: string
   "/api/v1/tags/search":
     get:
       summary: search

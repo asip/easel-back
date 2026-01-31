@@ -48,8 +48,8 @@ class Users::SessionsController < Devise::SessionsController
     render json: { errors: user.errors.to_hash(false) }.to_json, status: :unprocessable_content
   end
 
-  def respond_to_on_destroy
-    head :no_content
+  def respond_to_on_destroy(non_navigational_status: :no_content)
+    head non_navigational_status
   end
 
   protected

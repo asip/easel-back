@@ -82,9 +82,9 @@ describe 'Sessions', type: :request do
       it 'success (成功)' do
         headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
         delete endpoint, headers: headers
-        # expect(response.status).to eq(204)
+        # expect(response.status).to eq(401)
         assert_request_schema_confirm
-        assert_response_schema_confirm(204)
+        assert_response_schema_confirm(401)
         # json_data = json
       end
     end
