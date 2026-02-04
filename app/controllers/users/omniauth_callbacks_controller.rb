@@ -38,7 +38,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def callback_for(provider)
-    auth = AuthInfo.from(provider:, credential: auth_params[:credential],)
+    auth = AuthInfo.from(provider:, credential: auth_params[:credential])
     user = User.from(auth:, time_zone:)
     sign_in(user, event: :authentication)
 
