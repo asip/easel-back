@@ -9,6 +9,7 @@ class Queries::User::ListPublicFrames
   end
 
   def execute
-    User.with_discarded.find_by!(id: @user_id).frames.where(private: false).order('frames.created_at': "desc")
+    user = Queries::User::FindUser.run(user_id: @user_id)
+    user.frames.where(private: false).order('frames.created_at': "desc")
   end
 end
