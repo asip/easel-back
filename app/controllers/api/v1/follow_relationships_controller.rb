@@ -3,7 +3,7 @@
 # follow relationship api controller
 class Api::V1::FollowRelationshipsController < Api::V1::ApiController
   def following
-    user = User.with_discarded.find(path_params[:user_id])
+    user = Queries::User::FindUser.run(user_id: path_params[:user_id])
     following_ = current_user.following?(user)
     render json: { following: following_ }
   end
