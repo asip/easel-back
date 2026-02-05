@@ -23,7 +23,7 @@ module Devise
       if format == :xml
         { error: i18n_message }.to_xml(root: "errors")
       elsif format == :json
-        { title: "Unauthorized", errors: [ i18n_message ] }.to_json
+        Oj.dump({ title: "Unauthorized", errors: [ i18n_message ] })
       elsif {}.respond_to?(method)
         { error: i18n_message }.send(method)
       else

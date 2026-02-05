@@ -15,7 +15,7 @@ class Api::V1::FramesController < Api::V1::ApiController
 
       render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
     else
-      render json: { errors: form.errors.to_hash(false) }.to_json, status: :unprocessable_content
+      render json: Oj.dump({ errors: form.errors.to_hash(false) }), status: :unprocessable_content
     end
   end
 
@@ -48,7 +48,7 @@ class Api::V1::FramesController < Api::V1::ApiController
     if mutation.success?
       render json: Detail::FrameResource.new(frame).serializable_hash
     else
-      render json: { errors: frame.errors.to_hash(false) }.to_json, status: :unprocessable_content
+      render json: Oj.dump({ errors: frame.errors.to_hash(false) }), status: :unprocessable_content
     end
   end
 
@@ -61,7 +61,7 @@ class Api::V1::FramesController < Api::V1::ApiController
     if mutation.success?
       render json: Detail::FrameResource.new(frame).serializable_hash
     else
-      render json: { errors: frame.errors.to_hash(false) }.to_json, status: :unprocessable_content
+      render json: Oj.dump({ errors: frame.errors.to_hash(false) }), status: :unprocessable_content
     end
   end
 

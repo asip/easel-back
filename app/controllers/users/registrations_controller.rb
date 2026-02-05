@@ -65,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def save_failed(resource)
-    render json: { errors: resource.errors.to_hash(false) }.to_json, status: :unprocessable_content
+    render json: Oj.dump({ errors: resource.errors.to_hash(false) }), status: :unprocessable_content
   end
 
   def respond_with_navigational(resource)

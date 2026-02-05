@@ -12,7 +12,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
       # logger.debug CommentResource.new(comment).serialize
       render json: CommentResource.new(comment).serializable_hash
     else
-      render json: { errors: comment.errors.to_hash(false) }.to_json, status: :unprocessable_content
+      render json: Oj.dump({ errors: comment.errors.to_hash(false) }), status: :unprocessable_content
     end
   end
 
@@ -26,7 +26,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
       # logger.debug CommentResource.new(comment).serialize
       render json: CommentResource.new(comment).serializable_hash
     else
-      render json: { errors: comment.errors.to_hash(false) }.to_json, status: :unprocessable_content
+      render json: Oj.dump({ errors: comment.errors.to_hash(false) }), status: :unprocessable_content
     end
   end
 

@@ -14,7 +14,7 @@ module Toast
       if flash.present?
         to_json(flash:)
       elsif flashes.present?
-        flashes.to_json
+        Oj.dump(flashes)
       end
     end
 
@@ -23,7 +23,7 @@ module Toast
       flash.each do |key, value|
         flash_[key] = [ value ]
       end
-      flash_.to_json
+      Oj.dump(flash_)
     end
   end
 end
