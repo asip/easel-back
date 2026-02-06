@@ -32,7 +32,7 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.21.1", require: false
+gem "bootsnap", "~> 1.22.0", require: false
 
 # vite integration
 gem "vite_rails", "3.0.20"
@@ -68,13 +68,13 @@ gem "googleauth", "~> 1.16.1"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.2.8"
+gem "pagy", "~> 43.2.9"
 
 # tags
 gem "no_fly_list", "0.7.3"
 
 # json
-gem "oj", "3.16.13"
+gem "oj", "3.16.15"
 gem "alba", "3.10.0"
 
 # Rack::Locale
@@ -115,7 +115,7 @@ group :development do
   gem "annotaterb", "~> 4.21.0"
   gem "rails-erd", "~> 1.7.2"
 
-  gem "rubocop", "~> 1.84.0", require: false
+  gem "rubocop", "~> 1.84.1", require: false
   gem "rubocop-rails", "~> 2.34.3", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
@@ -123,7 +123,7 @@ group :development do
   gem "erb_lint", "~> 0.9.0", require: false
   gem "ruby-lsp", "~> 0.26.5", require: false
 
-  gem "brakeman", "~> 8.0.1", require: false
+  gem "brakeman", "~> 8.0.2", require: false
   gem "reek", "~> 6.5.0", require: false
   gem "traceroute", "~> 0.8.1"
 
@@ -143,5 +143,5 @@ group :test do
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.24.0"
   gem "committee-rails", "~> 0.10.0"
-  gem "test-prof", "~> 1.5.1"
+  gem "test-prof", "~> 1.5.2"
 end

@@ -14,7 +14,7 @@
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
     "copyfiles": "^2.4.1",
-    "daisyui": "5.5.14",
+    "daisyui": "5.5.18",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "markuplint": "^4.14.0",
@@ -23,7 +23,7 @@
     "tailwindcss": "4.1.18",
     "tsc-watch": "^7.2.0",
     "typescript": "5.9.3",
-    "vite": "^8.0.0-beta.11",
+    "vite": "^8.0.0-beta.13",
     "vite-plugin-ruby": "^5.1.2"
   },
   "dependencies": {
@@ -37,7 +37,7 @@
   },
   "pnpm": {
     "overrides": {
-      "vite": "^8.0.0-beta.11"
+      "vite": "^8.0.0-beta.13"
     }
   }
 }
