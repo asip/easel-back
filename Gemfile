@@ -59,7 +59,7 @@ gem "rambulance", "~> 3.3.0"
 # authentication
 gem "devise", "5.0.0"
 gem "devise-jwt", "0.13.0"
-gem "devise-i18n", "1.15.0"
+gem "devise-i18n", "1.16.0"
 gem "omniauth-google-oauth2", "1.2.1"
 
 gem "googleauth", "~> 1.16.1"
