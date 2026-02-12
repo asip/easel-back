@@ -4,7 +4,7 @@ namespace :easel do
   desc "From AATO to NFL"
   task from_aato_to_nfl: :environment do
     tag_id_map = {}
-    ActsAsTaggableOn::Tag.all.each { |tag|
+    ActsAsTaggableOn::Tag.find_each { |tag|
       application_tag = ApplicationTag.new
       application_tag.name = tag.name
       application_tag.save
