@@ -5,11 +5,11 @@ info:
   version: 1.0.0
 servers: []
 paths:
-  "//{model_name}":
+  '//{model_name}':
     get:
       summary: index
       tags:
-      - RailsAdmin::Main
+        - RailsAdmin::Main
       responses:
         '401':
           description: failure (失敗)
@@ -25,13 +25,13 @@ paths:
                     items:
                       type: string
                 required:
-                - title
-                - errors
-  "/api/v1/account":
+                  - title
+                  - errors
+  '/api/v1/account':
     delete:
       summary: destroy
       tags:
-      - Users::Registration
+        - Users::Registration
       responses:
         '200':
           description: success (成功)
@@ -59,25 +59,25 @@ paths:
                   profile:
                     nullable: true
                 required:
-                - id
-                - name
-                - image_thumb_url
-                - image_one_url
-                - image_three_url
-                - email
-                - time_zone
-                - social_login
-  "/api/v1/account/following/{user_id}":
+                  - id
+                  - name
+                  - image_thumb_url
+                  - image_one_url
+                  - image_three_url
+                  - email
+                  - time_zone
+                  - social_login
+  '/api/v1/account/following/{user_id}':
     get:
       summary: following
       tags:
-      - Api::V1::FollowRelationship
+        - Api::V1::FollowRelationship
       parameters:
-      - name: user_id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: success(成功)
@@ -89,12 +89,12 @@ paths:
                   following:
                     type: boolean
                 required:
-                - following
-  "/api/v1/account/frames":
+                  - following
+  '/api/v1/account/frames':
     get:
       summary: frames
       tags:
-      - Api::V1::Session
+        - Api::V1::Session
       responses:
         '200':
           description: success (成功)
@@ -134,17 +134,17 @@ paths:
                         file_six_url:
                           nullable: true
                       required:
-                      - id
-                      - user_id
-                      - user_name
-                      - name
-                      - creator_name
-                      - private
-                      - tag_list
-                      - file_url
-                      - file_two_url
-                      - file_three_url
-                      - file_six_url
+                        - id
+                        - user_id
+                        - user_name
+                        - name
+                        - creator_name
+                        - private
+                        - tag_list
+                        - file_url
+                        - file_two_url
+                        - file_three_url
+                        - file_six_url
                   meta:
                     type: object
                     properties:
@@ -160,26 +160,26 @@ paths:
                           per:
                             type: integer
                         required:
-                        - count
-                        - pages
-                        - page
-                        - per
+                          - count
+                          - pages
+                          - page
+                          - per
                     required:
-                    - pagination
+                      - pagination
                 required:
-                - frames
-                - meta
+                  - frames
+                  - meta
       parameters:
-      - name: page
-        in: query
-        required: false
-        schema:
-          type: integer
-  "/api/v1/account/password":
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+  '/api/v1/account/password':
     put:
       summary: update
       tags:
-      - Account::Password
+        - Account::Password
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -196,11 +196,11 @@ paths:
                     password_confirmation:
                       type: string
                   required:
-                  - current_password
-                  - password
-                  - password_confirmation
+                    - current_password
+                    - password
+                    - password_confirmation
               required:
-              - user
+                - user
       responses:
         '200':
           description: password and passoword_confirmation are empty (パスワードとパスワード(確認)が空の場合)
@@ -228,14 +228,14 @@ paths:
                   profile:
                     nullable: true
                 required:
-                - id
-                - name
-                - image_thumb_url
-                - image_one_url
-                - image_three_url
-                - email
-                - time_zone
-                - social_login
+                  - id
+                  - name
+                  - image_thumb_url
+                  - image_one_url
+                  - image_three_url
+                  - email
+                  - time_zone
+                  - social_login
         '422':
           description: password and passoword_confirmation don't match (パスワードとパスワード(確認)が一致しない場合)
           content:
@@ -259,12 +259,12 @@ paths:
                         items:
                           type: string
                 required:
-                - errors
-  "/api/v1/account/profile":
+                  - errors
+  '/api/v1/account/profile':
     get:
       summary: profile
       tags:
-      - Api::V1::Session
+        - Api::V1::Session
       responses:
         '200':
           description: success (成功)
@@ -292,14 +292,14 @@ paths:
                   profile:
                     nullable: true
                 required:
-                - id
-                - name
-                - image_thumb_url
-                - image_one_url
-                - image_three_url
-                - email
-                - time_zone
-                - social_login
+                  - id
+                  - name
+                  - image_thumb_url
+                  - image_one_url
+                  - image_three_url
+                  - email
+                  - time_zone
+                  - social_login
         '401':
           description: failure (失敗)
           content:
@@ -308,11 +308,11 @@ paths:
                 type: object
                 properties: {}
                 required:
-                - errors
+                  - errors
     put:
       summary: update
       tags:
-      - Users::Registration
+        - Users::Registration
       requestBody:
         content:
           multipart/form-data:
@@ -332,12 +332,12 @@ paths:
                     time_zone:
                       type: string
                   required:
-                  - name
-                  - email
-                  - image
-                  - time_zone
+                    - name
+                    - email
+                    - image
+                    - time_zone
               required:
-              - user
+                - user
           application/x-www-form-urlencoded:
             schema:
               type: object
@@ -352,11 +352,11 @@ paths:
                     time_zone:
                       type: string
                   required:
-                  - name
-                  - email
-                  - time_zone
+                    - name
+                    - email
+                    - time_zone
               required:
-              - user
+                - user
       responses:
         '200':
           description: without image
@@ -384,14 +384,14 @@ paths:
                   profile:
                     nullable: true
                 required:
-                - id
-                - name
-                - image_thumb_url
-                - image_one_url
-                - image_three_url
-                - email
-                - time_zone
-                - social_login
+                  - id
+                  - name
+                  - image_thumb_url
+                  - image_one_url
+                  - image_three_url
+                  - email
+                  - time_zone
+                  - social_login
         '422':
           description: image mime type is different (imageのmime typeが異なる場合)
           content:
@@ -419,12 +419,12 @@ paths:
                         items:
                           type: string
                 required:
-                - errors
-  "/api/v1/frames":
+                  - errors
+  '/api/v1/frames':
     get:
       summary: index
       tags:
-      - Api::V1::Frame
+        - Api::V1::Frame
       responses:
         '200':
           description: success (成功)
@@ -464,17 +464,17 @@ paths:
                         file_six_url:
                           nullable: true
                       required:
-                      - id
-                      - user_id
-                      - user_name
-                      - name
-                      - creator_name
-                      - private
-                      - tag_list
-                      - file_url
-                      - file_two_url
-                      - file_three_url
-                      - file_six_url
+                        - id
+                        - user_id
+                        - user_name
+                        - name
+                        - creator_name
+                        - private
+                        - tag_list
+                        - file_url
+                        - file_two_url
+                        - file_three_url
+                        - file_six_url
                   meta:
                     type: object
                     properties:
@@ -490,15 +490,15 @@ paths:
                           per:
                             type: integer
                         required:
-                        - count
-                        - pages
-                        - page
-                        - per
+                          - count
+                          - pages
+                          - page
+                          - per
                     required:
-                    - pagination
+                      - pagination
                 required:
-                - frames
-                - meta
+                  - frames
+                  - meta
         '422':
           description: failure (失敗)
           content:
@@ -534,22 +534,22 @@ paths:
                         items:
                           type: string
                 required:
-                - errors
+                  - errors
       parameters:
-      - name: page
-        in: query
-        required: false
-        schema:
-          type: integer
-      - name: q
-        in: query
-        required: false
-        schema:
-          type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: q
+          in: query
+          required: false
+          schema:
+            type: string
     post:
       summary: create
       tags:
-      - Api::V1::Frame
+        - Api::V1::Frame
       requestBody:
         content:
           multipart/form-data:
@@ -575,13 +575,13 @@ paths:
                     private:
                       type: string
                   required:
-                  - name
-                  - tag_list
-                  - comment
-                  - creator_name
-                  - shooted_at
+                    - name
+                    - tag_list
+                    - comment
+                    - creator_name
+                    - shooted_at
               required:
-              - frame
+                - frame
       responses:
         '200':
           description: success (成功)
@@ -626,22 +626,22 @@ paths:
                     type: array
                     items: {}
                 required:
-                - id
-                - user_id
-                - user_name
-                - name
-                - creator_name
-                - private
-                - tag_list
-                - file_url
-                - file_two_url
-                - file_three_url
-                - file_six_url
-                - comment
-                - shooted_at
-                - created_at
-                - updated_at
-                - comments
+                  - id
+                  - user_id
+                  - user_name
+                  - name
+                  - creator_name
+                  - private
+                  - tag_list
+                  - file_url
+                  - file_two_url
+                  - file_three_url
+                  - file_six_url
+                  - comment
+                  - shooted_at
+                  - created_at
+                  - updated_at
+                  - comments
         '422':
           description: file mime type is different (fileのmime typeが異なる場合)
           content:
@@ -677,12 +677,12 @@ paths:
                         items:
                           type: string
                 required:
-                - errors
-  "/api/v1/frames/authenticated":
+                  - errors
+  '/api/v1/frames/authenticated':
     get:
       summary: authenticated_index
       tags:
-      - Api::V1::Frame
+        - Api::V1::Frame
       responses:
         '200':
           description: success (成功)
@@ -721,17 +721,17 @@ paths:
                         file_six_url:
                           nullable: true
                       required:
-                      - id
-                      - user_id
-                      - user_name
-                      - name
-                      - creator_name
-                      - private
-                      - tag_list
-                      - file_url
-                      - file_two_url
-                      - file_three_url
-                      - file_six_url
+                        - id
+                        - user_id
+                        - user_name
+                        - name
+                        - creator_name
+                        - private
+                        - tag_list
+                        - file_url
+                        - file_two_url
+                        - file_three_url
+                        - file_six_url
                   meta:
                     type: object
                     properties:
@@ -747,15 +747,15 @@ paths:
                           per:
                             type: integer
                         required:
-                        - count
-                        - pages
-                        - page
-                        - per
+                          - count
+                          - pages
+                          - page
+                          - per
                     required:
-                    - pagination
+                      - pagination
                 required:
-                - frames
-                - meta
+                  - frames
+                  - meta
         '422':
           description: failure (失敗)
           content:
@@ -791,29 +791,29 @@ paths:
                         items:
                           type: string
                 required:
-                - errors
+                  - errors
       parameters:
-      - name: page
-        in: query
-        required: false
-        schema:
-          type: integer
-      - name: q
-        in: query
-        required: false
-        schema:
-          type: string
-  "/api/v1/frames/{frame_id}/authenticated":
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: q
+          in: query
+          required: false
+          schema:
+            type: string
+  '/api/v1/frames/{frame_id}/authenticated':
     get:
       summary: authenticated
       tags:
-      - Api::V1::Frame
+        - Api::V1::Frame
       parameters:
-      - name: frame_id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: frame_id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: success (成功)
@@ -857,22 +857,22 @@ paths:
                     type: array
                     items: {}
                 required:
-                - id
-                - user_id
-                - user_name
-                - name
-                - creator_name
-                - private
-                - tag_list
-                - file_url
-                - file_two_url
-                - file_three_url
-                - file_six_url
-                - comment
-                - shooted_at
-                - created_at
-                - updated_at
-                - comments
+                  - id
+                  - user_id
+                  - user_name
+                  - name
+                  - creator_name
+                  - private
+                  - tag_list
+                  - file_url
+                  - file_two_url
+                  - file_three_url
+                  - file_six_url
+                  - comment
+                  - shooted_at
+                  - created_at
+                  - updated_at
+                  - comments
         '404':
           description: failure (失敗)
           content:
@@ -889,19 +889,19 @@ paths:
                   source:
                     type: string
                 required:
-                - title
-                - errors
-  "/api/v1/frames/{frame_id}/comments":
+                  - title
+                  - errors
+  '/api/v1/frames/{frame_id}/comments':
     get:
       summary: comments
       tags:
-      - Api::V1::Frame
+        - Api::V1::Frame
       parameters:
-      - name: frame_id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: frame_id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: success (成功)
@@ -932,16 +932,16 @@ paths:
                         updated_at:
                           type: string
                       required:
-                      - id
-                      - user_id
-                      - frame_id
-                      - body
-                      - user_name
-                      - user_image_url
-                      - created_at
-                      - updated_at
+                        - id
+                        - user_id
+                        - frame_id
+                        - body
+                        - user_name
+                        - user_image_url
+                        - created_at
+                        - updated_at
                 required:
-                - comments
+                  - comments
         '404':
           description: frame_id doesn't exist
           content:
@@ -951,13 +951,13 @@ paths:
     post:
       summary: create
       tags:
-      - Api::V1::Comment
+        - Api::V1::Comment
       parameters:
-      - name: frame_id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: frame_id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -970,9 +970,9 @@ paths:
                     body:
                       type: string
                   required:
-                  - body
+                    - body
               required:
-              - comment
+                - comment
       responses:
         '200':
           description: success (成功)
@@ -998,14 +998,14 @@ paths:
                   updated_at:
                     type: string
                 required:
-                - id
-                - user_id
-                - frame_id
-                - body
-                - user_name
-                - user_image_url
-                - created_at
-                - updated_at
+                  - id
+                  - user_id
+                  - frame_id
+                  - body
+                  - user_name
+                  - user_image_url
+                  - created_at
+                  - updated_at
         '404':
           description: frame has been deleted (frame削除済み)
           content:
@@ -1022,9 +1022,9 @@ paths:
                   source:
                     type: string
                 required:
-                - title
-                - errors
-                - source
+                  - title
+                  - errors
+                  - source
         '422':
           description: empty body (bodyが空の場合)
           content:
@@ -1040,25 +1040,25 @@ paths:
                         items:
                           type: string
                     required:
-                    - body
+                      - body
                 required:
-                - errors
-  "/api/v1/frames/{frame_id}/comments/{id}":
+                  - errors
+  '/api/v1/frames/{frame_id}/comments/{id}':
     delete:
       summary: destroy
       tags:
-      - Api::V1::Comment
+        - Api::V1::Comment
       parameters:
-      - name: frame_id
-        in: path
-        required: true
-        schema:
-          type: integer
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: frame_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '204':
           description: success (成功)
@@ -1078,24 +1078,24 @@ paths:
                   source:
                     type: string
                 required:
-                - title
-                - errors
-                - source
+                  - title
+                  - errors
+                  - source
     put:
       summary: update
       tags:
-      - Api::V1::Comment
+        - Api::V1::Comment
       parameters:
-      - name: frame_id
-        in: path
-        required: true
-        schema:
-          type: integer
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: frame_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -1108,9 +1108,9 @@ paths:
                     body:
                       type: string
                   required:
-                  - body
+                    - body
               required:
-              - comment
+                - comment
       responses:
         '200':
           description: success (成功)
@@ -1136,14 +1136,14 @@ paths:
                   updated_at:
                     type: string
                 required:
-                - id
-                - user_id
-                - frame_id
-                - body
-                - user_name
-                - user_image_url
-                - created_at
-                - updated_at
+                  - id
+                  - user_id
+                  - frame_id
+                  - body
+                  - user_name
+                  - user_image_url
+                  - created_at
+                  - updated_at
         '404':
           description: comment has been deleted (コメント削除済み)
           content:
@@ -1160,9 +1160,9 @@ paths:
                   source:
                     type: string
                 required:
-                - title
-                - errors
-                - source
+                  - title
+                  - errors
+                  - source
         '422':
           description: empty body (bodyが空の場合)
           content:
@@ -1178,20 +1178,20 @@ paths:
                         items:
                           type: string
                     required:
-                    - body
+                      - body
                 required:
-                - errors
-  "/api/v1/frames/{id}":
+                  - errors
+  '/api/v1/frames/{id}':
     delete:
       summary: destroy
       tags:
-      - Api::V1::Frame
+        - Api::V1::Frame
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: success (成功)
@@ -1237,22 +1237,22 @@ paths:
                     type: array
                     items: {}
                 required:
-                - id
-                - user_id
-                - user_name
-                - name
-                - creator_name
-                - private
-                - tag_list
-                - file_url
-                - file_two_url
-                - file_three_url
-                - file_six_url
-                - comment
-                - shooted_at
-                - created_at
-                - updated_at
-                - comments
+                  - id
+                  - user_id
+                  - user_name
+                  - name
+                  - creator_name
+                  - private
+                  - tag_list
+                  - file_url
+                  - file_two_url
+                  - file_three_url
+                  - file_six_url
+                  - comment
+                  - shooted_at
+                  - created_at
+                  - updated_at
+                  - comments
         '404':
           description: frame has been deleted (フレーム削除済み)
           content:
@@ -1269,18 +1269,18 @@ paths:
                   source:
                     type: string
                 required:
-                - title
-                - errors
+                  - title
+                  - errors
     get:
       summary: show
       tags:
-      - Api::V1::Frame
+        - Api::V1::Frame
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: success (成功)
@@ -1326,22 +1326,22 @@ paths:
                     type: array
                     items: {}
                 required:
-                - id
-                - user_id
-                - user_name
-                - name
-                - creator_name
-                - private
-                - tag_list
-                - file_url
-                - file_two_url
-                - file_three_url
-                - file_six_url
-                - comment
-                - shooted_at
-                - created_at
-                - updated_at
-                - comments
+                  - id
+                  - user_id
+                  - user_name
+                  - name
+                  - creator_name
+                  - private
+                  - tag_list
+                  - file_url
+                  - file_two_url
+                  - file_three_url
+                  - file_six_url
+                  - comment
+                  - shooted_at
+                  - created_at
+                  - updated_at
+                  - comments
         '404':
           description: failure (失敗)
           content:
@@ -1351,13 +1351,13 @@ paths:
     put:
       summary: update
       tags:
-      - Api::V1::Frame
+        - Api::V1::Frame
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         content:
           multipart/form-data:
@@ -1383,13 +1383,13 @@ paths:
                     private:
                       type: string
                   required:
-                  - name
-                  - tag_list
-                  - comment
-                  - creator_name
-                  - shooted_at
+                    - name
+                    - tag_list
+                    - comment
+                    - creator_name
+                    - shooted_at
               required:
-              - frame
+                - frame
       responses:
         '200':
           description: success (成功)
@@ -1434,22 +1434,22 @@ paths:
                     type: array
                     items: {}
                 required:
-                - id
-                - user_id
-                - user_name
-                - name
-                - creator_name
-                - private
-                - tag_list
-                - file_url
-                - file_two_url
-                - file_three_url
-                - file_six_url
-                - comment
-                - shooted_at
-                - created_at
-                - updated_at
-                - comments
+                  - id
+                  - user_id
+                  - user_name
+                  - name
+                  - creator_name
+                  - private
+                  - tag_list
+                  - file_url
+                  - file_two_url
+                  - file_three_url
+                  - file_six_url
+                  - comment
+                  - shooted_at
+                  - created_at
+                  - updated_at
+                  - comments
         '404':
           description: frame has been deleted (frame削除済み)
           content:
@@ -1466,9 +1466,9 @@ paths:
                   source:
                     type: string
                 required:
-                - title
-                - errors
-                - source
+                  - title
+                  - errors
+                  - source
         '422':
           description: file mime type is different (fileのmime typeが異なる場合)
           content:
@@ -1504,12 +1504,12 @@ paths:
                         items:
                           type: string
                 required:
-                - errors
-  "/api/v1/oauth/sessions":
+                  - errors
+  '/api/v1/oauth/sessions':
     post:
       summary: google
       tags:
-      - Users::OmniauthCallback
+        - Users::OmniauthCallback
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -1521,8 +1521,8 @@ paths:
                 credential:
                   type: string
               required:
-              - provider
-              - credential
+                - provider
+                - credential
       responses:
         '200':
           description: success (成功)
@@ -1550,19 +1550,19 @@ paths:
                   profile:
                     nullable: true
                 required:
-                - id
-                - name
-                - image_thumb_url
-                - image_one_url
-                - image_three_url
-                - email
-                - time_zone
-                - social_login
-  "/api/v1/sessions":
+                  - id
+                  - name
+                  - image_thumb_url
+                  - image_one_url
+                  - image_three_url
+                  - email
+                  - time_zone
+                  - social_login
+  '/api/v1/sessions':
     post:
       summary: create
       tags:
-      - Users::Session
+        - Users::Session
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -1577,10 +1577,10 @@ paths:
                     password:
                       type: string
                   required:
-                  - email
-                  - password
+                    - email
+                    - password
               required:
-              - user
+                - user
       responses:
         '200':
           description: success (成功)
@@ -1608,14 +1608,14 @@ paths:
                   profile:
                     nullable: true
                 required:
-                - id
-                - name
-                - image_thumb_url
-                - image_one_url
-                - image_three_url
-                - email
-                - time_zone
-                - social_login
+                  - id
+                  - name
+                  - image_thumb_url
+                  - image_one_url
+                  - image_three_url
+                  - email
+                  - time_zone
+                  - social_login
         '422':
           description: invalid password (パスワードが正しくない場合)
           content:
@@ -1635,12 +1635,12 @@ paths:
                         items:
                           type: string
                 required:
-                - errors
-  "/api/v1/sessions/logout":
+                  - errors
+  '/api/v1/sessions/logout':
     delete:
       summary: destroy
       tags:
-      - Users::Session
+        - Users::Session
       responses:
         '204':
           description: success (成功)
@@ -1650,17 +1650,17 @@ paths:
             text/html:
               schema:
                 type: string
-  "/api/v1/tags/search":
+  '/api/v1/tags/search':
     get:
       summary: search
       tags:
-      - Api::V1::Tag
+        - Api::V1::Tag
       parameters:
-      - name: q
-        in: query
-        required: false
-        schema:
-          type: string
+        - name: q
+          in: query
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: success (成功)
@@ -1674,12 +1674,12 @@ paths:
                     items:
                       type: string
                 required:
-                - tags
-  "/api/v1/users":
+                  - tags
+  '/api/v1/users':
     post:
       summary: create
       tags:
-      - Users::Registration
+        - Users::Registration
       requestBody:
         content:
           multipart/form-data:
@@ -1703,14 +1703,14 @@ paths:
                     time_zone:
                       type: string
                   required:
-                  - name
-                  - email
-                  - password
-                  - password_confirmation
-                  - image
-                  - time_zone
+                    - name
+                    - email
+                    - password
+                    - password_confirmation
+                    - image
+                    - time_zone
               required:
-              - user
+                - user
           application/x-www-form-urlencoded:
             schema:
               type: object
@@ -1729,13 +1729,13 @@ paths:
                     time_zone:
                       type: string
                   required:
-                  - name
-                  - email
-                  - password
-                  - password_confirmation
-                  - time_zone
+                    - name
+                    - email
+                    - password
+                    - password_confirmation
+                    - time_zone
               required:
-              - user
+                - user
       responses:
         '200':
           description: without image
@@ -1763,14 +1763,14 @@ paths:
                   profile:
                     nullable: true
                 required:
-                - id
-                - name
-                - image_thumb_url
-                - image_one_url
-                - image_three_url
-                - email
-                - time_zone
-                - social_login
+                  - id
+                  - name
+                  - image_thumb_url
+                  - image_one_url
+                  - image_three_url
+                  - email
+                  - time_zone
+                  - social_login
         '422':
           description: image mime type is different (imageのmime typeが異なる場合)
           content:
@@ -1806,18 +1806,18 @@ paths:
                         items:
                           type: string
                 required:
-                - errors
-  "/api/v1/users/{id}":
+                  - errors
+  '/api/v1/users/{id}':
     get:
       summary: show
       tags:
-      - Api::V1::User
+        - Api::V1::User
       parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: success (成功)
@@ -1839,41 +1839,41 @@ paths:
                   profile:
                     nullable: true
                 required:
-                - id
-                - name
-                - image_thumb_url
-                - image_one_url
-                - image_three_url
+                  - id
+                  - name
+                  - image_thumb_url
+                  - image_one_url
+                  - image_three_url
         '404':
           description: failure (失敗)
           content:
             text/html:
               schema:
                 type: string
-  "/api/v1/users/{user_id}/follow_relationships":
+  '/api/v1/users/{user_id}/follow_relationships':
     delete:
       summary: destroy
       tags:
-      - Api::V1::FollowRelationship
+        - Api::V1::FollowRelationship
       parameters:
-      - name: user_id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '204':
           description: success (成功)
     post:
       summary: create
       tags:
-      - Api::V1::FollowRelationship
+        - Api::V1::FollowRelationship
       parameters:
-      - name: user_id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -1883,22 +1883,22 @@ paths:
       responses:
         '204':
           description: success (成功)
-  "/api/v1/users/{user_id}/frames":
+  '/api/v1/users/{user_id}/frames':
     get:
       summary: frames
       tags:
-      - Api::V1::User
+        - Api::V1::User
       parameters:
-      - name: page
-        in: query
-        required: false
-        schema:
-          type: integer
-      - name: user_id
-        in: path
-        required: true
-        schema:
-          type: integer
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: success (成功)
@@ -1938,17 +1938,17 @@ paths:
                         file_six_url:
                           nullable: true
                       required:
-                      - id
-                      - user_id
-                      - user_name
-                      - name
-                      - creator_name
-                      - private
-                      - tag_list
-                      - file_url
-                      - file_two_url
-                      - file_three_url
-                      - file_six_url
+                        - id
+                        - user_id
+                        - user_name
+                        - name
+                        - creator_name
+                        - private
+                        - tag_list
+                        - file_url
+                        - file_two_url
+                        - file_three_url
+                        - file_six_url
                   meta:
                     type: object
                     properties:
@@ -1964,15 +1964,15 @@ paths:
                           per:
                             type: integer
                         required:
-                        - count
-                        - pages
-                        - page
-                        - per
+                          - count
+                          - pages
+                          - page
+                          - per
                     required:
-                    - pagination
+                      - pagination
                 required:
-                - frames
-                - meta
+                  - frames
+                  - meta
         '404':
           description: failure (失敗)
           content:

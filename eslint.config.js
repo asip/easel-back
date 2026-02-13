@@ -6,29 +6,29 @@ import typescriptESLint from '@typescript-eslint/eslint-plugin'
 export default [
   {
     ignores: [
-      './app/assets/builds/**/*' // Ignore built files.
-    ]
+      './app/assets/builds/**/*', // Ignore built files.
+    ],
   },
   js.configs.recommended,
   eslintConfigPrettier,
   {
     languageOptions: {
       globals: {
-        es2022: true
-      }
+        es2022: true,
+      },
     },
     rules: {
       // 共通のルールを設定
       semi: ['error', 'never'],
       quotes: ['error', 'single'],
-      indent: ['error', 2]
-    }
+      indent: ['error', 2],
+    },
   },
   {
     files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 2022,
-      sourceType: 'module'
+      sourceType: 'module',
     },
   },
   {
@@ -38,11 +38,11 @@ export default [
       sourceType: 'module',
       parser: typescriptESLintParser,
       parserOptions: {
-        project: './tsconfig.json'
-      }
+        project: './tsconfig.json',
+      },
     },
     plugins: {
-      '@typescript-eslint': typescriptESLint
+      '@typescript-eslint': typescriptESLint,
     },
     rules: {
       ...typescriptESLint.configs.recommended.rules,
@@ -52,7 +52,7 @@ export default [
       ...typescriptESLint.configs['strict-type-checked'].rules,
       ...typescriptESLint.configs.stylistic.rules,
       '@typescript-eslint/no-explicit-any': 0,
-      '@typescript-eslint/no-non-null-assertion': 0
-    }
-  }
+      '@typescript-eslint/no-non-null-assertion': 0,
+    },
+  },
 ]

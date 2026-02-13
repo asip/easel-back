@@ -5,7 +5,18 @@
   "scripts": {
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",
     "lint": "eslint --fix './app/frontend/**/*.{js,ts}'",
-    "markuplint": "markuplint './app/**/**/*.{erb,vue}'"
+    "markuplint": "markuplint './app/**/**/*.{erb,vue}'",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo": "^8.0.23",
+    "@hotwired/turbo-rails": "^8.0.23",
+    "bootstrap-icons": "^1.13.1",
+    "rails_admin": "3.3.0",
+    "toastify-js": "^1.12.0"
   },
   "devDependencies": {
     "@markuplint/erb-parser": "4.6.23",
@@ -18,6 +29,7 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "markuplint": "^4.14.1",
+    "oxfmt": "^0.32.0",
     "prettier": "^3.8.1",
     "sass-embedded": "^1.97.3",
     "tailwindcss": "4.1.18",
@@ -25,15 +37,6 @@
     "typescript": "5.9.3",
     "vite": "^8.0.0-beta.14",
     "vite-plugin-ruby": "^5.1.2"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.2.0",
-    "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo": "^8.0.23",
-    "@hotwired/turbo-rails": "^8.0.23",
-    "bootstrap-icons": "^1.13.1",
-    "rails_admin": "3.3.0",
-    "toastify-js": "^1.12.0"
   },
   "pnpm": {
     "overrides": {

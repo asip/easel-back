@@ -9,11 +9,6 @@
     "strictFunctionTypes": false,
     "outDir": "./app/assets/builds"
   },
-  "include": [
-    "./app/frontend/**/*.ts",
-    "./vite.config.ts"
-  ],
-  "exclude": [
-    "./node_modules"
-  ]
+  "include": ["./app/frontend/**/*.ts", "./vite.config.ts"],
+  "exclude": ["./node_modules"]
 }

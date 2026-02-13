@@ -7,10 +7,7 @@ export default defineConfig({
     port: 3036,
     hmr: {
       protocol: 'ws',
-    }
+    },
   },
-  plugins: [
-    RubyPlugin(),
-    tailwindcss()
-  ]
+  plugins: [RubyPlugin(), tailwindcss()],
 })
