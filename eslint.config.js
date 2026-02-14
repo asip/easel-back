@@ -17,12 +17,7 @@ export default [
         es2022: true,
       },
     },
-    rules: {
-      // 共通のルールを設定
-      semi: ['error', 'never'],
-      quotes: ['error', 'single'],
-      indent: ['error', 2],
-    },
+    rules: {}, // (共通のルールを設定)
   },
   {
     files: ['**/*.js'],
@@ -51,8 +46,6 @@ export default [
       ...typescriptESLint.configs.strict.rules,
       ...typescriptESLint.configs['strict-type-checked'].rules,
       ...typescriptESLint.configs.stylistic.rules,
-      '@typescript-eslint/no-explicit-any': 0,
-      '@typescript-eslint/no-non-null-assertion': 0,
     },
   },
 ]
