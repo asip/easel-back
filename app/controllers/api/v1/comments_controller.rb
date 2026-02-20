@@ -6,7 +6,7 @@ class Api::V1::CommentsController < Api::V1::ApiController
     frame = Queries::Frame::FindFrame.run(user: current_user, frame_id: params[:frame_id])
 
     mutation = Mutations::Comment::CreateComment.run(user: current_user, frame_id: frame.id,
-                                                          form: form_params)
+                                                     form: form_params)
     comment = mutation.comment
     if mutation.success?
       # logger.debug CommentResource.new(comment).serialize
