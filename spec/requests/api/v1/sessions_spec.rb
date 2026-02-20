@@ -7,12 +7,13 @@ describe 'Sessions', type: :request do
   describe 'POST /api/v1/sessions' do
     let_it_be(:endpoint) { '/api/v1/sessions' }
     let_it_be(:user) { create(:user, password: 'testtest') }
+    let!(:headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'login (ログイン)' do
       it 'success (成功)' do
         post endpoint,
              params: { user: { email: user.email, password: 'testtest' } },
-             headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+             headers: headers
         # expect(response.status).to eq(200)
         # puts response.headers
         assert_request_schema_confirm
@@ -24,7 +25,7 @@ describe 'Sessions', type: :request do
         it 'invalid email (未登録のEメールアドレスの場合)' do
           post endpoint,
                params: { user: { email: 'invalid@test.jp', password: 'testtest' } },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+               headers: headers
           # expect(response.status).to eq(422)
           assert_request_schema_confirm
           assert_response_schema_confirm(422)
@@ -35,7 +36,7 @@ describe 'Sessions', type: :request do
         it 'invalid password (パスワードが正しくない場合)' do
           post endpoint,
                params: { user: { email: user.email, password: 'invalidtest' } },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+               headers: headers
           # expect(response.status).to eq(422)
           assert_request_schema_confirm
           assert_response_schema_confirm(422)
@@ -50,10 +51,16 @@ describe 'Sessions', type: :request do
     let_it_be(:endpoint) { '/api/v1/account/profile' }
     let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) {
+      {
+        'Accept': "application/json",
+        'HTTP_ACCEPT_LANGUAGE': 'ja'
+      }
+    }
 
     context 'authenticate token (トークン認証)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         get endpoint, headers: headers
         # expect(response.status).to eq(200)
         assert_request_schema_confirm
@@ -63,10 +70,7 @@ describe 'Sessions', type: :request do
     end
 
     it 'failure (失敗)' do
-      get endpoint, headers: {
-        'Accept': "application/json",
-        'HTTP_ACCEPT_LANGUAGE': 'ja'
-      }
+      get endpoint, headers: common_headers
       # expect(response.status).to eq(401)
       assert_request_schema_confirm
       assert_response_schema_confirm(401)
@@ -77,10 +81,11 @@ describe 'Sessions', type: :request do
     let_it_be(:endpoint) { '/api/v1/sessions/logout' }
     let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'logout (ログアウト)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to eq(401)
         assert_request_schema_confirm
@@ -94,10 +99,11 @@ describe 'Sessions', type: :request do
     let_it_be(:endpoint) { '/api/v1/account' }
     let!(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'delete (退会)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to eq(200)
         assert_request_schema_confirm
@@ -110,6 +116,7 @@ describe 'Sessions', type: :request do
   describe 'GET /api/v1/account/frames' do
     let_it_be(:endpoint) { "/api/v1/account/frames" }
     let_it_be(:user) { create(:user, password: 'testtest') }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     before_all do
       create(:frame, :skip_validate, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01', user_id: user.id)
@@ -133,7 +140,7 @@ describe 'Sessions', type: :request do
 
       context 'page=1 (1ページめ)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -145,7 +152,7 @@ describe 'Sessions', type: :request do
 
       context 'page=2 (2ページめ)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { page: 2 }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm

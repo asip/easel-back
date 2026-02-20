@@ -6,6 +6,7 @@ require 'rails_helper'
 describe 'Tags', type: :request do
   describe 'GET /api/v1/tags/search' do
     let_it_be(:endpoint) { '/api/v1/tags/search' }
+    let!(:headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     before_all do
       create(:application_tag, name: 'a00001')
@@ -20,7 +21,7 @@ describe 'Tags', type: :request do
     context 'get tag name list (タグ名リスト取得)' do
       context 'fewer than 5 search results (検索結果が5件ない場合)' do
         it 'success (成功)' do
-          get endpoint, params: { q: "aa" }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja'  }
+          get endpoint, params: { q: "aa" }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -31,7 +32,7 @@ describe 'Tags', type: :request do
 
       context '5 or more search results (検索結果が5件以上ある場合)' do
         it 'success (成功)' do
-          get endpoint, params: { q: "a" }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja'  }
+          get endpoint, params: { q: "a" }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)

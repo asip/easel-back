@@ -9,6 +9,7 @@ describe 'Frames', type: :request do
     let_it_be(:user) { create(:user, password: 'testtest') }
     let_it_be(:tag1) { create(:application_tag, name: 'testA0') }
     let_it_be(:tag2) { create(:application_tag, name: 'testA1') }
+    let!(:headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     before_all do
       frame_01 = create(:frame, :skip_validate, user:, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
@@ -32,7 +33,7 @@ describe 'Frames', type: :request do
     context 'get frame list (フレームリスト取得)' do
       context 'page=1 (1ページめ)' do
         it 'success (成功)' do
-          get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -43,7 +44,7 @@ describe 'Frames', type: :request do
 
       context 'page=2 (2ページめ)' do
         it 'success (成功)' do
-          get endpoint, params: { page: 2 }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { page: 2 }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -54,7 +55,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test1" } (frame name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: 'test1' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ word: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -65,7 +66,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "testA" } (tag name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: 'testA' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ word: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -76,7 +77,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test" } (user name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: 'test' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ word: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -87,7 +88,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test_creator" } (creator name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: 'test_creator' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ word: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -98,7 +99,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: '2022/01/01' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ word: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -109,7 +110,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -120,7 +121,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "frame_name": "test1" } (frame name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ frame_name: 'test1' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ frame_name: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -131,7 +132,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "tag_name": "testA" } (tag name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ tag_name: 'testA' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ tag_name: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -142,7 +143,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "user_name": "test" } (user name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ user_name: 'test' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ user_name: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -153,7 +154,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "creator_name": "test_creator" } (creator name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ creator_name: 'test_creator' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ creator_name: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -164,7 +165,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ date: '2022/01/01' }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ date: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -175,7 +176,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
@@ -184,9 +185,9 @@ describe 'Frames', type: :request do
         end
       end
 
-       context 'q={ "word": exceeds 40 characters }' do
+      context 'q={ "word": exceeds 40 characters }' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
           assert_response_schema_confirm(422)
@@ -197,7 +198,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "frame_name": exceeds 30 characters } (frame name)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
           assert_response_schema_confirm(422)
@@ -208,7 +209,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "tag_name": exceeds 10 characters } (tag name)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
           assert_response_schema_confirm(422)
@@ -219,7 +220,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "user_name": exceeds 40 characters } (user name)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
           assert_response_schema_confirm(422)
@@ -230,7 +231,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "creator_name": exceeds 40 characters } (creator name)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
           assert_response_schema_confirm(422)
@@ -241,7 +242,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": invalid date } (date)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ date: "AAAA/AA/AA" }) }, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint, params: { q: Oj.dump({ date: "AAAA/AA/AA" }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
           assert_response_schema_confirm(422)
@@ -258,6 +259,7 @@ describe 'Frames', type: :request do
     let_it_be(:tag1) { create(:application_tag, name: 'testA0') }
     let_it_be(:tag2) { create(:application_tag, name: 'testA1') }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     before_all do
       frame_01 = create(:frame, :skip_validate, user:, name: 'test00', tag_list: 'testA0', shooted_at: '2022/01/01')
@@ -281,7 +283,7 @@ describe 'Frames', type: :request do
     context 'get frame list (フレームリスト取得)' do
       context 'page=1 (1ページめ)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -293,7 +295,7 @@ describe 'Frames', type: :request do
 
       context 'page=2 (2ページめ)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { page: 2 }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -305,7 +307,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test1" } (frame name)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -317,7 +319,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "testA" } (tag name)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -329,7 +331,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test" } (user name)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -341,7 +343,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test_creator" } (creator name)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -353,7 +355,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -365,7 +367,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -377,7 +379,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "frame_name": "test1" } (frame name)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ frame_name: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -389,7 +391,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "tag_name": "testA" } (tag name)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ tag_name: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -401,7 +403,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "user_name": "test" } (user name)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ user_name: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -413,7 +415,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "creator_name": "test_creator" } (creator name)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ creator_name: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -425,7 +427,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ date: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -437,7 +439,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -447,9 +449,9 @@ describe 'Frames', type: :request do
         end
       end
 
-       context 'q={ "word": exceeds 40 characters }' do
+      context 'q={ "word": exceeds 40 characters }' do
         it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(headers)
           get endpoint, params: { q: Oj.dump({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
@@ -461,7 +463,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "frame_name": exceeds 30 characters } (frame name)' do
         it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
@@ -473,7 +475,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "tag_name": exceeds 10 characters } (tag name)' do
         it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
@@ -485,7 +487,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "user_name": exceeds 40 characters } (user name)' do
         it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
@@ -497,7 +499,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "creator_name": exceeds 40 characters } (creator name)' do
         it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
@@ -509,7 +511,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": invalid date } (date)' do
         it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ date: "AAAA/AA/AA" }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
@@ -526,10 +528,11 @@ describe 'Frames', type: :request do
     let_it_be(:endpoint_failure) { '/api/v1/frames/404' }
     let_it_be(:user) { create(:user, password: 'testtest') }
     let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
+    let!(:headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'get frame (フレーム情報取得)' do
       it 'success (成功)' do
-        get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+        get endpoint, headers: headers
         # expect(response.status).to eq 200
         assert_request_schema_confirm
         assert_response_schema_confirm(200)
@@ -537,7 +540,7 @@ describe 'Frames', type: :request do
       end
 
       it 'failure (失敗)' do
-        get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+        get endpoint_failure, headers: headers
         # expect(response.status).to eq 404
         assert_request_schema_confirm
         assert_response_schema_confirm(404)
@@ -550,13 +553,14 @@ describe 'Frames', type: :request do
     let_it_be(:endpoint_failure) { '/api/v1/frames/404/authenticated' }
     let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'get frame (フレーム情報取得)' do
       context 'private = false' do
         let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
 
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -565,7 +569,7 @@ describe 'Frames', type: :request do
         end
 
         it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint_failure, headers: headers
           # expect(response.status).to eq 404
           assert_request_schema_confirm
@@ -577,7 +581,7 @@ describe 'Frames', type: :request do
         let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id, private: true) }
 
         it 'success (成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to eq 200
           assert_request_schema_confirm
@@ -586,7 +590,7 @@ describe 'Frames', type: :request do
         end
 
         it 'failure (失敗)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint_failure, headers: headers
           # expect(response.status).to eq 404
           assert_request_schema_confirm
@@ -601,6 +605,7 @@ describe 'Frames', type: :request do
     let_it_be(:endpoint_failure) { '/api/v1/frames/404/comments' }
     let_it_be(:user) { create(:user, password: 'testtest') }
     let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
+    let!(:headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     before_all do
       create(:comment, body: 'comment01', frame_id: frame.id, user_id: user.id)
@@ -609,7 +614,7 @@ describe 'Frames', type: :request do
 
     context 'get frame comment list (フレームのコメントリスト取得)' do
       it 'success (成功)' do
-        get endpoint, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+        get endpoint, headers: headers
         # expect(response.status).to eq 200
         assert_request_schema_confirm
         assert_response_schema_confirm(200)
@@ -619,7 +624,7 @@ describe 'Frames', type: :request do
 
       context 'failure (失敗)' do
         it 'frame_id doesn\'t exist' do
-          get endpoint_failure, headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja' }
+          get endpoint_failure, headers: headers
           # expect(response.status).to eq 404
           assert_request_schema_confirm
           assert_response_schema_confirm(404)
@@ -641,10 +646,11 @@ describe 'Frames', type: :request do
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
     }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' } }
 
     describe 'regist frame (フレーム情報登録)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         post endpoint,
              params: {
                frame: {
@@ -666,7 +672,7 @@ describe 'Frames', type: :request do
 
       context 'failure (失敗)' do
         it 'empty name (名前が空の場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  frame: {
@@ -687,7 +693,7 @@ describe 'Frames', type: :request do
         end
 
         it 'name exceeds 30 characters (名前が30文字を超える場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  frame: {
@@ -708,7 +714,7 @@ describe 'Frames', type: :request do
         end
 
         it 'tag exceeds 10 characters (タグが10文字を超える場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  frame: {
@@ -729,7 +735,7 @@ describe 'Frames', type: :request do
         end
 
         it 'creator_name exceeds 40 characters (撮影者名/作者名が40文字を超える場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  frame: {
@@ -750,7 +756,7 @@ describe 'Frames', type: :request do
         end
 
         it 'shooted_at is invalid' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  frame: {
@@ -771,7 +777,7 @@ describe 'Frames', type: :request do
         end
 
         it 'private is invalid' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                frame: {
@@ -793,7 +799,7 @@ describe 'Frames', type: :request do
         end
 
         it 'empty file (file が空の場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  frame: {
@@ -813,7 +819,7 @@ describe 'Frames', type: :request do
         end
 
         it 'file exceeds 5mb (fileが5MBを超えている場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  frame: {
@@ -834,7 +840,7 @@ describe 'Frames', type: :request do
         end
 
         it 'file mime type is different (fileのmime typeが異なる場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  frame: {
@@ -872,10 +878,11 @@ describe 'Frames', type: :request do
       Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/different_mime_type.txt'), 'text/plain')
     }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' } }
 
     describe 'update frame (フレーム情報更新)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         put endpoint,
             params: {
               frame: {
@@ -897,7 +904,7 @@ describe 'Frames', type: :request do
 
       context 'failure (失敗)' do
         it 'empty name (名前が空の場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -918,7 +925,7 @@ describe 'Frames', type: :request do
         end
 
         it 'name exceeds 30 characters (名前が30文字を超える場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -939,7 +946,7 @@ describe 'Frames', type: :request do
         end
 
         it 'tag exceeds 10 characters (タグが10文字を超える場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -960,7 +967,7 @@ describe 'Frames', type: :request do
         end
 
         it 'creator_name exceeds 40 characters (撮影者名/作者名が40文字を超える場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -981,7 +988,7 @@ describe 'Frames', type: :request do
         end
 
         it 'shooted_at is invalid' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -1002,7 +1009,7 @@ describe 'Frames', type: :request do
         end
 
         it 'private is invalid' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -1024,7 +1031,7 @@ describe 'Frames', type: :request do
         end
 
         it 'empty file (file が空の場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Content-Type': 'multipart/form-data' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -1044,7 +1051,7 @@ describe 'Frames', type: :request do
         end
 
         it 'file exceeds 5mb (fileが5MBを超えている場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -1065,7 +1072,7 @@ describe 'Frames', type: :request do
         end
 
         it 'file mime type is different (fileのmime typeが異なる場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 frame: {
@@ -1086,7 +1093,7 @@ describe 'Frames', type: :request do
         end
 
         it 'frame has been deleted (frame削除済み)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint_frame_not_found_failure,
               params: {
                 frame: {
@@ -1113,10 +1120,11 @@ describe 'Frames', type: :request do
     let_it_be(:user) { create(:user, password: 'testtest') }
     let!(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'delete frame (フレーム情報削除)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to eq 200
         assert_request_schema_confirm
@@ -1126,7 +1134,7 @@ describe 'Frames', type: :request do
 
       context 'failure (失敗)' do
         it 'frame has been deleted (フレーム削除済み)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           delete endpoint_frame_not_found_failure, headers: headers
           # expect(response.status).to eq 404
           assert_request_schema_confirm

@@ -12,10 +12,11 @@ describe 'FollowRelationships', type: :request do
         create(:user, name: 'test_user2', email: 'test2@test.jp', password: 'testtest')
       end
       let!(:headers) { authenticated_headers(request, user) }
+      let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
       context 'not follow (フォロしていない場合)' do
         it 'success(成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to be 200
           assert_request_schema_confirm
@@ -31,7 +32,7 @@ describe 'FollowRelationships', type: :request do
         end
 
         it 'success(成功)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to be 200
           assert_request_schema_confirm
@@ -51,10 +52,11 @@ describe 'FollowRelationships', type: :request do
       create(:user, name: 'test_user2', email: 'test2@test.jp', password: 'testtest')
     end
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'follow (フォロー)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         post endpoint, headers: headers
         # expect(response.status).to be 204
         assert_request_schema_confirm
@@ -62,7 +64,7 @@ describe 'FollowRelationships', type: :request do
       end
 
       # it 'failure (失敗)' do
-      #  rheaders.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+      #  rheaders.merge!(common_headers)
       #  post endpoint_failure,
       #       headers: headers
       #  # expect(response.status).to be 204
@@ -80,6 +82,7 @@ describe 'FollowRelationships', type: :request do
       create(:user, name: 'test_user2', email: 'test2@test.jp', password: 'testtest')
     end
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     before_all do
       create(:follow_relationship, follower_id: user.id, followee_id: followee_user.id)
@@ -87,7 +90,7 @@ describe 'FollowRelationships', type: :request do
 
     context 'unfollow (アンフォロー)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to be 204
         assert_request_schema_confirm

@@ -8,13 +8,14 @@ describe 'oauth/sessions', type: :request do
 
   describe 'POST /api/v1/oauth/sessions' do
     let_it_be(:endpoint) { '/api/v1/oauth/sessions' }
+    let!(:headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Time-Zone': 'Asia/Tokyo' } }
 
     context 'login (ログイン)' do
       context 'no account registerd (アカウント未登録の場合)' do
         it 'success (成功)' do
           post endpoint,
                params: { provider: 'google', credential: 'test_credential' },
-               headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Time-Zone': 'Asia/Tokyo' }
+               headers: headers
           # expect(response.status).to eq(200)
           ## puts response.headers
           assert_request_schema_confirm
@@ -30,7 +31,7 @@ describe 'oauth/sessions', type: :request do
           it 'success (成功)' do
             post endpoint,
                  params: { provider: 'google', credential: 'test_credential' },
-                 headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Time-Zone': 'Asia/Tokyo' }
+                 headers: headers
             # expect(response.status).to eq(200)
             ## puts response.headers
             assert_request_schema_confirm
@@ -47,7 +48,7 @@ describe 'oauth/sessions', type: :request do
           it 'success (成功)' do
             post endpoint,
                  params: { provider: 'google', credential: 'test_credential' },
-                 headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Time-Zone': 'Asia/Tokyo' }
+                 headers: headers
             # expect(response.status).to eq(200)
             ## puts response.headers
             assert_request_schema_confirm
@@ -64,7 +65,7 @@ describe 'oauth/sessions', type: :request do
           it 'success (成功)' do
             post endpoint,
                  params: { provider: 'google', credential: 'test_credential' },
-                 headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Time-Zone': 'Asia/Tokyo' }
+                 headers: headers
             # expect(response.status).to eq(200)
             ## puts response.headers
             assert_request_schema_confirm
@@ -81,7 +82,7 @@ describe 'oauth/sessions', type: :request do
           it 'success (成功)' do
             post endpoint,
                  params: { provider: 'google', credential: 'test_credential' },
-                 headers: { 'HTTP_ACCEPT_LANGUAGE': 'ja', 'Time-Zone': 'Asia/Tokyo' }
+                 headers: headers
             # expect(response.status).to eq(200)
             ## puts response.headers
             assert_request_schema_confirm

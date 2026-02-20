@@ -10,10 +10,11 @@ describe 'Comments', type: :request do
     let_it_be(:user) { create(:user, password: 'testtest') }
     let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'regist comment (コメント登録)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         post endpoint,
              params: {
                comment: {
@@ -29,7 +30,7 @@ describe 'Comments', type: :request do
 
       context 'failure (失敗)' do
         it 'empty body (bodyが空の場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint,
                params: {
                  comment: {
@@ -45,7 +46,7 @@ describe 'Comments', type: :request do
         end
 
         it 'frame has been deleted (frame削除済み)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           post endpoint_frame_not_found_failure,
                params: {
                  comment: {
@@ -69,10 +70,11 @@ describe 'Comments', type: :request do
     let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let!(:comment) { create(:comment, frame_id: frame.id, user_id: user.id) }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'update comment (コメント更新)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         put endpoint,
             params: {
               comment: {
@@ -88,7 +90,7 @@ describe 'Comments', type: :request do
 
       context 'failure (失敗)' do
         it 'empty body (bodyが空の場合)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint,
               params: {
                 comment: {
@@ -104,7 +106,7 @@ describe 'Comments', type: :request do
         end
 
         it 'frame has been deleted (フレーム削除済み)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint_frame_not_found_failure,
               params: {
                 comment: {
@@ -118,7 +120,7 @@ describe 'Comments', type: :request do
         end
 
         it 'comment has been deleted (コメント削除済み)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           put endpoint_comment_not_found_failure,
               params: {
                 comment: {
@@ -142,10 +144,11 @@ describe 'Comments', type: :request do
     let_it_be(:frame) { create(:frame, :skip_validate, user_id: user.id) }
     let!(:comment) { create(:comment, frame_id: frame.id, user_id: user.id) }
     let!(:headers) { authenticated_headers(request, user) }
+    let!(:common_headers) { { 'HTTP_ACCEPT_LANGUAGE': 'ja' } }
 
     context 'delete comment (コメント削除)' do
       it 'success (成功)' do
-        headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+        headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to eq 204
         assert_request_schema_confirm
@@ -154,7 +157,7 @@ describe 'Comments', type: :request do
 
       context 'failure (失敗)' do
         it 'frame has been deleted (フレーム削除済み)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           delete endpoint_frame_not_found_failure, headers: headers
           # expect(response.status).to eq 404
           assert_request_schema_confirm
@@ -162,7 +165,7 @@ describe 'Comments', type: :request do
         end
 
         it 'comment has been deleted (コメント削除済み)' do
-          headers.merge!({ 'HTTP_ACCEPT_LANGUAGE': 'ja' })
+          headers.merge!(common_headers)
           delete endpoint_comment_not_found_failure, headers: headers
           # expect(response.status).to eq 404
           assert_request_schema_confirm
