@@ -24,25 +24,26 @@ class Validations::ValidateAccount
   private
 
   attr_accessor :model
+  attr_accessor :errors
 
   def validate_password
     model.password = @form[:password]
-    errors = valid_model
-    add_error(errors:, attr: :password)
+    valid_model
+    add_error(attr: :password)
   end
 
   def validate_email
-    errors = valid_model
+    valid_model
     errors.delete(:email) if errors[:email].include?(I18n.t("errors.messages.taken"))
-    add_error(errors:, attr: :email)
+    add_error(attr: :email)
   end
 
   def valid_model
     model.valid?(:login)
-    model.errors
+    self.errors = model.errors
   end
 
-  def add_error(errors:, attr:)
+  def add_error(attr:)
     errors.add(attr, I18n.t("action.login.invalid")) if @form[attr].present? && !errors.include?(attr)
   end
 end
