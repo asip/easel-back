@@ -25,8 +25,10 @@ end
 
 module CommitteeV1
   def committee_options
-    @committee_options ||= { schema_path: Rails.root.join('doc/openapi/v1.yaml').to_s,
-                 strict_reference_validation: true,
-                 parse_response_by_content_type: true }
+    @committee_options ||= {
+      schema_path: Rails.root.join('doc/openapi/v1.yaml').to_s,
+      strict_reference_validation: true,
+      parse_response_by_content_type: true
+    }
   end
 end
