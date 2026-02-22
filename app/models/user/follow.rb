@@ -5,17 +5,17 @@ module User::Follow
   extend ActiveSupport::Concern
 
   # (フォローしたときの処理)
-  def follow(user_id)
-    follower_relationships.create(followee_id: user_id)
+  def follow(followee_id)
+    Mutations::FollowerRelationship::CreateFollowerRelationship.run(user: self, followee_id:)
   end
 
   # (フォローを外すときの処理)
-  def unfollow(user_id)
-    follower_relationships.find_by(followee_id: user_id)&.destroy
+  def unfollow(followee_id)
+    Mutations::FollowerRelationship::DeleteFollowerRelationship.run(user: self, followee_id:)
   end
 
   # (フォローしているか判定)
-  def following?(user)
-    followees.include?(user)
+  def following?(followee)
+    Validations::Following.run(user: self, followee:)
   end
 end
