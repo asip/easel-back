@@ -44,12 +44,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [] do
-        resource :follow_relationships, only: %i[create destroy]
+        resource :follower_relationships, only: %i[create destroy]
         get "/frames" => "/api/v1/users#frames"
       end
       get "/account/profile" => "/api/v1/sessions#profile"
       get "/account/frames" => "/api/v1/sessions#frames"
-      get "/account/following/:user_id" => "/api/v1/follow_relationships#following"
+      get "/account/following/:user_id" => "/api/v1/follower_relationships#following"
       get "/frames/authenticated" => "/api/v1/frames#authenticated_index"
       resources :frames, only: %i[index show create update destroy] do
         get "/comments" => "/api/v1/frames#comments"

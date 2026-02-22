@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# follow relationship api controller
-class Api::V1::FollowRelationshipsController < Api::V1::ApiController
+# follower relationship api controller
+class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   def following
     user = Queries::User::FindUser.run(user_id: path_params[:user_id])
     render json: { following: current_user.following?(user) }
