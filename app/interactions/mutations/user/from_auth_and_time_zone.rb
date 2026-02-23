@@ -15,7 +15,7 @@ class Mutations::User::FromAuthAndTimeZone
     authentication = Authentication.find_from(auth: @auth)
 
     if authentication
-      self.user = ::User.unscoped.find_by(id: authentication.user_id)
+      self.user = Queries::User::FindUser.run(user_id: authentication.user_id)
       user&.enable_with(auth: @auth)
     else
       self.user = User.find_or_create_from(auth: @auth, time_zone: @time_zone)
