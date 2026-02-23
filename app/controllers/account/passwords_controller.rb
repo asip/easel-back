@@ -5,9 +5,9 @@ class Account::PasswordsController < ApplicationController
   def update
     if current_user.update_with_password(password_params)
       bypass_sign_in current_user
-      render json: AccountResource.new(current_user).serializable_hash, status: :ok
+      render_account(account: current_user)
     else
-      render json: Oj.dump({ errors: current_user.errors.to_hash(false) }), status: :unprocessable_content
+      render_errors(resource: current_user)
     end
   end
 

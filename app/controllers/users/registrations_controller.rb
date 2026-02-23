@@ -61,19 +61,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def save_success(resource)
-    render_accoount(resource)
+    render_account(account: resource)
   end
 
   def save_failed(resource)
-    render json: Oj.dump({ errors: resource.errors.to_hash(false) }), status: :unprocessable_content
+    render_errors(resource:)
   end
 
   def respond_with_navigational(resource)
-    render_accoount(resource)
-  end
-
-  def render_accoount(resource)
-    render json: AccountResource.new(resource).serializable_hash, status: :ok
+    render_account(account: resource)
   end
 
   protected

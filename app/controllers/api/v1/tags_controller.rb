@@ -6,10 +6,14 @@ class Api::V1::TagsController < Api::V1::ApiController
 
   def search
     tags = Queries::ApplicationTag::ListTagNames.run(name: query_params[:q]).pluck(:name)
-    render json: { tags: }
+    render_tags(tags:)
   end
 
   private
+
+  def render_tags(tags:)
+    render json: { tags: }
+  end
 
   def query_params
     @query_params ||= params.permit(:q).to_h

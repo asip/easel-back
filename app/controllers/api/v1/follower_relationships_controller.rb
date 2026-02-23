@@ -4,7 +4,7 @@
 class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   def following
     user = Queries::User::FindUser.run(user_id: path_params[:user_id])
-    render json: { following: current_user.following?(user) }
+    render_following(following: current_user.following?(user))
   end
 
   # follow
@@ -20,6 +20,10 @@ class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   end
 
   private
+
+  def render_following(following:)
+    render json: { following: }
+  end
 
   def path_params
     @path_params ||= params.permit(:user_id).to_h

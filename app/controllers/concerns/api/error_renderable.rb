@@ -24,7 +24,7 @@ module Api::ErrorRenderable
   #  end
   # end
 
-  protected
+  private
 
   # Common helper methods for rendering error response (エラーレスポンスをレンダリングする共通のヘルパーメソッド
 

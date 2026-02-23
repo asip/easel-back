@@ -9,10 +9,9 @@ class Api::V1::CommentsController < Api::V1::ApiController
                                                      form: form_params)
     comment = mutation.comment
     if mutation.success?
-      # logger.debug CommentResource.new(comment).serialize
-      render json: CommentResource.new(comment).serializable_hash
+      render_comment(comment:)
     else
-      render json: Oj.dump({ errors: comment.errors.to_hash(false) }), status: :unprocessable_content
+      render_errors(resource: comment)
     end
   end
 
@@ -23,10 +22,9 @@ class Api::V1::CommentsController < Api::V1::ApiController
     mutation = Mutations::Comment::UpdateComment.run(comment:, form: form_params)
     comment = mutation.comment
     if mutation.success?
-      # logger.debug CommentResource.new(comment).serialize
-      render json: CommentResource.new(comment).serializable_hash
+      render_comment(comment:)
     else
-      render json: Oj.dump({ errors: comment.errors.to_hash(false) }), status: :unprocessable_content
+      render_errors(resource: comment)
     end
   end
 

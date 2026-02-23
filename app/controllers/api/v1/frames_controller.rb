@@ -13,9 +13,9 @@ class Api::V1::FramesController < Api::V1::ApiController
     if form.valid?
       pagination, frames = list_frames(user: current_user, form:, page:)
 
-      render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
+      render_frames(frames:, pagination:)
     else
-      render json: Oj.dump({ errors: form.errors.to_hash(false) }), status: :unprocessable_content
+      render_errors(resource: form)
     end
   end
 
@@ -26,19 +26,19 @@ class Api::V1::FramesController < Api::V1::ApiController
   def show
     frame = Queries::Frame::FindFrameWithRelations.run(frame_id: params[:id], private: false)
 
-    render json: Detail::FrameResource.new(frame).serializable_hash
+    render_frame(frame:)
   end
 
   def authenticated
     frame = Queries::Frame::FindFrameWithRelations.run(frame_id: path_params[:frame_id], user: current_user)
 
-    render json: Detail::FrameResource.new(frame).serializable_hash
+    render_frame(frame:)
   end
 
   def comments
     comments = Queries::Frame::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
 
-    render json: CommentResource.new(comments).serialize
+    render_comments(comments: comments)
   end
 
   def create
@@ -46,9 +46,9 @@ class Api::V1::FramesController < Api::V1::ApiController
     frame = mutation.frame
 
     if mutation.success?
-      render json: Detail::FrameResource.new(frame).serializable_hash
+      render_frame(frame:)
     else
-      render json: Oj.dump({ errors: frame.errors.to_hash(false) }), status: :unprocessable_content
+      render_errors(resource: frame)
     end
   end
 
@@ -59,9 +59,9 @@ class Api::V1::FramesController < Api::V1::ApiController
     frame = mutation.frame
 
     if mutation.success?
-      render json: Detail::FrameResource.new(frame).serializable_hash
+      render_frame(frame:)
     else
-      render json: Oj.dump({ errors: frame.errors.to_hash(false) }), status: :unprocessable_content
+      render_errors(resource: frame)
     end
   end
 
@@ -70,7 +70,7 @@ class Api::V1::FramesController < Api::V1::ApiController
 
     mutation = Mutations::Frame::DeleteFrame.run(frame:)
     frame = mutation.frame
-    render json: Detail::FrameResource.new(frame).serializable_hash
+    render_frame(frame:)
   end
 
   private

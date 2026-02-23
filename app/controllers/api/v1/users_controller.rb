@@ -7,13 +7,13 @@ class Api::V1::UsersController < Api::V1::ApiController
 
   def show
     user = Queries::User::FindUser.run(user_id: params[:id])
-    render json: UserResource.new(user).serializable_hash
+    render_user(user:)
   end
 
   def frames
     pagination, frames = list_frames(user_id: query_params[:user_id], page: query_params[:page])
 
-    render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
+    render_frames(frames:, pagination:)
   end
 
   private

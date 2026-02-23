@@ -38,14 +38,14 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def login_success(resource)
-    render json: AccountResource.new(resource).serializable_hash, status: :ok
+    render_account(account: resource)
   end
 
   def login_failed
     success, user = User.validate_on_login(form: sign_in_params)
     return if success
 
-    render json: Oj.dump({ errors: user.errors.to_hash(false) }), status: :unprocessable_content
+    render_errors(resource: user)
   end
 
   def respond_to_on_destroy(non_navigational_status: :no_content)
