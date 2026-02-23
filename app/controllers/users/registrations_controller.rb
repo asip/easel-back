@@ -61,7 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def save_success(resource)
-    render json: AccountResource.new(resource).serializable_hash, status: :ok
+    render_accoount(resource)
   end
 
   def save_failed(resource)
@@ -69,7 +69,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def respond_with_navigational(resource)
-    save_success(resource)
+    render_accoount(resource)
+  end
+
+  def render_accoount(resource)
+    render json: AccountResource.new(resource).serializable_hash, status: :ok
   end
 
   protected
