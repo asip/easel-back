@@ -5,7 +5,7 @@ module AuthInfo::Google
   extend ActiveSupport::Concern
 
   class_methods do
-    def from(credential:, provider:)
+    def from_google(credential:, provider:)
       info = ::Google::Auth::IDTokens.verify_oidc(credential,
                                                   aud: Settings.google.client_id)
                                      .with_indifferent_access
