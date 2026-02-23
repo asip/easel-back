@@ -69,7 +69,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def respond_with_navigational(resource)
-    render json: AccountResource.new(resource).serializable_hash
+    save_success(resource)
   end
 
   protected
