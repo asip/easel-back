@@ -39,22 +39,27 @@ Rails.application.routes.draw do
 
   # root ""
 
-  put "/api/v1/account/password" => "account/passwords#update"
-
   namespace :api do
     namespace :v1 do
       resources :users, only: [] do
         resource :follower_relationships, only: %i[create destroy]
-        get "/frames" => "/api/v1/users#frames"
+        member do
+          get :frames
+        end
       end
-      get "/account/profile" => "/api/v1/sessions#profile"
-      get "/account/frames" => "/api/v1/sessions#frames"
-      get "/account/following/:user_id" => "/api/v1/follower_relationships#following"
-      get "/frames/authenticated" => "/api/v1/frames#authenticated_index"
+
+      get "/account/profile" => "sessions#profile"
+      get "/account/frames" => "sessions#frames"
+      get "/account/following/:user_id" => "follower_relationships#following"
+      put "/account/password" => "account/passwords#update"
+
       resources :frames, only: %i[index show create update destroy] do
-        get "/comments" => "/api/v1/frames#comments"
-        get "/authenticated" => "/api/v1/frames#authenticated"
+        get "/comments" => "frames#comments"
+        get "/authenticated" => "frames#authenticated"
         resources :comments, only: %i[create update destroy]
+        collection do
+          get "/authenticated" => "frames#authenticated_index"
+        end
       end
 
       resources :tags, only: [] do

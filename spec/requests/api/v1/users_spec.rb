@@ -28,7 +28,7 @@ describe 'Users', type: :request do
     end
   end
 
-  describe 'GET /api/v1/users/:user_id/frames' do
+  describe 'GET /api/v1/users/:id/frames' do
     let(:endpoint) { "/api/v1/users/#{user.id}/frames" }
     let_it_be(:endpoint_failure) { '/api/v1/users/404/frames' }
     let_it_be(:user) { create(:user, password: 'testtest') }
