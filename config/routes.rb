@@ -48,10 +48,12 @@ Rails.application.routes.draw do
         end
       end
 
-      get "/account/profile" => "sessions#profile"
-      get "/account/frames" => "sessions#frames"
-      get "/account/following/:user_id" => "follower_relationships#following"
-      put "/account/password" => "account/passwords#update"
+      scope :account do
+        get "/profile" => "sessions#profile"
+        get "/frames" => "sessions#frames"
+        get "/following/:user_id" => "follower_relationships#following"
+        put "/password" => "account/passwords#update"
+      end
 
       resources :frames, only: %i[index show create update destroy] do
         get "/comments" => "frames#comments"
