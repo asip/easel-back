@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   # root ""
 
+  put "/api/v1/account/password" => "account/passwords#update"
+
   namespace :api do
     namespace :v1 do
       resources :users, only: [] do
@@ -52,7 +54,6 @@ Rails.application.routes.draw do
         get "/profile" => "sessions#profile"
         get "/frames" => "sessions#frames"
         get "/following/:user_id" => "follower_relationships#following"
-        put "/password" => "account/passwords#update"
       end
 
       resources :frames, only: %i[index show create update destroy] do
