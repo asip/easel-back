@@ -141,7 +141,7 @@ group :test do
   gem "faker", "~> 3.6.0"
   gem "rspec-rails", "~> 8.0.3"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.24.0"
+  gem "rspec-openapi", "~> 0.25.0"
   gem "committee-rails", "~> 0.10.0"
   gem "test-prof", "~> 1.5.2"
 end
