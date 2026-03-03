@@ -1,6 +1,6 @@
 import ApplicationController from './application-controller'
 
-import { useToast } from '../composables'
+import { useToast } from '~/composables'
 
 export default class ToastController extends ApplicationController {
   static values = {

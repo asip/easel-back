@@ -10,4 +10,7 @@ export default defineConfig({
     },
   },
   plugins: [RubyPlugin(), tailwindcss()],
+  resolve: {
+    tsconfigPaths: true,
+  },
 })

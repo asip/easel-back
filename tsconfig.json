@@ -7,7 +7,11 @@
     "moduleResolution": "bundler",
     "esModuleInterop": true,
     "strictFunctionTypes": false,
-    "outDir": "./app/assets/builds"
+    "outDir": "./app/assets/builds",
+    "paths": {
+      "~": ["./app/frontend"],
+      "~/*": ["./app/frontend/*"]
+    }
   },
   "include": ["./app/frontend/**/*.ts", "./vite.config.ts"],
   "exclude": ["./node_modules"]
