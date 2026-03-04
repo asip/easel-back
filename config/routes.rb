@@ -28,18 +28,24 @@ Rails.application.routes.draw do
   #   registration: "signup"
   # }
   devise_scope :user do
-    post "/api/v1/sessions", to: "users/sessions#create"
-    delete "/api/v1/sessions/logout", to: "users/sessions#destroy"
-    post "/api/v1/users", to: "users/registrations#create"
-    put "api/v1/account/profile", to: "users/registrations#update"
-    delete "/api/v1/account", to: "users/registrations#destroy"
-    get "/api/v1/users/:id", to: "api/v1/users#show"
-    post "/api/v1/oauth/sessions", to: "users/omniauth_callbacks#google"
+    scope "/api/v1" do
+      post "/sessions", to: "users/sessions#create"
+      delete "/sessions/logout", to: "users/sessions#destroy"
+      post "/users", to: "users/registrations#create"
+      put "/account/profile", to: "users/registrations#update"
+      delete "/account", to: "users/registrations#destroy"
+      get "/users/:id", to: "api/v1/users#show"
+      post "/oauth/sessions", to: "users/omniauth_callbacks#google"
+    end
   end
 
   # root ""
 
-  put "/api/v1/account/password" => "account/passwords#update"
+  scope "/api/v1" do
+    namespace :account do
+      resource :password, only: [ :update ]
+    end
+  end
 
   namespace :api do
     namespace :v1 do
