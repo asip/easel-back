@@ -29,13 +29,24 @@ Rails.application.routes.draw do
   # }
   devise_scope :user do
     scope "/api/v1" do
-      post "/sessions", to: "users/sessions#create"
-      delete "/sessions/logout", to: "users/sessions#destroy"
+      scope :sessions do
+        post "/", to: "users/sessions#create"
+        delete "/logout", to: "users/sessions#destroy"
+      end
+
       post "/users", to: "users/registrations#create"
-      put "/account/profile", to: "users/registrations#update"
-      delete "/account", to: "users/registrations#destroy"
       get "/users/:id", to: "api/v1/users#show"
-      post "/oauth/sessions", to: "users/omniauth_callbacks#google"
+
+      scope :account do
+        put "/profile", to: "users/registrations#update"
+        delete "/", to: "users/registrations#destroy"
+      end
+
+      scope :oauth do
+        scope :sessions do
+          post "/", to: "users/omniauth_callbacks#google"
+        end
+      end
     end
   end
 
