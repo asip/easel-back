@@ -38,7 +38,7 @@ class Api::V1::FramesController < Api::V1::ApiController
   def comments
     comments = Queries::Frame::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
 
-    render_comments(comments: comments)
+    render_comments(comments:)
   end
 
   def create
