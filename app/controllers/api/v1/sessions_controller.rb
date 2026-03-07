@@ -12,7 +12,6 @@ class Api::V1::SessionsController < Api::V1::ApiController
   def profile
     user = current_user
 
-    # response.set_header("Authorization", "Bearer #{user.token}")
     render_account(account: user)
   end
 
