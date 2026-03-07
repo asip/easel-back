@@ -41,7 +41,7 @@ gem "vite_rails", "3.0.20"
 gem "view_component", "~> 4.5.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.213.0"
+gem "aws-sdk-s3", "~> 1.215.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -115,7 +115,7 @@ group :development do
   gem "annotaterb", "~> 4.22.0"
   gem "rails-erd", "~> 1.7.2"
 
-  gem "rubocop", "~> 1.85.0", require: false
+  gem "rubocop", "~> 1.85.1", require: false
   gem "rubocop-rails", "~> 2.34.3", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
@@ -138,7 +138,7 @@ group :test do
   # gem "selenium-webdriver", "~> 4.35.0"
 
   gem "factory_bot_rails", "~> 6.5.1"
-  gem "faker", "~> 3.6.0"
+  gem "faker", "~> 3.6.1"
   gem "rspec-rails", "~> 8.0.3"
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.25.0"
