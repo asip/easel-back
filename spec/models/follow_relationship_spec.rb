@@ -10,8 +10,8 @@
 #  followee_id :bigint
 #  follower_id :bigint
 #
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe FollowRelationship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+# RSpec.describe FollowRelationship, type: :model do
+#  pending "add some examples to (or delete) #{__FILE__}"
+# end
