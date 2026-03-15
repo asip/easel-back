@@ -11,7 +11,7 @@ Shrine(upload) + No Fly List(tag) +
 RailsAdmin (management console) + Discard(soft delete) +
 Hotwire (Turbo + Stimulus3) + Tailwind CSS v4 + daisyUI v5
 
-The legacy frontend + backend (old version) implemented by Ruby on Rails is in [easel-legacy](https://github.com/asip/easel-legacy).
+The legacy frontend + backend (old version) is in [easel-legacy](https://github.com/asip/easel-legacy).
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
