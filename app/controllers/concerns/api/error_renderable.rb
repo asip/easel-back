@@ -30,27 +30,27 @@ module Api::ErrorRenderable
 
   # HTTP Status 400 Bad Request
   def bad_request(exception = nil)
-    render_error(400, "Bad Request", exception)
+    render_error(:bad_request, "Bad Request", exception)
   end
 
   # HTTP Status 401 Unauthorized
   # def unauthorized(exception = nil)
-  #   render_error(401, "Unauthorized", exception)
+  #   render_error(:unauthorized, "Unauthorized", exception)
   # end
 
   # HTTP Status 404 Not Found
   def not_found(exception = nil)
-    render_error(404, "Not Found", exception)
+    render_error(:not_found, "Not Found", exception)
   end
 
   # HTTP Status 409 Conflict
   def conflict(exception = nil)
-    render_error(409, "Conflict", exception)
+    render_error(:conflict, "Conflict", exception)
   end
 
   # HTTP Status 422 Unprocessable Content
   def unprocessable_content(exception = nil)
-    render_error(422, "Unprocessable Content", exception)
+    render_error(:unprocessable_content, "Unprocessable Content", exception)
   end
 
   # HTTP Status 500 Internal Server Error
@@ -58,16 +58,18 @@ module Api::ErrorRenderable
     logger.error exception.full_message
     # logger.error exception.backtrace.join("\n") # backtrace
 
-    render_error(500, "Internal Server Error", exception)
+    render_error(:internal_server_error, "Internal Server Error", exception)
   end
 
   def render_error(code, title, exception)
+    code = Rack::Utils.status_code(code)
+
     response = {
       title:,
       errors: exception&.message ? [ exception&.message ] : []
     }
 
-    if code == 404
+    if code == Rack::Utils.status_code(:not_found)
       response[:source] = exception.model
     end
 

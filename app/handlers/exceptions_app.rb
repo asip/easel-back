@@ -3,14 +3,15 @@
 # ExceptionsApp class
 class ExceptionsApp < Rambulance::ExceptionsApp
 =begin
+
   # HTTP Status 400 Bad Request
   def bad_request
-    render_error(400, "Bad Request")
+    render_error(:bad_request, "Bad Request")
   end
 
   # HTTP Status 401 Unauthorized
   def unauthorized
-    # render_error(401, "Unauthorized")
+    # render_error(:unauthorized, "Unauthorized")
   end
 
   def forbidden
@@ -18,17 +19,17 @@ class ExceptionsApp < Rambulance::ExceptionsApp
 
   # HTTP Status 404 Not Found
   def not_found
-    render_error(404, "Not Found")
+    render_error(:not_found, "Not Found")
   end
 
   # HTTP Status 409 Conflict
   def conflict
-    render_error(409, "Conflict")
+    render_error(:conflict, "Conflict")
   end
 
   # HTTP Status 422 Unprocessable Content
   def unprocessable_content
-    render_error(422, "Unprocessable Content")
+    render_error(:unprocessable_content, "Unprocessable Content")
   end
 
   # HTTP Status 500 Internal Server Error
@@ -36,19 +37,21 @@ class ExceptionsApp < Rambulance::ExceptionsApp
     logger.error exception.full_message
     # logger.error exception.backtrace.join("\n") # backtrace
 
-    render_error(500, "Internal Server Error")
+    render_error(:internal_server_error, "Internal Server Error")
   end
 
   protected
 
   def render_error(code, title)
+    code = Rack::Utils.status_code(code)
+
     if request.format.json?
       response = {
         title:,
         errors: exception&.message ? [ exception&.message ] : []
       }
 
-      if code == 404
+      if code == Rack::Utils.status_code(:not_found)
         response[:source] = exception.model
       end
 
