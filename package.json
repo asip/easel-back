@@ -28,7 +28,7 @@
     "daisyui": "5.5.19",
     "eslint": "^9.39.4",
     "markuplint": "^4.14.1",
-    "oxfmt": "^0.40.0",
+    "oxfmt": "^0.41.0",
     "sass-embedded": "^1.98.0",
     "tailwindcss": "4.2.1",
     "tsc-watch": "^7.2.0",
