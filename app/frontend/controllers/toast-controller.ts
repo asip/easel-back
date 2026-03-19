@@ -12,10 +12,9 @@ export default class ToastController extends ApplicationController {
   connect(): void {
     const { setMessages } = useToast()
 
-    const flashes =
-      this.flashesValue.valueOf() !== ''
-        ? (JSON.parse(this.flashesValue.valueOf()) as Record<string, string[]>)
-        : {}
+    const flashes = this.flashesValue
+      ? (JSON.parse(this.flashesValue) as Record<string, string[]>)
+      : {}
 
     setMessages(flashes)
   }
