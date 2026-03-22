@@ -8,7 +8,7 @@ class Api::V1::FramesController < Api::V1::ApiController
 
   def index
     page = query_params[:page]
-    items = Json::Util.to_hash(query_params[:q])
+    items = JsonUtil.to_hash(query_params[:q])
     form = FrameSearchForm.new(items)
     if form.valid?
       pagination, frames = list_frames(user: current_user, form:, page:)

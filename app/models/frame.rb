@@ -56,7 +56,7 @@ class Frame < ApplicationRecord
     end
 
     if word.present?
-      scope = if DateAndTime::Util.valid_date?(word)
+      scope = if DateUtil.valid?(word)
                 date = Time.zone.parse(word)
                 scope.filter_by_date(date)
       else

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# DateAndTime::Util class
-class DateAndTime::Util
-  def self.valid_date?(str)
+# DateUtil class
+class DateUtil
+  def self.valid?(str)
     !!Date.parse(str)
   rescue StandardError
     false
