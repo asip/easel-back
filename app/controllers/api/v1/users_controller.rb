@@ -6,7 +6,6 @@ class Api::V1::UsersController < Api::V1::ApiController
   include Account::Authentication::Skip
 
   def show
-    user = Queries::User::FindUser.run(user_id: route_params[:id])
     render_user(user:)
   end
 
@@ -17,6 +16,10 @@ class Api::V1::UsersController < Api::V1::ApiController
   end
 
   private
+
+  def user
+    Queries::User::FindUser.run(user_id: route_params[:id])
+  end
 
   def route_params
     @route_params ||= params.permit(:id, :page).to_h

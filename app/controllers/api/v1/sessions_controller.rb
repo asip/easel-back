@@ -10,9 +10,7 @@ class Api::V1::SessionsController < Api::V1::ApiController
   # end
 
   def profile
-    user = current_user
-
-    render_account(account: user)
+    render_account(account: current_user)
   end
 
   def frames

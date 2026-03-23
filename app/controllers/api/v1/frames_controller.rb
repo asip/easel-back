@@ -24,21 +24,15 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def show
-    frame = Queries::Frame::FindFrameWithRelations.run(frame_id: params[:id], private: false)
-
-    render_frame(frame:)
+    render_frame(frame: public_frame_with_relations)
   end
 
   def authenticated
-    frame = Queries::Frame::FindFrameWithRelations.run(frame_id: path_params[:frame_id], user: current_user)
-
-    render_frame(frame:)
+    render_frame(frame: frame_with_relations)
   end
 
   def comments
-    comments = Queries::Frame::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
-
-    render_comments(comments:)
+    render_comments(comments: comment_list)
   end
 
   def create
@@ -53,8 +47,6 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def update
-    frame = Queries::Frame::FindFrame.run(user: current_user, frame_id: params[:id])
-
     mutation = Mutations::Frame::UpdateFrame.run(frame:, form: form_params)
     frame = mutation.frame
 
@@ -66,14 +58,28 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def destroy
-    frame = Queries::Frame::FindFrame.run(user: current_user, frame_id: params[:id])
-
     mutation = Mutations::Frame::DeleteFrame.run(frame:)
     frame = mutation.frame
     render_frame(frame:)
   end
 
   private
+
+  def frame
+    Queries::Frame::FindFrame.run(user: current_user, frame_id: params[:id])
+  end
+
+  def public_frame_with_relations
+    Queries::Frame::FindFrameWithRelations.run(frame_id: params[:id], private: false)
+  end
+
+  def frame_with_relations
+    Queries::Frame::FindFrameWithRelations.run(frame_id: path_params[:frame_id], user: current_user)
+  end
+
+  def comment_list
+    Queries::Frame::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
+  end
 
   def query_params
     @query_params ||= params.permit(:q, :page).to_h

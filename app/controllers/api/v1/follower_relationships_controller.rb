@@ -3,7 +3,6 @@
 # follower relationship api controller
 class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   def following
-    user = Queries::User::FindUser.run(user_id: path_params[:user_id])
     render_following(following: current_user.following?(user))
   end
 
@@ -20,6 +19,10 @@ class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   end
 
   private
+
+  def user
+    Queries::User::FindUser.run(user_id: path_params[:user_id])
+  end
 
   def render_following(following:)
     render json: { following: }
