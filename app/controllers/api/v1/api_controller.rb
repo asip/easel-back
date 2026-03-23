@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Api Controller
-class Api::V1::ApiController < ActionController::Base
+class Api::V1::ApiController < ActionController::API
   include Api::ErrorRenderable
   include Api::ResourceRenderable
   include Locale::Detect
@@ -10,5 +10,5 @@ class Api::V1::ApiController < ActionController::Base
 
   # protect_from_forgery with: :exception
 
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 end
