@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.2"
+gem "rails", "~> 8.1.2.1"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.3.1"
@@ -69,7 +69,7 @@ gem "googleauth", "~> 1.16.2"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.4.1"
+gem "pagy", "~> 43.4.2"
 
 # tags
 gem "no_fly_list", "0.7.3"
@@ -99,7 +99,7 @@ gem "cgi", "~> 0.5.1"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "debug", "~> 1.11.0", platforms: %i[mri windows], require: "debug/prelude"
+  gem "debug", "~> 1.11.1", platforms: %i[mri windows], require: "debug/prelude"
   gem "pg_query", "~> 6.2.2"
   gem "prosopite", "~> 2.1.2"
 end
@@ -116,13 +116,13 @@ group :development do
   gem "annotaterb", "~> 4.22.0"
   gem "rails-erd", "~> 1.7.2"
 
-  gem "rubocop", "~> 1.85.1", require: false
+  gem "rubocop", "~> 1.86.0", require: false
   gem "rubocop-rails", "~> 2.34.3", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.26.7", require: false
+  gem "ruby-lsp", "~> 0.26.8", require: false
 
   gem "brakeman", "~> 8.0.4", require: false
   gem "reek", "~> 6.5.0", require: false
