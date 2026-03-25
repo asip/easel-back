@@ -146,7 +146,7 @@ GEM
     content_disposition (1.0.0)
     crass (1.0.6)
     csv (3.3.0)
-    date (3.5.0)
+    date (3.5.1)
     debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
@@ -582,7 +582,7 @@ GEM
     vite_rails (3.10.0)
       railties (>= 5.1, < 9)
       vite_ruby (~> 3.0, >= 3.2.2)
-    vite_ruby (3.10.0)
+    vite_ruby (3.10.1)
       dry-cli (>= 0.7, < 2)
       logger (~> 1.6)
       mutex_m
@@ -669,7 +669,7 @@ DEPENDENCIES
   tzinfo-data
   view_component (~> 4.5.0)
   vite_rails (= 3.10.0)
-  vite_ruby (= 3.10.0)
+  vite_ruby (= 3.10.1)
   web-console (~> 4.3.0)
 
 BUNDLED WITH
