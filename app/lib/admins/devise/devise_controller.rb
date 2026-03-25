@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # admins / devise / Devise Controller
-class Admins::Devise::DeviseController < ActionController::Base
+class Admins::Devise::DeviseController < Admins::ApplicationController
   include Devise::Controllers::ScopedViews
 
   if respond_to?(:helper)
