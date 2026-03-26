@@ -11,7 +11,7 @@ class Api::V1::TagsController < Api::V1::ApiController
   private
 
   def tags
-    Queries::ApplicationTag::ListTagNames.run(name: query_params[:q]).pluck(:name)
+    Queries::ApplicationTag::ListTagNames.run(name:).pluck(:name)
   end
 
   def render_tags(tags:)
@@ -20,5 +20,9 @@ class Api::V1::TagsController < Api::V1::ApiController
 
   def query_params
     @query_params ||= params.permit(:q).to_h
+  end
+
+  def name
+    query_params[:q]
   end
 end

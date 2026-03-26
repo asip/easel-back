@@ -38,11 +38,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def callback_for(provider)
-    auth = AuthInfo.from_google(provider:, credential: auth_params[:credential])
+    auth = AuthInfo.from_google(provider:, credential:)
     user = User.from(auth:, time_zone:)
     sign_in(user, event: :authentication)
 
     render_account(account: user)
+  end
+
+  def credential
+    auth_params[:credential]
   end
 
   # protected

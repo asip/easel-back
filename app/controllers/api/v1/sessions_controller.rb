@@ -14,7 +14,7 @@ class Api::V1::SessionsController < Api::V1::ApiController
   end
 
   def frames
-    pagination, frames = list_frames(user: current_user, page: query_params[:page])
+    pagination, frames = list_frames(user: current_user, page:)
 
     render_frames(frames:, pagination:)
   end
@@ -23,5 +23,9 @@ class Api::V1::SessionsController < Api::V1::ApiController
 
   def query_params
     @query_params ||= params.permit(:page).to_h
+  end
+
+  def page
+    query_params[:page]
   end
 end

@@ -7,8 +7,7 @@ class Api::V1::FramesController < Api::V1::ApiController
   include Frames::Locale::Detect::Skip
 
   def index
-    page = query_params[:page]
-    items = JsonUtil.to_hash(query_params[:q])
+    items = JsonUtil.to_hash(criteria)
     form = FrameSearchForm.new(items)
     if form.valid?
       pagination, frames = list_frames(user: current_user, form:, page:)
@@ -66,27 +65,43 @@ class Api::V1::FramesController < Api::V1::ApiController
   private
 
   def frame
-    Queries::Frame::FindFrame.run(user: current_user, frame_id: params[:id])
+    Queries::Frame::FindFrame.run(user: current_user, frame_id: id)
   end
 
   def public_frame_with_relations
-    Queries::Frame::FindFrameWithRelations.run(frame_id: params[:id], private: false)
+    Queries::Frame::FindFrameWithRelations.run(frame_id: id, private: false)
   end
 
   def frame_with_relations
-    Queries::Frame::FindFrameWithRelations.run(frame_id: path_params[:frame_id], user: current_user)
+    Queries::Frame::FindFrameWithRelations.run(frame_id:, user: current_user)
   end
 
   def comment_list
-    Queries::Frame::ListCommentsWithUser.run(frame_id: path_params[:frame_id])
+    Queries::Frame::ListCommentsWithUser.run(frame_id:)
   end
 
   def query_params
     @query_params ||= params.permit(:q, :page).to_h
   end
 
+  def page
+    query_params[:page]
+  end
+
+  def criteria
+    query_params[:q]
+  end
+
   def path_params
-    @path_params ||= params.permit(:frame_id).to_h
+    @path_params ||= params.permit(:id, :frame_id).to_h
+  end
+
+  def id
+    path_params[:id]
+  end
+
+  def frame_id
+    path_params[:frame_id]
   end
 
   def form_params

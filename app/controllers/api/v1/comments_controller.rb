@@ -31,11 +31,23 @@ class Api::V1::CommentsController < Api::V1::ApiController
   private
 
   def frame
-    Queries::Frame::FindFrame.run(user: current_user, frame_id: params[:frame_id])
+    Queries::Frame::FindFrame.run(user: current_user, frame_id:)
   end
 
   def comment
-    Queries::Comment::FindComment.run(user: current_user, frame_id: frame.id, comment_id: params[:id])
+    Queries::Comment::FindComment.run(user: current_user, frame_id: frame.id, comment_id:)
+  end
+
+  def path_params
+    @path_params ||= params.permit(:id, :frame_id).to_h
+  end
+
+  def frame_id
+    path_params[:frame_id]
+  end
+
+  def comment_id
+    path_params[:id]
   end
 
   def form_params
