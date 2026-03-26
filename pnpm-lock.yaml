@@ -73,7 +73,7 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
       vite:
-        specifier: ^8.0.0
+        specifier: ^8.0.2
         version: 8.0.2(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.39.0)
       vite-plugin-ruby:
         specifier: ^5.2.0
