@@ -69,7 +69,7 @@ gem "googleauth", "~> 1.16.2"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.4.2"
+gem "pagy", "~> 43.4.4"
 
 # tags
 gem "no_fly_list", "0.7.3"
@@ -122,7 +122,7 @@ group :development do
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.26.8", require: false
+  gem "ruby-lsp", "~> 0.26.9", require: false
 
   gem "brakeman", "~> 8.0.4", require: false
   gem "reek", "~> 6.5.0", require: false
