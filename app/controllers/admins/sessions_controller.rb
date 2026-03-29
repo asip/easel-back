@@ -3,7 +3,6 @@
 # admins / Sessions Controller
 class Admins::SessionsController < Admins::Devise::SessionsController
   include Admin::Authentication::Skip
-  include Flashes
 
   layout "admins/application"
 
