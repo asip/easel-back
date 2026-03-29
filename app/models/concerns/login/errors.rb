@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Errors::Login module
-module Errors::Login
+# Login::Errors module
+module Login::Errors
   extend ActiveSupport::Concern
 
   protected
