@@ -7,8 +7,6 @@ class Api::V1::FramesController < Api::V1::ApiController
   include Frames::Locale::Detect::Skip
 
   def index
-    items = JsonUtil.to_hash(criteria)
-    form = FrameSearchForm.new(items)
     if form.valid?
       pagination, frames = list_frames(user: current_user, form:, page:)
 
@@ -90,6 +88,14 @@ class Api::V1::FramesController < Api::V1::ApiController
 
   def criteria
     query_params[:q]
+  end
+
+  def q_items
+    JsonUtil.to_hash(criteria)
+  end
+
+  def form
+    @form ||= FrameSearchForm.new(q_items)
   end
 
   def path_params
