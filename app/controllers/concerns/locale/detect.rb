@@ -12,9 +12,13 @@ module Locale::Detect
 
   def switch_locale
     # logger.debug I18n.locale
-    requested_locale_code = I18n.locale.to_s&.split(/-/)&.first
-    effective_locale_code = I18n.available_locales.include?(requested_locale_code.to_sym) ? requested_locale_code : "en"
-    # logger.debug "* Locale set to '#{effective_locale_code}'"
-    I18n.locale = effective_locale_code.to_sym
+    browser_locale_code = I18n.locale.to_s&.split(/-/)&.first
+    locale_code = I18n.available_locales.include?(browser_locale_code.to_sym) ? browser_locale_code : fallback_locale
+    # logger.debug "* Locale set to '#{locale_code}'"
+    I18n.locale = locale_code.to_sym
+  end
+
+  def fallback_locale
+    "en"
   end
 end
