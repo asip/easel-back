@@ -50,8 +50,7 @@ class Admins::SessionsController < Admins::Devise::SessionsController
   def login_failed
     success, admin = Admin.validate_on_login(form: sign_in_params)
     self.resource = admin unless success
-    flashes[:alert] = resource.full_error_messages_on_login
-    render layout: false, content_type: "text/vnd.turbo-stream.html", status: :unprocessable_content
+    render_login_errors(resource:)
   end
 
   protected
