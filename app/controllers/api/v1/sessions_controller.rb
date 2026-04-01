@@ -21,11 +21,11 @@ class Api::V1::SessionsController < Api::V1::ApiController
 
   private
 
-  def query_params
-    @query_params ||= params.permit(:page).to_h
+  def route_params
+    @route_params ||= params.permit(:page).to_h
   end
 
   def page
-    query_params[:page]
+    route_params[:page]
   end
 end

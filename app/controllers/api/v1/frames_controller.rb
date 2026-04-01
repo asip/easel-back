@@ -78,16 +78,17 @@ class Api::V1::FramesController < Api::V1::ApiController
     Queries::Frame::ListCommentsWithUser.run(frame_id:)
   end
 
-  def query_params
-    @query_params ||= params.permit(:q, :page).to_h
+
+  def route_params
+    @route_params ||= params.permit(:id, :frame_id, :q, :page).to_h
   end
 
   def page
-    query_params[:page]
+    route_params[:page]
   end
 
   def criteria
-    query_params[:q]
+    route_params[:q]
   end
 
   def q_items
@@ -98,16 +99,12 @@ class Api::V1::FramesController < Api::V1::ApiController
     @form ||= FrameSearchForm.new(q_items)
   end
 
-  def path_params
-    @path_params ||= params.permit(:id, :frame_id).to_h
-  end
-
   def id
-    path_params[:id]
+    route_params[:id]
   end
 
   def frame_id
-    path_params[:frame_id]
+    route_params[:frame_id]
   end
 
   def form_params

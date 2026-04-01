@@ -28,11 +28,11 @@ class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
     render json: { following: }
   end
 
-  def path_params
-    @path_params ||= params.permit(:user_id).to_h
+  def route_params
+    @route_params ||= params.permit(:user_id).to_h
   end
 
   def user_id
-    path_params[:user_id]
+    route_params[:user_id]
   end
 end

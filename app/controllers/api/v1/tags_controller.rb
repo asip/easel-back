@@ -18,11 +18,11 @@ class Api::V1::TagsController < Api::V1::ApiController
     render json: { tags: }
   end
 
-  def query_params
-    @query_params ||= params.permit(:q).to_h
+  def route_params
+    @route_params ||= params.permit(:q).to_h
   end
 
   def name
-    query_params[:q]
+    route_params[:q]
   end
 end

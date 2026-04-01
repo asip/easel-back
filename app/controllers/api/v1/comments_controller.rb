@@ -38,16 +38,16 @@ class Api::V1::CommentsController < Api::V1::ApiController
     Queries::Comment::FindComment.run(user: current_user, frame_id: frame.id, comment_id:)
   end
 
-  def path_params
-    @path_params ||= params.permit(:id, :frame_id).to_h
+  def route_params
+    @route_params ||= params.permit(:id, :frame_id).to_h
   end
 
   def frame_id
-    path_params[:frame_id]
+    route_params[:frame_id]
   end
 
   def comment_id
-    path_params[:id]
+    route_params[:id]
   end
 
   def form_params
