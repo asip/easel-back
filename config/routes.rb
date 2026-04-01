@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
       scope :oauth do
         scope :sessions do
-          post "/", to: "users/omniauth_callbacks#google"
+          post "/", to: "users/omniauth_callbacks#callback"
         end
       end
     end

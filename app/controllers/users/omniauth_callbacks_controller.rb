@@ -15,8 +15,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
 
-  def google
-    callback_for(:google)
+  def callback
+    sign_in(user, event: :authentication)
+
+    render_account(account: user)
   end
 
   # GET|POST /resource/auth/twitter
@@ -37,16 +39,24 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     ).to_h
   end
 
-  def callback_for(provider)
-    auth = AuthInfo.from_google(provider:, credential:)
-    user = User.from(auth:, time_zone:)
-    sign_in(user, event: :authentication)
-
-    render_account(account: user)
-  end
-
   def credential
     auth_params[:credential]
+  end
+
+  def provider
+    auth_params[:provider]
+  end
+
+  def auth
+    if provider == "google"
+      AuthInfo.from_google(provider:, credential:)
+    else
+      nil
+    end
+  end
+
+  def user
+    @user ||= User.from(auth:, time_zone:)
   end
 
   # protected
