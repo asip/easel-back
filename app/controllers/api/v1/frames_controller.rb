@@ -21,11 +21,11 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def show
-    render_frame(frame: public_frame_with_relations)
+    render_frame(frame: public_frame.with_relations)
   end
 
   def authenticated
-    render_frame(frame: frame_with_relations)
+    render_frame(frame: authenticated_frame.with_relations)
   end
 
   def comments
@@ -44,7 +44,7 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def update
-    mutation = Mutations::Frame::UpdateFrame.run(frame:, form: form_params)
+    mutation = Mutations::Frame::UpdateFrame.run(frame: account_frame, form: form_params)
     frame = mutation.frame
 
     if mutation.success?
@@ -55,7 +55,7 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def destroy
-    mutation = Mutations::Frame::DeleteFrame.run(frame:)
+    mutation = Mutations::Frame::DeleteFrame.run(frame: account_frame)
     frame = mutation.frame
     render_frame(frame:)
   end
@@ -63,15 +63,19 @@ class Api::V1::FramesController < Api::V1::ApiController
   private
 
   def frame
-    Queries::Frame::FindFrame.run(user: current_user, frame_id: id)
+    Queries::Frame::FindFrame.run(frame_id: id, user: current_user)
   end
 
-  def public_frame_with_relations
-    Queries::Frame::FindFrameWithRelations.run(frame_id: id, private: false)
+  def public_frame
+    Queries::Frame::FindFrame.run(frame_id: id, private: false)
   end
 
-  def frame_with_relations
-    Queries::Frame::FindFrameWithRelations.run(frame_id:, user: current_user)
+  def authenticated_frame
+    Queries::Frame::FindFrame.run(frame_id:, user: current_user)
+  end
+
+  def account_frame
+    Queries::Frame::FindFrame.run(frame_id: id, user: current_user, authenticated: true)
   end
 
   def comment_list

@@ -139,6 +139,10 @@ class Frame < ApplicationRecord
     )
   end
 
+  scope :with_relations, ->() do
+    eager_load(:user, comments: :user)
+  end
+
   def tag_list
     joined_tags
   end
@@ -174,6 +178,10 @@ class Frame < ApplicationRecord
   #
   #   file_derivatives!
   # end
+
+  def with_relations
+    Frame.with_relations.find_by!(id: self.id)
+  end
 
   private
 
