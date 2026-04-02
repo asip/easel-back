@@ -14,15 +14,15 @@ class Api::V1::TagsController < Api::V1::ApiController
     Queries::ApplicationTag::ListTagNames.run(name:).pluck(:name)
   end
 
-  def render_tags(tags:)
-    render json: { tags: }
-  end
-
   def route_params
     @route_params ||= params.permit(:q).to_h
   end
 
   def name
     route_params[:q]
+  end
+
+  def render_tags(tags:)
+    render json: { tags: }
   end
 end

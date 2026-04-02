@@ -24,15 +24,15 @@ class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
     Queries::User::FindUser.run(user_id:)
   end
 
-  def render_following(following:)
-    render json: { following: }
-  end
-
   def route_params
     @route_params ||= params.permit(:user_id).to_h
   end
 
   def user_id
     route_params[:user_id]
+  end
+
+  def render_following(following:)
+    render json: { following: }
   end
 end
