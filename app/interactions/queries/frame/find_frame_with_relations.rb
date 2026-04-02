@@ -21,12 +21,11 @@ class Queries::Frame::FindFrameWithRelations
       end
     elsif private_present
       user_id = @user.id
-      scope.eager_load(:user, comments: :user)
-           .merge(
-             Frame.where(user_id:).or(
-              Frame.where(private: false).where.not(user_id:)
-             )
-           ).find_by!(id: @frame_id)
+      scope.merge(
+              Frame.where(user_id:).or(
+                Frame.where(private: false).where.not(user_id:)
+              )
+            ).find_by!(id: @frame_id)
     end
   end
 end
