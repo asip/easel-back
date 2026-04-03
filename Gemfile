@@ -36,13 +36,13 @@ gem "bootsnap", "~> 1.23.0", require: false
 
 # vite integration
 gem "vite_rails", "3.10.0"
-gem "vite_ruby", "3.10.1"
+gem "vite_ruby", "3.10.2"
 
 # view component
-gem "view_component", "~> 4.5.0"
+gem "view_component", "~> 4.6.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.217.0"
+gem "aws-sdk-s3", "~> 1.218.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -144,5 +144,5 @@ group :test do
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.25.0"
   gem "committee-rails", "~> 0.10.0"
-  gem "test-prof", "~> 1.6.0"
+  gem "test-prof", "~> 1.6.1"
 end
