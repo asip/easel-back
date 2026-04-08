@@ -24,11 +24,6 @@ module Easel
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # generate .js instead of .coffee
-    config.generators.javascript_engine = :js
-
-    config.action_view.form_with_generates_remote_forms = false
-
     # timezone
     time_zone = ENV.fetch("TIME_ZONE") { "Asia/Tokyo" }
     time_zone_db = ENV.fetch("TIME_ZONE_DB") { "Asia/Tokyo" }
