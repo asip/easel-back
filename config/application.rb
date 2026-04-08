@@ -23,21 +23,5 @@ module Easel
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-    # timezone
-    time_zone = ENV.fetch("TIME_ZONE") { "Asia/Tokyo" }
-    time_zone_db = ENV.fetch("TIME_ZONE_DB") { "Asia/Tokyo" }
-
-    config.time_zone = time_zone
-    if time_zone_db == time_zone
-      config.active_record.default_timezone = :local
-    else
-      config.active_record.default_timezone = :utc
-    end
-
-    # config.action_controller.forgery_protection_origin_check = false
-
-    config.middleware.use ActionDispatch::Flash
-    config.middleware.use Rack::Locale
   end
 end
