@@ -14,7 +14,7 @@ gem "propshaft", "~> 1.3.1"
 gem "pg", "~> 1.6.3"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 7.2.0"
+gem "puma", "~> 8.0.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.23"
@@ -72,7 +72,7 @@ gem "config", "~> 5.6.1"
 gem "pagy", "~> 43.5.0"
 
 # tags
-gem "no_fly_list", "0.7.3"
+gem "no_fly_list", "0.7.4"
 
 # json
 gem "oj", "3.16.16"
@@ -116,7 +116,7 @@ group :development do
   gem "annotaterb", "~> 4.22.0"
   gem "rails-erd", "~> 1.7.2"
 
-  gem "rubocop", "~> 1.86.0", require: false
+  gem "rubocop", "~> 1.86.1", require: false
   gem "rubocop-rails", "~> 2.34.3", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
