@@ -5,10 +5,6 @@
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.after_initialize do
-    Prosopite.rails_logger = true
-    Prosopite.raise = true
-  end
 
   # While tests run files are not watched, reloading is not necessary.
   config.enable_reloading = false
