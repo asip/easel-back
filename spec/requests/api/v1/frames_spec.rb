@@ -451,7 +451,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": exceeds 40 characters }' do
         it 'failure (失敗)' do
-          headers.merge!(headers)
+          headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           assert_request_schema_confirm
