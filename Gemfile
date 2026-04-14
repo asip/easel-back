@@ -69,7 +69,7 @@ gem "googleauth", "~> 1.16.2"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.5.0"
+gem "pagy", "~> 43.5.1"
 
 # tags
 gem "no_fly_list", "0.7.4"
