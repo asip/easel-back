@@ -11,7 +11,7 @@ module Frames::Queries::Pagination
   def list_frames(user:, form:, page:)
     frame_ids = Queries::Frame::ListFrameIds.run(user:, form:)
     pagy, frame_ids = pagy(frame_ids, page:)
-    frames = Frame.eager_load(:user).where(id: frame_ids).order(created_at: "desc")
+    frames = Queries::Frame::ListByFrameIds.run(frame_ids:)
 
     pagination = Api::Pagination.resources_with_pagination(pagy)
     [ pagination, frames ]
