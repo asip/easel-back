@@ -12,14 +12,15 @@ class Mutations::User::FromAuthAndTimeZone
   end
 
   def execute
-    authentication = Authentication.find_from(auth: @auth)
+    authentication = Queries::Authentication::FindFromAuth.run(auth: @auth)
 
     if authentication
       self.user = Queries::User::FindUser.run(user_id: authentication.user_id)
-      user&.enable_with(auth: @auth)
+      Mutations::User::EnableWithAuth.run(auth: @auth, user:) if user.present?
     else
-      self.user = User.find_or_create_from(auth: @auth, time_zone: @time_zone)
-      Authentication.create_from(user:, auth: @auth)
+      mutation = Mutations::User::FindOrCreateFromAuthAndTimeZone.run(auth: @auth, time_zone: @time_zone)
+      self.user = mutation.user
+      Mutations::Authentication::CreateFromUserAndAuth.run(user:, auth: @auth)
     end
 
     user
