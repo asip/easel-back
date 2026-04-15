@@ -4,6 +4,7 @@
 class Api::V1::UsersController < Api::V1::ApiController
   include ::Users::Queries::Pagination
   include Account::Authentication::Skip
+  include ::Users::Variables
 
   def show
     render_user(user:)
@@ -19,17 +20,5 @@ class Api::V1::UsersController < Api::V1::ApiController
 
   def user
     Queries::User::FindUser.run(user_id:)
-  end
-
-  def route_params
-    @route_params ||= params.permit(:id, :page).to_h
-  end
-
-  def user_id
-    route_params[:id]
-  end
-
-  def page
-    route_params[:page]
   end
 end

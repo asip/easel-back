@@ -2,6 +2,8 @@
 
 # comment api controller
 class Api::V1::CommentsController < Api::V1::ApiController
+  include Comments::Variables
+
   def create
     mutation = Mutations::Comment::CreateComment.run(user: current_user, frame_id: frame.id,
                                                      form: form_params)
@@ -36,21 +38,5 @@ class Api::V1::CommentsController < Api::V1::ApiController
 
   def comment
     Queries::Comment::FindComment.run(user: current_user, frame_id: frame.id, comment_id:)
-  end
-
-  def route_params
-    @route_params ||= params.permit(:id, :frame_id).to_h
-  end
-
-  def frame_id
-    route_params[:frame_id]
-  end
-
-  def comment_id
-    route_params[:id]
-  end
-
-  def form_params
-    @form_params ||= params.expect(comment: [ :body ]).to_h
   end
 end
