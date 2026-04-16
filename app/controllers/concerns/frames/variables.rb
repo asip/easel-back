@@ -22,16 +22,16 @@ module Frames::Variables
     JsonUtil.to_hash(criteria)
   end
 
-  def form
-    @form ||= Frame::SearchForm.new(q_items)
-  end
-
   def id
     route_params[:id]
   end
 
   def frame_id
     route_params[:frame_id]
+  end
+
+  def form
+    @form ||= Frame::SearchForm.new(q_items)
   end
 
   def form_params
