@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# TimeZone::HttpHeader module
-module TimeZone::HttpHeader
+# HttpHeaders module
+module HttpHeaders
   extend ActiveSupport::Concern
 
   protected

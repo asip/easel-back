@@ -3,7 +3,7 @@
 # users / Omniauth Callbacks Controller
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include ActionController::Cookies
-  include TimeZone::HttpHeader
+  include HttpHeaders
 
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
