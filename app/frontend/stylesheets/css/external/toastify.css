@@ -1,5 +1,4 @@
 .toastify {
   color: #000000;
-  background: -webkit-linear-gradient(315deg, #ffffff, #ffffff);
-  background: linear-gradient(to right, #ffffff, #ffffff);
+  background: rgba(255, 255, 255, 0.08);
 }
