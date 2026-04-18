@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gem "rails", "~> 8.1.3"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem "propshaft", "~> 1.3.1"
+gem "propshaft", "~> 1.3.2"
 
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.5.6'
@@ -39,7 +39,7 @@ gem "vite_rails", "3.10.0"
 gem "vite_ruby", "3.10.2"
 
 # view component
-gem "view_component", "~> 4.6.0"
+gem "view_component", "~> 4.7.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.219.0"
@@ -101,7 +101,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.11.1", platforms: %i[mri windows], require: "debug/prelude"
   gem "pg_query", "~> 6.2.2"
-  gem "prosopite", "~> 2.1.2"
+  gem "prosopite", "~> 2.2.0"
 end
 
 group :development do
@@ -139,7 +139,7 @@ group :test do
   # gem "selenium-webdriver", "~> 4.35.0"
 
   gem "factory_bot_rails", "~> 6.5.1"
-  gem "faker", "~> 3.6.1"
+  gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.25.1"
