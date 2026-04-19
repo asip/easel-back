@@ -12,6 +12,7 @@ class Queries::Authentication::FindFromAuth
     uid = @auth.uid
     provider = @auth.provider
 
+    # Find authentication records
     # (認証レコードを検索)
     Authentication.find_by(uid:, provider:)
   end
