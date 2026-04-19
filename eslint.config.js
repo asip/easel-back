@@ -15,7 +15,7 @@ export default [
         es2022: true,
       },
     },
-    rules: {}, // (共通のルールを設定)
+    rules: {}, // Set common rules. (共通のルールを設定)
   },
   {
     files: ['**/*.js'],
