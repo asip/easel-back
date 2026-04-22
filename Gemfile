@@ -35,8 +35,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "bootsnap", "~> 1.23.0", require: false
 
 # vite integration
-gem "vite_rails", "3.10.0"
-gem "vite_ruby", "3.10.2"
+gem "rails_vite", "~> 0.2.2"
 
 # view component
 gem "view_component", "~> 4.8.0"

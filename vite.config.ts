@@ -1,15 +1,9 @@
 import { defineConfig } from 'vite'
-import RubyPlugin from 'vite-plugin-ruby'
+import rails from 'rails-vite-plugin'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  server: {
-    port: 3036,
-    hmr: {
-      protocol: 'ws',
-    },
-  },
-  plugins: [RubyPlugin(), tailwindcss()],
+  plugins: [rails({ sourceDir: 'app/frontend' }), tailwindcss()],
   resolve: {
     tsconfigPaths: true,
   },

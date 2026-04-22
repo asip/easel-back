@@ -5,11 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
-    <%#= vite_client_tag %>
     <%= favicon_link_tag "/palette.png", { type: "image/png" } %>
     <%= favicon_link_tag "/palette.svg", { type: "image/svg+xml" } %>
-    <%= vite_stylesheet_tag "tailwind", media: "all", 'data-turbo-track': "reload" %>
-    <%= vite_stylesheet_tag "application", media: "all", 'data-turbo-track': "reload" %>
+    <%= vite_tags "tailwind.css", media: "all", 'data-turbo-track': "reload" %>
+    <%= vite_tags "application.css", media: "all", 'data-turbo-track': "reload" %>
   </head>
   <body class="min-h-screen">
     <%= render Errors::Header::Component.new %>
