@@ -6,10 +6,6 @@ class Api::V1::SessionsController < Api::V1::ApiController
   include ::Sessions::Queries::Pagination
   include ::Sessions::Variables
 
-  # def show
-  #   render json: {}, status: :ok
-  # end
-
   def profile
     render_account(account: current_user)
   end
