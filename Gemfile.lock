@@ -662,4 +662,4 @@ DEPENDENCIES
   web-console (~> 4.3.0)
 
 BUNDLED WITH
-  4.0.6
+  4.0.10
