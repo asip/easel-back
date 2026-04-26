@@ -4,18 +4,14 @@
 module Toast
   # Component class
   class Component < ViewComponent::Base
-    def initialize(flash: {}, flashes: {})
-      @json = to_json(flash:, flashes:)
+    def initialize(flash: {})
+      @json = to_json(flash:)
     end
 
     private
 
-    def to_json(flash:, flashes:)
-      if flash.present?
-        Oj.dump(flash.to_h.transform_values { |value| [ value ] })
-      elsif flashes.present?
-        Oj.dump(flashes)
-      end
+    def to_json(flash:)
+      Oj.dump(flash.present? ? flash.to_h.transform_values { |value| [ value ] } : {})
     end
   end
 end

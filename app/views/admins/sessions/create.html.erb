@@ -2,5 +2,5 @@
   <%= render Form::Admins::Sessions::New::Component.new(resource:, resource_name:) %>
 <% end %>
 <%= turbo_stream.prepend "flash_message" do %>
-  <%= render Toast::Component.new(flash:, flashes: @flashes) %>
+  <%= render Toast::Component.new(flash:) %>
 <% end %>
