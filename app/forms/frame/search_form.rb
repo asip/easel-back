@@ -4,6 +4,7 @@
 class Frame::SearchForm
   include ActiveModel::API
   include ActiveModel::Attributes
+  include ::Errors::Map
 
   attribute :word, :string
   attribute :frame_name, :string

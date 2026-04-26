@@ -14,6 +14,8 @@
 
 # Comment
 class Comment < ApplicationRecord
+  include ::Errors::Map
+
   belongs_to :user, -> { with_discarded }
   belongs_to :frame
 

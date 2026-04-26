@@ -33,6 +33,6 @@ module Api::ResourceRenderable
   end
 
   def render_errors(resource:)
-    render json: Oj.dump({ errors: resource.errors.to_hash(false) }), status: :unprocessable_content
+    render json: Oj.dump({ errors: resource.error_map }), status: :unprocessable_content
   end
 end

@@ -1,0 +1,7 @@
+<% if @model.present? %>
+  <div class="flex mt-2">
+    <% @model.error_sym_map[@attr_name]&.each do |message| %>
+      <div class="text-red-500 text-xs"><%= message %></div>
+    <% end %>
+  </div>
+<% end %>

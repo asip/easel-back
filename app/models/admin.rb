@@ -17,6 +17,7 @@
 
 # Admin
 class Admin < ApplicationRecord
+  include ::Errors::Map
   include Errors
   include ::Login
 
