@@ -16,7 +16,7 @@
                   <%= form.text_field :email, placeholder: t("activerecord.attributes.user.email"),
                                               autofocus: true, autocomplete: "email",
                                               class: "input" %>
-                  <%= render Errors::Message::Component.new(model: @resource, attr_name: :email) %>
+                  <%= render Display::Messages::Component.new(model: @resource, attr_name: :email) %>
                 </td>
               </tr>
               <tr>
@@ -27,7 +27,7 @@
                   <%= form.password_field :password, placeholder: t("activerecord.attributes.user.password"),
                                                      autocomplete: "current-password",
                                                      class: "input" %>
-                  <%= render Errors::Message::Component.new(model: @resource, attr_name: :password) %>
+                  <%= render Display::Messages::Component.new(model: @resource, attr_name: :password) %>
                 </td>
               </tr>
             </tbody>
