@@ -14,7 +14,7 @@ gem "propshaft", "~> 1.3.2"
 gem "pg", "~> 1.6.3"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 8.0.0"
+gem "puma", "~> 8.0.1"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.23"
@@ -32,7 +32,7 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.23.0", require: false
+gem "bootsnap", "~> 1.24.0", require: false
 
 # vite integration
 gem "rails_vite", "~> 0.2.2"
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.16.2"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.5.2"
+gem "pagy", "~> 43.5.3"
 
 # tags
 gem "no_fly_list", "0.7.4"
