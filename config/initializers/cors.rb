@@ -16,7 +16,7 @@
 # end
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins [ Settings.reverse_proxy.origin, Settings.origin, Settings.frontend.origin ]
+    origins [ Settings.app.reverse_proxy.origin, Settings.app.backend.origin, Settings.app.frontend.origin ]
 
     resource "*",
              headers: :any,

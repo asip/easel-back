@@ -7,7 +7,7 @@ module AuthInfo::Google
   class_methods do
     def from_google(credential:, provider:)
       info = ::Google::Auth::IDTokens.verify_oidc(credential,
-                                                  aud: Settings.google.client_id)
+                                                  aud: Settings.app.google.client_id)
                                      .with_indifferent_access
       auth = AuthInfo.new({
         uid: info[:sub],

@@ -96,7 +96,7 @@ class User < ApplicationRecord
 
   def image_url_for_view(key)
     if image.blank?
-      "#{Settings.origin}/no-profile-image.png"
+      "#{Settings.app.backend.origin}/no-profile-image.png"
     else
       image_proxy_url(key)
     end
