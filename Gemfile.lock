@@ -119,7 +119,7 @@ GEM
       smart_properties
     bigdecimal (4.1.0)
     bindex (0.8.1)
-    bootsnap (1.24.0)
+    bootsnap (1.24.1)
       msgpack (~> 1.2)
     brakeman (8.0.4)
       racc
@@ -606,7 +606,7 @@ DEPENDENCIES
   alba (= 3.10.0)
   annotaterb (~> 4.22.0)
   aws-sdk-s3 (~> 1.220.0)
-  bootsnap (~> 1.24.0)
+  bootsnap (~> 1.24.1)
   brakeman (~> 8.0.4)
   bullet (~> 8.1.1)
   cgi (~> 0.5.1)
