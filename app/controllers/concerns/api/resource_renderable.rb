@@ -23,12 +23,10 @@ module Api::ResourceRenderable
   end
 
   def render_comment(comment:)
-    # logger.debug CommentResource.new(comment).serialize
     render json: CommentResource.new(comment).serializable_hash
   end
 
   def render_comments(comments:)
-    # logger.debug CommentResource.new(comments).serialize
     render json: CommentResource.new(comments).serialize
   end
 end
