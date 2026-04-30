@@ -15,11 +15,11 @@ module Api::ResourceRenderable
   end
 
   def render_frame(frame:)
-    render json: Detail::FrameResource.new(frame).serializable_hash
+    render json: Frame::DetailResource.new(frame).serializable_hash
   end
 
   def render_frames(frames:, pagination:)
-    render json: Oj.load(ListItem::FrameResource.new(frames).serialize).merge(pagination)
+    render json: Oj.load(Frame::List::ItemResource.new(frames).serialize).merge(pagination)
   end
 
   def render_comment(comment:)

@@ -14,8 +14,8 @@
 #  user_id    :integer
 #
 
-# ListItem::FrameResource class
-class ListItem::FrameResource < BaseResource
+# Frame::List::ItemResource class
+class Frame::List::ItemResource < BaseResource
   root_key :frame, :frames
   attributes :id, :user_id, :user_name, :name, :creator_name, :private
 

@@ -14,8 +14,8 @@
 #  user_id    :integer
 #
 
-# Detail::FrameResource class
-class Detail::FrameResource < ListItem::FrameResource
+# Frame::DetailResource class
+class Frame::DetailResource < Frame::List::ItemResource
   attributes :comment
 
   attribute :shooted_at do |frame|
