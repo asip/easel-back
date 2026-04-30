@@ -56,7 +56,7 @@ class ExceptionsApp < Rambulance::ExceptionsApp
         response[:source] = exception.model
       end
 
-      render_resource json: response, status: code
+      render_resource Oj.dump(response), status: code
     end
   end
 =end

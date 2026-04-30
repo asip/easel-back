@@ -27,6 +27,6 @@ class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   end
 
   def render_following(following:)
-    render_resource({ following: })
+    render_resource(Oj.dump({ following: }))
   end
 end

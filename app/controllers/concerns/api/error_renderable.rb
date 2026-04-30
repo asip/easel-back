@@ -79,6 +79,6 @@ module Api::ErrorRenderable
       response[:source] = exception.model
     end
 
-    render_resource response, status: code
+    render_resource Oj.dump(response), status: code
   end
 end
