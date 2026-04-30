@@ -27,7 +27,7 @@ module Api::ErrorRenderable
   protected
 
   def render_errors(resource:)
-    render json: Oj.dump({ errors: resource.error_map }), status: :unprocessable_content
+    render_resource Oj.dump({ errors: resource.error_map }), status: :unprocessable_content
   end
 
   private
@@ -79,6 +79,6 @@ module Api::ErrorRenderable
       response[:source] = exception.model
     end
 
-    render json: response, status: code
+    render_resource response, status: code
   end
 end

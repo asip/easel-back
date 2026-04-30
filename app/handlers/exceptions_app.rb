@@ -3,6 +3,7 @@
 # ExceptionsApp class
 class ExceptionsApp < Rambulance::ExceptionsApp
 =begin
+  include Api::Renderable
 
   # HTTP Status 400 Bad Request
   def bad_request
@@ -55,7 +56,7 @@ class ExceptionsApp < Rambulance::ExceptionsApp
         response[:source] = exception.model
       end
 
-      render json: response, status: code
+      render_resource json: response, status: code
     end
   end
 =end

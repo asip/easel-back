@@ -16,6 +16,6 @@ class Api::V1::TagsController < Api::V1::ApiController
   end
 
   def render_tags(tags:)
-    render json: { tags: }
+    render_resource({ tags: })
   end
 end

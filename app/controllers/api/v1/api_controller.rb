@@ -2,6 +2,7 @@
 
 # Api Controller
 class Api::V1::ApiController < ActionController::API
+  include Api::Renderable
   include Api::ErrorRenderable
   include Api::ResourceRenderable
   include Locale::Detect
