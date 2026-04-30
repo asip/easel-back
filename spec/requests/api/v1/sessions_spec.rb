@@ -15,7 +15,6 @@ describe 'Sessions', type: :request do
              params: { user: { email: user.email, password: 'testtest' } },
              headers: headers
         # expect(response.status).to eq(200)
-        # puts response.headers
         assert_request_schema_confirm
         assert_response_schema_confirm(200)
         # json_data = json

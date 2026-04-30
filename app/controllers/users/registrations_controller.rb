@@ -55,7 +55,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.errors.empty?
       save_success(resource)
     else
-      # puts resource.error_map
       save_failed(resource)
     end
   end

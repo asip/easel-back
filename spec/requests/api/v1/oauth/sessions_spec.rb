@@ -17,7 +17,6 @@ describe 'oauth/sessions', type: :request do
                params: { provider: 'google', credential: 'test_credential' },
                headers: headers
           # expect(response.status).to eq(200)
-          ## puts response.headers
           assert_request_schema_confirm
           assert_response_schema_confirm(200)
           # json_data = json
@@ -33,7 +32,6 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: headers
             # expect(response.status).to eq(200)
-            ## puts response.headers
             assert_request_schema_confirm
             assert_response_schema_confirm(200)
             # json_data = json
@@ -50,7 +48,6 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: headers
             # expect(response.status).to eq(200)
-            ## puts response.headers
             assert_request_schema_confirm
             assert_response_schema_confirm(200)
             # json_data = json
@@ -67,7 +64,6 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: headers
             # expect(response.status).to eq(200)
-            ## puts response.headers
             assert_request_schema_confirm
             assert_response_schema_confirm(200)
             # json_data = json
@@ -84,7 +80,6 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: headers
             # expect(response.status).to eq(200)
-            ## puts response.headers
             assert_request_schema_confirm
             assert_response_schema_confirm(200)
             # json_data = json
