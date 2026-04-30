@@ -31,8 +31,4 @@ module Api::ResourceRenderable
     # logger.debug CommentResource.new(comments).serialize
     render json: CommentResource.new(comments).serialize
   end
-
-  def render_errors(resource:)
-    render json: Oj.dump({ errors: resource.error_map }), status: :unprocessable_content
-  end
 end

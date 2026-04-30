@@ -24,6 +24,12 @@ module Api::ErrorRenderable
   #  end
   # end
 
+  protected
+
+  def render_errors(resource:)
+    render json: Oj.dump({ errors: resource.error_map }), status: :unprocessable_content
+  end
+
   private
 
   # Common helper methods for rendering error response (エラーレスポンスをレンダリングする共通のヘルパーメソッド
