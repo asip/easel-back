@@ -6,8 +6,8 @@ module Display
   module Messages
     # Component class
     class Component < ViewComponent::Base
-      def initialize(model:, attr_name:)
-        @messages = model.error_sym_map[attr_name]
+      def initialize(model:, attr:)
+        @messages = model.error_sym_map[attr]
       end
     end
   end
