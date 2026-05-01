@@ -32,7 +32,7 @@
 #
 
 # User Resource
-class UserResource < BaseResource
+class UserResource < ApplicationResource
   root_key :user, :users
   attributes :id, :name, :profile
 

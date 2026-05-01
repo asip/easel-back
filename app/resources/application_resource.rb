@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Base Resource
-class BaseResource
+# Application Resource
+class ApplicationResource
   include Alba::Resource
 end

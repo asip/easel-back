@@ -13,7 +13,7 @@
 #
 
 # Comment Resource
-class CommentResource < BaseResource
+class CommentResource < ApplicationResource
   root_key :comment, :comments
   attributes :id, :user_id, :frame_id, :body
 
