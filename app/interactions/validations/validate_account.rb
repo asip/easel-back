@@ -2,7 +2,7 @@
 
 # Validations::ValidateAccount class
 class Validations::ValidateAccount
-  include Query
+  include Validation
 
   def initialize(form:, type:)
     @form = form

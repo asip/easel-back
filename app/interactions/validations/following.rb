@@ -2,7 +2,7 @@
 
 # Validations::Following class
 class Validations::Following
-  include Query
+  include Validation
 
   def initialize(user:, followee:)
     @user = user
