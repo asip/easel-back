@@ -5,8 +5,8 @@ module ActiveModel
   # ErrorsWithoutBeforeTypeCast module
   module ErrorsWithoutBeforeTypeCast
     def add(attribute, message = :invalid, **options)
-      attr_str = attribute.to_s
-      attribute = attr_str.sub("_before_type_cast", "").to_sym if attr_str.include?("_before_type_cast")
+      attr = attribute.to_s
+      attribute = attr.sub("_before_type_cast", "").to_sym if attr.include?("_before_type_cast")
       super(attribute, message, **options)
     end
   end
