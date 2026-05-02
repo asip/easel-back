@@ -33,7 +33,6 @@
 
 # User Resource
 class UserResource < ApplicationResource
-  root_key :user, :users
   attributes :id, :name, :profile
 
   attribute :image_thumb_url do |user|

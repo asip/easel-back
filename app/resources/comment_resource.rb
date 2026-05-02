@@ -14,7 +14,6 @@
 
 # Comment Resource
 class CommentResource < ApplicationResource
-  root_key :comment, :comments
   attributes :id, :user_id, :frame_id, :body
 
   attribute :user_name do |comment|

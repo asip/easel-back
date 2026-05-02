@@ -4,15 +4,13 @@
 module Api
   # Pagination Class
   class Pagination
-    def self.resources_with_pagination(pagy)
+    def self.pagination_resources(pagy)
       {
-        meta: {
-          pagination: {
-            count: pagy.count,
-            pages: pagy.pages,
-            page: pagy.page,
-            per: pagy.limit
-          }
+        pagination: {
+          count: pagy.count,
+          pages: pagy.pages,
+          page: pagy.page,
+          per: pagy.limit
         }
       }
     end

@@ -7,26 +7,26 @@ module Api::ResourceRenderable
   protected
 
   def render_account(account:)
-    render_resource AccountResource.new(account).serializable_hash
+    render_resource AccountResource.new(account).serialize
   end
 
   def render_user(user:)
-    render_resource UserResource.new(user).serializable_hash
+    render_resource UserResource.new(user).serialize
   end
 
   def render_frame(frame:)
-    render_resource Frame::DetailResource.new(frame).serializable_hash
+    render_resource Frame::DetailResource.new(frame).serialize
   end
 
   def render_frames(frames:, pagination:)
-    render_resource Oj.load(Frame::List::ItemResource.new(frames).serialize).merge(pagination)
+    render_resource Oj.load(Frame::List::ItemResource.new(frames).serialize(root_key: :frames, meta: pagination))
   end
 
   def render_comment(comment:)
-    render_resource CommentResource.new(comment).serializable_hash
+    render_resource CommentResource.new(comment).serialize
   end
 
   def render_comments(comments:)
-    render_resource CommentResource.new(comments).serialize
+    render_resource CommentResource.new(comments).serialize(root_key: :comments)
   end
 end

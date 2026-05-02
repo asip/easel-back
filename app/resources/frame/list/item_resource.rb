@@ -16,7 +16,6 @@
 
 # Frame::List::ItemResource class
 class Frame::List::ItemResource < ApplicationResource
-  root_key :frame, :frames
   attributes :id, :user_id, :user_name, :name, :creator_name, :private
 
   attribute :tag_list do |frame|
