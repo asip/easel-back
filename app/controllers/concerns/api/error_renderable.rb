@@ -71,15 +71,18 @@ module Api::ErrorRenderable
   def render_error(code, title, exception)
     code = Rack::Utils.status_code(code)
 
-    response = {
+    error = {
       title:,
       errors: exception&.message ? [ exception&.message ] : []
     }
 
     if code == Rack::Utils.status_code(:not_found)
-      response[:source] = exception.model
+      error[:source] = exception.model
     end
 
-    render_resource Oj.dump(response), status: code
+    # puts error
+
+    render_resource ErrorMapResource.new(ErrorMap.new(error)).serialize,
+                    status: code
   end
 end
