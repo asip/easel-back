@@ -19,7 +19,7 @@ module Api::ResourceRenderable
   end
 
   def render_frames(frames:, pagination:)
-    render_resource Oj.load(Frame::List::ItemResource.new(frames).serialize(root_key: :frames, meta: pagination))
+    render_resource Frame::List::ItemResource.new(frames).serialize(root_key: :frames, meta: pagination)
   end
 
   def render_comment(comment:)
@@ -31,10 +31,10 @@ module Api::ResourceRenderable
   end
 
   def render_tags(tags:)
-    render_resource(TagListResource.new(TagList.new(tags:)).serialize)
+    render_resource TagListResource.new(TagList.new(tags:)).serialize
   end
 
   def render_following(following:)
-    render_resource(FollowingResource.new(Following.new(following:)).serialize)
+    render_resource FollowingResource.new(Following.new(following:)).serialize
   end
 end
