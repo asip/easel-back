@@ -16,6 +16,6 @@ class Api::V1::TagsController < Api::V1::ApiController
   end
 
   def render_tags(tags:)
-    render_resource(Oj.dump({ tags: }))
+    render_resource(TagListResource.new(TagList.new(tags:)).serialize)
   end
 end
