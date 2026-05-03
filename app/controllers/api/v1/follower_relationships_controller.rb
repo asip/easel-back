@@ -25,8 +25,4 @@ class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   def user
     Queries::User::FindUser.run(user_id:)
   end
-
-  def render_following(following:)
-    render_resource(FollowingResource.new(Following.new(following:)).serialize)
-  end
 end

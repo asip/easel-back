@@ -29,4 +29,12 @@ module Api::ResourceRenderable
   def render_comments(comments:)
     render_resource CommentResource.new(comments).serialize(root_key: :comments)
   end
+
+  def render_tags(tags:)
+    render_resource(TagListResource.new(TagList.new(tags:)).serialize)
+  end
+
+  def render_following(following:)
+    render_resource(FollowingResource.new(Following.new(following:)).serialize)
+  end
 end

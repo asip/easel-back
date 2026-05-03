@@ -14,8 +14,4 @@ class Api::V1::TagsController < Api::V1::ApiController
   def tags
     Queries::ApplicationTag::ListTagNames.run(name:).pluck(:name)
   end
-
-  def render_tags(tags:)
-    render_resource(TagListResource.new(TagList.new(tags:)).serialize)
-  end
 end
