@@ -27,7 +27,7 @@ module Api::ErrorRenderable
   protected
 
   def render_errors(resource:)
-    render_resource ErrorMapResource.new(ErrorMap.new(errors: resource.error_map)).serialize,
+    render_resource ErrorMessagesResource.new(ErrorMessages.new(errors: resource.error_map)).serialize,
                                          status: :unprocessable_content
   end
 

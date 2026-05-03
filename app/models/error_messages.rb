@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 #
-# ErrorMap class
+# ErrorMessages class
 #
-class ErrorMap
+class ErrorMessages
   include ActiveModel::API
   include ActiveModel::Attributes
 
