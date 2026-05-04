@@ -76,6 +76,7 @@ gem "no_fly_list", "0.7.4"
 # json
 gem "oj", "3.17.0"
 gem "alba", "3.10.0"
+gem "typelizer", "~>0.13.0 "
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"

@@ -46,4 +46,7 @@ class UserResource < ApplicationResource
   attribute :image_three_url do |user|
     user.image_url_for_view(:three)
   end
+
+  typelize profile: "string | null"
+  typelize image_thumb_url: :string, image_one_url: :string, image_three_url: :string
 end

@@ -37,4 +37,10 @@ class Frame::List::ItemResource < ApplicationResource
   attribute :file_six_url do |frame|
     frame.file_proxy_url(:six)
   end
+
+  typelize id: :number, user_id: :number, user_name: :string,
+           name: :string, creator_name: "string | null", private: :boolean
+  typelize tag_list: "string | null"
+  typelize file_url: :string, file_two_url: :string,
+           file_three_url: :string, file_six_url: :string
 end

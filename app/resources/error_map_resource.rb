@@ -5,4 +5,6 @@ class ErrorMapResource < ApplicationResource
   attributes :title, :errors
 
   attributes :source, if: ->(_error, attribute) { attribute.present? }
+
+  typelize title: :string, errors: "string[]", source: "string?"
 end

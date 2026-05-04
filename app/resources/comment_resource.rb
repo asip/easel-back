@@ -31,4 +31,6 @@ class CommentResource < ApplicationResource
   attribute :updated_at do |comment|
     I18n.l(comment.updated_at, format: "%Y/%m/%d %H:%M")
   end
+
+  typelize user_name: :string, user_image_url: :string
 end

@@ -3,4 +3,6 @@
 # ErrorMessages Resource
 class ErrorMessagesResource < ApplicationResource
   attributes :errors
+
+  typelize errors: "Record<string, string[]>"
 end

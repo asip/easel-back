@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "watch:ts": "tsc-watch --noClear -p tsconfig.json",
-    "lint": "eslint --fix './app/frontend/**/*.{js,ts}'",
+    "lint": "eslint --fix './app/frontend/**/*.{js,ts}' & eslint --fix './doc/types/**/*.{js,ts}'",
     "markuplint": "markuplint './app/**/**/*.{erb,vue}'",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check"

@@ -31,4 +31,7 @@ class Frame::DetailResource < Frame::List::ItemResource
   end
 
   many :comments, resource: CommentResource
+
+  typelize comment: "string | null"
+  typelize shooted_at: :string, created_at: :string, updated_at: :string
 end

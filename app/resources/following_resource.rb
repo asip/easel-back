@@ -3,4 +3,6 @@
 # Following Resource
 class FollowingResource < ApplicationResource
   attributes :following
+
+  typelize following: :boolean
 end
