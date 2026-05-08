@@ -57,7 +57,7 @@ gem "rails-i18n", "~> 8.1.0"
 gem "rambulance", "~> 3.3.0"
 
 # authentication
-gem "devise", "5.0.3"
+gem "devise", "5.0.4"
 gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.16.0"
 gem "omniauth-google-oauth2", "1.2.2"
@@ -142,7 +142,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.25.1"
+  gem "rspec-openapi", "~> 0.26.0"
   gem "committee-rails", "~> 0.10.0"
   gem "test-prof", "~> 1.6.1"
 end
