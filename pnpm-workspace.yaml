@@ -1,7 +1,2 @@
 allowBuilds:
   '@parcel/watcher': false
-ignoredBuiltDependencies:
-  - '@parcel/watcher'
-  - '@tailwindcss/oxide'
-onlyBuiltDependencies:
-  - esbuild
