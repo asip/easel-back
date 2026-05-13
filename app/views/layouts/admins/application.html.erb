@@ -10,6 +10,9 @@
     <%= vite_tags "tailwind.css", media: "all", 'data-turbo-track': "reload" %>
     <%= vite_tags "application.css", media: "all", 'data-turbo-track': "reload" %>
     <%= vite_tags "application.js", "data-turbo-track": "reload", type: "module" %>
+    <!--
+      Visit the guide for more information: https://github.com/skryukov/rails_vite
+    -->
   </head>
   <body class="min-h-screen">
     <%= render Admins::Header::Component.new %>
