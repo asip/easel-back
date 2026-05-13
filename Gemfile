@@ -32,7 +32,7 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.24.3", require: false
+gem "bootsnap", "~> 1.24.4", require: false
 
 # vite integration
 gem "rails_vite", "~> 0.2.2"
@@ -41,7 +41,7 @@ gem "rails_vite", "~> 0.2.2"
 gem "view_component", "~> 4.10.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.221.0"
+gem "aws-sdk-s3", "~> 1.222.0"
 gem "image_processing", "~> 1.14.0"
 gem "marcel", "~> 1.1.0"
 gem "shrine", "~> 3.6.0"
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.16.2"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.5.3"
+gem "pagy", "~> 43.5.4"
 
 # tags
 gem "no_fly_list", "0.7.4"
