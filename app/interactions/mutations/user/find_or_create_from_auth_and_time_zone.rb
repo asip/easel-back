@@ -20,6 +20,7 @@ class Mutations::User::FindOrCreateFromAuthAndTimeZone
     unless user
       self.user = ::User.new(name:, email:, password: Devise.friendly_token[0, 20], time_zone: @time_zone)
     else
+      user.time_zone ||= @time_zone
       user.deleted_at = nil
     end
     user.save!
