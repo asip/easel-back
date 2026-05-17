@@ -29,7 +29,7 @@
     "daisyui": "5.5.19",
     "eslint": "^10.3.0",
     "markuplint": "^4.18.3",
-    "oxfmt": "^0.49.0",
+    "oxfmt": "^0.50.0",
     "rails-vite-plugin": "^0.2.4",
     "sass-embedded": "^1.99.0",
     "tailwindcss": "4.3.0",
