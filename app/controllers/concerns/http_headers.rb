@@ -8,6 +8,6 @@ module HttpHeaders
 
   def time_zone
     @time_zone ||= request.headers["Time-Zone"]
-    # puts time_zone
+    # puts @time_zone
   end
 end
