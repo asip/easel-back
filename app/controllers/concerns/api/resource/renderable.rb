@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Api::ResourceRenderable module
-module Api::ResourceRenderable
+# Api::Resource::Renderable module
+module Api::Resource::Renderable
   extend ActiveSupport::Concern
 
   protected

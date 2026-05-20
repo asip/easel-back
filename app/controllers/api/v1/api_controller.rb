@@ -4,7 +4,7 @@
 class Api::V1::ApiController < ActionController::API
   include Api::Renderable
   include Api::ErrorRenderable
-  include Api::ResourceRenderable
+  include Api::Resource::Renderable
   include Locale::Detect
   include NPlusOne::Query::Detection unless Rails.env.production?
   include Account::Authentication
