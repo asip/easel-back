@@ -14,6 +14,6 @@ class HashType < ActiveModel::Type::Value
   end
 
   def serialize(value)
-    Oj.dump(Hash(value)) # Array(value).join(",")
+    Oj.dump(Hash(value))
   end
 end
