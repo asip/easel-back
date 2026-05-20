@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
-# errors
-module Errors
-  # style
-  module Style
-    # Component class
-    class Component < ViewComponent::Base
-      def initialize
-      end
-    end
+# Errors::Style::Component class
+class Errors::Style::Component < ViewComponent::Base
+  def initialize
   end
 end

@@ -1,19 +1,10 @@
 # frozen_string_literal: true
 
-# display
-module Display
-  # messages
-  module Messages
-    # collection
-    module Collection
-      # Component class
-      class Component < ViewComponent::Base
-        with_collection_parameter :message
+# Display::Messages::Collection::Component class
+class Display::Messages::Collection::Component < ViewComponent::Base
+  with_collection_parameter :message
 
-        def initialize(message:)
-          @message = message
-        end
-      end
-    end
+  def initialize(message:)
+    @message = message
   end
 end
