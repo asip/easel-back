@@ -8,7 +8,7 @@ class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
     render_following(following: current_user.following?(user))
   end
 
-  # follow
+  # follow (フォローするとき)
   def create
     current_user.follow(user_id)
     head :no_content
