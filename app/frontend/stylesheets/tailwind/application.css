@@ -1,8 +1,6 @@
 @import 'tailwindcss';
 
-@source "../../../../app/components/**/*.html.erb";
-@source "../../../../app/helpers/**/*.rb";
-@source "../../../../app/views/**/*.html.erb";
-@source "../../../../app/views/**/*.rb";
+@source "../../../components/**/*.html.erb";
+@source "../../../views/**/*.html.erb";
 
 @plugin "daisyui";
