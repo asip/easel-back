@@ -11,7 +11,7 @@ module TimeZone::Detect
   protected
 
   def set_time_zone
-    # puts request.headers
+    # puts request.headers["Time-Zone"]
     @time_zone = request.headers["Time-Zone"]
   end
 
