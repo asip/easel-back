@@ -14,7 +14,7 @@ gem "propshaft", "~> 1.3.2"
 gem "pg", "~> 1.6.3"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 8.0.1"
+gem "puma", "~> 8.0.2"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.23"
@@ -32,19 +32,19 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.24.4", require: false
+gem "bootsnap", "~> 1.24.5", require: false
 
 # vite integration
 gem "rails_vite", "~> 0.2.2"
 
 # view component
-gem "view_component", "~> 4.10.0"
+gem "view_component", "~> 4.11.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.222.0"
-gem "image_processing", "~> 1.14.0"
-gem "marcel", "~> 1.1.0"
-gem "shrine", "~> 3.6.0"
+gem "aws-sdk-s3", "~> 1.224.0"
+gem "image_processing", "~> 2.0.1"
+gem "marcel", "~> 1.2.1"
+gem "shrine", "~> 3.7.0"
 
 # gem "anyway_config", "2.8.0"
 # image (processing) proxy
@@ -68,15 +68,15 @@ gem "googleauth", "~> 1.16.2"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.5.4"
+gem "pagy", "~> 43.5.5"
 
 # tags
 gem "no_fly_list", "0.7.4"
 
 # json
-gem "oj", "3.17.0"
+gem "oj", "3.17.1"
 gem "alba", "3.10.0"
-gem "typelizer", "~>0.13.0 "
+gem "typelizer", "~>0.13.1 "
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
@@ -85,7 +85,7 @@ gem "rack-contrib", "2.5.0"
 gem "rack-cors", "~> 3.0.0"
 
 # soft delete
-gem "discard", "~> 1.4.0"
+gem "discard", "~> 2.0.0"
 
 # redis
 gem "redis-actionpack", "~> 5.5.0"
@@ -105,7 +105,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "bullet", "~> 8.1.1"
+  gem "bullet", "~> 8.1.2"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.3.0"
@@ -116,8 +116,8 @@ group :development do
   gem "annotaterb", "~> 4.22.0"
   gem "rails-erd", "~> 1.7.2"
 
-  gem "rubocop", "~> 1.86.1", require: false
-  gem "rubocop-rails", "~> 2.35.0", require: false
+  gem "rubocop", "~> 1.87.0", require: false
+  gem "rubocop-rails", "~> 2.35.3", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
@@ -142,7 +142,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.26.0"
+  gem "rspec-openapi", "~> 0.27.0"
   gem "committee-rails", "~> 0.10.0"
   gem "test-prof", "~> 1.6.1"
 end
