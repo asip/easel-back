@@ -105,7 +105,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "bullet", "~> 8.1.2"
+  gem "bullet", "~> 8.1.3"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.3.0"
