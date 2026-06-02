@@ -10,10 +10,12 @@ Rails.application.routes.draw do
   devise_scope :admin do
     get "sign_in" => "admins/sessions#new"
     post "sign_in" => "admins/sessions#create"
-    get "admins/sign_out" => "admins/sessions#destroy"
+    # get "admins/sign_out" => "admins/sessions#destroy"
   end
 
-  mount RailsAdmin::Engine => "/", as: "rails_admin"
+  authenticate :admin do
+    mount Motor::Admin => "/admin", as: "motor_admin"
+  end
 
   devise_for :users, format: :json,
     controllers: {

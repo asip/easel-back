@@ -65,10 +65,10 @@ class Admins::SessionsController < Admins::Devise::SessionsController
   # end
 
   def after_sign_in_path_for(_resource_or_scope)
-    rails_admin_path
+    motor_admin_path
   end
 
   def after_sign_out_path_for(_resource)
-    rails_admin_path
+    admin_login_path
   end
 end
