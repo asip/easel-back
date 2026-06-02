@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # root ""
+  root "root#index"
 
   scope "/api/v1" do
     namespace :account do
