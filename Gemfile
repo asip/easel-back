@@ -38,11 +38,11 @@ gem "bootsnap", "~> 1.24.6", require: false
 gem "rails_vite", "~> 0.2.2"
 
 # view component
-gem "view_component", "~> 4.11.0"
+gem "view_component", "~> 4.12.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.225.0"
-gem "image_processing", "~> 2.0.1"
+gem "image_processing", "~> 2.0.2"
 gem "marcel", "~> 1.2.1"
 gem "shrine", "~> 3.7.1"
 
@@ -62,7 +62,7 @@ gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.16.0"
 gem "omniauth-google-oauth2", "1.2.2"
 
-gem "googleauth", "~> 1.16.2"
+gem "googleauth", "~> 1.17.0"
 
 # settings
 gem "config", "~> 5.6.1"
@@ -74,7 +74,7 @@ gem "pagy", "~> 43.5.5"
 gem "no_fly_list", "0.7.4"
 
 # json
-gem "oj", "3.17.1"
+gem "oj", "3.17.3"
 gem "alba", "3.10.0"
 gem "typelizer", "~>0.13.1 "
 
