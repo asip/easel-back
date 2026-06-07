@@ -117,7 +117,7 @@ group :development do
   gem "rails-erd", "~> 2.0.0"
 
   gem "rubocop", "~> 1.87.0", require: false
-  gem "rubocop-rails", "~> 2.35.3", require: false
+  gem "rubocop-rails", "~> 2.35.4", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
