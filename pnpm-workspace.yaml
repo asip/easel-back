@@ -1,2 +1,4 @@
 allowBuilds:
   '@parcel/watcher': false
+minimumReleaseAgeExclude:
+  - rails-vite-plugin@0.2.5

@@ -35,7 +35,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "bootsnap", "~> 1.24.6", require: false
 
 # vite integration
-gem "rails_vite", "~> 0.2.2"
+gem "rails_vite", "~> 0.2.3"
 
 # view component
 gem "view_component", "~> 4.12.0"
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.17.0"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.5.5"
+gem "pagy", "~> 43.5.6"
 
 # tags
 gem "no_fly_list", "0.7.4"
@@ -114,7 +114,7 @@ group :development do
   # gem "rack-mini-profiler"
 
   gem "annotaterb", "~> 4.22.0"
-  gem "rails-erd", "~> 2.0.0"
+  gem "rails-erd", "~> 2.0.1"
 
   gem "rubocop", "~> 1.87.0", require: false
   gem "rubocop-rails", "~> 2.35.4", require: false
@@ -142,7 +142,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.27.0"
+  gem "rspec-openapi", "~> 0.28.0"
   gem "committee-rails", "~> 0.10.0"
   gem "test-prof", "~> 1.6.1"
 end
