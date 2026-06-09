@@ -318,11 +318,26 @@ Devise.setup do |config|
     jwt.dispatch_requests = [
       [ "POST", "/api/v1/sessions" ],
       [ "POST", "/api/v1/oauth/sessions" ]
+      # [ "PUT", "/api/v1/account/profile" ],
+      # [ "GET", "/api/v1/account/profile" ],
+      # [ "DELETE", "/api/v1/account" ],
+      # [ "GET", "/api/v1/account/frames" ],
+      # [ "PUT", "/api/v1/account/password" ],
+      # [ "GET", %r{^/api/v1/account/following/\d+$} ],
+      # [ "POST", %r{^/api/v1/users/\d+/followers_relationships$} ],
+      # [ "DELETE", %r{^/api/v1/users/\d+/followers_relationships$} ],
+      # [ "POST", %r{^/api/v1/frames/\d+/comments$} ],
+      # [ "PUT", %r{^/api/v1/frames/\d+/comments/\d+$} ],
+      # [ "DELETE", %r{^/api/v1/frames/\d+/comments/\d+$} ],
+      # [ "GET", %r{^/api/v1/frames/\d+/authenticated$} ],
+      # [ "GET", "/api/v1/frames/authenticated" ],
+      # [ "POST", "/api/v1/frames" ],
+      # [ "PUT", %r{^/api/v1/frames/\d+$} ],
+      # [ "DELETE", %r{^/api/v1/frames/\d+$} ]
     ]
-    # [ "PUT", "api/v1/account/profile" ],
-    # [ "PUT", "/api/v1/account/password" ]
     jwt.revocation_requests = [
-      [ "DELETE", "/api/v1/sessions/logout" ]
+      [ "DELETE", "/api/v1/sessions/logout" ],
+      [ "DELETE", "/api/v1/account" ]
     ]
     jwt.expiration_time = 60.minutes.to_i
   end
