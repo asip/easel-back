@@ -2,6 +2,7 @@
 
 # Api Controller
 class Api::V1::ApiController < ActionController::API
+  include Jwt::Refresh
   include Locale::Detect
   include NPlusOne::Query::Detection unless Rails.env.production?
   include Api::Renderable
