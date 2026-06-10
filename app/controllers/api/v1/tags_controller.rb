@@ -2,7 +2,6 @@
 
 # tag api controller
 class Api::V1::TagsController < Api::V1::ApiController
-  include Account::Authentication::Skip
   include Tags::Variables
 
   def search
