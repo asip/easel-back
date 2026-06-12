@@ -114,7 +114,7 @@ group :development do
   # gem "rack-mini-profiler"
 
   gem "annotaterb", "~> 4.22.0"
-  gem "rails-erd", "~> 2.0.1"
+  gem "rails-erd", "~> 2.0.2"
 
   gem "rubocop", "~> 1.87.0", require: false
   gem "rubocop-rails", "~> 2.35.4", require: false
