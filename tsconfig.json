@@ -9,8 +9,8 @@
     "strictFunctionTypes": false,
     "outDir": "./app/assets/builds",
     "paths": {
-      "~": ["./app/frontend"],
-      "~/*": ["./app/frontend/*"]
+      "@": ["./app/frontend"],
+      "@/*": ["./app/frontend/*"]
     }
   },
   "include": ["./app/frontend/**/*.ts", "./doc/types/**/*.ts", "./vite.config.ts"],

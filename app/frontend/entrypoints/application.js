@@ -1,1 +1,1 @@
-import '~/startup/index'
+import '@/startup/index'
