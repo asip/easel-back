@@ -23,7 +23,6 @@
     "@types/toastify-js": "^1.12.4",
     "@typescript-eslint/eslint-plugin": "^8.62.0",
     "@typescript-eslint/parser": "^8.62.0",
-    "copyfiles": "^2.4.1",
     "daisyui": "^5.6.3",
     "eslint": "^10.6.0",
     "markuplint": "^4.18.3",
@@ -31,7 +30,7 @@
     "rails-vite-plugin": "^0.2.5",
     "sass-embedded": "^1.100.0",
     "tailwindcss": "4.3.1",
-    "tsc-watch": "^7.2.0",
+    "tsc-watch": "^7.2.1",
     "typescript": "^6.0.3",
     "vite": "^8.1.0"
   }

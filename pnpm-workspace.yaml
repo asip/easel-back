@@ -1,2 +1,4 @@
 allowBuilds:
   '@parcel/watcher': false
+minimumReleaseAgeExclude:
+  - tsc-watch@7.2.1
