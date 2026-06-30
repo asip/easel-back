@@ -41,10 +41,10 @@ gem "rails_vite", "~> 0.2.3"
 gem "view_component", "~> 4.12.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.225.1"
+gem "aws-sdk-s3", "~> 1.226.0"
 gem "image_processing", "~> 2.0.2"
 gem "marcel", "~> 1.2.1"
-gem "shrine", "~> 3.7.1"
+gem "shrine", "~> 3.8.0"
 
 # gem "anyway_config", "2.8.0"
 # image (processing) proxy
@@ -62,7 +62,7 @@ gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.16.0"
 gem "omniauth-google-oauth2", "1.2.2"
 
-gem "googleauth", "~> 1.17.0"
+gem "googleauth", "~> 1.17.1"
 
 # settings
 gem "config", "~> 5.6.1"
@@ -95,7 +95,7 @@ gem "motor-admin", "0.5.0"
 
 gem "mutex_m", "~> 0.3.0"
 
-gem "cgi", "~> 0.5.1"
+gem "cgi", "~> 0.5.2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -113,18 +113,18 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
-  gem "annotaterb", "~> 4.22.0"
+  gem "annotaterb", "~> 4.23.0"
   gem "rails-erd", "~> 2.0.2"
 
-  gem "rubocop", "~> 1.87.0", require: false
-  gem "rubocop-rails", "~> 2.35.4", require: false
+  gem "rubocop", "~> 1.88.0", require: false
+  gem "rubocop-rails", "~> 2.35.5", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
   gem "ruby-lsp", "~> 0.26.9", require: false
 
-  gem "brakeman", "~> 8.0.4", require: false
+  gem "brakeman", "~> 8.0.5", require: false
   gem "reek", "~> 6.5.0", require: false
   gem "traceroute", "~> 0.8.1"
 
@@ -142,7 +142,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.28.0"
+  gem "rspec-openapi", "~> 0.30.0"
   gem "committee-rails", "~> 0.10.0"
   gem "test-prof", "~> 1.6.1"
 end
