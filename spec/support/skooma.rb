@@ -3,8 +3,6 @@
 SPEC_DIR_V1 = '/spec/requests/api/v1/'
 
 RSpec.configure do |config|
-  config.include Committee::Rails::Test::Methods
-
   config.before(:each, type: :request) do |example|
     # Identify which API each RequestSpec directory maps to.
     # (各RequestSpecのディレクトリがどのAPIに該当するのかを識別する)
@@ -17,19 +15,10 @@ RSpec.configure do |config|
     if curr_directory.nil? || directory != curr_directory
       case directory
       when SPEC_DIR_V1
-        config.include CommitteeV1
+        path_to_openapi = Rails.root.join('doc/openapi/v1.yaml')
+        config.include Skooma::RSpec[path_to_openapi], type: :request
       end
       config.instance_variable_set(:@curr_directory, directory)
     end
-  end
-end
-
-module CommitteeV1
-  def committee_options
-    @committee_options ||= {
-      schema_path: Rails.root.join('doc/openapi/v1.yaml').to_s,
-      strict_reference_validation: true,
-      parse_response_by_content_type: true
-    }
   end
 end

@@ -24,4 +24,4 @@ RSpec::OpenAPI.enable_example = false
 # Change `info.version`
 RSpec::OpenAPI.application_version = '1.0.0'
 
-RSpec::OpenAPI.openapi_version = '3.0.3'
+RSpec::OpenAPI.openapi_version = '3.1.3'

@@ -15,8 +15,7 @@ describe 'Sessions', type: :request do
              params: { user: { email: user.email, password: 'testtest' } },
              headers: headers
         # expect(response.status).to eq(200)
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
 
@@ -26,8 +25,7 @@ describe 'Sessions', type: :request do
                params: { user: { email: 'invalid@test.jp', password: 'testtest' } },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           # json_data = json
           # expect(json_data[:messages]).to be_present
         end
@@ -37,8 +35,7 @@ describe 'Sessions', type: :request do
                params: { user: { email: user.email, password: 'invalidtest' } },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           # json_data = json
           # expect(json_data[:messages]).to be_present
         end
@@ -62,8 +59,7 @@ describe 'Sessions', type: :request do
         headers.merge!(common_headers)
         get endpoint, headers: headers
         # expect(response.status).to eq(200)
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
     end
@@ -71,8 +67,7 @@ describe 'Sessions', type: :request do
     it 'failure (失敗)' do
       get endpoint, headers: common_headers
       # expect(response.status).to eq(401)
-      assert_request_schema_confirm
-      assert_response_schema_confirm(401)
+      is_expected.to conform_schema(401)
     end
   end
 
@@ -87,8 +82,7 @@ describe 'Sessions', type: :request do
         headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to eq(401)
-        assert_request_schema_confirm
-        assert_response_schema_confirm(401)
+        is_expected.to conform_schema(401)
         # json_data = json
       end
     end
@@ -105,8 +99,7 @@ describe 'Sessions', type: :request do
         headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to eq(200)
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
     end
@@ -142,8 +135,7 @@ describe 'Sessions', type: :request do
           headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -154,8 +146,7 @@ describe 'Sessions', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { page: 2 }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end

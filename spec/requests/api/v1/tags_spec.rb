@@ -31,8 +31,7 @@ describe 'Tags', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: "aa" }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:tags]
           expect(json_data.size).to be 4
         end
@@ -42,8 +41,7 @@ describe 'Tags', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: "a" }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:tags]
           expect(json_data.size).to be 5
         end

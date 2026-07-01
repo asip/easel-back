@@ -17,8 +17,7 @@ describe 'oauth/sessions', type: :request do
                params: { provider: 'google', credential: 'test_credential' },
                headers: headers
           # expect(response.status).to eq(200)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           # json_data = json
         end
       end
@@ -32,8 +31,7 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: headers
             # expect(response.status).to eq(200)
-            assert_request_schema_confirm
-            assert_response_schema_confirm(200)
+            is_expected.to conform_schema(200)
             # json_data = json
           end
         end
@@ -48,8 +46,7 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: headers
             # expect(response.status).to eq(200)
-            assert_request_schema_confirm
-            assert_response_schema_confirm(200)
+            is_expected.to conform_schema(200)
             # json_data = json
           end
         end
@@ -64,8 +61,7 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: headers
             # expect(response.status).to eq(200)
-            assert_request_schema_confirm
-            assert_response_schema_confirm(200)
+            is_expected.to conform_schema(200)
             # json_data = json
           end
         end
@@ -80,8 +76,7 @@ describe 'oauth/sessions', type: :request do
                  params: { provider: 'google', credential: 'test_credential' },
                  headers: headers
             # expect(response.status).to eq(200)
-            assert_request_schema_confirm
-            assert_response_schema_confirm(200)
+            is_expected.to conform_schema(200)
             # json_data = json
           end
         end

@@ -143,6 +143,6 @@ group :test do
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.30.0"
-  gem "committee-rails", "~> 0.10.0"
+  gem "skooma", "~> 0.4.0"
   gem "test-prof", "~> 1.6.1"
 end

@@ -19,8 +19,7 @@ describe 'FollowerRelationships', type: :request do
           headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to be 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json
           expect(json_data[:following]).to be false
         end
@@ -35,8 +34,7 @@ describe 'FollowerRelationships', type: :request do
           headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to be 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json
           expect(json_data[:following]).to be true
         end
@@ -59,8 +57,7 @@ describe 'FollowerRelationships', type: :request do
         headers.merge!(common_headers)
         post endpoint, headers: headers
         # expect(response.status).to be 204
-        assert_request_schema_confirm
-        assert_response_schema_confirm(204)
+        is_expected.to conform_schema(204)
       end
 
       # it 'failure (失敗)' do
@@ -68,8 +65,7 @@ describe 'FollowerRelationships', type: :request do
       #  post endpoint_failure,
       #       headers: headers
       #  # expect(response.status).to be 204
-      #  assert_request_schema_confirm
-      #  assert_response_schema_confirm(204)
+      #  is_expected.to conform_schema(204)
       # end
     end
   end
@@ -93,8 +89,7 @@ describe 'FollowerRelationships', type: :request do
         headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to be 204
-        assert_request_schema_confirm
-        assert_response_schema_confirm(204)
+        is_expected.to conform_schema(204)
       end
     end
   end

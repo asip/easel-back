@@ -35,8 +35,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -46,8 +45,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { page: 2 }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -57,8 +55,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ word: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -68,8 +65,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ word: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -79,8 +75,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ word: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -90,8 +85,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ word: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -101,8 +95,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ word: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -112,8 +105,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -123,8 +115,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ frame_name: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -134,8 +125,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ tag_name: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -145,8 +135,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ user_name: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -156,8 +145,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ creator_name: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -167,8 +155,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ date: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -178,8 +165,7 @@ describe 'Frames', type: :request do
         it 'success (成功)' do
           get endpoint, params: { q: Oj.dump({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -189,8 +175,7 @@ describe 'Frames', type: :request do
         it 'failure (失敗)' do
           get endpoint, params: { q: Oj.dump({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:word]).to be_present
         end
@@ -200,8 +185,7 @@ describe 'Frames', type: :request do
         it 'failure (失敗)' do
           get endpoint, params: { q: Oj.dump({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:frame_name]).to be_present
         end
@@ -211,8 +195,7 @@ describe 'Frames', type: :request do
         it 'failure (失敗)' do
           get endpoint, params: { q: Oj.dump({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:tag_name]).to be_present
         end
@@ -222,8 +205,7 @@ describe 'Frames', type: :request do
         it 'failure (失敗)' do
           get endpoint, params: { q: Oj.dump({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:user_name]).to be_present
         end
@@ -233,8 +215,7 @@ describe 'Frames', type: :request do
         it 'failure (失敗)' do
           get endpoint, params: { q: Oj.dump({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:creator_name]).to be_present
         end
@@ -244,8 +225,7 @@ describe 'Frames', type: :request do
         it 'failure (失敗)' do
           get endpoint, params: { q: Oj.dump({ date: "AAAA/AA/AA" }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:date]).to be_present
         end
@@ -286,8 +266,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -298,8 +277,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { page: 2 }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -310,8 +288,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -322,8 +299,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -334,8 +310,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -346,8 +321,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -358,8 +332,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -370,8 +343,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -382,8 +354,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ frame_name: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -394,8 +365,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ tag_name: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -406,8 +376,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ user_name: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -418,8 +387,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ creator_name: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -430,8 +398,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ date: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -442,8 +409,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -454,8 +420,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:word]).to be_present
         end
@@ -466,8 +431,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:frame_name]).to be_present
         end
@@ -478,8 +442,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:tag_name]).to be_present
         end
@@ -490,8 +453,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:user_name]).to be_present
         end
@@ -502,8 +464,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:creator_name]).to be_present
         end
@@ -514,8 +475,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, params: { q: Oj.dump({ date: "AAAA/AA/AA" }) }, headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:date]).to be_present
         end
@@ -534,16 +494,14 @@ describe 'Frames', type: :request do
       it 'success (成功)' do
         get endpoint, headers: headers
         # expect(response.status).to eq 200
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
 
       it 'failure (失敗)' do
         get endpoint_failure, headers: headers
         # expect(response.status).to eq 404
-        assert_request_schema_confirm
-        assert_response_schema_confirm(404)
+        is_expected.to conform_schema(404)
       end
     end
   end
@@ -563,8 +521,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           # json_data = json
         end
 
@@ -572,8 +529,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint_failure, headers: headers
           # expect(response.status).to eq 404
-          assert_request_schema_confirm
-        assert_response_schema_confirm(404)
+          is_expected.to conform_schema(404)
         end
       end
 
@@ -584,8 +540,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           # json_data = json
         end
 
@@ -593,8 +548,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           get endpoint_failure, headers: headers
           # expect(response.status).to eq 404
-          assert_request_schema_confirm
-          assert_response_schema_confirm(404)
+          is_expected.to conform_schema(404)
         end
       end
     end
@@ -616,8 +570,7 @@ describe 'Frames', type: :request do
       it 'success (成功)' do
         get endpoint, headers: headers
         # expect(response.status).to eq 200
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         json_data = json[:comments]
         expect(json_data.size).to be 2
       end
@@ -626,8 +579,7 @@ describe 'Frames', type: :request do
         it 'frame_id doesn\'t exist' do
           get endpoint_failure, headers: headers
           # expect(response.status).to eq 404
-          assert_request_schema_confirm
-          assert_response_schema_confirm(404)
+          is_expected.to conform_schema(404)
         end
       end
     end
@@ -665,8 +617,7 @@ describe 'Frames', type: :request do
              },
              headers: headers
         # expect(response.status).to eq 200
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
 
@@ -686,8 +637,7 @@ describe 'Frames', type: :request do
                },
                headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -707,8 +657,7 @@ describe 'Frames', type: :request do
                },
                headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -728,8 +677,7 @@ describe 'Frames', type: :request do
                },
                headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:tag_list]).to be_present
         end
@@ -749,8 +697,7 @@ describe 'Frames', type: :request do
                },
                headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:creator_name]).to be_present
         end
@@ -770,8 +717,7 @@ describe 'Frames', type: :request do
                },
                headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:shooted_at]).to be_present
         end
@@ -792,8 +738,7 @@ describe 'Frames', type: :request do
              },
              headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:private]).to be_present
         end
@@ -812,8 +757,7 @@ describe 'Frames', type: :request do
                },
                headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -833,8 +777,7 @@ describe 'Frames', type: :request do
                },
                headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -854,8 +797,7 @@ describe 'Frames', type: :request do
                },
                headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -897,8 +839,7 @@ describe 'Frames', type: :request do
             },
             headers: headers
         # expect(response.status).to eq 200
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
 
@@ -918,8 +859,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -939,8 +879,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -960,8 +899,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:tag_list]).to be_present
         end
@@ -981,8 +919,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:creator_name]).to be_present
         end
@@ -1002,8 +939,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:shooted_at]).to be_present
         end
@@ -1024,8 +960,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:private]).to be_present
         end
@@ -1044,8 +979,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -1065,8 +999,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -1086,8 +1019,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 422
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:file]).to be_present
         end
@@ -1107,8 +1039,7 @@ describe 'Frames', type: :request do
               },
               headers: headers
           # expect(response.status).to eq 404
-          assert_request_schema_confirm
-          assert_response_schema_confirm(404)
+          is_expected.to conform_schema(404)
         end
       end
     end
@@ -1127,8 +1058,7 @@ describe 'Frames', type: :request do
         headers.merge!(common_headers)
         delete endpoint, headers: headers
         # expect(response.status).to eq 200
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
 
@@ -1137,8 +1067,7 @@ describe 'Frames', type: :request do
           headers.merge!(common_headers)
           delete endpoint_frame_not_found_failure, headers: headers
           # expect(response.status).to eq 404
-          assert_request_schema_confirm
-          assert_response_schema_confirm(404)
+          is_expected.to conform_schema(404)
         end
       end
     end

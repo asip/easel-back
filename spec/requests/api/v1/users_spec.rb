@@ -14,16 +14,14 @@ describe 'Users', type: :request do
       it 'success (成功)' do
         get endpoint, headers: headers
         # expect(response.status).to eq(200)
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
 
       it 'failure (失敗)' do
         get endpoint_failure, headers: headers
         # expect(response.status).to eq(404)
-        assert_request_schema_confirm
-        assert_response_schema_confirm(404)
+        is_expected.to conform_schema(404)
       end
     end
   end
@@ -56,8 +54,7 @@ describe 'Users', type: :request do
         it 'success (成功)' do
           get endpoint, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 8
         end
@@ -67,8 +64,7 @@ describe 'Users', type: :request do
         it 'success (成功)' do
           get endpoint, params: { page: 2 }, headers: headers
           # expect(response.status).to eq 200
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           json_data = json[:frames]
           expect(json_data.size).to be 2
         end
@@ -77,8 +73,7 @@ describe 'Users', type: :request do
       it 'failure (失敗)' do
         get endpoint_failure, headers: headers
         # expect(response.status).to eq 404
-        assert_request_schema_confirm
-        assert_response_schema_confirm(404)
+        is_expected.to conform_schema(404)
       end
     end
   end
@@ -111,8 +106,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(200)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           # json_data = json
         end
       end
@@ -131,8 +125,7 @@ describe 'Users', type: :request do
              },
              headers: headers
         # expect(response.status).to eq(200)
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
 
@@ -150,8 +143,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-        assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -169,8 +161,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -188,8 +179,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -207,8 +197,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -227,8 +216,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:profile]).to be_present
         end
@@ -246,8 +234,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -265,8 +252,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_nil
           expect(json_data[:errors][:password_confirmation]).to be_present
@@ -285,8 +271,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -305,8 +290,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -325,8 +309,7 @@ describe 'Users', type: :request do
                },
                headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -363,8 +346,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(200)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           # json_data = json
         end
       end
@@ -382,8 +364,7 @@ describe 'Users', type: :request do
             },
             headers: headers
         # expect(response.status).to eq(200)
-        assert_request_schema_confirm
-        assert_response_schema_confirm(200)
+        is_expected.to conform_schema(200)
         # json_data = json
       end
 
@@ -400,8 +381,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -418,8 +398,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:name]).to be_present
         end
@@ -436,8 +415,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -454,8 +432,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:email]).to be_present
         end
@@ -473,8 +450,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:profile]).to be_present
         end
@@ -492,8 +468,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -511,8 +486,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:image]).to be_present
         end
@@ -549,8 +523,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(200)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(200)
+          is_expected.to conform_schema(200)
           # json_data = json
         end
       end
@@ -568,8 +541,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -585,8 +557,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:current_password]).to be_present
         end
@@ -603,8 +574,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_present
         end
@@ -621,8 +591,7 @@ describe 'Users', type: :request do
               },
               headers: headers
           # expect(response.status).to eq(422)
-          assert_request_schema_confirm
-          assert_response_schema_confirm(422)
+          is_expected.to conform_schema(422)
           json_data = json
           expect(json_data[:errors][:password]).to be_nil
           expect(json_data[:errors][:password_confirmation]).to be_present
