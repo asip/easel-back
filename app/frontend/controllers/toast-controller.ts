@@ -10,12 +10,12 @@ export default class ToastController extends ApplicationController {
   declare readonly flashesValue: string
 
   connect(): void {
-    const { setMessages } = useToast()
+    const { toast } = useToast()
 
     const flashes = this.flashesValue
       ? (JSON.parse(this.flashesValue) as Record<string, string[]>)
       : {}
 
-    setMessages(flashes)
+    toast.value = flashes
   }
 }
