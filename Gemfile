@@ -116,13 +116,13 @@ group :development do
   gem "annotaterb", "~> 4.23.0"
   gem "rails-erd", "~> 2.0.2"
 
-  gem "rubocop", "~> 1.88.1", require: false
+  gem "rubocop", "~> 1.88.2", require: false
   gem "rubocop-rails", "~> 2.35.5", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.26.9", require: false
+  gem "ruby-lsp", "~> 0.26.10", require: false
 
   gem "brakeman", "~> 8.0.5", require: false
   gem "reek", "~> 6.5.0", require: false
