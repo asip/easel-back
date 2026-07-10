@@ -41,7 +41,7 @@ gem "rails_vite", "~> 0.2.3"
 gem "view_component", "~> 4.12.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.226.0"
+gem "aws-sdk-s3", "~> 1.227.0"
 gem "image_processing", "~> 2.0.2"
 gem "marcel", "~> 1.2.1"
 gem "shrine", "~> 3.8.0"
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.17.1"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.5.6"
+gem "pagy", "~> 43.6.0"
 
 # tags
 gem "no_fly_list", "0.7.4"
