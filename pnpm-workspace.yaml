@@ -2,3 +2,4 @@ allowBuilds:
   '@parcel/watcher': false
 minimumReleaseAgeExclude:
   - vite@8.1.4
+  - lucide-static@1.24.0
