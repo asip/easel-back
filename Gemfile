@@ -44,7 +44,7 @@ gem "view_component", "~> 4.12.0"
 gem "aws-sdk-s3", "~> 1.227.0"
 gem "image_processing", "~> 2.0.2"
 gem "marcel", "~> 1.2.1"
-gem "shrine", "~> 3.8.0"
+gem "shrine", "~> 3.9.0"
 
 # gem "anyway_config", "2.8.0"
 # image (processing) proxy
