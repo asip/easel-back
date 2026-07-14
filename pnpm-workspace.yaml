@@ -1,7 +1,5 @@
 allowBuilds:
   '@parcel/watcher': false
-fetchRetryMaxtimeout: 12000000
-fetchTimeout: 12000000
 minimumReleaseAgeExclude:
   - '@typescript-eslint/eslint-plugin@8.64.0'
   - '@typescript-eslint/parser@8.64.0'
