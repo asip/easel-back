@@ -1,2 +1,4 @@
 allowBuilds:
   '@parcel/watcher': false
+minimumReleaseAgeExclude:
+  - lucide-static@1.26.0
