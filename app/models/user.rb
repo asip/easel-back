@@ -70,10 +70,6 @@ class User < ApplicationRecord
 
   default_scope -> { kept }
 
-  def nonweb_time_zone
-    time_zone.present? ? time_zone : Time.zone.name
-  end
-
   ## devise
   # def active_for_authentication?
   #   super && !discarded?
