@@ -1,14 +1,17 @@
 // import Toastify from 'toastify-js'
-import { computed } from '@vue/reactivity'
+import { ref, computed } from '@vue/reactivity'
 
 const Toastify = (await import('toastify-js')).default
 
 export function useToast() {
+  const messages = ref<Record<string, string[]>>()
+
   const toast = computed({
     get() {
-      return undefined
+      return messages.value
     },
     set(value: Record<string, string[]>) {
+      messages.value = value
       setMessages(value)
     },
   })
