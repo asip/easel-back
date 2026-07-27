@@ -61,7 +61,7 @@ describe 'FollowerRelationships', type: :request do
       end
 
       # it 'failure (失敗)' do
-      #  rheaders.merge!(common_headers)
+      #  headers.merge!(common_headers)
       #  post endpoint_failure,
       #       headers: headers
       #  # expect(response.status).to be 204
