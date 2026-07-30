@@ -1,6 +1,6 @@
 export function useElements(el: Element) {
-  const removeElements = ({ className }: { className: string }): void => {
-    const elements: NodeListOf<Element> = el.querySelectorAll(`.${className}`)
+  const removeElements = ({ selector }: { selector: string }): void => {
+    const elements: NodeListOf<Element> = el.querySelectorAll(selector)
     Array.from(elements).forEach((e) => {
       e.remove()
     })
