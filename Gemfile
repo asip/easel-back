@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.3"
+gem "rails", "~> 8.1.3.1"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft", "~> 1.3.2"
@@ -41,7 +41,8 @@ gem "rails_vite", "~> 0.2.3"
 gem "view_component", "~> 4.12.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.227.0"
+gem "aws-sdk-s3", "~> 1.228.2"
+gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.0.2"
 gem "marcel", "~> 1.2.1"
 gem "shrine", "~> 3.9.0"
@@ -62,20 +63,20 @@ gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.16.0"
 gem "omniauth-google-oauth2", "1.2.2"
 
-gem "googleauth", "~> 1.17.1"
+gem "googleauth", "~> 1.17.3"
 
 # settings
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.6.0"
+gem "pagy", "~> 43.6.1"
 
 # tags
 gem "no_fly_list", "0.7.4"
 
 # json
-gem "oj", "3.17.3"
-gem "alba", "3.10.0"
+gem "oj", "3.17.4"
+gem "alba", "3.11.0"
 gem "typelizer", "~>0.13.1 "
 
 # Rack::Locale
@@ -113,7 +114,7 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
-  gem "annotaterb", "~> 4.23.0"
+  gem "annotaterb", "~> 4.24.0"
   gem "rails-erd", "~> 2.1.0"
 
   gem "rubocop", "~> 1.88.2", require: false
@@ -142,7 +143,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.30.0"
+  gem "rspec-openapi", "~> 0.31.0"
   gem "skooma", "~> 0.4.0"
-  gem "test-prof", "~> 1.6.1"
+  gem "test-prof", "~> 1.6.3"
 end

@@ -960,7 +960,23 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: {}
+                properties:
+                  id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  frame_id:
+                    type: integer
+                  body:
+                    type: string
+                  user_name:
+                    type: string
+                  user_image_url:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
                 required:
                   - id
                   - user_id
