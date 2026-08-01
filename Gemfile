@@ -75,7 +75,7 @@ gem "pagy", "~> 43.6.1"
 gem "no_fly_list", "0.7.4"
 
 # json
-gem "oj", "3.17.4"
+gem "oj", "3.17.5"
 gem "alba", "3.11.0"
 gem "typelizer", "~>0.13.1 "
 
