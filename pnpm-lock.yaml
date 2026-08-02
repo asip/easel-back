@@ -46,8 +46,8 @@ importers:
         specifier: ^8.65.0
         version: 8.65.0(eslint@10.8.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       daisyui:
-        specifier: ^5.7.13
-        version: 5.7.13
+        specifier: ^5.7.14
+        version: 5.7.14
       eslint:
         specifier: ^10.8.0
         version: 10.8.0(jiti@2.7.0)(supports-color@8.1.1)
@@ -837,8 +837,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  daisyui@5.7.13:
-    resolution: {integrity: sha512-FR2hWEZqfy8sW9j9z07Yv8hT+WMGc1AEBaeFrHY/3HPRCF3JL7gqLoIhb7E/2f1fecczBE/mEhpez7lQgU4HVQ==}
+  daisyui@5.7.14:
+    resolution: {integrity: sha512-mbEBc49mp6ueUNxVNPIQiX3mzYIirkST8EA3lLMKCkrWzpiM8Iy8eHjj+G6gitFQB73m9qFLPg75S4D1LDUw0g==}
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -2512,7 +2512,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  daisyui@5.7.13: {}
+  daisyui@5.7.14: {}
 
   debug@4.4.3(supports-color@8.1.1):
     dependencies:
