@@ -24,7 +24,7 @@
     "@types/toastify-js": "^1.12.4",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.65.0",
-    "daisyui": "^5.7.11",
+    "daisyui": "^5.7.13",
     "eslint": "^10.8.0",
     "markuplint": "^4.18.3",
     "oxfmt": "^0.61.0",
