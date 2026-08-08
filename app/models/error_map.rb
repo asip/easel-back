@@ -8,7 +8,7 @@ class ErrorMap
   include ActiveModel::Attributes
 
   attribute :title, :string
-  attribute :errors, :array, default: []
+  attribute :detail, :string
   attribute :source, :string
 
   def initialize(attributes)

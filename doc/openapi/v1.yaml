@@ -862,15 +862,12 @@ paths:
                 properties:
                   title:
                     type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
                   source:
+                    type: string
+                  detail:
                     type: string
                 required:
                   - title
-                  - errors
   '/api/v1/frames/{frame_id}/comments':
     get:
       summary: comments
@@ -995,15 +992,12 @@ paths:
                 properties:
                   title:
                     type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
                   source:
+                    type: string
+                  detail:
                     type: string
                 required:
                   - title
-                  - errors
                   - source
         '422':
           description: empty body (bodyが空の場合)
@@ -1051,15 +1045,12 @@ paths:
                 properties:
                   title:
                     type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
                   source:
+                    type: string
+                  detail:
                     type: string
                 required:
                   - title
-                  - errors
                   - source
     put:
       summary: update
@@ -1133,15 +1124,12 @@ paths:
                 properties:
                   title:
                     type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
                   source:
+                    type: string
+                  detail:
                     type: string
                 required:
                   - title
-                  - errors
                   - source
         '422':
           description: empty body (bodyが空の場合)
@@ -1243,15 +1231,12 @@ paths:
                 properties:
                   title:
                     type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
                   source:
+                    type: string
+                  detail:
                     type: string
                 required:
                   - title
-                  - errors
     get:
       summary: show
       tags:
@@ -1441,15 +1426,12 @@ paths:
                 properties:
                   title:
                     type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
                   source:
+                    type: string
+                  detail:
                     type: string
                 required:
                   - title
-                  - errors
                   - source
         '422':
           description: file mime type is different (fileのmime typeが異なる場合)
@@ -1984,10 +1966,7 @@ paths:
                 properties:
                   title:
                     type: string
-                  errors:
-                    type: array
-                    items:
-                      type: string
+                  detail:
+                    type: string
                 required:
                   - title
-                  - errors

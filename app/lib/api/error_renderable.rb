@@ -73,7 +73,7 @@ module Api::ErrorRenderable
 
     error = {
       title:,
-      errors: exception&.message ? [ exception&.message ] : []
+      detail: exception&.message
     }
 
     if code == Rack::Utils.status_code(:not_found)

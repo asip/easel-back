@@ -2,9 +2,9 @@
 
 # ErrorMessages Resource
 class ErrorMapResource < ApplicationResource
-  attributes :title, :errors
+  attributes :title, :detail
 
   attributes :source, if: ->(_error, attribute) { attribute.present? }
 
-  typelize title: :string, errors: "string[]", source: "string?"
+  typelize title: :string, detail: :string, source: "string?"
 end
