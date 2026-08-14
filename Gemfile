@@ -125,7 +125,7 @@ group :development do
   gem "erb_lint", "~> 0.9.0", require: false
   gem "ruby-lsp", "~> 0.26.10", require: false
 
-  gem "brakeman", "~> 8.0.5", require: false
+  gem "brakeman", "~> 8.0.6", require: false
   gem "reek", "~> 6.5.0", require: false
   gem "traceroute", "~> 0.8.1"
 
