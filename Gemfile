@@ -118,7 +118,7 @@ group :development do
   gem "rails-erd", "~> 2.1.0"
 
   gem "rubocop", "~> 1.89.0", require: false
-  gem "rubocop-rails", "~> 2.36.0", require: false
+  gem "rubocop-rails", "~> 2.37.0", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
@@ -143,7 +143,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.32.0"
+  gem "rspec-openapi", "~> 0.33.0"
   gem "skooma", "~> 0.4.0"
   gem "test-prof", "~> 1.6.3"
 end
