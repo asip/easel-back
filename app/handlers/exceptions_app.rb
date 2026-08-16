@@ -7,12 +7,12 @@ class ExceptionsApp < Rambulance::ExceptionsApp
 
   # HTTP Status 400 Bad Request
   def bad_request
-    render_error(:bad_request, "Bad Request")
+    render_error(:bad_request)
   end
 
   # HTTP Status 401 Unauthorized
   def unauthorized
-    # render_error(:unauthorized, "Unauthorized")
+    # render_error(:unauthorized)
   end
 
   def forbidden
@@ -20,17 +20,17 @@ class ExceptionsApp < Rambulance::ExceptionsApp
 
   # HTTP Status 404 Not Found
   def not_found
-    render_error(:not_found, "Not Found")
+    render_error(:not_found)
   end
 
   # HTTP Status 409 Conflict
   def conflict
-    render_error(:conflict, "Conflict")
+    render_error(:conflict)
   end
 
   # HTTP Status 422 Unprocessable Content
   def unprocessable_content
-    render_error(:unprocessable_content, "Unprocessable Content")
+    render_error(:unprocessable_content)
   end
 
   # HTTP Status 500 Internal Server Error
@@ -38,28 +38,34 @@ class ExceptionsApp < Rambulance::ExceptionsApp
     logger.error exception.full_message
     # logger.error exception.backtrace.join("\n") # backtrace
 
-    render_error(:internal_server_error, "Internal Server Error")
+    render_error(:internal_server_error)
   end
 
   protected
 
-  def render_error(code, title)
+  def make_error_map(status)
+    code = Rack::Utils.status_code(status)
+
+    error = {
+      title: status.to_s.titleize,
+      detail: exception&.message
+    }
+
+    if code == Rack::Utils.status_code(:not_found)
+      error[:source] = exception.model
+    end
+
+    error
+  end
+
+  def render_error(status)
     if request.format.json?
-      code = Rack::Utils.status_code(code)
-
-      error = {
-        title:,
-        errors: exception&.message ? [ exception&.message ] : []
-      }
-
-      if code == Rack::Utils.status_code(:not_found)
-        error[:source] = exception.model
-      end
+      error = make_error_map(status)
 
       # puts error
 
       render_resource ErrorMapResource.new(ErrorMap.new(error)).serialize,
-                      status: code: code
+                      status:
     end
   end
 =end

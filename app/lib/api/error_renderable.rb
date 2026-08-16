@@ -28,7 +28,7 @@ module Api::ErrorRenderable
 
   def render_errors(resource:)
     render_resource ErrorMessagesResource.new(ErrorMessages.new(errors: resource.error_map)).serialize,
-                                         status: :unprocessable_content
+                    status: :unprocessable_content
   end
 
   private
@@ -37,27 +37,27 @@ module Api::ErrorRenderable
 
   # HTTP Status 400 Bad Request
   def on_bad_request(exception = nil)
-    render_error(:bad_request, "Bad Request", exception)
+    render_error(:bad_request, exception)
   end
 
   # HTTP Status 401 Unauthorized
   # def on_unauthorized(exception = nil)
-  #   render_error(:unauthorized, "Unauthorized", exception)
+  #   render_error(:unauthorized, exception)
   # end
 
   # HTTP Status 404 Not Found
   def on_not_found(exception = nil)
-    render_error(:not_found, "Not Found", exception)
+    render_error(:not_found, exception)
   end
 
   # HTTP Status 409 Conflict
   def on_conflict(exception = nil)
-    render_error(:conflict, "Conflict", exception)
+    render_error(:conflict, exception)
   end
 
   # HTTP Status 422 Unprocessable Content
   def on_unprocessable_content(exception = nil)
-    render_error(:unprocessable_content, "Unprocessable Content", exception)
+    render_error(:unprocessable_content, exception)
   end
 
   # HTTP Status 500 Internal Server Error
@@ -65,14 +65,14 @@ module Api::ErrorRenderable
     logger.error exception.full_message
     # logger.error exception.backtrace.join("\n") # backtrace
 
-    render_error(:internal_server_error, "Internal Server Error", exception)
+    render_error(:internal_server_error, exception)
   end
 
-  def render_error(code, title, exception)
-    code = Rack::Utils.status_code(code)
+  def make_error_map(status, exception)
+    code = Rack::Utils.status_code(status)
 
     error = {
-      title:,
+      title: status.to_s.titleize,
       detail: exception&.message
     }
 
@@ -80,9 +80,15 @@ module Api::ErrorRenderable
       error[:source] = exception.model
     end
 
+    error
+  end
+
+  def render_error(status, exception)
+    error = make_error_map(status, exception)
+
     # puts error
 
     render_resource ErrorMapResource.new(ErrorMap.new(error)).serialize,
-                    status: code
+                    status:
   end
 end
