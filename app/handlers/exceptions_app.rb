@@ -44,14 +44,12 @@ class ExceptionsApp < Rambulance::ExceptionsApp
   protected
 
   def make_error_map(status)
-    code = Rack::Utils.status_code(status)
-
     error = {
       title: status.to_s.titleize,
       detail: exception&.message
     }
 
-    if code == Rack::Utils.status_code(:not_found)
+    if status == :not_found
       error[:source] = exception.model
     end
 
