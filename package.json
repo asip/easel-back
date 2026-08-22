@@ -13,7 +13,7 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo": "^8.0.23",
     "@hotwired/turbo-rails": "^8.0.23",
-    "@vue/reactivity": "^3.6.0-rc.4",
+    "@vue/reactivity": "^3.6.0-rc.5",
     "lucide-static": "^1.31.0",
     "toastify-js": "^1.12.0"
   },
@@ -24,7 +24,7 @@
     "@types/toastify-js": "^1.12.4",
     "@typescript-eslint/eslint-plugin": "^8.67.0",
     "@typescript-eslint/parser": "^8.67.0",
-    "daisyui": "^5.7.17",
+    "daisyui": "^5.7.20",
     "eslint": "^10.8.1",
     "markuplint": "^4.18.3",
     "oxfmt": "^0.64.0",
