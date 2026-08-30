@@ -123,11 +123,11 @@ class Frame < ApplicationRecord
     where(
       "EXISTS(:tags)",
       tags: ApplicationTag.joins(:taggings)
-                  .where("application_taggings.tag_id=application_tags.id")
-                  .where("application_taggings.taggable_type='Frame'")
-                  .where("application_taggings.taggable_id=frames.id")
-                  .where("application_tags.name like ?",
-                         "#{ActiveRecord::Base.sanitize_sql_like(tag_name)}%")
+                          .where("application_taggings.tag_id=application_tags.id")
+                          .where("application_taggings.taggable_type='Frame'")
+                          .where("application_taggings.taggable_id=frames.id")
+                          .where("application_tags.name like ?",
+                                 "#{ActiveRecord::Base.sanitize_sql_like(tag_name)}%")
     )
   end
 
