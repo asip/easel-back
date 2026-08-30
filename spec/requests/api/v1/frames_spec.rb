@@ -53,7 +53,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test1" } (frame name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: 'test1' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -63,7 +63,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "testA" } (tag name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: 'testA' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -73,7 +73,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test" } (user name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: 'test' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -83,7 +83,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "test_creator" } (creator name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: 'test_creator' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -93,7 +93,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: '2022/01/01' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -103,7 +103,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -113,7 +113,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "frame_name": "test1" } (frame name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ frame_name: 'test1' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ frame_name: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -123,7 +123,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "tag_name": "testA" } (tag name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ tag_name: 'testA' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ tag_name: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -133,7 +133,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "user_name": "test" } (user name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ user_name: 'test' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ user_name: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -143,7 +143,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "creator_name": "test_creator" } (creator name)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ creator_name: 'test_creator' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ creator_name: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -153,7 +153,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ date: '2022/01/01' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ date: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -163,7 +163,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
-          get endpoint, params: { q: Oj.dump({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -173,7 +173,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "word": exceeds 40 characters }' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -183,7 +183,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "frame_name": exceeds 30 characters } (frame name)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -193,7 +193,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "tag_name": exceeds 10 characters } (tag name)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -203,7 +203,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "user_name": exceeds 40 characters } (user name)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -213,7 +213,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "creator_name": exceeds 40 characters } (creator name)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -223,7 +223,7 @@ describe 'Frames', type: :request do
 
       context 'q={ "date": invalid date } (date)' do
         it 'failure (失敗)' do
-          get endpoint, params: { q: Oj.dump({ date: "AAAA/AA/AA" }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ date: "AAAA/AA/AA" }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -286,7 +286,7 @@ describe 'Frames', type: :request do
       context 'q={ "word": "test1" } (frame name)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ word: 'test1' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -297,7 +297,7 @@ describe 'Frames', type: :request do
       context 'q={ "word": "testA" } (tag name)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ word: 'testA' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -308,7 +308,7 @@ describe 'Frames', type: :request do
       context 'q={ "word": "test" } (user name)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ word: 'test' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -319,7 +319,7 @@ describe 'Frames', type: :request do
       context 'q={ "word": "test_creator" } (creator name)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ word: 'test_creator' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -330,7 +330,7 @@ describe 'Frames', type: :request do
       context 'q={ "word": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ word: '2022/01/01' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -341,7 +341,7 @@ describe 'Frames', type: :request do
       context 'q={ "word": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -352,7 +352,7 @@ describe 'Frames', type: :request do
       context 'q={ "frame_name": "test1" } (frame name)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ frame_name: 'test1' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ frame_name: 'test1' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -363,7 +363,7 @@ describe 'Frames', type: :request do
       context 'q={ "tag_name": "testA" } (tag name)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ tag_name: 'testA' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ tag_name: 'testA' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -374,7 +374,7 @@ describe 'Frames', type: :request do
       context 'q={ "user_name": "test" } (user name)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ user_name: 'test' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ user_name: 'test' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -385,7 +385,7 @@ describe 'Frames', type: :request do
       context 'q={ "creator_name": "test_creator" } (creator name)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ creator_name: 'test_creator' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ creator_name: 'test_creator' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -396,7 +396,7 @@ describe 'Frames', type: :request do
       context 'q={ "date": "2022/01/01" } (shooted_at)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ date: '2022/01/01' }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ date: '2022/01/01' }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -407,7 +407,7 @@ describe 'Frames', type: :request do
       context 'q={ "date": Time.zone.today } (created_at / updated_at)' do
         it 'success (成功)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ date: Time.zone.today.strftime('%Y/%m/%d') }) }, headers: headers
           # expect(response.status).to eq 200
           is_expected.to conform_schema(200)
           json_data = json[:frames]
@@ -418,7 +418,7 @@ describe 'Frames', type: :request do
       context 'q={ "word": exceeds 40 characters }' do
         it 'failure (失敗)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ word: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -429,7 +429,7 @@ describe 'Frames', type: :request do
       context 'q={ "frame_name": exceeds 30 characters } (frame name)' do
         it 'failure (失敗)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ frame_name: Faker::Alphanumeric.alpha(number: 31) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -440,7 +440,7 @@ describe 'Frames', type: :request do
       context 'q={ "tag_name": exceeds 10 characters } (tag name)' do
         it 'failure (失敗)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ tag_name: Faker::Alphanumeric.alpha(number: 11) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -451,7 +451,7 @@ describe 'Frames', type: :request do
       context 'q={ "user_name": exceeds 40 characters } (user name)' do
         it 'failure (失敗)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ user_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -462,7 +462,7 @@ describe 'Frames', type: :request do
       context 'q={ "creator_name": exceeds 40 characters } (creator name)' do
         it 'failure (失敗)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ creator_name: Faker::Alphanumeric.alpha(number: 41) }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json
@@ -473,7 +473,7 @@ describe 'Frames', type: :request do
       context 'q={ "date": invalid date } (date)' do
         it 'failure (失敗)' do
           headers.merge!(common_headers)
-          get endpoint, params: { q: Oj.dump({ date: "AAAA/AA/AA" }) }, headers: headers
+          get endpoint, params: { q: JsonUtil.stringify({ date: "AAAA/AA/AA" }) }, headers: headers
           # expect(response.status).to eq 422
           is_expected.to conform_schema(422)
           json_data = json

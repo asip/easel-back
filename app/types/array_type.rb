@@ -14,6 +14,6 @@ class ArrayType < ActiveModel::Type::Value
   end
 
   def serialize(value)
-    Oj.dump(Array(value)) # Array(value).join(",")
+    JsonUtil.stringify(Array(value)) # Array(value).join(",")
   end
 end

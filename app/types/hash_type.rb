@@ -14,6 +14,6 @@ class HashType < ActiveModel::Type::Value
   end
 
   def serialize(value)
-    Oj.dump(Hash(value))
+    JsonUtil.stringify(Hash(value))
   end
 end

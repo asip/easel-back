@@ -9,6 +9,6 @@ class Toast::Component < ViewComponent::Base
   private
 
   def to_json(flash:)
-    Oj.dump(flash.present? ? flash.to_h.transform_values { |value| [ value ] } : {})
+    JsonUtil.stringify(flash.present? ? flash.to_h.transform_values { |value| [ value ] } : {})
   end
 end
