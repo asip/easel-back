@@ -2,7 +2,11 @@
 
 # JsonUtil class
 class JsonUtil
-  def self.to_hash(str)
+  def self.parse(str)
     (str.present? ? Oj.load(str) : {}).with_indifferent_access
+  end
+
+  def self.stringify(hash)
+    Oj.dump(hash)
   end
 end
