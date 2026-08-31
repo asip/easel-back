@@ -38,7 +38,7 @@ gem "bootsnap", "~> 1.25.0", require: false
 gem "rails_vite", "~> 0.2.3"
 
 # view component
-gem "view_component", "~> 4.12.0"
+gem "view_component", "~> 4.15.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.229.0"
@@ -63,20 +63,20 @@ gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.16.0"
 gem "omniauth-google-oauth2", "1.2.2"
 
-gem "googleauth", "~> 1.17.3"
+gem "googleauth", "~> 1.17.4"
 
 # settings
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.6.1"
+gem "pagy", "~> 43.6.2"
 
 # tags
 gem "no_fly_list", "0.7.4"
 
 # json
 gem "oj", "3.17.6"
-gem "alba", "3.11.0"
+gem "alba", "4.0.0"
 gem "typelizer", "~>0.13.1 "
 
 # Rack::Locale
@@ -106,7 +106,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "bullet", "~> 8.1.3"
+  gem "bullet", "~> 8.2.0"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.3.0"
@@ -115,15 +115,15 @@ group :development do
   # gem "rack-mini-profiler"
 
   gem "annotaterb", "~> 4.24.0"
-  gem "rails-erd", "~> 2.1.0"
+  gem "rails-erd", "~> 2.2.0"
 
-  gem "rubocop", "~> 1.89.0", require: false
+  gem "rubocop", "~> 1.90.0", require: false
   gem "rubocop-rails", "~> 2.37.0", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
   # Shopify/erb-lint
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "ruby-lsp", "~> 0.26.10", require: false
+  gem "ruby-lsp", "~> 0.26.11", require: false
 
   gem "brakeman", "~> 8.0.6", require: false
   gem "reek", "~> 6.5.0", require: false
