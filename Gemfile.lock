@@ -251,7 +251,7 @@ GEM
     hashie (5.0.0)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    image_processing (2.0.3)
+    image_processing (2.1.0)
     imgproxy (3.0.0)
       anyway_config (~> 2.6)
     io-console (0.8.2)
@@ -329,8 +329,8 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-google-oauth2 (1.2.2)
-      jwt (>= 2.9.2)
+    omniauth-google-oauth2 (1.2.3)
+      jwt (>= 2.9.2, < 4)
       oauth2 (~> 2.0)
       omniauth (~> 2.0)
       omniauth-oauth2 (~> 1.8)
@@ -613,7 +613,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.5.1)
   faker (~> 3.8.0)
   googleauth (~> 1.17.4)
-  image_processing (~> 2.0.3)
+  image_processing (~> 2.1.0)
   imgproxy (~> 3.0.0)
   marcel (~> 1.2.1)
   motor-admin (= 0.5.0)
@@ -621,7 +621,7 @@ DEPENDENCIES
   no_fly_list (= 0.7.4)
   observer (~> 0.1.2)
   oj (= 3.17.6)
-  omniauth-google-oauth2 (= 1.2.2)
+  omniauth-google-oauth2 (= 1.2.3)
   pagy (~> 43.6.2)
   pg (~> 1.6.3)
   pg_query (~> 6.2.2)
@@ -656,4 +656,4 @@ DEPENDENCIES
   web-console (~> 4.3.0)
 
 BUNDLED WITH
-  4.0.18
+  4.0.20
