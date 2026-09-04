@@ -32,7 +32,7 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.25.0", require: false
+gem "bootsnap", "~> 1.26.0", require: false
 
 # vite integration
 gem "rails_vite", "~> 0.2.3"
@@ -101,7 +101,7 @@ gem "cgi", "~> 0.5.2"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.11.1", platforms: %i[mri windows], require: "debug/prelude"
-  gem "pg_query", "~> 6.2.2"
+  gem "pg_query", "~> 6.2.3"
   gem "prosopite", "~> 2.2.0"
 end
 
