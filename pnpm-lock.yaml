@@ -21,8 +21,8 @@ importers:
         specifier: ^3.6.0-rc.7
         version: 3.6.0-rc.7
       lucide-static:
-        specifier: ^1.39.0
-        version: 1.39.0
+        specifier: ^1.41.0
+        version: 1.41.0
       toastify-js:
         specifier: ^1.12.0
         version: 1.12.0
@@ -1290,8 +1290,8 @@ packages:
     resolution: {integrity: sha512-F9ODfyqML2coTIsQpSkRHnLSZMtkU8Q+mSfcaIyKwy58u+8k5nvAYeiNhsyMARvzNcXJ9QfWVrcPsC9e9rAxtg==}
     engines: {node: 20 || >=22}
 
-  lucide-static@1.39.0:
-    resolution: {integrity: sha512-TaDiwNFZ78c+HrZRNWHoR+LVkIOL8ebYOyNYvytdPkaLWE29G9umks6p1aeCE8kSEIoifnlNLPxMvvE3zqT/YA==}
+  lucide-static@1.41.0:
+    resolution: {integrity: sha512-39fX7SH+Rwis0oUmLLOipOoFSiJll9yi2DyEGDaE7Sp0qQAEhEfMQ2scQNdWKeGVENGv1uXc5ZeZqBWsuhQSFg==}
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -2865,7 +2865,7 @@ snapshots:
 
   lru-cache@11.2.2: {}
 
-  lucide-static@1.39.0: {}
+  lucide-static@1.41.0: {}
 
   magic-string@0.30.21:
     dependencies:
