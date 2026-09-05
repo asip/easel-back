@@ -13,7 +13,7 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo": "^8.0.23",
     "@hotwired/turbo-rails": "^8.0.23",
-    "@vue/reactivity": "^3.6.0-rc.6",
+    "@vue/reactivity": "^3.6.0-rc.7",
     "lucide-static": "^1.39.0",
     "toastify-js": "^1.12.0"
   },
