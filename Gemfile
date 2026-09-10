@@ -41,7 +41,7 @@ gem "rails_vite", "~> 0.2.3"
 gem "view_component", "~> 4.15.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.230.0"
+gem "aws-sdk-s3", "~> 1.231.0"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.1.0"
 gem "marcel", "~> 1.2.1"
@@ -117,7 +117,7 @@ group :development do
   gem "annotaterb", "~> 4.24.0"
   gem "rails-erd", "~> 2.2.0"
 
-  gem "rubocop", "~> 1.90.0", require: false
+  gem "rubocop", "~> 1.91.0", require: false
   gem "rubocop-rails", "~> 2.37.0", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
