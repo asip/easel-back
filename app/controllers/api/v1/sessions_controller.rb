@@ -7,12 +7,12 @@ class Api::V1::SessionsController < Api::V1::ApiController
   include ::Sessions::Variables
 
   def profile
-    render_account(account: current_user)
+    render_account(current_user)
   end
 
   def frames
     pagination, frames = list_frames(user: current_user, page:)
 
-    render_frames(frames:, pagination:)
+    render_frames(frames, pagination:)
   end
 end

@@ -60,15 +60,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def save_success(resource)
-    render_account(account: resource)
+    render_account(resource)
   end
 
   def save_failed(resource)
-    render_errors(resource:)
+    render_errors(resource)
   end
 
   def respond_with_navigational(resource)
-    render_account(account: resource)
+    render_account(resource)
   end
 
   protected

@@ -11,9 +11,9 @@ class Api::V1::FramesController < Api::V1::ApiController
     if form.valid?
       pagination, frames = list_frames(user: current_user, form:, page:)
 
-      render_frames(frames:, pagination:)
+      render_frames(frames, pagination:)
     else
-      render_errors(resource: form)
+      render_errors(form)
     end
   end
 
@@ -22,15 +22,15 @@ class Api::V1::FramesController < Api::V1::ApiController
   end
 
   def show
-    render_frame(frame: public_frame.with_relations)
+    render_frame(public_frame.with_relations)
   end
 
   def authenticated
-    render_frame(frame: authenticated_frame.with_relations)
+    render_frame(authenticated_frame.with_relations)
   end
 
   def comments
-    render_comments(comments: comment_list)
+    render_comments(comment_list)
   end
 
   def create
@@ -38,9 +38,9 @@ class Api::V1::FramesController < Api::V1::ApiController
     frame = mutation.frame
 
     if mutation.success?
-      render_frame(frame:)
+      render_frame(frame)
     else
-      render_errors(resource: frame)
+      render_errors(frame)
     end
   end
 
@@ -49,16 +49,16 @@ class Api::V1::FramesController < Api::V1::ApiController
     frame = mutation.frame
 
     if mutation.success?
-      render_frame(frame:)
+      render_frame(frame)
     else
-      render_errors(resource: frame)
+      render_errors(frame)
     end
   end
 
   def destroy
     mutation = Mutations::Frame::DeleteFrame.run(frame: account_frame)
     frame = mutation.frame
-    render_frame(frame:)
+    render_frame(frame)
   end
 
   private

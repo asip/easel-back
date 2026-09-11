@@ -7,13 +7,13 @@ class Api::V1::UsersController < Api::V1::ApiController
   include ::Users::Variables
 
   def show
-    render_user(user:)
+    render_user(user)
   end
 
   def frames
     pagination, frames = list_frames(user_id:, page:)
 
-    render_frames(frames:, pagination:)
+    render_frames(frames, pagination:)
   end
 
   private

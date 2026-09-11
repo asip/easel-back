@@ -3,6 +3,7 @@
 # Api::Renderable module
 module Api::Renderable
   extend ActiveSupport::Concern
+  include Api::Error::Renderable
 
   protected
 

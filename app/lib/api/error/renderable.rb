@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Api::ErrorRenderable module
-module Api::ErrorRenderable
+# Api::Error::Renderable module
+module Api::Error::Renderable
   extend ActiveSupport::Concern
 
   included do
@@ -26,7 +26,7 @@ module Api::ErrorRenderable
 
   protected
 
-  def render_errors(resource:)
+  def render_errors(resource)
     render_resource ErrorMessagesResource.new(ErrorMessages.new(errors: resource.error_map)).serialize,
                     status: :unprocessable_content
   end

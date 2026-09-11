@@ -9,9 +9,9 @@ class Api::V1::CommentsController < Api::V1::ApiController
                                                      form: form_params)
     comment = mutation.comment
     if mutation.success?
-      render_comment(comment:)
+      render_comment(comment)
     else
-      render_errors(resource: comment)
+      render_errors(comment)
     end
   end
 
@@ -19,9 +19,9 @@ class Api::V1::CommentsController < Api::V1::ApiController
     mutation = Mutations::Comment::UpdateComment.run(comment:, form: form_params)
     comment = mutation.comment
     if mutation.success?
-      render_comment(comment:)
+      render_comment(comment)
     else
-      render_errors(resource: comment)
+      render_errors(comment)
     end
   end
 

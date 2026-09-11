@@ -18,7 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def callback
     sign_in(user, event: :authentication)
 
-    render_account(account: user)
+    render_account(user)
   end
 
   # GET|POST /resource/auth/twitter

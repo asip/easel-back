@@ -5,7 +5,7 @@ class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   include FollowerRelationships::Variables
 
   def following
-    render_following(following: current_user.following?(user))
+    render_following(current_user.following?(user))
   end
 
   # follow (フォローするとき)
