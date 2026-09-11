@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Stream::ErrorRenderable module
-module Stream::ErrorRenderable
+# Stream::Error::Renderable module
+module Stream::Error::Renderable
   extend ActiveSupport::Concern
 
   protected

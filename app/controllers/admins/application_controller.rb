@@ -5,7 +5,6 @@ class Admins::ApplicationController < ActionController::Base
   include Locale::Detect
   include NPlusOne::Query::Detection unless Rails.env.production? || Rails.env.test?
   include Stream::Renderable
-  include Stream::ErrorRenderable
   include Admin::Authentication
 
   protect_from_forgery with: :exception

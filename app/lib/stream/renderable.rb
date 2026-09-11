@@ -3,6 +3,7 @@
 # Stream::Renderable module
 module Stream::Renderable
   extend ActiveSupport::Concern
+  include Stream::Error::Renderable
 
   protected
 
