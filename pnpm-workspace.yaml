@@ -1,5 +1,2 @@
 allowBuilds:
   '@parcel/watcher': false
-minimumReleaseAgeExclude:
-  - daisyui@5.7.37
-  - lucide-static@1.45.0
