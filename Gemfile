@@ -41,7 +41,7 @@ gem "rails_vite", "~> 0.2.3"
 gem "view_component", "~> 4.15.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.232.3"
+gem "aws-sdk-s3", "~> 1.233.1"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.2.0"
 gem "marcel", "~> 1.2.1"
@@ -101,7 +101,7 @@ gem "cgi", "~> 0.5.2"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.11.1", platforms: %i[mri windows], require: "debug/prelude"
-  gem "pg_query", "~> 6.2.3"
+  gem "pg_query", "~> 6.2.5"
   gem "prosopite", "~> 2.2.0"
 end
 
@@ -125,7 +125,7 @@ group :development do
   gem "erb_lint", "~> 0.9.0", require: false
   gem "ruby-lsp", "~> 0.26.11", require: false
 
-  gem "brakeman", "~> 8.0.6", require: false
+  gem "brakeman", "~> 8.1.0", require: false
   gem "reek", "~> 6.5.0", require: false
   gem "traceroute", "~> 0.8.1"
 
