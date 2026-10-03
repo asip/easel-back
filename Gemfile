@@ -11,7 +11,7 @@ gem "propshaft", "~> 1.3.2"
 # Use mysql as the database for Active Record
 # gem 'mysql2', '~> 0.5.6'
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.6.3"
+gem "pg", "~> 1.7.0"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 8.0.2"
@@ -69,7 +69,7 @@ gem "googleauth", "~> 1.17.4"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.6.3"
+gem "pagy", "~> 43.7.0"
 
 # tags
 gem "no_fly_list", "0.7.4"
@@ -77,7 +77,7 @@ gem "no_fly_list", "0.7.4"
 # json
 gem "oj", "3.17.7"
 gem "alba", "4.0.0"
-gem "typelizer", "~>0.13.1 "
+gem "typelizer", "~>0.14.0 "
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
@@ -126,7 +126,7 @@ group :development do
   gem "ruby-lsp", "~> 0.26.11", require: false
 
   gem "brakeman", "~> 8.1.0", require: false
-  gem "reek", "~> 6.5.0", require: false
+  gem "reek", "~> 6.6.0", require: false
   gem "traceroute", "~> 0.8.1"
 
   gem "dockerfile-rails", "~>1.7.10"
