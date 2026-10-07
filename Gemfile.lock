@@ -103,7 +103,7 @@ GEM
     aws-sdk-kms (1.116.0)
       aws-sdk-core (~> 3, >= 3.234.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.233.1)
+    aws-sdk-s3 (1.233.2)
       aws-sdk-core (~> 3, >= 3.256.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -595,7 +595,7 @@ PLATFORMS
 DEPENDENCIES
   alba (= 4.0.0)
   annotaterb (~> 4.25.0)
-  aws-sdk-s3 (~> 1.233.1)
+  aws-sdk-s3 (~> 1.233.2)
   bootsnap (~> 1.26.0)
   brakeman (~> 8.1.0)
   bullet (~> 8.2.0)
