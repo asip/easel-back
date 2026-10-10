@@ -1,5 +1,5 @@
 // import Toastify from 'toastify-js'
-import { computed, ref } from '@vue/reactivity'
+import { customRef, ref } from '@vue/reactivity'
 
 import StartToastifyInstance from 'toastify-js'
 const Toastify = (await import('toastify-js')).default
@@ -7,14 +7,16 @@ const Toastify = (await import('toastify-js')).default
 export const useToastify = function (options?: StartToastifyInstance.Options) {
   const messages = ref<Record<string, string[]>>()
 
-  const toast = computed({
-    get() {
-      return messages.value
-    },
-    set(value: Record<string, string[]>) {
-      messages.value = value
-      setMessages(value)
-    },
+  const toast = customRef(() => {
+    return {
+      get() {
+        return messages.value
+      },
+      set(value: Record<string, string[]>) {
+        messages.value = value
+        setMessages(value)
+      },
+    }
   })
 
   const setMessages = (flashes: Record<string, string[]>) => {
