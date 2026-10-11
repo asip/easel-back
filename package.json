@@ -28,7 +28,7 @@
     "eslint": "^10.12.0",
     "markuplint": "^5.1.1",
     "oxfmt": "^0.72.0",
-    "rails-vite-plugin": "^0.2.5",
+    "rails-vite-plugin": "^0.3.0",
     "sass-embedded": "^1.105.1",
     "tailwindcss": "4.3.3",
     "tsc-watch": "^7.2.1",
