@@ -45,7 +45,7 @@ gem "aws-sdk-s3", "~> 1.233.2"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.2.0"
 gem "marcel", "~> 1.2.1"
-gem "shrine", "~> 3.10.0"
+gem "shrine", "~> 3.10.1"
 
 # gem "anyway_config", "2.8.0"
 # image (processing) proxy
@@ -106,7 +106,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "bullet", "~> 8.2.0"
+  gem "bullet", "~> 8.3.0"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.3.0"
@@ -117,7 +117,7 @@ group :development do
   gem "annotaterb", "~> 4.25.0"
   gem "rails-erd", "~> 2.2.0"
 
-  gem "rubocop", "~> 1.91.0", require: false
+  gem "rubocop", "~> 1.92.0", require: false
   gem "rubocop-rails", "~> 2.38.0", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
@@ -145,5 +145,5 @@ group :test do
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.34.0"
   gem "skooma", "~> 0.4.0"
-  gem "test-prof", "~> 1.6.3"
+  gem "test-prof", "~> 1.6.4"
 end
