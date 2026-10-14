@@ -45,7 +45,7 @@ gem "aws-sdk-s3", "~> 1.233.2"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.2.0"
 gem "marcel", "~> 1.2.1"
-gem "shrine", "~> 3.10.1"
+gem "shrine", "~> 3.10.2"
 
 # gem "anyway_config", "2.8.0"
 # image (processing) proxy
@@ -69,7 +69,7 @@ gem "googleauth", "~> 1.17.4"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.7.0"
+gem "pagy", "~> 43.7.1"
 
 # tags
 gem "no_fly_list", "0.7.4"
