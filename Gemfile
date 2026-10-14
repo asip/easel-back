@@ -63,7 +63,7 @@ gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.16.1"
 gem "omniauth-google-oauth2", "1.2.3"
 
-gem "googleauth", "~> 1.17.4"
+gem "googleauth", "~> 1.17.5"
 
 # settings
 gem "config", "~> 5.6.1"

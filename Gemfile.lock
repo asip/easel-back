@@ -237,7 +237,7 @@ GEM
     google-protobuf (4.36.1-arm64-darwin)
       bigdecimal
       rake (~> 13.3)
-    googleauth (1.17.4)
+    googleauth (1.17.5)
       faraday (>= 1.0, < 3.a)
       google-cloud-env (~> 2.2)
       google-logging-utils (~> 0.1)
@@ -610,7 +610,7 @@ DEPENDENCIES
   erb_lint (~> 0.9.0)
   factory_bot_rails (~> 6.5.1)
   faker (~> 3.8.0)
-  googleauth (~> 1.17.4)
+  googleauth (~> 1.17.5)
   image_processing (~> 2.2.0)
   imgproxy (~> 3.0.0)
   marcel (~> 1.2.1)
