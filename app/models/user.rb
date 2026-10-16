@@ -25,7 +25,7 @@
 class User < ApplicationRecord
   include Discard::Model
   include Profile::Image::Uploader::Attachment(:image)
-  include Vesper::Models::Errors::Map
+  include Vesper::Models::Errors::API
   include ::Login
   include Login::Save
   include Follow

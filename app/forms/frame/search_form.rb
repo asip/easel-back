@@ -4,7 +4,7 @@
 class Frame::SearchForm
   include ActiveModel::API
   include ActiveModel::Attributes
-  include Vesper::Models::Errors::Map
+  include Vesper::Models::Errors::API
 
   attribute :word, :string
   attribute :frame_name, :string
