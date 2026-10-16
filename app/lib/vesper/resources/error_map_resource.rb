@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Vesper::Resources::ErrorMessages Resource
+# Vesper::Resources::ErrorMapResource
 class Vesper::Resources::ErrorMapResource < ApplicationResource
   attributes :title, :detail
 
