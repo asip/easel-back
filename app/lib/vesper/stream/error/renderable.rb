@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Stream::Error::Renderable module
-module Stream::Error::Renderable
+# Vesper::Stream::Error::Renderable module
+module Vesper::Stream::Error::Renderable
   extend ActiveSupport::Concern
 
   protected

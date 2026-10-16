@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# ErrorMessages Resource
-class ErrorMapResource < ApplicationResource
+# Vesper::Resources::ErrorMessages Resource
+class Vesper::Resources::ErrorMapResource < ApplicationResource
   attributes :title, :detail
 
   attributes :source, if: ->(_error, attribute) { attribute.present? }

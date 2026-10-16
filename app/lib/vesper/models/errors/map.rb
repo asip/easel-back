@@ -1,5 +1,5 @@
-# Errors::Map module
-module Errors::Map
+# Vesper::Models::Errors::Map module
+module Vesper::Models::Errors::Map
   extend ActiveSupport::Concern
 
   def error_map

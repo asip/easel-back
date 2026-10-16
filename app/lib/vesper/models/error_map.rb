@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 #
-# ErrorMessages class
+# Vesper::Models::ErrorMap class
 #
-class ErrorMessages
+class Vesper::Models::ErrorMap
   include ActiveModel::API
   include ActiveModel::Attributes
 
-  attribute :errors, :hash, default: {}
+  attribute :title, :string
+  attribute :detail, :string
+  attribute :source, :string
 
   def initialize(attributes)
     super(attributes)

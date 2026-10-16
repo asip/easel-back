@@ -17,7 +17,7 @@
 
 # Admin
 class Admin < ApplicationRecord
-  include ::Errors::Map
+  include Vesper::Models::Errors::Map
   include ::Login
 
   # Include default devise modules. Others available are:
