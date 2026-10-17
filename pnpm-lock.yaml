@@ -18,8 +18,8 @@ importers:
         specifier: ^8.0.23
         version: 8.0.23
       '@vue/reactivity':
-        specifier: ^3.6.0-rc.11
-        version: 3.6.0-rc.11
+        specifier: ^3.6.0-rc.12
+        version: 3.6.0-rc.12
       lucide-static:
         specifier: ^1.55.0
         version: 1.55.0
@@ -798,11 +798,11 @@ packages:
     resolution: {integrity: sha512-zozlN0UA32bSG2zkKAgQyRYSbEISVoyU6vvkKYo2aSny74D8Jh4e+POkJ6Lk0dlezZi5x7TtD+88Xb06IB8nhg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@vue/reactivity@3.6.0-rc.11':
-    resolution: {integrity: sha512-JkIptRqOw4tQgRBh42wp+ZypiedOusxqO/awTFxetwtfBIZf5zLMaSkKNlRLzp2wxxjyUKCVx6GOMHkpmLWDqQ==}
+  '@vue/reactivity@3.6.0-rc.12':
+    resolution: {integrity: sha512-clivElcJ56eCxZgSEOOn18xIy5rb7wAlmOUJ/8jTkkEnk9Geu60pjOsVKIlLJRww9WA2MUtB+4svmZIVYm4TLQ==}
 
-  '@vue/shared@3.6.0-rc.11':
-    resolution: {integrity: sha512-Wh+Vvf0qqM/GVSDVA606bDq+fATrkp/sCNXXK2bmDgoC0WKdr+xpY8YKJ4uVBnYlSqqp+gLd/2vZOC/B04U10w==}
+  '@vue/shared@3.6.0-rc.12':
+    resolution: {integrity: sha512-xk8fOMESfa00AINIQrwqX9l35xDpi2sE7uTSlt6RWt64TU2FE9SnmqJu3hjdE4dGB1lQ6EwalhowPp4ZOKp1Dw==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2683,11 +2683,11 @@ snapshots:
       '@typescript-eslint/types': 8.71.2
       eslint-visitor-keys: 5.0.1
 
-  '@vue/reactivity@3.6.0-rc.11':
+  '@vue/reactivity@3.6.0-rc.12':
     dependencies:
-      '@vue/shared': 3.6.0-rc.11
+      '@vue/shared': 3.6.0-rc.12
 
-  '@vue/shared@3.6.0-rc.11': {}
+  '@vue/shared@3.6.0-rc.12': {}
 
   acorn-jsx@5.3.2(acorn@8.19.0):
     dependencies:
