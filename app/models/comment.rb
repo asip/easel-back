@@ -14,7 +14,7 @@
 
 # Comment
 class Comment < ApplicationRecord
-  include Vesper::Models::Errors::API
+  include Vesper::Model::Errors::API
 
   belongs_to :user, -> { with_discarded }
   belongs_to :frame

@@ -22,7 +22,7 @@ class Frame < ApplicationRecord
   # has_one_attached :file
   include Contents::Uploader::Attachment(:file)
   include NoFlyList::TaggableRecord
-  include Vesper::Models::Errors::API
+  include Vesper::Model::Errors::API
 
   has_tags :tags, polymorphic: true
 
