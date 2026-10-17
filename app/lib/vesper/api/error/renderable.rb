@@ -27,11 +27,15 @@ module Vesper::Api::Error::Renderable
   protected
 
   def render_errors(resource)
-    render_resource Vesper::Resources::ErrorMessagesResource.new(Vesper::Models::ErrorMessages.new(errors: resource.error_map)).serialize,
+    render_resource Vesper::Resources::ErrorMessagesResource.new(Vesper::Models::ErrorMessages.new(errors: error_map(resource))).serialize,
                     status: :unprocessable_content
   end
 
   private
+
+  def error_map(resource)
+    resource.errors.to_hash(false).with_indifferent_access
+  end
 
   # Common helper methods for rendering error response (エラーレスポンスをレンダリングする共通のヘルパーメソッド
 
