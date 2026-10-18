@@ -55,7 +55,7 @@ class Frame < ApplicationRecord
     scope = scope.filter_by_user(user) if user.present?
 
     if word.present?
-      scope = if DateUtil.valid?(word)
+      scope = if DateUtil.is_date?(word)
                 scope.filter_by_date(Time.zone.parse(word))
       else
                 scope.filter_by_word(word)

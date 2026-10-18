@@ -2,7 +2,7 @@
 
 # DateUtil class
 class DateUtil
-  def self.valid?(str)
+  def self.is_date?(str)
     !!Date.parse(str)
   rescue StandardError
     false
