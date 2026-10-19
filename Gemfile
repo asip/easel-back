@@ -98,6 +98,8 @@ gem "mutex_m", "~> 0.3.0"
 
 gem "cgi", "~> 0.5.2"
 
+gem "vesper-rails", "~> 0.1.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.11.1", platforms: %i[mri windows], require: "debug/prelude"

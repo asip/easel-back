@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Admin Controller
-class Admins::ApplicationController < Vesper::AppController
+class Admins::ApplicationController < Vesper::Controller
   include Locale::Detect
   include NPlusOne::Query::Detection unless Rails.env.production? || Rails.env.test?
   include Admin::Authentication
