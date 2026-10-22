@@ -11,9 +11,17 @@ module Locale::Detect
   protected
 
   def switch_locale
-    browser_locale_code = request.env["HTTP_ACCEPT_LANGUAGE"]&.scan(/^[a-z]{2}/)&.first || ""
-    locale_code = I18n.available_locales.include?(browser_locale_code.to_sym) ? browser_locale_code : I18n.default_locale
-    # logger.debug "* Locale set to '#{locale_code}'"
-    I18n.locale = locale_code.to_sym
+    I18n.locale = locale.to_sym
+    # logger.debug "* Locale set to '#{locale}'"
+  end
+
+  private
+
+  def browser_locale
+    request.env["HTTP_ACCEPT_LANGUAGE"]&.scan(/^[a-z]{2}/)&.first || ""
+  end
+
+  def locale
+    I18n.available_locales.include?(browser_locale.to_sym) ? browser_locale : I18n.default_locale
   end
 end
