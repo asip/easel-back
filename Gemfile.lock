@@ -564,7 +564,7 @@ GEM
     uri-idna (0.3.1)
     useragent (0.16.11)
     version_gem (1.1.3)
-    vesper-rails (0.3.0)
+    vesper-rails (0.4.1)
       activemodel (>= 7.0)
       alba (>= 4.0.0)
       oj (>= 3.17.7)
@@ -656,7 +656,7 @@ DEPENDENCIES
   turbo-rails (~> 2.0.23)
   typelizer (~> 0.14.0)
   tzinfo-data
-  vesper-rails (~> 0.3.0)
+  vesper-rails (~> 0.4.1)
   view_component (~> 4.15.0)
   web-console (~> 4.3.0)
 
