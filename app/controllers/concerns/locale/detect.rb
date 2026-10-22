@@ -18,10 +18,16 @@ module Locale::Detect
   private
 
   def browser_locale
-    request.env["HTTP_ACCEPT_LANGUAGE"]&.scan(/^[a-z]{2}/)&.first || ""
+    request.env["HTTP_ACCEPT_LANGUAGE"]&.scan(/^(?:[a-z]{2}-[A-Z]{2}|[a-z]{2}-[0-9]+|[a-z]{2})/)&.first || ""
+  end
+
+  def browser_short_locale
+    browser_locale&.split("-")[0] || ""
   end
 
   def locale
-    I18n.available_locales.include?(browser_locale.to_sym) ? browser_locale : I18n.default_locale
+    available_locales = I18n.available_locales
+    available_locales.include?(browser_locale.to_sym) || available_locales.include?(browser_short_locale.to_sym) ?
+      browser_locale : I18n.default_locale
   end
 end
