@@ -3,7 +3,7 @@
 # ExceptionsApp class
 class ExceptionsApp < Rambulance::ExceptionsApp
 =begin
-  include Api::Renderable
+  include Vesper::Api::Renderable
 
   # HTTP Status 400 Bad Request
   def bad_request
@@ -62,7 +62,7 @@ class ExceptionsApp < Rambulance::ExceptionsApp
 
       # puts error
 
-      render_resource ErrorMapResource.new(ErrorMap.new(error)).serialize,
+      render_resource Vesper::Resources::ErrorMapResource.new(Vesper::Models::ErrorMap.new(error)).serialize,
                       status:
     end
   end
