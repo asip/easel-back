@@ -2,9 +2,8 @@
 
 require_relative "../vesper/devise/j_w_t/failure_app"
 
-# devise
 module Devise
-  # Failure App
+  # Devise::FailureApp class
   class FailureApp
     prepend Vesper::Devise::JWT::FailureApp
   end

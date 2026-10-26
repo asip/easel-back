@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# Vesper::Devise::JWT::FailureApp
 module Vesper
   module Devise
     module JWT
+      # Vesper::Devise::JWT::FailureApp module
       module FailureApp
         protected
 
