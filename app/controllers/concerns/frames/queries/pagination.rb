@@ -13,7 +13,6 @@ module Frames::Queries::Pagination
     pagy, frame_ids = pagy(frame_ids, page:)
     frames = Queries::Frame::ListByFrameIds.run(frame_ids:)
 
-    pagination = Api::Pagination::Pagy.pagination_resource(pagy)
-    [ pagination, frames ]
+    [ pagy, frames ]
   end
 end

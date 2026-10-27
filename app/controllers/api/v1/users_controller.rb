@@ -11,7 +11,8 @@ class Api::V1::UsersController < Api::V1::ApiController
   end
 
   def frames
-    pagination, frames = list_frames(user_id:, page:)
+    pagy, frames = list_frames(user_id:, page:)
+    pagination = Api::Pagination::Pagy.pagination_resource(pagy)
 
     render_frames(frames, pagination:)
   end

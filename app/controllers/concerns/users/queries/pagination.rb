@@ -11,7 +11,7 @@ module Users::Queries::Pagination
   def list_frames(user_id:, page:)
     frames = Queries::User::ListPublicFrames.run(user_id:)
     pagy, frames = pagy(frames, page:)
-    pagination = Api::Pagination::Pagy.pagination_resource(pagy)
-    [ pagination, frames ]
+
+    [ pagy, frames ]
   end
 end
