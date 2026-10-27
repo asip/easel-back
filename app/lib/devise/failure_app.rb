@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../vesper/devise/jwt/failure_app"
-
 module Devise
   # Devise::FailureApp class
   class FailureApp
