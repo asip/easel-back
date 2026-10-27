@@ -18,8 +18,8 @@ module Api::Resource::Renderable
     render_resource Frame::DetailResource.new(frame).serialize
   end
 
-  def render_frames(frames, pagination:)
-    render_resource Frame::List::ItemResource.new(frames).serialize(root_key: :frames, meta: pagination)
+  def render_frames(frames, pagy:)
+    render_resource Frame::List::ItemResource.new(frames).serialize(root_key: :frames, meta: Api::Pagination::Pagy.pagination_resource(pagy))
   end
 
   def render_comment(comment)

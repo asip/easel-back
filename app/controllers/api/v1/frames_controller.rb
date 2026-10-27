@@ -10,9 +10,8 @@ class Api::V1::FramesController < Api::V1::ApiController
   def index
     if form.valid?
       pagy, frames = list_frames(user: current_user, form:, page:)
-      pagination = Api::Pagination::Pagy.pagination_resource(pagy)
 
-      render_frames(frames, pagination:)
+      render_frames(frames, pagy:)
     else
       render_errors(form)
     end
