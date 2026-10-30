@@ -47,7 +47,6 @@ gem "image_processing", "~> 2.2.0"
 gem "marcel", "~> 1.2.1"
 gem "shrine", "~> 3.10.2"
 
-# gem "anyway_config", "2.8.0"
 # image (processing) proxy
 gem "imgproxy", "~> 3.0.0", require: false
 
@@ -112,9 +111,6 @@ group :development do
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.3.0"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
 
   gem "annotaterb", "~> 4.25.0"
   gem "rails-erd", "~> 2.2.0"
