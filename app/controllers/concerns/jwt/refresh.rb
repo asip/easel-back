@@ -24,6 +24,7 @@ module Jwt::Refresh
     ## Update JTI → Old tokens that no longer match the JTI in the DB become invalid.
     ## (jti を更新 → DBのjtiと一致しなくなった古いトークンは無効になる)
     # current_user.update_column(:jti, SecureRandom.uuid)
+
     token = Warden::JWTAuth::UserEncoder.new.call(
       current_user, :user, nil
     ).first
