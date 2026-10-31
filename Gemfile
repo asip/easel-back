@@ -32,16 +32,16 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.26.0", require: false
+gem "bootsnap", "~> 1.26.1", require: false
 
 # vite integration
 gem "rails_vite", "~> 0.3.0"
 
 # view component
-gem "view_component", "~> 4.15.0"
+gem "view_component", "~> 4.20.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.233.2"
+gem "aws-sdk-s3", "~> 1.237.0"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.2.0"
 gem "marcel", "~> 1.2.1"
@@ -62,16 +62,16 @@ gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.16.1"
 gem "omniauth-google-oauth2", "1.2.3"
 
-gem "googleauth", "~> 1.17.5"
+gem "googleauth", "~> 1.17.7"
 
 # settings
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.7.1"
+gem "pagy", "~> 43.8.1"
 
 # tags
-gem "no_fly_list", "0.7.4"
+gem "no_fly_list", "0.8.0"
 
 # json
 gem "oj", "3.17.7"
@@ -103,19 +103,19 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "debug", "~> 1.11.1", platforms: %i[mri windows], require: "debug/prelude"
   gem "pg_query", "~> 6.2.5"
-  gem "prosopite", "~> 2.2.0"
+  gem "prosopite", "~> 2.5.0"
 end
 
 group :development do
-  gem "bullet", "~> 8.3.0"
+  gem "bullet", "~> 8.3.1"
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console", "~> 4.3.0"
 
-  gem "annotaterb", "~> 4.25.0"
+  gem "annotaterb", "~> 4.26.0"
   gem "rails-erd", "~> 2.2.0"
 
-  gem "rubocop", "~> 1.92.0", require: false
+  gem "rubocop", "~> 1.92.2", require: false
   gem "rubocop-rails", "~> 2.38.0", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
@@ -141,7 +141,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.34.0"
+  gem "rspec-openapi", "~> 0.35.0"
   gem "skooma", "~> 0.4.0"
   gem "test-prof", "~> 1.6.4"
 end
