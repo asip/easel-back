@@ -75,7 +75,7 @@ gem "no_fly_list", "0.8.0"
 
 # json
 gem "oj", "3.17.7"
-gem "alba", "4.0.1"
+gem "alba", "4.0.2"
 gem "typelizer", "~>0.14.0 "
 
 # Rack::Locale
@@ -141,7 +141,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.0.4"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.35.0"
+  gem "rspec-openapi", "~> 0.36.0"
   gem "skooma", "~> 0.4.0"
   gem "test-prof", "~> 1.6.4"
 end

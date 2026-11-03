@@ -294,6 +294,25 @@ paths:
         - Users::Registration
       requestBody:
         content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    time_zone:
+                      type: string
+                  required:
+                    - name
+                    - email
+                    - time_zone
+              required:
+                - user
           multipart/form-data:
             schema:
               type: object
@@ -314,25 +333,6 @@ paths:
                     - name
                     - email
                     - image
-                    - time_zone
-              required:
-                - user
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                user:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    email:
-                      type: string
-                    time_zone:
-                      type: string
-                  required:
-                    - name
-                    - email
                     - time_zone
               required:
                 - user
@@ -1646,6 +1646,31 @@ paths:
         - Users::Registration
       requestBody:
         content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+                    time_zone:
+                      type: string
+                  required:
+                    - name
+                    - email
+                    - password
+                    - password_confirmation
+                    - time_zone
+              required:
+                - user
           multipart/form-data:
             schema:
               type: object
@@ -1672,31 +1697,6 @@ paths:
                     - password
                     - password_confirmation
                     - image
-                    - time_zone
-              required:
-                - user
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                user:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    email:
-                      type: string
-                    password:
-                      type: string
-                    password_confirmation:
-                      type: string
-                    time_zone:
-                      type: string
-                  required:
-                    - name
-                    - email
-                    - password
-                    - password_confirmation
                     - time_zone
               required:
                 - user
