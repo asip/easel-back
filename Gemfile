@@ -41,7 +41,7 @@ gem "rails_vite", "~> 0.3.0"
 gem "view_component", "~> 4.23.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.238.0"
+gem "aws-sdk-s3", "~> 1.239.0"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.2.0"
 gem "marcel", "~> 1.2.1"
@@ -75,7 +75,7 @@ gem "no_fly_list", "0.8.0"
 
 # json
 gem "oj", "3.17.8"
-gem "alba", "4.0.2"
+gem "alba", "4.0.3"
 gem "typelizer", "~>0.14.0 "
 
 # Rack::Locale
@@ -139,7 +139,7 @@ group :test do
 
   gem "factory_bot_rails", "~> 6.5.1"
   gem "faker", "~> 3.8.0"
-  gem "rspec-rails", "~> 8.0.4"
+  gem "rspec-rails", "~> 8.1.0"
   # Use to generate OpenAPI specs from RSpec request specs
   gem "rspec-openapi", "~> 0.36.0"
   gem "skooma", "~> 0.4.0"

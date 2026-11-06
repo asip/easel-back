@@ -77,7 +77,7 @@ GEM
       uri (>= 0.13.1)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
-    alba (4.0.2)
+    alba (4.0.3)
     annotaterb (4.26.0)
       activerecord (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -91,7 +91,7 @@ GEM
       activesupport (>= 5.2, < 8.2)
     aws-eventstream (1.4.1)
     aws-partitions (1.1180.0)
-    aws-sdk-core (3.264.0)
+    aws-sdk-core (3.265.0)
       aws-eventstream (~> 1, >= 1.4.1)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -103,8 +103,8 @@ GEM
     aws-sdk-kms (1.116.0)
       aws-sdk-core (~> 3, >= 3.234.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.238.0)
-      aws-sdk-core (~> 3, >= 3.264.0)
+    aws-sdk-s3 (1.239.0)
+      aws-sdk-core (~> 3, >= 3.265.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
@@ -475,7 +475,7 @@ GEM
       actionpack (>= 5.2.0)
       rails-dom-testing
       rspec-core
-    rspec-rails (8.0.4)
+    rspec-rails (8.1.0)
       actionpack (>= 7.2)
       activesupport (>= 7.2)
       railties (>= 7.2)
@@ -600,9 +600,9 @@ PLATFORMS
   arm64-darwin-25
 
 DEPENDENCIES
-  alba (= 4.0.2)
+  alba (= 4.0.3)
   annotaterb (~> 4.26.0)
-  aws-sdk-s3 (~> 1.238.0)
+  aws-sdk-s3 (~> 1.239.0)
   bootsnap (~> 1.26.1)
   brakeman (~> 8.1.0)
   bullet (~> 8.3.1)
@@ -643,7 +643,7 @@ DEPENDENCIES
   redis-actionpack (~> 5.5.0)
   reek (~> 6.6.0)
   rspec-openapi (~> 0.36.0)
-  rspec-rails (~> 8.0.4)
+  rspec-rails (~> 8.1.0)
   rubocop (~> 1.92.2)
   rubocop-rails (~> 2.38.0)
   rubocop-rails-omakase (~> 1.1.0)
