@@ -2,6 +2,8 @@
 
 # users / Sessions Controller
 class Users::SessionsController < Devise::SessionsController
+  include Account::Renderable
+
   respond_to :json
 
   before_action :configure_sign_in_params, only: [ :create ]

@@ -3,6 +3,7 @@
 # account / Passwords Controller
 class Account::PasswordsController < ApplicationController
   include Account::Passwords::Variables
+  include Account::Renderable
 
   def update
     if current_user.update_with_password(form_params)

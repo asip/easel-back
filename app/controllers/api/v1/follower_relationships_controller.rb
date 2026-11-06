@@ -3,6 +3,7 @@
 # follower relationship api controller
 class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
   include FollowerRelationships::Variables
+  include FollowerRelationships::Renderable
 
   def following
     render_following(current_user.following?(user))

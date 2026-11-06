@@ -6,6 +6,8 @@ class Api::V1::FramesController < Api::V1::ApiController
   include Frames::Authentication::Skip
   include Frames::Locale::Detect::Skip
   include Frames::Variables
+  include Frames::Renderable
+  include Comments::Renderable
 
   def index
     if form.valid?

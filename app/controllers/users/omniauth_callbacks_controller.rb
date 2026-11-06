@@ -4,6 +4,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include ActionController::Cookies
   include TimeZone::Detect
+  include Account::Renderable
 
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]

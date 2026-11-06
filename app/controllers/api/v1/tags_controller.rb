@@ -3,6 +3,7 @@
 # tag api controller
 class Api::V1::TagsController < Api::V1::ApiController
   include Tags::Variables
+  include Tags::Renderable
 
   def search
     render_tags(tags)

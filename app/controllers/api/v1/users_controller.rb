@@ -5,6 +5,8 @@ class Api::V1::UsersController < Api::V1::ApiController
   include ::Users::Queries::Pagination
   include Account::Authentication::Skip
   include ::Users::Variables
+  include Users::Renderable
+  include Frames::Renderable
 
   def show
     render_user(user)

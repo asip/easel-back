@@ -2,6 +2,8 @@
 
 # users / Registrations Controller
 class Users::RegistrationsController < Devise::RegistrationsController
+  include Account::Renderable
+
   respond_to :json
 
   before_action :configure_sign_up_params, only: [ :create ]

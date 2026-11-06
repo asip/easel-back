@@ -3,6 +3,8 @@
 # comment api controller
 class Api::V1::CommentsController < Api::V1::ApiController
   include Comments::Variables
+  include Comments::Renderable
+  include Frames::Renderable
 
   def create
     mutation = Mutations::Comment::CreateComment.run(user: current_user, frame_id: frame.id,

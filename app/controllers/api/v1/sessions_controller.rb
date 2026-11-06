@@ -5,6 +5,8 @@ class Api::V1::SessionsController < Api::V1::ApiController
   include ActionController::Cookies
   include ::Sessions::Queries::Pagination
   include ::Sessions::Variables
+  include Account::Renderable
+  include Frames::Renderable
 
   def profile
     render_account(current_user)
