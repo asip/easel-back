@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # session api controller
-class Api::V1::SessionsController < Api::V1::ApiController
+class Api::V1::SessionsController < Api::V1::AppController
   include ActionController::Cookies
   include ::Sessions::Queries::Pagination
   include ::Sessions::Variables

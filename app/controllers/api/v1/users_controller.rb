@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # user api controller
-class Api::V1::UsersController < Api::V1::ApiController
+class Api::V1::UsersController < Api::V1::AppController
   include ::Users::Queries::Pagination
   include Account::Authentication::Skip
   include ::Users::Variables

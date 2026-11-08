@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # follower relationship api controller
-class Api::V1::FollowerRelationshipsController < Api::V1::ApiController
+class Api::V1::FollowerRelationshipsController < Api::V1::AppController
   include FollowerRelationships::Variables
   include FollowerRelationships::Renderable
 
