@@ -4,7 +4,9 @@
 module Frames::Locale::Detect::Skip
   extend ActiveSupport::Concern
 
+  SKIP_ACTION_LIST_FOR_LOCALE = [ :comments ]
+
   included do
-    skip_before_action :switch_locale, only: [ :comments ]
+    skip_before_action :switch_locale, only: SKIP_ACTION_LIST_FOR_LOCALE
   end
 end
