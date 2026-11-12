@@ -41,7 +41,7 @@ gem "rails_vite", "~> 0.3.0"
 gem "view_component", "~> 4.23.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.240.0"
+gem "aws-sdk-s3", "~> 1.242.0"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.2.0"
 gem "marcel", "~> 1.2.1"
