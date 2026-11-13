@@ -14,7 +14,7 @@ gem "propshaft", "~> 1.3.2"
 gem "pg", "~> 1.7.0"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 8.0.2"
+gem "puma", "~> 8.0.3"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.23"
@@ -35,10 +35,10 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "bootsnap", "~> 1.26.1", require: false
 
 # vite integration
-gem "rails_vite", "~> 0.3.0"
+gem "rails_vite", "~> 0.4.0"
 
 # view component
-gem "view_component", "~> 4.23.0"
+gem "view_component", "~> 4.24.0"
 
 # Shrine
 gem "aws-sdk-s3", "~> 1.242.0"
