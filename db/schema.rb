@@ -15,19 +15,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_122445) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "admins", force: :cascade do |t|
-    t.datetime "created_at", null: false
     t.string "email", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
   create_table "application_taggings", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.string "taggable_type", null: false
+    t.bigint "taggable_id", null: false
     t.string "context", null: false
     t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.bigint "tag_id", null: false
-    t.bigint "taggable_id", null: false
-    t.string "taggable_type", null: false
     t.datetime "updated_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["context"], name: "index_application_taggings_on_context"
     t.index ["tag_id"], name: "index_application_taggings_on_tag_id"
@@ -36,69 +36,69 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_122445) do
   end
 
   create_table "application_tags", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "name", null: false
+    t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["name"], name: "index_application_tags_on_name", unique: true
   end
 
   create_table "authentications", force: :cascade do |t|
-    t.datetime "created_at", null: false
+    t.bigint "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
   create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "frame_id", null: false
     t.text "body"
     t.datetime "created_at", precision: nil, null: false
-    t.bigint "frame_id", null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.bigint "user_id", null: false
   end
 
   create_table "follow_relationships", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.bigint "followee_id"
     t.bigint "follower_id"
+    t.bigint "followee_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "frames", force: :cascade do |t|
+    t.string "name", null: false
     t.text "comment"
     t.datetime "created_at", precision: nil, null: false
-    t.string "creator_name"
-    t.text "file_data"
-    t.string "joined_tags"
-    t.string "name", null: false
-    t.boolean "private", default: false
-    t.datetime "shooted_at"
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "user_id"
+    t.text "file_data"
+    t.datetime "shooted_at"
+    t.boolean "private", default: false
+    t.string "joined_tags"
+    t.string "creator_name"
   end
 
   create_table "motor_alert_locks", force: :cascade do |t|
     t.bigint "alert_id", null: false
-    t.datetime "created_at", null: false
     t.string "lock_timestamp", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["alert_id", "lock_timestamp"], name: "index_motor_alert_locks_on_alert_id_and_lock_timestamp", unique: true
     t.index ["alert_id"], name: "index_motor_alert_locks_on_alert_id"
   end
 
   create_table "motor_alerts", force: :cascade do |t|
+    t.bigint "query_id", null: false
+    t.string "name", null: false
+    t.text "description"
+    t.text "to_emails", null: false
+    t.boolean "is_enabled", default: true, null: false
+    t.text "preferences", null: false
     t.bigint "author_id"
     t.string "author_type"
-    t.datetime "created_at", null: false
     t.datetime "deleted_at"
-    t.text "description"
-    t.boolean "is_enabled", default: true, null: false
-    t.string "name", null: false
-    t.text "preferences", null: false
-    t.bigint "query_id", null: false
-    t.text "to_emails", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_alerts_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["query_id"], name: "index_motor_alerts_on_query_id"
@@ -106,32 +106,32 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_122445) do
   end
 
   create_table "motor_api_configs", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.text "credentials", null: false
-    t.datetime "deleted_at"
-    t.text "description"
     t.string "name", null: false
-    t.text "preferences", null: false
-    t.datetime "updated_at", null: false
     t.string "url", null: false
+    t.text "preferences", null: false
+    t.text "credentials", null: false
+    t.text "description"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_api_configs_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
   end
 
   create_table "motor_audits", force: :cascade do |t|
-    t.string "action"
-    t.string "associated_id"
-    t.string "associated_type"
     t.string "auditable_id"
     t.string "auditable_type"
-    t.text "audited_changes"
-    t.text "comment"
-    t.datetime "created_at"
-    t.string "remote_address"
-    t.string "request_uuid"
+    t.string "associated_id"
+    t.string "associated_type"
     t.bigint "user_id"
     t.string "user_type"
     t.string "username"
+    t.string "action"
+    t.text "audited_changes"
     t.bigint "version", default: 0
+    t.text "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
     t.index ["associated_type", "associated_id"], name: "motor_auditable_associated_index"
     t.index ["auditable_type", "auditable_id", "version"], name: "motor_auditable_index"
     t.index ["created_at"], name: "index_motor_audits_on_created_at"
@@ -140,93 +140,93 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_122445) do
   end
 
   create_table "motor_configs", force: :cascade do |t|
-    t.datetime "created_at", null: false
     t.string "key", null: false
-    t.datetime "updated_at", null: false
     t.text "value", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["key"], name: "index_motor_configs_on_key", unique: true
     t.index ["updated_at"], name: "index_motor_configs_on_updated_at"
   end
 
   create_table "motor_dashboards", force: :cascade do |t|
-    t.bigint "author_id"
-    t.string "author_type"
-    t.datetime "created_at", null: false
-    t.datetime "deleted_at"
+    t.string "title", null: false
     t.text "description"
     t.text "preferences", null: false
-    t.string "title", null: false
+    t.bigint "author_id"
+    t.string "author_type"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "motor_dashboards_title_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["updated_at"], name: "index_motor_dashboards_on_updated_at"
   end
 
   create_table "motor_forms", force: :cascade do |t|
-    t.string "api_config_name", null: false
+    t.string "name", null: false
+    t.text "description"
     t.text "api_path", null: false
+    t.string "http_method", null: false
+    t.text "preferences", null: false
     t.bigint "author_id"
     t.string "author_type"
-    t.datetime "created_at", null: false
     t.datetime "deleted_at"
-    t.text "description"
-    t.string "http_method", null: false
-    t.string "name", null: false
-    t.text "preferences", null: false
+    t.string "api_config_name", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_forms_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["updated_at"], name: "index_motor_forms_on_updated_at"
   end
 
   create_table "motor_note_tag_tags", force: :cascade do |t|
-    t.bigint "note_id", null: false
     t.bigint "tag_id", null: false
+    t.bigint "note_id", null: false
     t.index ["note_id", "tag_id"], name: "motor_note_tags_note_id_tag_id_index", unique: true
     t.index ["tag_id"], name: "index_motor_note_tag_tags_on_tag_id"
   end
 
   create_table "motor_note_tags", force: :cascade do |t|
-    t.datetime "created_at", null: false
     t.string "name", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_note_tags_name_unique_index", unique: true
   end
 
   create_table "motor_notes", force: :cascade do |t|
+    t.text "body"
     t.bigint "author_id"
     t.string "author_type"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "deleted_at"
     t.string "record_id", null: false
     t.string "record_type", null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id", "author_type"], name: "motor_notes_author_id_author_type_index"
     t.index ["record_id", "record_type"], name: "motor_notes_record_id_record_type_index"
   end
 
   create_table "motor_notifications", force: :cascade do |t|
-    t.datetime "created_at", null: false
+    t.string "title", null: false
     t.text "description"
     t.bigint "recipient_id", null: false
     t.string "recipient_type", null: false
     t.string "record_id"
     t.string "record_type"
     t.string "status", null: false
-    t.string "title", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipient_id", "recipient_type"], name: "motor_notifications_recipient_id_recipient_type_index"
     t.index ["record_id", "record_type"], name: "motor_notifications_record_id_record_type_index"
   end
 
   create_table "motor_queries", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.text "sql_body", null: false
+    t.text "preferences", null: false
     t.bigint "author_id"
     t.string "author_type"
-    t.datetime "created_at", null: false
     t.datetime "deleted_at"
-    t.text "description"
-    t.string "name", null: false
-    t.text "preferences", null: false
-    t.text "sql_body", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_queries_name_unique_index", unique: true, where: "(deleted_at IS NULL)"
     t.index ["updated_at"], name: "index_motor_queries_on_updated_at"
@@ -235,12 +235,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_122445) do
   create_table "motor_reminders", force: :cascade do |t|
     t.bigint "author_id", null: false
     t.string "author_type", null: false
-    t.datetime "created_at", null: false
     t.bigint "recipient_id", null: false
     t.string "recipient_type", null: false
     t.string "record_id"
     t.string "record_type"
     t.datetime "scheduled_at", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id", "author_type"], name: "motor_reminders_author_id_author_type_index"
     t.index ["recipient_id", "recipient_type"], name: "motor_reminders_recipient_id_recipient_type_index"
@@ -249,9 +249,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_122445) do
   end
 
   create_table "motor_resources", force: :cascade do |t|
-    t.datetime "created_at", null: false
     t.string "name", null: false
     t.text "preferences", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_motor_resources_on_name", unique: true
     t.index ["updated_at"], name: "index_motor_resources_on_updated_at"
@@ -266,22 +266,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_122445) do
   end
 
   create_table "motor_tags", force: :cascade do |t|
-    t.datetime "created_at", null: false
     t.string "name", null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "motor_tags_name_unique_index", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "deleted_at"
     t.string "email", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.text "image_data"
-    t.string "name", null: false
-    t.text "profile"
-    t.string "time_zone"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name", null: false
+    t.text "image_data"
+    t.datetime "deleted_at"
+    t.string "encrypted_password", default: "", null: false
+    t.string "time_zone"
+    t.text "profile"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
