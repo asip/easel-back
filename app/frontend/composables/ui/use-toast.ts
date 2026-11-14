@@ -1,6 +1,6 @@
 import { ref, customRef } from '@vue/reactivity'
 
-import { useToastify } from './use-toastify'
+import { useToastify } from './toastify'
 
 export const useToast = () => {
   const { toast } = useToastify({
