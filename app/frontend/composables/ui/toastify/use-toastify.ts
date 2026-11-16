@@ -15,12 +15,12 @@ export const useToastify = function (options?: StartToastifyInstance.Options) {
       },
       set(value: StartToastifyInstance.Options | undefined) {
         toastRef.value = value
-        setMessage(value)
+        setOption(value)
       },
     }
   })
 
-  const setMessage = (value: StartToastifyInstance.Options | undefined): void => {
+  const setOption = (value: StartToastifyInstance.Options | undefined): void => {
     if (value) Toastify({ ...options, ...value }).showToast()
   }
 
