@@ -8,23 +8,23 @@ export const useToast = () => {
     style: { 'border-radius': '5px' },
   })
 
-  const messages = ref<Record<string, string[]>>()
+  const errors = ref<Record<string, string[]>>()
 
   const toasts = customRef<Record<string, string[]> | undefined>(() => {
     return {
       get() {
-        return messages.value
+        return errors.value
       },
       set(value: Record<string, string[]>) {
-        messages.value = value
-        setMessages(value)
+        errors.value = value
+        setErrors(value)
       },
     }
   })
 
-  const setMessages = (flashes: Record<string, string[]>) => {
-    Object.keys(flashes).forEach((flashType: string) => {
-      flashes[flashType].reverse().forEach((message: string) => {
+  const setErrors = (errors: Record<string, string[]>) => {
+    Object.keys(errors).forEach((name: string) => {
+      errors[name].reverse().forEach((message: string) => {
         toast.value = { text: message }
       })
     })
