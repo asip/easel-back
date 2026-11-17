@@ -14,7 +14,7 @@ gem "propshaft", "~> 1.3.2"
 gem "pg", "~> 1.7.0"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 8.1.1"
+gem "puma", "~> 8.1.2"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.23"
@@ -41,7 +41,7 @@ gem "rails_vite", "~> 0.4.0"
 gem "view_component", "~> 4.24.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.242.0"
+gem "aws-sdk-s3", "~> 1.243.0"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.2.0"
 gem "marcel", "~> 1.2.1"
@@ -76,7 +76,7 @@ gem "no_fly_list", "0.8.0"
 # json
 gem "oj", "3.17.8"
 gem "alba", "4.0.3"
-gem "typelizer", "~>0.14.0 "
+gem "typelizer", "~>0.15.0 "
 
 # Rack::Locale
 gem "rack-contrib", "2.5.0"
