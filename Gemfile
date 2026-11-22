@@ -32,20 +32,20 @@ gem "stimulus-rails", "~> 1.3.4"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", "~> 1.26.1", require: false
+gem "bootsnap", "~> 1.26.2", require: false
 
 # vite integration
 gem "rails_vite", "~> 0.4.0"
 
 # view component
-gem "view_component", "~> 4.24.0"
+gem "view_component", "~> 4.25.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.245.0"
+gem "aws-sdk-s3", "~> 1.245.1"
 gem "ruby-vips", "~> 2.3.0"
-gem "image_processing", "~> 2.2.0"
+gem "image_processing", "~> 2.2.1"
 gem "marcel", "~> 1.2.1"
-gem "shrine", "~> 3.10.2"
+gem "shrine", "~> 3.11.0"
 
 # image (processing) proxy
 gem "imgproxy", "~> 3.0.0", require: false
@@ -62,13 +62,13 @@ gem "devise-jwt", "0.13.0"
 gem "devise-i18n", "1.16.1"
 gem "omniauth-google-oauth2", "1.2.3"
 
-gem "googleauth", "~> 1.17.7"
+gem "googleauth", "~> 1.17.8"
 
 # settings
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.8.3"
+gem "pagy", "~> 43.8.5"
 
 # tags
 gem "no_fly_list", "0.8.0"
@@ -123,7 +123,7 @@ group :development do
   gem "erb_lint", "~> 0.9.0", require: false
   gem "ruby-lsp", "~> 0.26.11", require: false
 
-  gem "brakeman", "~> 8.1.0", require: false
+  gem "brakeman", "~> 8.1.1", require: false
   gem "reek", "~> 6.6.0", require: false
   gem "traceroute", "~> 0.8.1"
 
