@@ -43,9 +43,9 @@ gem "view_component", "~> 4.25.0"
 # Shrine
 gem "aws-sdk-s3", "~> 1.245.1"
 gem "ruby-vips", "~> 2.3.0"
-gem "image_processing", "~> 2.2.1"
+gem "image_processing", "~> 2.2.2"
 gem "marcel", "~> 1.2.1"
-gem "shrine", "~> 3.11.0"
+gem "shrine", "~> 3.11.1"
 
 # image (processing) proxy
 gem "imgproxy", "~> 3.0.0", require: false
