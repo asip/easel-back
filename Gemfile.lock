@@ -618,6 +618,7 @@ PLATFORMS
   arm64-darwin-23
   arm64-darwin-24
   arm64-darwin-25
+  arm64-darwin-27
 
 DEPENDENCIES
   alba (= 4.0.3)
