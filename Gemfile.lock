@@ -495,7 +495,7 @@ GEM
     rspec-mocks (3.13.9)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-openapi (0.36.0)
+    rspec-openapi (0.37.0)
       actionpack (>= 5.2.0)
       rails-dom-testing
       rspec-core
@@ -627,7 +627,7 @@ PLATFORMS
 DEPENDENCIES
   alba (= 4.0.3)
   annotaterb (~> 4.26.0)
-  aws-sdk-s3 (~> 1.245.1)
+  aws-sdk-s3 (~> 1.245.2)
   bootsnap (~> 1.26.2)
   brakeman (~> 8.1.1)
   bullet (~> 8.3.1)
@@ -667,7 +667,7 @@ DEPENDENCIES
   rambulance (~> 3.3.0)
   redis-actionpack (~> 5.5.0)
   reek (~> 6.6.0)
-  rspec-openapi (~> 0.36.0)
+  rspec-openapi (~> 0.37.0)
   rspec-rails (~> 8.1.0)
   rubocop (~> 1.92.3)
   rubocop-rails (~> 2.38.0)

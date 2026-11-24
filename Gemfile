@@ -41,7 +41,7 @@ gem "rails_vite", "~> 0.4.0"
 gem "view_component", "~> 4.25.0"
 
 # Shrine
-gem "aws-sdk-s3", "~> 1.245.1"
+gem "aws-sdk-s3", "~> 1.245.2"
 gem "ruby-vips", "~> 2.3.0"
 gem "image_processing", "~> 2.2.2"
 gem "marcel", "~> 1.2.1"
@@ -141,7 +141,7 @@ group :test do
   gem "faker", "~> 3.8.0"
   gem "rspec-rails", "~> 8.1.0"
   # Use to generate OpenAPI specs from RSpec request specs
-  gem "rspec-openapi", "~> 0.36.0"
+  gem "rspec-openapi", "~> 0.37.0"
   gem "skooma", "~> 0.4.0"
   gem "test-prof", "~> 1.6.4"
 end
