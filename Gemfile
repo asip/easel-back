@@ -14,7 +14,7 @@ gem "propshaft", "~> 1.3.2"
 gem "pg", "~> 1.7.0"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 8.1.2"
+gem "puma", "~> 8.1.3"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 2.0.23"
@@ -68,7 +68,7 @@ gem "googleauth", "~> 1.17.8"
 gem "config", "~> 5.6.1"
 
 # paging
-gem "pagy", "~> 43.8.5"
+gem "pagy", "~> 43.8.7"
 
 # tags
 gem "no_fly_list", "0.8.0"
