@@ -115,7 +115,7 @@ group :development do
   gem "annotaterb", "~> 4.26.0"
   gem "rails-erd", "~> 2.2.0"
 
-  gem "rubocop", "~> 1.92.3", require: false
+  gem "rubocop", "~> 1.93.0", require: false
   gem "rubocop-rails", "~> 2.38.0", require: false
   # Ruby style guide, linter, and formatter
   gem "rubocop-rails-omakase", "~> 1.1.0", require: false
