@@ -1,8 +1,10 @@
+import { defineConfig } from 'eslint/config'
+
 import js from '@eslint/js'
 import typescriptESLintParser from '@typescript-eslint/parser'
 import typescriptESLint from '@typescript-eslint/eslint-plugin'
 
-export default [
+export default defineConfig([
   {
     ignores: [
       './app/assets/builds/**/*', // Ignore built files.
@@ -46,4 +48,4 @@ export default [
       ...typescriptESLint.configs.stylistic.rules,
     },
   },
-]
+])
