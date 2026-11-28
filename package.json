@@ -22,8 +22,6 @@
     "@markuplint/erb-parser": "5.6.1",
     "@tailwindcss/vite": "4.3.5",
     "@types/toastify-js": "^1.12.4",
-    "@typescript-eslint/eslint-plugin": "^8.74.0",
-    "@typescript-eslint/parser": "^8.74.0",
     "daisyui": "^5.8.3",
     "eslint": "^10.15.0",
     "markuplint": "^5.6.1",

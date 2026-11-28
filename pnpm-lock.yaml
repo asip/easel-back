@@ -39,12 +39,6 @@ importers:
       '@types/toastify-js':
         specifier: ^1.12.4
         version: 1.12.4
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^8.74.0
-        version: 8.74.0(@typescript-eslint/parser@8.74.0(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
-      '@typescript-eslint/parser':
-        specifier: ^8.74.0
-        version: 8.74.0(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       daisyui:
         specifier: ^5.8.3
         version: 5.8.3
